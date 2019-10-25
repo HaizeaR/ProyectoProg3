@@ -37,9 +37,9 @@ public class Registro extends JFrame {
 			// COnseguir que se pongan en fila 
 			
 			getContentPane().add(pCentral, BorderLayout.CENTER);
-			FlowLayout lay = new FlowLayout(); 
-			lay.setAlignOnBaseline(true);
-			pCentral.setLayout(lay);
+			pCentral.setLayout(new BoxLayout(pCentral, WIDTH));
+			
+			
 
 			
 			lCorreo = new JLabel("Correo :"); 
