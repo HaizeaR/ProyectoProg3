@@ -1,3 +1,4 @@
+package Elementos;
 
 // clase que tiene todas las caracteristicas de una pelicula concreta 
 // titulo 

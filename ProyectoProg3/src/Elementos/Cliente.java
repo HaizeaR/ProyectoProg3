@@ -1,3 +1,4 @@
+package Elementos;
 
 // Clase que guarda la información de un cliente 
 
@@ -13,41 +14,31 @@ public class Cliente extends Usuario{
 	
 
 	private long numero_tarjeta; 
-	
-	
-
-	
-
-
-	@Override
-	public String toString() {
-		return "Cliente [Nombre=" + getNombre() + ", Apellido=" + getApellido()
-				+ ", Correo=" + getCorreo() + ", Contraseña =" + getContraseña() + ",Tarjeta=" + getNumero_tarjeta() + "]";
-	}
 
 
 
-
-	public Cliente(String nombre, String apellido, String correo, String contraseña, long numero_tarjeta) {
+	public Cliente(String nombre, String apellido, String correo, char[] contraseña, long numero_tarjeta) {
 		super(nombre, apellido, correo, contraseña);
 		this.numero_tarjeta = numero_tarjeta;
 	}
 
 
 
-
+	// GETTERS AND SETTERS
+	
 	public long getNumero_tarjeta() {
 		return numero_tarjeta;
 	}
-
-
-
 
 	public void setNumero_tarjeta(long numero_tarjeta) {
 		this.numero_tarjeta = numero_tarjeta;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Cliente [Nombre=" + getNombre() + ", Apellido=" + getApellido()
+				+ ", Correo=" + getCorreo() + ", Contraseña =" + getContraseña() + ",Tarjeta=" + getNumero_tarjeta() + "]";
+	}
 	
 	
 //	public static void main(String[] args) {

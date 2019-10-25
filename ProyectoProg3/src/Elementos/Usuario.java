@@ -1,13 +1,14 @@
+package Elementos;
 
 public class Usuario {
 	
 	private String nombre; 
 	private String apellido; 
 	private String correo;
-	private String contraseña;
+	private char[] contraseña;
 	
 	
-	public Usuario(String nombre, String apellido, String correo, String contraseña) {
+	public Usuario(String nombre, String apellido, String correo, char[] contraseña) {
 	
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -46,12 +47,12 @@ public class Usuario {
 	}
 
 
-	public String getContraseña() {
+	public char[] getContraseña() {
 		return contraseña;
 	}
 
 
-	public void setContraseña(String contraseña) {
+	public void setContraseña(char[] contraseña) {
 		this.contraseña = contraseña;
 	} 
 	

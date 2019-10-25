@@ -1,3 +1,4 @@
+package Elementos;
 
 
 
@@ -17,6 +18,6 @@ public class Cine {
 		// TODO Auto-generated constructor stub
 	}
 	
-//cuuuuchii puuchiii
+
 	
 }

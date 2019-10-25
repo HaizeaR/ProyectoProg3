@@ -1,3 +1,4 @@
+package Elementos;
 
 public class Pase {
 	
