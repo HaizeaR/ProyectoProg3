@@ -1,9 +1,31 @@
 package Ventanas;
 
-public class Cartelera {
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+
+
+// Queremos que se creen paneles de forma recursiva 
+// para cada Pelicula que se proyecta esa semana 
+// queremos que se muestre en un panel su fotografia 
+// Acciones: hacer click en el panel y que se abra la ventana individual correspondiente
+
+
+public class Cartelera extends JFrame {
+	
+	
+	
+	JPanel panel; 
 
 	public Cartelera() {
-		// TODO Auto-generated constructor stub
+		setSize(600, 600);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE );
 	}
 
+	
+	public static void main(String[] args) {
+		Cartelera ventC = new Cartelera(); 
+		ventC.setVisible(true);
+	}
+	
 }

@@ -1,9 +1,18 @@
 package Ventanas;
 
-public class SalaYAsientos {
+import javax.swing.JFrame;
+
+public class SalaYAsientos extends JFrame {
 
 	public SalaYAsientos() {
-		// TODO Auto-generated constructor stub
+		setSize(600,600);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
 	}
 
+	public static void main(String[] args) {
+		SalaYAsientos ventSYA = new SalaYAsientos(); 
+		ventSYA.setVisible(true);
+	}
+	
 }

@@ -15,6 +15,7 @@ public class Pelicula {
 	private String descrip_peli; 
 	private int duracion_peli; 
 	private String director_peli; 
+
 	//...
 
 	

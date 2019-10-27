@@ -119,7 +119,8 @@ public class Registro extends JFrame {
 		t1.start();
 
 	}
-
+	// Sacar error si falta algun dato o tiene algún dato incorrecto(de un tipo no deseado) 
+	// No permitir que se registre un correo ya registrado? 
 
 	public void Registrar() {
 		// metodo que tiene que guardar datos recibidos en los distintos 
