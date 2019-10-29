@@ -136,7 +136,10 @@ public class Registro extends JFrame {
 				String nombre = tfNombre.getText(); 
 				String apellido = tfApellido.getText(); 
 				String correo = tfCorreo.getText(); 
+				
 				char[] contraseña = jpContraseña.getPassword();
+				comprobarContraseña(contraseña);
+				
 				// comprobar que en el numero de tarjeta NO tiene letras 
 				// si tiene letras que de error y no te deja registrar el cliente 
 
@@ -167,6 +170,12 @@ public class Registro extends JFrame {
 
 		t2.start();
 
+	}
+	
+	public void comprobarContraseña(char[] contraseña) {
+		if(contraseña.length < 8) {
+			JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos 8 carácteres");
+		}
 	}
 
 
