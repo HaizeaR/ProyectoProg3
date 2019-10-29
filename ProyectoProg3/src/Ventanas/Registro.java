@@ -3,6 +3,7 @@ package Ventanas;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -24,6 +25,8 @@ public class Registro extends JFrame {
 	JPasswordField jpContraseña; 
 
 	public static ArrayList<Cliente> clientes = new ArrayList<>(); 
+	public static Pattern patCorreo = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
 
 	public Registro() {
@@ -135,7 +138,9 @@ public class Registro extends JFrame {
 
 				String nombre = tfNombre.getText(); 
 				String apellido = tfApellido.getText(); 
+				
 				String correo = tfCorreo.getText(); 
+				comprobarCorreo(correo);
 				
 				char[] contraseña = jpContraseña.getPassword();
 				comprobarContraseña(contraseña);
@@ -178,6 +183,16 @@ public class Registro extends JFrame {
 		}
 	}
 
+	public static boolean comprobarCorreo(String correo) {
+		if(patCorreo.matcher(correo).matches()) {
+			System.out.println(correo + " cumple el patrón");
+			return patCorreo.matcher(correo).matches();
+		} else {
+			System.out.println(correo + " no cumple el patrón");
+			JOptionPane.showMessageDialog(null, "Correo no válido");
+			return false;
+		}
+	}
 
 	public static void main(String[] args) {
 		Registro ventRegistrar = new Registro(); 
