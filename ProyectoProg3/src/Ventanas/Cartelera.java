@@ -15,6 +15,7 @@ public class Cartelera extends JFrame {
 	
 	
 	
+	
 	JPanel panel; 
 
 	public Cartelera() {

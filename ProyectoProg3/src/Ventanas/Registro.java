@@ -44,6 +44,7 @@ public class Registro extends JFrame {
 		pSuperior.add(lRegistro);
 
 
+		
 		JPanel pCentral = new JPanel(); 
 
 		// COnseguir que se pongan en fila 

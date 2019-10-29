@@ -25,6 +25,7 @@ public class LogIn extends JFrame {
 	JPasswordField jpContraseña; 
 	//private static JDialog v;
 	
+	
 
 	public LogIn() {
 		

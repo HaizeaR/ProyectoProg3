@@ -17,6 +17,7 @@ public class Cliente extends Usuario{
 
 
 
+
 	public Cliente(String nombre, String apellido, String correo, char[] contraseña, long numero_tarjeta) {
 		super(nombre, apellido, correo, contraseña);
 		this.numero_tarjeta = numero_tarjeta;

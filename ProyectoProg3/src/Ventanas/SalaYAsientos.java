@@ -15,4 +15,5 @@ public class SalaYAsientos extends JFrame {
 		ventSYA.setVisible(true);
 	}
 	
+	
 }

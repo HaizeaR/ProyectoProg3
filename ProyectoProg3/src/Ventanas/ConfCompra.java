@@ -13,6 +13,7 @@ public class ConfCompra extends JFrame {
 		// TODO
 	}
 	
+	
 
 	public static void main(String[] args) {
 		

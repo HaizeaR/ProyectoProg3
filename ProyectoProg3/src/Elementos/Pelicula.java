@@ -9,6 +9,7 @@ package Elementos;
 // director ? 
 
 
+
 public class Pelicula {
 
 	private String titulo_peli; 

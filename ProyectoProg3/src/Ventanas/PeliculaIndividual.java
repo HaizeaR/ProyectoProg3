@@ -31,6 +31,7 @@ public class PeliculaIndividual extends JFrame{
 		tpDescrip = new JTextPane(); 
 
 
+		
 		pPeli.setLayout(new BorderLayout());
 		pPeli.add(pFoto, BorderLayout.WEST); 
 		pPeli.add(tpDescrip, BorderLayout.CENTER); 
