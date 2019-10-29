@@ -15,5 +15,11 @@ public class RegistroTest {
 		assertFalse(Registro.comprobarCorreo("universidad.com", false));
 		assertFalse(Registro.comprobarCorreo("ejemplo@error", false));
 	}
+	
+	@Test
+	public void compruebaNumTarjeta() {
+		assertTrue(Registro.comprobarNumTarjeta("123456", false));
+		assertFalse(Registro.comprobarNumTarjeta("12aB4h", false));
+	}
 
 }
