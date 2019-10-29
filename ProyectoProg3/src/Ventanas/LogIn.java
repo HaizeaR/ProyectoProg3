@@ -20,10 +20,11 @@ public class LogIn extends JFrame {
 	
 	
 	JButton bConfirmar, bRegistrar, bAtras;
-	JLabel lCorreo, lContrase�a,lLogin,lPelicula, lSala, lHora, lAsiento; 
+	JLabel lCorreo, lContraseña,lLogin,lPelicula, lSala, lHora, lAsiento; 
 	JTextField tfCorreo; 
-	JPasswordField jpContrase�a; 
+	JPasswordField jpContraseña; 
 	//private static JDialog v;
+	
 	
 
 	public LogIn() {
@@ -69,17 +70,17 @@ public class LogIn extends JFrame {
 	
 		
 		lCorreo = new JLabel("Correo :"); 
-		lContrase�a = new JLabel("Contrase�a :");
+		lContraseña = new JLabel("Contraseña :");
 		
 		tfCorreo = new JTextField(10); 
-		jpContrase�a = new JPasswordField(10);
+		jpContraseña = new JPasswordField(10);
 	
 		
 		pCentral.add(lCorreo);
 		pCentral.add(tfCorreo);
 		
-		pCentral.add(lContrase�a);
-		pCentral.add(jpContrase�a); 
+		pCentral.add(lContraseña);
+		pCentral.add(jpContraseña); 
 		
 
 	
@@ -99,21 +100,35 @@ public class LogIn extends JFrame {
 		
 		// Action Events para los botones 
 		
-		bAtras.addActionListener((ActionEvent e) -> {});
+		bAtras.addActionListener((ActionEvent e) -> {volverAtras();});
 		bRegistrar.addActionListener((ActionEvent e) -> {accedeRegistro();} );
-		bConfirmar.addActionListener((ActionEvent e) -> {});
+		bConfirmar.addActionListener((ActionEvent e) -> {confirmCompra();});
 		
 	
 		
 	
 	}
 	
+	private void volverAtras() {
+		Thread t1 = new Thread() {
+			public void run() {
+				//LogIn.guardaConfig();
+				setVisible(false);
+				SalaYAsientos.main(null); 
+
+				dispose();
+			}				
+		}; 
+		t1.start();
+	}
+	
+	
 	
 	/** Método que contiene el hilo que nos permite
 	 * cambiar de ventana de Login a ventana registro 
 	 */
 	private void accedeRegistro() {
-		Thread t1 = new Thread() {
+		Thread t2 = new Thread() {
 			public void run() {
 				//LogIn.guardaConfig();
 				setVisible(false);
@@ -122,9 +137,25 @@ public class LogIn extends JFrame {
 				dispose();
 			}				
 		}; 
-		t1.start();
-
+		t2.start();
 	}
+	
+	private void confirmCompra() {
+		Thread t3 = new Thread() {
+			public void run() {
+				//LogIn.guardaConfig();
+				setVisible(false);
+				ConfCompra.main(null); 
+
+				dispose();
+			}				
+		}; 
+		t3.start();
+		
+	}
+	
+	
+	
 
 //	public static void guardaConfig() {
 //		try {

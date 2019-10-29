@@ -1,3 +1,4 @@
+package Elementos;
 
 // 
 // Clase que permite la creación de una sala 
@@ -16,3 +17,4 @@ public class Sala {
 	}
 
 }
+
