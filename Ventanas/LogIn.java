@@ -20,9 +20,9 @@ public class LogIn extends JFrame {
 	
 	
 	JButton bConfirmar, bRegistrar, bAtras;
-	JLabel lCorreo, lContraseÃ±a,lLogin,lPelicula, lSala, lHora, lAsiento; 
+	JLabel lCorreo, lContraseña,lLogin,lPelicula, lSala, lHora, lAsiento; 
 	JTextField tfCorreo; 
-	JPasswordField jpContraseÃ±a; 
+	JPasswordField jpContraseña; 
 	//private static JDialog v;
 	
 
@@ -69,17 +69,17 @@ public class LogIn extends JFrame {
 	
 		
 		lCorreo = new JLabel("Correo :"); 
-		lContraseÃ±a = new JLabel("ContraseÃ±a :");
+		lContraseña = new JLabel("Contraseña :");
 		
 		tfCorreo = new JTextField(10); 
-		jpContraseÃ±a = new JPasswordField(10);
+		jpContraseña = new JPasswordField(10);
 	
 		
 		pCentral.add(lCorreo);
 		pCentral.add(tfCorreo);
 		
-		pCentral.add(lContraseÃ±a);
-		pCentral.add(jpContraseÃ±a); 
+		pCentral.add(lContraseña);
+		pCentral.add(jpContraseña); 
 		
 
 	

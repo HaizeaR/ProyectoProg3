@@ -9,9 +9,9 @@ import javax.swing.*;
 public class Registro extends JFrame {
 
 		JButton  bRegistrar, bAtras;
-		JLabel lCorreo, lContraseÃ±a, lNombre, lApellido, lNumero_tarjeta, lRegistro; 
+		JLabel lCorreo, lContraseña, lNombre, lApellido, lNumero_tarjeta, lRegistro; 
 		JTextField tfCorreo,tfNombre, tfApellido, tfNumero_tarjeta; 
-		JPasswordField jpContraseÃ±a; 
+		JPasswordField jpContraseña; 
 		
 
 		public Registro() {
@@ -43,7 +43,7 @@ public class Registro extends JFrame {
 
 			
 			lCorreo = new JLabel("Correo :"); 
-			lContraseÃ±a = new JLabel("ContraseÃ±a :");
+			lContraseña = new JLabel("Contraseña21 :");
 			lNombre = new JLabel("Nombre: "); 
 			lApellido = new JLabel("Apellido: "); 
 			lNumero_tarjeta = new JLabel("Num tarjeta: "); 
@@ -52,7 +52,7 @@ public class Registro extends JFrame {
 			tfNombre = new JTextField(10);
 			tfApellido = new JTextField(10); 
 			tfCorreo = new JTextField(20); 
-			jpContraseÃ±a = new JPasswordField(10);
+			jpContraseña = new JPasswordField(10);
 			tfNumero_tarjeta = new JTextField(15);
 			
 			pCentral.add(lNombre); 
@@ -65,8 +65,8 @@ public class Registro extends JFrame {
 			pCentral.add(lCorreo);
 			pCentral.add(tfCorreo);
 			
-			pCentral.add(lContraseÃ±a);
-			pCentral.add(jpContraseÃ±a); 
+			pCentral.add(lContraseña);
+			pCentral.add(jpContraseña); 
 			
 			pCentral.add(lNumero_tarjeta); 
 			pCentral.add(tfNumero_tarjeta);

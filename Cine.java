@@ -1,7 +1,5 @@
 
 
-
-
 public class Cine {
 	
 	private String nombre_cine; 
