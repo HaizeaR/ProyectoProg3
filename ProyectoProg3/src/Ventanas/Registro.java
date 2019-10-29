@@ -141,7 +141,7 @@ public class Registro extends JFrame {
 				String apellido = tfApellido.getText(); 
 				
 				String correo = tfCorreo.getText(); 
-				comprobarCorreo(correo);
+				comprobarCorreo(correo, true);
 				
 				char[] contraseña = jpContraseña.getPassword();
 				comprobarContraseña(contraseña);
@@ -149,7 +149,7 @@ public class Registro extends JFrame {
 				// comprobar que en el numero de tarjeta NO tiene letras 
 				// si tiene letras que de error y no te deja registrar el cliente 
 
-				comprobarNumTarjeta(tfNumero_tarjeta.getText());
+				comprobarNumTarjeta(tfNumero_tarjeta.getText(), true);
 				long num_tarjeta = Long.parseLong(tfNumero_tarjeta.getText());
 				
 				cliente = new Cliente (nombre,apellido,correo,contraseña,num_tarjeta); 
@@ -192,11 +192,12 @@ public class Registro extends JFrame {
 	 * @param correo
 	 * @return true si lo cumple, false si no lo cumple
 	 */
-	public static boolean comprobarCorreo(String correo) {
+	public static boolean comprobarCorreo(String correo, boolean showErrorWindow) {
 		if(patCorreo.matcher(correo).matches()) {
 			System.out.println(correo + " cumple el patrón");
 			return patCorreo.matcher(correo).matches();
 		} else {
+			if(showErrorWindow)
 			System.out.println(correo + " no cumple el patrón");
 			JOptionPane.showMessageDialog(null, "Correo no válido");
 			return false;
@@ -207,11 +208,12 @@ public class Registro extends JFrame {
 	 * @param numTarjeta
 	 * @return true si lo cumple, false si no lo cumple
 	 */
-	public static boolean comprobarNumTarjeta(String numTarjeta) {
+	public static boolean comprobarNumTarjeta(String numTarjeta, boolean showErrorWindow) {
 		if(patNumTarjeta.matcher(numTarjeta).matches()) {
 			System.out.println(numTarjeta + " cumple el patrón");
 			return patNumTarjeta.matcher(numTarjeta).matches();
 		} else {
+			if(showErrorWindow)
 			System.out.println(numTarjeta + " no cumple el patrón");
 			JOptionPane.showMessageDialog(null, "Número de tarjeta no válido");
 			return false;
