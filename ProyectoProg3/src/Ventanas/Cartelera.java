@@ -11,6 +11,11 @@ import javax.swing.JPanel;
 // Acciones: hacer click en el panel y que se abra la ventana individual correspondiente
 
 
+/** Ventana que muestra todas las películas de la semana
+ * @author Unai, Mireya y Haizea
+ *
+ */
+
 public class Cartelera extends JFrame {
 	
 	

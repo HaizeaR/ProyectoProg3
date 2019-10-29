@@ -16,6 +16,17 @@ import javax.swing.JTextField;
 
 import Elementos.Cliente; 
 
+/**Ventana que permite registrar a un usuario
+ * 
+ * @author Unai, Mireya y Haizea
+ *
+ */
+
+// FALTA: 
+// - Meter en base de datos usuario registrado 
+// - No guardar un usuario si tienen error de PATRON 
+// - 
+
 public class Registro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -24,9 +35,12 @@ public class Registro extends JFrame {
 	JTextField tfCorreo,tfNombre, tfApellido, tfNumero_tarjeta; 
 	JPasswordField jpContraseña; 
 
-	public static ArrayList<Cliente> clientes = new ArrayList<>(); 
+	public static ArrayList<Cliente> clientes = new ArrayList<>();
+	
+	// Patrón de correo electronico
 	public static Pattern patCorreo = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+	// Patrón número de tarjeta
 	public static Pattern patNumTarjeta = Pattern.compile("[0-9]+");
 	
 

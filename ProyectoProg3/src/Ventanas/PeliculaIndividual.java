@@ -9,6 +9,11 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 
+/** Ventana donde se muestra información de la perlicula individual
+ * con sus horarios
+ * @author Unai, Mireya y Haizea
+ *
+ */
 public class PeliculaIndividual extends JFrame{
 
 	JPanel pPeli, pFoto; 

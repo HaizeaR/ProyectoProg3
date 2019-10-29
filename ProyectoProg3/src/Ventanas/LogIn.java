@@ -16,6 +16,15 @@ import java.util.Scanner;
 import javax.swing.*;
 
 
+/** Ventana de LOGIN que permite a un usuario terminar su compra
+ * @author Unai, Mireya y Haizea
+ *
+ */
+
+// FALTA 
+// - validar que el usuario está en la BD, si no está mandar a registrar 
+// - Mejorar ventana
+
 public class LogIn extends JFrame {
 	
 	

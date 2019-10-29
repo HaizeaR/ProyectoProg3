@@ -1,14 +1,19 @@
 package Elementos;
 
-// Clase que guarda la información de un cliente 
+
 
 // nombre 
 // apellidos
 // correo electronico 
-// contraseña ? 
+// contraseña 
 // datos bancarios 
 // 
 
+
+/** Clase con información de un cliente 
+ * @author Unai, Mireya y Haizea
+ * HEREDA DE USUARIO
+ */
 
 public class Cliente extends Usuario{
 	
@@ -26,10 +31,16 @@ public class Cliente extends Usuario{
 
 	// GETTERS AND SETTERS
 	
+	/**
+	 * @return numero de tarjeta
+	 */
 	public long getNumero_tarjeta() {
 		return numero_tarjeta;
 	}
 
+	/** Permite introducir número de tarjeta 
+	 * @param numero_tarjeta
+	 */
 	public void setNumero_tarjeta(long numero_tarjeta) {
 		this.numero_tarjeta = numero_tarjeta;
 	}

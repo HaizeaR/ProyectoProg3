@@ -2,6 +2,15 @@ package Ventanas;
 
 import javax.swing.JFrame;
 
+/** Ventana de selección de asientos
+ * 
+ * Verde - Seleccionado
+ * Gris - Libre
+ * Rojo - Ocupado ( no puede comprarse) 
+ * 
+ * @author Unai, Mireya y Haizea
+ *
+ */
 public class SalaYAsientos extends JFrame {
 
 	public SalaYAsientos() {

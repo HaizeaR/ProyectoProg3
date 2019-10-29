@@ -1,14 +1,13 @@
 package Elementos;
 
-// clase que tiene todas las caracteristicas de una pelicula concreta 
-// titulo 
-// descripcion 
-// duración 
-// video del trailer 
-// cartelera 
+//trailer 
 // director ? 
 
 
+/** Clase que tiene todas las caracteristicas de una pelicula concreta 
+ * @author Unai, Mireya y Haizea
+ *
+ */
 public class Pelicula {
 
 	private String titulo_peli; 

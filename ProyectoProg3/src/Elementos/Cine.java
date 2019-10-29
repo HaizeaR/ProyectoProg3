@@ -2,7 +2,10 @@ package Elementos;
 
 
 
-
+/** Clase con características de un cine
+ * @author Unai, Mireya y Haizea
+ *
+ */
 public class Cine {
 	
 	private String nombre_cine; 

@@ -6,14 +6,19 @@ package Elementos;
 // numero de sala 
 //
 
+/** Clase con atributos de una sala
+ * @author Unai, Mireya y Haizea
+ *
+ */
 public class Sala {
 	
-	private int numero_sala; 
+	private int numero_sala; // Hace referencia al número de la sala 
 	private int capacidad_sala; // hace referencia al número de asiesntos de cada salsa
 	
 
-	public Sala() {
-		// TODO Auto-generated constructor stub
+	public Sala(int numero_sala, int capacidad_sala) {
+		this.numero_sala = numero_sala;
+		this.capacidad_sala = capacidad_sala;
 	}
 
 }

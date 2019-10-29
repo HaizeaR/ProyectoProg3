@@ -8,6 +8,11 @@ package Elementos;
 // Fecha de creación - (fecha de contratación ) 
 
 
+/**
+ * Clase con información de un trabajador 
+ * @author Unai, Mireya y Haizea
+ * HEREDA DE USUARIO
+ */
 public class Admin extends Usuario {
 	
 	
