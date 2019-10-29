@@ -179,12 +179,19 @@ public class Registro extends JFrame {
 
 	}
 	
+	/** Método que comprueba que la contraseña tiene al menos 8 carácteres
+	 * @param contraseña
+	 */
 	public void comprobarContraseña(char[] contraseña) {
 		if(contraseña.length < 8) {
 			JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos 8 carácteres");
 		}
 	}
 
+	/** Método que comprueba que el correo cumple el patrón
+	 * @param correo
+	 * @return true si lo cumple, false si no lo cumple
+	 */
 	public static boolean comprobarCorreo(String correo) {
 		if(patCorreo.matcher(correo).matches()) {
 			System.out.println(correo + " cumple el patrón");
@@ -196,6 +203,10 @@ public class Registro extends JFrame {
 		}
 	}
 	
+	/** Método que comprueba que la tarjeta cumple el patrón de tener sólo números
+	 * @param numTarjeta
+	 * @return true si lo cumple, false si no lo cumple
+	 */
 	public static boolean comprobarNumTarjeta(String numTarjeta) {
 		if(patNumTarjeta.matcher(numTarjeta).matches()) {
 			System.out.println(numTarjeta + " cumple el patrón");
