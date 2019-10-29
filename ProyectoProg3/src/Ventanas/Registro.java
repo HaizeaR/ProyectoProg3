@@ -27,7 +27,8 @@ public class Registro extends JFrame {
 	public static ArrayList<Cliente> clientes = new ArrayList<>(); 
 	public static Pattern patCorreo = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-
+	public static Pattern patNumTarjeta = Pattern.compile("[0-9]+");
+	
 
 	public Registro() {
 
@@ -148,8 +149,9 @@ public class Registro extends JFrame {
 				// comprobar que en el numero de tarjeta NO tiene letras 
 				// si tiene letras que de error y no te deja registrar el cliente 
 
+				comprobarNumTarjeta(tfNumero_tarjeta.getText());
 				long num_tarjeta = Long.parseLong(tfNumero_tarjeta.getText());
-
+				
 				cliente = new Cliente (nombre,apellido,correo,contraseña,num_tarjeta); 
 
 				clientes.add(cliente);
@@ -190,6 +192,17 @@ public class Registro extends JFrame {
 		} else {
 			System.out.println(correo + " no cumple el patrón");
 			JOptionPane.showMessageDialog(null, "Correo no válido");
+			return false;
+		}
+	}
+	
+	public static boolean comprobarNumTarjeta(String numTarjeta) {
+		if(patNumTarjeta.matcher(numTarjeta).matches()) {
+			System.out.println(numTarjeta + " cumple el patrón");
+			return patNumTarjeta.matcher(numTarjeta).matches();
+		} else {
+			System.out.println(numTarjeta + " no cumple el patrón");
+			JOptionPane.showMessageDialog(null, "Número de tarjeta no válido");
 			return false;
 		}
 	}
