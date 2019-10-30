@@ -1,4 +1,4 @@
-package Elementos;
+package ProyectoProg3.src.Elementos;
 
 
 /**Clase PADRE donde se encuentran los datos principales de los usuario del cine
@@ -13,16 +13,24 @@ public class Usuario {
 	private String nombre; 
 	private String apellido; 
 	private String correo;
+<<<<<<< HEAD
 	private char[] contraseña;
 
 	// CONSTRUCTOR
 
 	public Usuario(String nombre, String apellido, String correo, char[] contraseña) {
 
+=======
+	private char[] contrase�a;
+	
+	
+	public Usuario(String nombre, String apellido, String correo, char[] contrase�a) {
+	
+>>>>>>> branch 'master' of https://github.com/HaizeaR/ProyectoProg3.git
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.correo = correo;
-		this.contraseña = contraseña;
+		this.contrase�a = contrase�a;
 	}
 
 
@@ -77,19 +85,29 @@ public class Usuario {
 	}
 
 
+<<<<<<< HEAD
 	/** Deveulve la contraseña en un formato (....)
 	 * @return constraseña
 	 */
 	public char[] getContraseña() {
 		return contraseña;
+=======
+	public char[] getContrase�a() {
+		return contrase�a;
+>>>>>>> branch 'master' of https://github.com/HaizeaR/ProyectoProg3.git
 	}
 
 
+<<<<<<< HEAD
 	/** Permite definir la contraseña
 	 * @param contraseña
 	 */
 	public void setContraseña(char[] contraseña) {
 		this.contraseña = contraseña;
+=======
+	public void setContrase�a(char[] contrase�a) {
+		this.contrase�a = contrase�a;
+>>>>>>> branch 'master' of https://github.com/HaizeaR/ProyectoProg3.git
 	} 
 
 

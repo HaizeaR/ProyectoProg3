@@ -1,4 +1,4 @@
-package Elementos;
+package ProyectoProg3.src.Elementos;
 
 /** Clase donde se registra la fecha y horario de peli
  * Añadir peliculas y salas
