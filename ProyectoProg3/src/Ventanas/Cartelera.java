@@ -1,4 +1,4 @@
-package ProyectoProg3.src.Ventanas;
+package Ventanas;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -30,11 +30,7 @@ import javax.swing.JPanel;
 
 public class Cartelera extends JFrame {
 	
-<<<<<<< HEAD
-	
-	
-=======
->>>>>>> branch 'master' of https://github.com/HaizeaR/ProyectoProg3.git
+
 	JPanel panel; 
 	private static JFrame v;
 	

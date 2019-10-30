@@ -1,21 +1,5 @@
-package ProyectoProg3.src.Elementos;
+package Elementos;
 
-<<<<<<< HEAD
-
-=======
-// Clase que guarda la información de un cliente 
->>>>>>> branch 'master' of https://github.com/HaizeaR/ProyectoProg3.git
-
-// nombre 
-// apellidos
-// correo electronico 
-<<<<<<< HEAD
-// contraseÃ±a 
-=======
-// contraseña ? 
->>>>>>> branch 'master' of https://github.com/HaizeaR/ProyectoProg3.git
-// datos bancarios 
-// 
 
 
 /** Clase con informaciÃ³n de un cliente 
@@ -30,14 +14,14 @@ public class Cliente extends Usuario{
 
 
 
-<<<<<<< HEAD
-	public Cliente(String nombre, String apellido, String correo, char[] contraseÃ±a, long numero_tarjeta) {
-		super(nombre, apellido, correo, contraseÃ±a);
-=======
 
-	public Cliente(String nombre, String apellido, String correo, char[] contraseña, long numero_tarjeta) {
-		super(nombre, apellido, correo, contraseña);
->>>>>>> branch 'master' of https://github.com/HaizeaR/ProyectoProg3.git
+//	public Cliente() {
+//		super(nombre, apellido, correo, contrasena);
+
+
+	public Cliente(String nombre, String apellido, String correo, char[] contrasena, long numero_tarjeta) {
+		super(nombre, apellido, correo, contrasena);
+
 		this.numero_tarjeta = numero_tarjeta;
 	}
 
@@ -62,7 +46,7 @@ public class Cliente extends Usuario{
 	@Override
 	public String toString() {
 		return "Cliente [Nombre=" + getNombre() + ", Apellido=" + getApellido()
-				+ ", Correo=" + getCorreo() + ", Contraseña =" + getContraseña() + ",Tarjeta=" + getNumero_tarjeta() + "]";
+				+ ", Correo=" + getCorreo() + ", Contrasena =" + getContrasena() + ",Tarjeta=" + getNumero_tarjeta() + "]";
 	}
 	
 	

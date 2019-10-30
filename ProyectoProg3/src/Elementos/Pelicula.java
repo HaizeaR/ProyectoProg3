@@ -1,4 +1,4 @@
-package ProyectoProg3.src.Elementos;
+package Elementos;
 
 //trailer 
 // director ? 

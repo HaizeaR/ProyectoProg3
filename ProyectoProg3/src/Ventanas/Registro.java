@@ -1,4 +1,4 @@
-package ProyectoProg3.src.Ventanas;
+package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import ProyectoProg3.src.Elementos.Cliente; 
+import Elementos.Cliente; 
 
 /**Ventana que permite registrar a un usuario
  * 
@@ -31,9 +31,9 @@ public class Registro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	JButton  bRegistrar, bAtras;
-	JLabel lCorreo, lContraseña, lNombre, lApellido, lNumero_tarjeta, lRegistro; 
+	JLabel lCorreo, lContrasena, lNombre, lApellido, lNumero_tarjeta, lRegistro; 
 	JTextField tfCorreo,tfNombre, tfApellido, tfNumero_tarjeta; 
-	JPasswordField jpContraseña; 
+	JPasswordField jpContrasena; 
 
 	public static ArrayList<Cliente> clientes = new ArrayList<>();
 	
@@ -73,7 +73,7 @@ public class Registro extends JFrame {
 
 
 		lCorreo = new JLabel("Correo :"); 
-		lContraseña = new JLabel("Contraseña :");
+		lContrasena = new JLabel("Contraseï¿½a :");
 		lNombre = new JLabel("Nombre: "); 
 		lApellido = new JLabel("Apellido: "); 
 		lNumero_tarjeta = new JLabel("Num tarjeta: "); 
@@ -82,7 +82,7 @@ public class Registro extends JFrame {
 		tfNombre = new JTextField(10);
 		tfApellido = new JTextField(10); 
 		tfCorreo = new JTextField(20); 
-		jpContraseña = new JPasswordField(10);
+		jpContrasena = new JPasswordField(10);
 		tfNumero_tarjeta = new JTextField(15);
 
 		pCentral.add(lNombre); 
@@ -95,8 +95,8 @@ public class Registro extends JFrame {
 		pCentral.add(lCorreo);
 		pCentral.add(tfCorreo);
 
-		pCentral.add(lContraseña);
-		pCentral.add(jpContraseña); 
+		pCentral.add(lContrasena);
+		pCentral.add(jpContrasena); 
 
 		pCentral.add(lNumero_tarjeta); 
 		pCentral.add(tfNumero_tarjeta);
@@ -155,27 +155,26 @@ public class Registro extends JFrame {
 				String apellido = tfApellido.getText(); 
 				
 				String correo = tfCorreo.getText(); 
-<<<<<<< HEAD
 				comprobarCorreo(correo, true);
 				
-				char[] contraseÃ±a = jpContraseÃ±a.getPassword();
+				char[] contraseÃ±a = jpContrasena.getPassword();
 				comprobarContraseÃ±a(contraseÃ±a);
 				
-=======
-				char[] contraseña = jpContraseña.getPassword();
->>>>>>> branch 'master' of https://github.com/HaizeaR/ProyectoProg3.git
+
+				char[] contrasena = jpContrasena.getPassword();
+
 				// comprobar que en el numero de tarjeta NO tiene letras 
 				// si tiene letras que de error y no te deja registrar el cliente 
 
 				comprobarNumTarjeta(tfNumero_tarjeta.getText(), true);
 				long num_tarjeta = Long.parseLong(tfNumero_tarjeta.getText());
-<<<<<<< HEAD
+
 				
 				cliente = new Cliente (nombre,apellido,correo,contraseÃ±a,num_tarjeta); 
-=======
 
-				cliente = new Cliente (nombre,apellido,correo,contraseña,num_tarjeta); 
->>>>>>> branch 'master' of https://github.com/HaizeaR/ProyectoProg3.git
+
+				cliente = new Cliente (nombre,apellido,correo,contrasena,num_tarjeta); 
+
 
 				clientes.add(cliente);
 

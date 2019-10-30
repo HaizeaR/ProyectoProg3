@@ -1,4 +1,4 @@
-package ProyectoProg3.src.Elementos;
+package Elementos;
 
 // Clase que permite crear a los distintos trabajadores / Admin del cine
 // correo electronico ( con el que acceden) 
@@ -18,29 +18,17 @@ public class Admin extends Usuario {
 	
 	
 
-	public Admin(String nombre, String apellido, String correo, char[] contraseña) {
-		super(nombre, apellido, correo, contraseña);
+	public Admin(String nombre, String apellido, String correo, char[] contrasena) {
+		super(nombre, apellido, correo, contrasena);
 		
 	}
 
 	@Override
 	public String toString() {
 		return "Admin [Nombre=" + getNombre() + ", Apellido=" + getApellido() + ", Correo=" + getCorreo()
-				+ ", Contraseña=" + getContraseña() +  "]";
+				+ ", Contraseï¿½a=" + getContrasena() +  "]";
 	}
 	
-	
-<<<<<<< HEAD
-	
-	
-	
-	
- 
-	
-	
 
-	
-=======
->>>>>>> branch 'master' of https://github.com/HaizeaR/ProyectoProg3.git
 
 }
