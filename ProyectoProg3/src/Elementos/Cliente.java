@@ -1,11 +1,11 @@
-package Elementos;
+package ProyectoProg3.src.Elementos;
 
-// Clase que guarda la informaciÃ³n de un cliente 
+// Clase que guarda la información de un cliente 
 
 // nombre 
 // apellidos
 // correo electronico 
-// contraseÃ±a ? 
+// contraseña ? 
 // datos bancarios 
 // 
 
@@ -18,8 +18,8 @@ public class Cliente extends Usuario{
 
 
 
-	public Cliente(String nombre, String apellido, String correo, char[] contraseÃ±a, long numero_tarjeta) {
-		super(nombre, apellido, correo, contraseÃ±a);
+	public Cliente(String nombre, String apellido, String correo, char[] contraseña, long numero_tarjeta) {
+		super(nombre, apellido, correo, contraseña);
 		this.numero_tarjeta = numero_tarjeta;
 	}
 
@@ -38,7 +38,7 @@ public class Cliente extends Usuario{
 	@Override
 	public String toString() {
 		return "Cliente [Nombre=" + getNombre() + ", Apellido=" + getApellido()
-				+ ", Correo=" + getCorreo() + ", ContraseÃ±a =" + getContraseÃ±a() + ",Tarjeta=" + getNumero_tarjeta() + "]";
+				+ ", Correo=" + getCorreo() + ", Contraseña =" + getContraseña() + ",Tarjeta=" + getNumero_tarjeta() + "]";
 	}
 	
 	

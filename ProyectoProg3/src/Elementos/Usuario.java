@@ -1,19 +1,19 @@
-package Elementos;
+package ProyectoProg3.src.Elementos;
 
 public class Usuario {
 	
 	private String nombre; 
 	private String apellido; 
 	private String correo;
-	private char[] contraseÃ±a;
+	private char[] contraseña;
 	
 	
-	public Usuario(String nombre, String apellido, String correo, char[] contraseÃ±a) {
+	public Usuario(String nombre, String apellido, String correo, char[] contraseña) {
 	
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.correo = correo;
-		this.contraseÃ±a = contraseÃ±a;
+		this.contraseña = contraseña;
 	}
 
 	
@@ -48,13 +48,13 @@ public class Usuario {
 	}
 
 
-	public char[] getContraseÃ±a() {
-		return contraseÃ±a;
+	public char[] getContraseña() {
+		return contraseña;
 	}
 
 
-	public void setContraseÃ±a(char[] contraseÃ±a) {
-		this.contraseÃ±a = contraseÃ±a;
+	public void setContraseña(char[] contraseña) {
+		this.contraseña = contraseña;
 	} 
 	
 

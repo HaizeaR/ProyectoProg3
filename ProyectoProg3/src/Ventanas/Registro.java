@@ -1,4 +1,4 @@
-package Ventanas;
+package ProyectoProg3.src.Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -13,15 +13,15 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import Elementos.Cliente; 
+import ProyectoProg3.src.Elementos.Cliente; 
 
 public class Registro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	JButton  bRegistrar, bAtras;
-	JLabel lCorreo, lContraseÃ±a, lNombre, lApellido, lNumero_tarjeta, lRegistro; 
+	JLabel lCorreo, lContraseña, lNombre, lApellido, lNumero_tarjeta, lRegistro; 
 	JTextField tfCorreo,tfNombre, tfApellido, tfNumero_tarjeta; 
-	JPasswordField jpContraseÃ±a; 
+	JPasswordField jpContraseña; 
 
 	public static ArrayList<Cliente> clientes = new ArrayList<>(); 
 
@@ -56,7 +56,7 @@ public class Registro extends JFrame {
 
 
 		lCorreo = new JLabel("Correo :"); 
-		lContraseÃ±a = new JLabel("ContraseÃ±a :");
+		lContraseña = new JLabel("Contraseña :");
 		lNombre = new JLabel("Nombre: "); 
 		lApellido = new JLabel("Apellido: "); 
 		lNumero_tarjeta = new JLabel("Num tarjeta: "); 
@@ -65,7 +65,7 @@ public class Registro extends JFrame {
 		tfNombre = new JTextField(10);
 		tfApellido = new JTextField(10); 
 		tfCorreo = new JTextField(20); 
-		jpContraseÃ±a = new JPasswordField(10);
+		jpContraseña = new JPasswordField(10);
 		tfNumero_tarjeta = new JTextField(15);
 
 		pCentral.add(lNombre); 
@@ -78,8 +78,8 @@ public class Registro extends JFrame {
 		pCentral.add(lCorreo);
 		pCentral.add(tfCorreo);
 
-		pCentral.add(lContraseÃ±a);
-		pCentral.add(jpContraseÃ±a); 
+		pCentral.add(lContraseña);
+		pCentral.add(jpContraseña); 
 
 		pCentral.add(lNumero_tarjeta); 
 		pCentral.add(tfNumero_tarjeta);
@@ -137,13 +137,13 @@ public class Registro extends JFrame {
 				String nombre = tfNombre.getText(); 
 				String apellido = tfApellido.getText(); 
 				String correo = tfCorreo.getText(); 
-				char[] contraseÃ±a = jpContraseÃ±a.getPassword();
+				char[] contraseña = jpContraseña.getPassword();
 				// comprobar que en el numero de tarjeta NO tiene letras 
 				// si tiene letras que de error y no te deja registrar el cliente 
 
 				long num_tarjeta = Long.parseLong(tfNumero_tarjeta.getText());
 
-				cliente = new Cliente (nombre,apellido,correo,contraseÃ±a,num_tarjeta); 
+				cliente = new Cliente (nombre,apellido,correo,contraseña,num_tarjeta); 
 
 				clientes.add(cliente);
 

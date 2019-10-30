@@ -1,4 +1,4 @@
-package Elementos;
+package ProyectoProg3.src.Elementos;
 // enum con la distinta variedad de peliculas 
 
 // comedia, drama, terror, ciencia-ficción, infantiles

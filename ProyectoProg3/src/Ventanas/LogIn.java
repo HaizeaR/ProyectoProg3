@@ -1,4 +1,4 @@
-package Ventanas;
+package ProyectoProg3.src.Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,9 +20,9 @@ public class LogIn extends JFrame {
 	
 	
 	JButton bConfirmar, bRegistrar, bAtras;
-	JLabel lCorreo, lContraseña,lLogin,lPelicula, lSala, lHora, lAsiento; 
+	JLabel lCorreo, lContrase�a,lLogin,lPelicula, lSala, lHora, lAsiento; 
 	JTextField tfCorreo; 
-	JPasswordField jpContraseña; 
+	JPasswordField jpContrase�a; 
 	//private static JDialog v;
 	
 	
@@ -70,17 +70,17 @@ public class LogIn extends JFrame {
 	
 		
 		lCorreo = new JLabel("Correo :"); 
-		lContraseña = new JLabel("Contraseña :");
+		lContrase�a = new JLabel("Contraseña :");
 		
 		tfCorreo = new JTextField(10); 
-		jpContraseña = new JPasswordField(10);
+		jpContrase�a = new JPasswordField(10);
 	
 		
 		pCentral.add(lCorreo);
 		pCentral.add(tfCorreo);
 		
-		pCentral.add(lContraseña);
-		pCentral.add(jpContraseña); 
+		pCentral.add(lContrase�a);
+		pCentral.add(jpContrase�a); 
 		
 
 	
