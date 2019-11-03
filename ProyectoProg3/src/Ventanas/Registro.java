@@ -34,6 +34,7 @@ public class Registro extends JFrame {
 	JLabel lCorreo, lContrasena, lNombre, lApellido, lNumero_tarjeta, lRegistro; 
 	JTextField tfCorreo,tfNombre, tfApellido, tfNumero_tarjeta; 
 	JPasswordField jpContrasena; 
+	long num_tarjeta;
 
 	public static ArrayList<Cliente> clientes = new ArrayList<>();
 	
@@ -138,7 +139,7 @@ public class Registro extends JFrame {
 
 	}
 	// Sacar error si falta algun dato o tiene algún dato incorrecto(de un tipo no deseado) 
-	// No permitir que se registre un correo ya registrado? 
+	// No permitir que se registre un correo ya registrado 
 
 	public void Registrar() {
 		// metodo que tiene que guardar datos recibidos en los distintos 
@@ -167,15 +168,20 @@ public class Registro extends JFrame {
 				// si tiene letras que de error y no te deja registrar el cliente 
 
 				comprobarNumTarjeta(tfNumero_tarjeta.getText(), true);
-				long num_tarjeta = Long.parseLong(tfNumero_tarjeta.getText());
-
+			
 				
+				try {
+					
+				num_tarjeta = Long.parseLong(tfNumero_tarjeta.getText());
+				
+				}catch(Exception e) {}
+
 				cliente = new Cliente (nombre,apellido,correo,contraseña,num_tarjeta); 
-
-
-				cliente = new Cliente (nombre,apellido,correo,contrasena,num_tarjeta); 
-
-
+				
+			
+				
+				
+				// cliente = new Cliente (nombre,apellido,correo,contrasena,num_tarjeta); 
 				clientes.add(cliente);
 
 				System.out.println(clientes);	

@@ -11,7 +11,7 @@ public class Cliente extends Usuario{
 	
 
 	private long numero_tarjeta; 
-
+	// Incluir los pases que compra un cliente
 
 
 

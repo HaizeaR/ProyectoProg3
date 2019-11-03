@@ -1,7 +1,12 @@
 package Elementos;
 
-//trailer 
-// director ? 
+import java.util.ArrayList;
+
+import javax.swing.Icon;
+
+//trailer ??? 
+
+
 
 
 /** Clase que tiene todas las caracteristicas de una pelicula concreta 
@@ -13,7 +18,8 @@ public class Pelicula {
 	private String titulo_peli; 
 	private String descrip_peli; 
 	private int duracion_peli; 
-	private String director_peli; 
+	private String director_peli;
+	private String icono; 
 
 	//...
 
@@ -23,13 +29,15 @@ public class Pelicula {
 	 * @param descrip_peli
 	 * @param duracion_peli
 	 * @param director_peli
+	 * @param icon
 	 */
-	public Pelicula(String titulo_peli, String descrip_peli, int duracion_peli, String director_peli) {
+	public Pelicula(String titulo_peli, String descrip_peli, int duracion_peli, String director_peli, String icono) {
 		super();
 		this.titulo_peli = titulo_peli;
 		this.descrip_peli = descrip_peli;
 		this.duracion_peli = duracion_peli;
 		this.director_peli = director_peli;
+		this.icono = icono;
 	}
 	
 	
@@ -66,8 +74,17 @@ public class Pelicula {
 	public void setDirector_peli(String director_peli) {
 		this.director_peli = director_peli;
 	}
+	
+	public String getIcono() {
+		return icono;
+	}
+	public void setIcono(String icono) {
+		this.icono = icono;
+	}
 
 
+	
+	
 	@Override
 	public String toString() {
 		return "Pelicula [Titulo=" + titulo_peli + ", Descripción=" + descrip_peli + ", Duración="
@@ -76,7 +93,7 @@ public class Pelicula {
 
 	
 	public static void main(String[] args) {
-		Pelicula p1 = new Pelicula("R", "---------", 180, "A");
+		Pelicula p1 = new Pelicula("R", "---------", 180, "A", "jdjdj");
 		System.out.println(p1);
 	}
 	
