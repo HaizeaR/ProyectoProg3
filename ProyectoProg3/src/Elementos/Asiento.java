@@ -1,5 +1,10 @@
 package Elementos;
 
+import javax.swing.ImageIcon;
+
+import com.sun.corba.se.impl.orbutil.graph.Graph;
+import com.sun.prism.Graphics;
+
 public class Asiento {
 	
 	// Pensar si queremos código individual de asiento o 
@@ -8,6 +13,17 @@ public class Asiento {
 	private int codigo; 
 	private int fila; 
 	private int columna;
+	// Bloques de 10*10
+	protected int tamanyo = 10; // Tamaño (ancho = alto) de la ficha
+
+	
+	private String nombre; // cambia en función de si está seleccionado o no 
+	
+	// asiento_v --> seleccionado 
+	// asiento_g --> libre  -- por defecto este 
+	// asiento_r --> ocupado
+	
+	
 	
 	
 	/** Constructor  de la clase Asiento
@@ -15,10 +31,12 @@ public class Asiento {
 	 * @param fila
 	 * @param columna
 	 */
-	public Asiento(int codigo, int fila, int columna) {
+	public Asiento(int codigo, int fila, int columna, int tamanyo) {
 		this.codigo = codigo;
 		this.fila = fila;
 		this.columna = columna;
+		this.tamanyo = tamanyo; 
+		
 	}
 	
 	// GETTERS AND SETTERS 
@@ -41,12 +59,37 @@ public class Asiento {
 	public void setColumna(int columna) {
 		this.columna = columna;
 	}
+	
+
+	public int getTamanyo() {
+		return tamanyo;
+	}
+
+	public void setTamanyo(int tamanyo) {
+		this.tamanyo = tamanyo;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
 	@Override
 	public String toString() {
 		return "Asiento [Codigo=" + codigo + ", Coordenada= (" + fila + "-" + columna +")]";
 	} 
 	
-	
+	public void dibujar (Graphics g) {
+		
+		  ImageIcon icon = new ImageIcon(nombre + ".png");
+		  // ??
+		 // icon.paintIcon(this, g, fila, columna);
+		
+		   
+
+	}
 
 }
