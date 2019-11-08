@@ -141,12 +141,13 @@ public class Registro extends JFrame {
 	// Sacar error si falta algun dato o tiene algún dato incorrecto(de un tipo no deseado) 
 	// No permitir que se registre un correo ya registrado 
 
+
 	public void Registrar() {
 		// metodo que tiene que guardar datos recibidos en los distintos 
 		//tf y guardarlos como datos de nuevo Cliente 
 
-		Thread t2 = new Thread() {
-			public void run() {
+	
+		
 				// Comprobar que ya no está en el array 
 
 
@@ -180,30 +181,24 @@ public class Registro extends JFrame {
 				
 			
 				
-				
 				// cliente = new Cliente (nombre,apellido,correo,contrasena,num_tarjeta); 
 				clientes.add(cliente);
-
-				System.out.println(clientes);	
-
-//					 for(Cliente c: clientes) {
-//						 System.out.println("Error");
-//							if (c.equals(cliente)) {
-//	
-//								JOptionPane.showMessageDialog(null, "Usuario ya existente");
-//								System.out.println("Error");
-//							}else {
-//								 clientes.add(cliente);
-//							}
+				
+//				try {
+//
+//					for(Cliente c: clientes) {
 //						
-//							 
-//					 }
-//					 System.out.println(clientes);
-
-			}
-		};
-
-		t2.start();
+//						if (cliente.equals(c)) {
+//							JOptionPane.showMessageDialog(null, "Usuario ya existente");
+//							System.out.println("Error");
+//							
+//						}else {
+//							clientes.add(cliente);
+//						}
+//					}
+//					System.out.println(clientes);
+//				}
+//				catch(Exception e) {}
 
 	}
 	

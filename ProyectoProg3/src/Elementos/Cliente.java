@@ -50,20 +50,27 @@ public class Cliente extends Usuario{
 	}
 	
 	
-//	public static void main(String[] args) {
-//		
-//		Cliente c1 = new Cliente ("Unai", "Mendi", "u@g.com", "123", 45645);
-//		System.out.println(c1.toString());
-//		//c1.toString();
-//		
-//		
-//	}
+
 	
 	
-	
-	
+	// Dos usuarios son iguales si sus correos son iguales
+	public boolean equals( Object o ) {
+		Usuario u2 = null;
+		if (o instanceof Usuario) u2 = (Usuario) o;
+		else return false;  // Si no es de la clase, son diferentes
+		return (getCorreo().equals(u2.getCorreo()));
+			
+	}
 	
 
+
+//	public static void main(String[] args) {
+//	
+//	Cliente c1 = new Cliente ("Unai", "Mendi", "u@g.com", , 45645);
+//	System.out.println(c1.toString());
+//	//c1.toString();
+//	
+//	
 
 
 
@@ -72,4 +79,5 @@ public class Cliente extends Usuario{
 
 		
 	}
+
 

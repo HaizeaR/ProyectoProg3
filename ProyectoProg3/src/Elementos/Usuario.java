@@ -17,9 +17,6 @@ public class Usuario {
 
 	// CONSTRUCTOR
 
-
-	
-	
 	public Usuario(String nombre, String apellido, String correo, char[] contrasena) {
 	
 
@@ -88,9 +85,6 @@ public class Usuario {
 		return contrasena;
 	}
 	
-
-
-
 	/** Permite definir la contraseña
 	 * @param contraseña
 	 */

@@ -5,6 +5,8 @@ import javax.swing.ImageIcon;
 import com.sun.corba.se.impl.orbutil.graph.Graph;
 import com.sun.prism.Graphics;
 
+import sun.java2d.pipe.DrawImage;
+
 public class Asiento {
 	
 	// Pensar si queremos código individual de asiento o 
@@ -85,8 +87,9 @@ public class Asiento {
 	public void dibujar (Graphics g) {
 		
 		  ImageIcon icon = new ImageIcon(nombre + ".png");
-		  // ??
-		 // icon.paintIcon(this, g, fila, columna);
+		
+		  
+		// icon.paintIcon(this, g, fila, columna);
 		
 		   
 
