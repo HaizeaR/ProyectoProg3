@@ -1,8 +1,8 @@
-package Ventanas;
+package ProyectoProg3.src.Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
-
+import ProyectoProg3.src.Elementos.*;
 import javax.swing.*;
 
 /** Ventana de selección de asientos
@@ -104,7 +104,10 @@ public class SalaYAsientos extends JFrame {
 		t2.start();
 	}
 	
-	
+	public void dibujaAsiento() {
+		Asiento a = new Asiento(1, 5, 5, 10);
+		a.dibujar();
+	}
 	
 
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Ventanas;
+package ProyectoProg3.src.Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import Elementos.Cliente; 
+import ProyectoProg3.src.Elementos.Cliente; 
 
 /**Ventana que permite registrar a un usuario
  * 
@@ -159,8 +159,8 @@ public class Registro extends JFrame {
 				String correo = tfCorreo.getText(); 
 				comprobarCorreo(correo, true);
 				
-				char[] contraseña = jpContrasena.getPassword();
-				comprobarContraseña(contraseña);
+				char[] contrasena = jpContrasena.getPassword();
+				comprobarContrasena(contrasena);
 				
 
 				char[] contrasena = jpContrasena.getPassword();
@@ -177,7 +177,7 @@ public class Registro extends JFrame {
 				
 				}catch(Exception e) {}
 
-				cliente = new Cliente (nombre,apellido,correo,contraseña,num_tarjeta); 
+				cliente = new Cliente (nombre,apellido,correo,contrasena,num_tarjeta); 
 				
 			
 				
@@ -205,8 +205,8 @@ public class Registro extends JFrame {
 	/** Método que comprueba que la contraseña tiene al menos 8 carácteres
 	 * @param contraseña
 	 */
-	public void comprobarContraseña(char[] contraseña) {
-		if(contraseña.length < 8) {
+	public void comprobarContrasena(char[] contrasena) {
+		if(contrasena.length < 8) {
 			JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos 8 carácteres");
 		}
 	}

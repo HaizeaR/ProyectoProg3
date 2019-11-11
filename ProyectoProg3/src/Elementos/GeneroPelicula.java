@@ -1,4 +1,4 @@
-package Elementos;
+package ProyectoProg3.src.Elementos;
 
 
 // comedia, drama, terror, ciencia-ficción, infantiles
