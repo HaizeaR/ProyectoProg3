@@ -16,7 +16,6 @@ package Elementos;
 public class Admin extends Usuario {
 	
 	
-	
 
 	public Admin(String nombre, String apellido, String correo, char[] contrasena) {
 		super(nombre, apellido, correo, contrasena);
