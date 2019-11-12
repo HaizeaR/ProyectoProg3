@@ -163,7 +163,7 @@ public class Registro extends JFrame {
 				comprobarContrasena(contrasena);
 				
 
-				char[] contrasena = jpContrasena.getPassword();
+			
 
 				// comprobar que en el numero de tarjeta NO tiene letras 
 				// si tiene letras que de error y no te deja registrar el cliente 
