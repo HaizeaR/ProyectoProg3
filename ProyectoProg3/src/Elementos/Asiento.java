@@ -88,12 +88,12 @@ public class Asiento {
 		return "Asiento [Codigo=" + codigo + ", Coordenada= (" + fila + "-" + columna + ")]";
 	}
 
-	public void dibujar(Graphics g) {
+	public void dibujar() {
 
 		//ImageIcon icon = new ImageIcon(nombre + ".png");
-		super.paintComponent(g);
-		g.setColo
-		g.drawRect(0, 0, tamanyo, tamanyo);
+		
+		
+		drawRect(0, 0, tamanyo, tamanyo);
 		// icon.paintIcon(this, g, fila, columna);
 
 	}
