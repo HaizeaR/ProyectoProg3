@@ -1,10 +1,10 @@
-package ProyectoProg3.src.VentanasTests;
+package VentanasTests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import ProyectoProg3.src.Ventanas.Registro;
+import Ventanas.Registro;
 
 public class RegistroTest {
 

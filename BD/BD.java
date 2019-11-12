@@ -1,4 +1,4 @@
-package ProyectoProg3.src.BD;
+package BD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

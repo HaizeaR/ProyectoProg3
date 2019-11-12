@@ -1,4 +1,4 @@
-package ProyectoProg3.src.Elementos;
+package Elementos;
 
 
 /**Clase PADRE donde se encuentran los datos principales de los usuario del cine

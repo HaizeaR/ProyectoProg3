@@ -1,4 +1,4 @@
-package ProyectoProg3.src.Ventanas;
+package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

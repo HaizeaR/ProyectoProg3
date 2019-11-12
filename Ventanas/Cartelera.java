@@ -1,4 +1,4 @@
-package ProyectoProg3.src.Ventanas;
+package Ventanas;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;

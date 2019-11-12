@@ -1,4 +1,4 @@
-package ProyectoProg3.src.Elementos;
+package Elementos;
 
 // Clase que permite crear a los distintos trabajadores / Admin del cine
 // correo electronico ( con el que acceden) 

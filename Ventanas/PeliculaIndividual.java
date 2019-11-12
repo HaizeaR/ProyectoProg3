@@ -1,4 +1,4 @@
-package ProyectoProg3.src.Ventanas;
+package Ventanas;
 
 import javax.swing.JFrame;
 import javax.swing.table.TableColumn;

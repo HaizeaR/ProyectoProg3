@@ -1,9 +1,11 @@
-package ProyectoProg3.src.Ventanas;
+package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
-import ProyectoProg3.src.Elementos.*;
+
 import javax.swing.*;
+
+import Elementos.*;
 
 /** Ventana de selección de asientos
  * 

@@ -1,4 +1,4 @@
-package ProyectoProg3.src.Ventanas;
+package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import ProyectoProg3.src.Elementos.Cliente; 
+import Elementos.Cliente; 
 
 /**Ventana que permite registrar a un usuario
  * 
