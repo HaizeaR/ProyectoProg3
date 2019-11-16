@@ -74,7 +74,7 @@ public class Registro extends JFrame {
 
 
 		lCorreo = new JLabel("Correo :"); 
-		lContrasena = new JLabel("Contrase�a :");
+		lContrasena = new JLabel("Contraseña :");
 		lNombre = new JLabel("Nombre: "); 
 		lApellido = new JLabel("Apellido: "); 
 		lNumero_tarjeta = new JLabel("Num tarjeta: "); 
