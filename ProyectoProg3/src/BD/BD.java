@@ -14,7 +14,7 @@ import java.sql.Statement;
 // Tabla Pelicula
 // Tabla Asiento
 
-public class BD3 {
+public class BD {
 	
 	private static Connection conexion;
 	
