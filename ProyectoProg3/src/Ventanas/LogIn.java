@@ -112,7 +112,6 @@ public class LogIn extends JFrame {
 		bRegistrar.addActionListener((ActionEvent e) -> {accedeRegistro();} );
 		bConfirmar.addActionListener((ActionEvent e) -> {confirmCompra();});
 		
-	
 		
 	
 	}
