@@ -19,7 +19,10 @@ public class Asiento {
 	private int columna;
 	// Bloques de 10*10
 	protected int tamanyo = 10; // Tamaño (ancho = alto) de la ficha
-
+	
+	private int id_sala; // Foreing key en BD 
+	
+	
 	private String nombre; // cambia en función de si está seleccionado o no
 
 	// asiento_v --> seleccionado

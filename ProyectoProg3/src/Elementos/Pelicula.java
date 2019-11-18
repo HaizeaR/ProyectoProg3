@@ -14,12 +14,13 @@ import javax.swing.Icon;
  *
  */
 public class Pelicula {
-
+	private int cod_peli;
 	private String titulo_peli; 
 	private String descrip_peli; 
 	private int duracion_peli; 
 	private String director_peli;
 	private String icono; // imagen o ref a imagen ? 
+	
 
 	//...
 
@@ -31,8 +32,9 @@ public class Pelicula {
 	 * @param director_peli
 	 * @param icon
 	 */
-	public Pelicula(String titulo_peli, String descrip_peli, int duracion_peli, String director_peli, String icono) {
+	public Pelicula(int cod_peli, String titulo_peli, String descrip_peli, int duracion_peli, String director_peli, String icono) {
 		super();
+		this.cod_peli = cod_peli;
 		this.titulo_peli = titulo_peli;
 		this.descrip_peli = descrip_peli;
 		this.duracion_peli = duracion_peli;
@@ -82,6 +84,15 @@ public class Pelicula {
 		this.icono = icono;
 	}
 
+	public int getCod_peli() {
+		return cod_peli;
+	}
+
+
+	public void setCod_peli(int cod_peli) {
+		this.cod_peli = cod_peli;
+	}
+	
 
 	
 	
@@ -93,10 +104,11 @@ public class Pelicula {
 
 	
 	public static void main(String[] args) {
-		Pelicula p1 = new Pelicula("R", "---------", 180, "A", "jdjdj");
+		Pelicula p1 = new Pelicula(2456, "R", "---------", 180, "A", "jdjdj");
 		System.out.println(p1);
 	}
-	
+
+
 	
 	
 }

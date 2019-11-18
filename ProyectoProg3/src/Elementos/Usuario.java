@@ -9,7 +9,7 @@ package Elementos;
 public class Usuario {
 
 	// ATRIBUTOS
-
+	private String DNI;
 	private String nombre; 
 	private String apellido; 
 	private String correo;

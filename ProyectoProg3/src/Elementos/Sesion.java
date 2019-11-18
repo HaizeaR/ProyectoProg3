@@ -8,9 +8,11 @@ import java.util.Date;
  * @author Unai, Mireya y Haizea
  *
  */
-public class Pase {
+public class Sesion {
 	
 	private Date fecha; 
+	private int ID_sala; 
+	private int ID_pelicula; 
 	
 	
 	// fechas ( dia , mes , hora ) 
@@ -18,7 +20,7 @@ public class Pase {
 	// array de sala 
 	
 
-	public Pase() {
+	public Sesion() {
 		// TODO Auto-generated constructor stub
 	}
 

@@ -7,7 +7,7 @@ package Elementos;
  *
  */
 public class Cine {
-	
+	private int cod_cine;
 	private String nombre_cine; 
 	private String direccion_cine;
 	
