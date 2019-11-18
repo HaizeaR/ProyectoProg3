@@ -11,9 +11,15 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.PrintStream;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 import javax.swing.*;
+
+
 
 
 /** Ventana de LOGIN que permite a un usuario terminar su compra
@@ -28,11 +34,13 @@ import javax.swing.*;
 public class LogIn extends JFrame {
 	
 	
-	JButton bConfirmar, bRegistrar, bAtras;
-	JLabel lCorreo, lContrasena,lLogin,lPelicula, lSala, lHora, lAsiento; 
-	JTextField tfCorreo; 
-	JPasswordField jpContrasena; 
+	static JButton bConfirmar, bRegistrar, bAtras;
+	static JLabel lCorreo, lContrasena,lLogin,lPelicula, lSala, lHora, lAsiento; 
+	static JTextField tfCorreo; 
+	static JPasswordField jpContrasena; 
 	//private static JDialog v;
+	
+
 	
 
 	public LogIn() {
@@ -109,7 +117,7 @@ public class LogIn extends JFrame {
 		// Action Events para los botones 
 		
 		bAtras.addActionListener((ActionEvent e) -> {volverAtras();});
-		bRegistrar.addActionListener((ActionEvent e) -> {accedeRegistro();} );
+		bRegistrar.addActionListener((ActionEvent e) -> {accedeRegistro(); } );
 		bConfirmar.addActionListener((ActionEvent e) -> {confirmCompra();});
 		
 		
@@ -162,6 +170,7 @@ public class LogIn extends JFrame {
 	}
 	
 	
+
 	
 
 //	public static void guardaConfig() {

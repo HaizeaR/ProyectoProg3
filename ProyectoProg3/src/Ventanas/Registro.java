@@ -2,6 +2,10 @@ package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
@@ -29,11 +33,17 @@ import Elementos.Cliente;
 
 public class Registro extends JFrame {
 
+	
+	private static Connection con;
+	private static Statement s;
+	private static ResultSet rs;
+	
+	
 	private static final long serialVersionUID = 1L;
-	JButton  bRegistrar, bAtras;
-	JLabel lCorreo, lContrasena, lNombre, lApellido, lNumero_tarjeta, lRegistro; 
-	JTextField tfCorreo,tfNombre, tfApellido, tfNumero_tarjeta; 
-	JPasswordField jpContrasena; 
+	static JButton  bRegistrar, bAtras;
+	static JLabel lCorreo, lContrasena, lNombre, lApellido, lNumero_tarjeta, lRegistro; 
+	static JTextField tfCorreo,tfNombre, tfApellido, tfNumero_tarjeta; 
+	static JPasswordField jpContrasena; 
 	long num_tarjeta;
 
 	public static ArrayList<Cliente> clientes = new ArrayList<>();
@@ -251,4 +261,36 @@ public class Registro extends JFrame {
 	}
 
 
+	
+	
+	// REVISAR - FALTA HACER QUE SALTA MENSAJE CUANDO ES IGUAL 
+	// jpContrasena.getPassword().toString() !!! - pasar a string ?? 
+	// AREGLAR 
+	
+	private static void agregarUsuario() {
+		if (!tfCorreo.getText().isEmpty() && !jpContrasena.getPassword().toString().isEmpty()) {
+			// Añadir resto de campos que NO pueden estar vacios
+			
+			String com = "";
+			try {
+				com = "select * from Cliente where nick = '" + tfCorreo.getText() + "'";
+				rs = s.executeQuery( com );
+				if (!rs.next()) {
+			
+					com = "insert into Cliente ( correo, contrasena ) values ('"+ 
+							tfCorreo.getText() +"', '" + jpContrasena.getPassword().toString() + "')";
+
+				}	
+
+			}
+
+			catch(SQLException e) {
+				System.out.println( "Último comando: " + com );
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	
 }
