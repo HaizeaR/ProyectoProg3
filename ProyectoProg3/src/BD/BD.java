@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import Elementos.Admin;
 import Elementos.Cliente;
 
 // Clase que contiene los m√©todos b√°sicos y de conexi√≥n de nuestra BD
@@ -81,6 +82,30 @@ public class BD {
 					cliente.getApellido() + "', "+ 
 					cliente.getContrasena().toString() + "', " + 
 					cliente.getNumero_tarjeta() + 
+					")";
+
+			int val = st.executeUpdate(sentSQL);
+			log(Level.INFO, "BD aÒadida " + val + " fila\t" + sentSQL, null);
+			if (val != 1) { // Se tiene que aÒadir 1 - error si no
+				log(Level.SEVERE, "Error en insert de BD\t" + sentSQL, null);
+				return false;
+			}
+			return true;
+		} catch (SQLException e) {
+			log(Level.SEVERE, "Error en BD\t" + sentSQL, e);
+			return false;
+		}
+	}
+
+	
+	public static boolean adminInsert(Statement st, Admin admin) {
+		String sentSQL = "";
+		try {
+			sentSQL = "insert into cliente(dni, nombre, apellido, contrasena) values(" + "'"
+					+ secu(admin.getDNI()) + "', " + 
+					admin.getNombre() + "', " + 
+					admin.getApellido() + "', "+ 
+					admin.getContrasena().toString() + 
 					")";
 
 			int val = st.executeUpdate(sentSQL);
