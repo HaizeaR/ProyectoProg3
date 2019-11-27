@@ -19,7 +19,7 @@ import Elementos.Cliente;
 
 public class BD {
 
-	private static Connection conexion;
+
 
 	private static boolean LOGGING = true;
 
@@ -34,6 +34,10 @@ public class BD {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			Connection con = DriverManager.getConnection("jdbc:sqlite:cine.db");
+			Statement st = con.createStatement();
+			st.setQueryTimeout(30);
+			
+			
 			log(Level.INFO, "Conectada base de datos " + "cine.db", null);
 			return con;
 		} catch (ClassNotFoundException | SQLException e) {
