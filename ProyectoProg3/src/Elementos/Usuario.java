@@ -17,9 +17,9 @@ public class Usuario {
 
 	// CONSTRUCTOR
 
-	public Usuario(String nombre, String apellido, String correo, char[] contrasena) {
+	public Usuario(String DNI, String nombre, String apellido, String correo, char[] contrasena) {
 	
-
+		this.DNI = DNI;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.correo = correo;
@@ -29,6 +29,18 @@ public class Usuario {
 
 
 	// GETTERS AND SETTERS
+
+	public String getDNI() {
+		return DNI;
+	}
+
+
+
+	public void setDNI(String dNI) {
+		DNI = dNI;
+	}
+
+
 
 	/** 
 	 * @return nombre del usuario
