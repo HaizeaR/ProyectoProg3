@@ -23,6 +23,8 @@ public class SalaYAsientos2 extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
+		// cambiar a layout NULL 
+		
 		panel.setLayout(new GridLayout(FILAS, COLUMNAS));
 		panel.setBounds(20, 70, 200, 140);
 		

@@ -13,7 +13,8 @@ public class Sesion {
 	private Date fecha; 
 	private int ID_sala; 
 	private int ID_pelicula; 
-	
+	// Array list asiento 
+	// Arraylist usuario 
 	
 	// fechas ( dia , mes , hora ) 
 	// Array de peli 
