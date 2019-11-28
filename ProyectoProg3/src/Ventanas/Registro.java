@@ -28,7 +28,6 @@ import BD.BD;
 
 public class Registro extends JFrame {
 
-	
 	private static Connection con;
 	private static Statement st;
 	private static ResultSet rs;
