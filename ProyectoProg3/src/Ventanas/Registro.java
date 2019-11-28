@@ -49,6 +49,9 @@ public class Registro extends JFrame {
 	// Patrón número de tarjeta
 	public static Pattern patNumTarjeta = Pattern.compile("[0-9]+");
 	
+	// Patrón DNI
+	public static Pattern patDNI = Pattern.compile("[0-9]{7,8}[A-Za-z]");
+	
 
 	public Registro() {
 
@@ -127,12 +130,11 @@ public class Registro extends JFrame {
 
 		// Action Events para los botones 
 
-		bAtras.addActionListener((ActionEvent e) -> {volverAtras();}); // Vuelve a la de LOGIN
-
-		bRegistrar.addActionListener((ActionEvent e) -> {Registrar();} ); // Procede a registrar el usuario 
-		// si es correcto el registo JOptionPanel de Bienvenido y pantalla de fin de compra o login ??
-
-
+		
+		 bAtras.addActionListener((ActionEvent e) -> {volverAtras();}); // Vuelve a la de LOGIN
+		 bRegistrar.addActionListener((ActionEvent e) -> {Registrar();} ); // Procede a registrar el usuario 
+		 // si es correcto el registo JOptionPanel de Bienvenido y pantalla de fin de compra o login ??
+		 
 
 	}
 
@@ -164,8 +166,10 @@ public class Registro extends JFrame {
 				Cliente cliente;
 
 				String nombre = tfNombre.getText(); 
-				String apellido = tfApellido.getText(); 
+				String apellido = tfApellido.getText();
+				
 				String DNI = tfDNI.getText();
+				comprobarDNI(DNI);
 				
 				String correo = tfCorreo.getText(); 
 				comprobarCorreo(correo, true);
@@ -211,6 +215,15 @@ public class Registro extends JFrame {
 //				}
 //				catch(Exception e) {}
 
+	}
+	
+	/** Método que comprueba que el DNI tiene 9 carácteres
+	 * @param DNI
+	 */
+	public void comprobarDNI(String DNI) {
+		if(DNI.length() != 9) {
+			JOptionPane.showMessageDialog(null, "El DNI debe tener 8 números y 1 letra");
+		}
 	}
 	
 	/** Método que comprueba que la contraseña tiene al menos 8 carácteres
