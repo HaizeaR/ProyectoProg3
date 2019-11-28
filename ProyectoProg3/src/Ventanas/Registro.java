@@ -4,6 +4,9 @@ package Ventanas;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.*;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -75,9 +78,7 @@ public class Registro extends JFrame {
 		getContentPane().add(pCentral, BorderLayout.CENTER);
 		pCentral.setLayout(new BoxLayout(pCentral, WIDTH));
 
-
-
-
+		
 		lCorreo = new JLabel("Correo :"); 
 		lContrasena = new JLabel("Contraseña :");
 		lNombre = new JLabel("Nombre: "); 
@@ -130,9 +131,37 @@ public class Registro extends JFrame {
 		bAtras.addActionListener((ActionEvent e) -> {volverAtras();}); // Vuelve a la de LOGIN
 
 		bRegistrar.addActionListener((ActionEvent e) -> {Registrar();} ); // Procede a registrar el usuario 
+		
 		// si es correcto el registo JOptionPanel de Bienvenido y pantalla de fin de compra o login ??
-
-
+		
+		addWindowListener(new WindowListener() {
+			
+			@Override
+			public void windowOpened(WindowEvent e) {
+				BD.initBD(); 
+			}
+			
+			@Override
+			public void windowIconified(WindowEvent e) {}
+			
+			@Override
+			public void windowDeiconified(WindowEvent e) {}
+			
+			@Override
+			public void windowDeactivated(WindowEvent e) {}
+			
+			@Override
+			public void windowClosing(WindowEvent e) {}
+	
+			@Override
+			public void windowClosed(WindowEvent e) {
+				BD.cerrarBD(con, st);
+			}
+			
+			@Override
+			public void windowActivated(WindowEvent e) {}
+		});
+		
 
 	}
 
@@ -148,6 +177,8 @@ public class Registro extends JFrame {
 		t1.start();
 
 	}
+	
+	
 	// Sacar error si falta algun dato o tiene algún dato incorrecto(de un tipo no deseado) 
 	// No permitir que se registre un correo ya registrado 
 
@@ -155,11 +186,8 @@ public class Registro extends JFrame {
 	public void Registrar() {
 		// metodo que tiene que guardar datos recibidos en los distintos 
 		//tf y guardarlos como datos de nuevo Cliente 
-
-	
 		
 				// Comprobar que ya no está en el array 
-
 
 				Cliente cliente;
 
@@ -173,15 +201,11 @@ public class Registro extends JFrame {
 				char[] contrasena = jpContrasena.getPassword();
 				comprobarContrasena(contrasena);
 				
-
-			
-
 				// comprobar que en el numero de tarjeta NO tiene letras 
 				// si tiene letras que de error y no te deja registrar el cliente 
 
 				comprobarNumTarjeta(tfNumero_tarjeta.getText(), true);
 			
-				
 				try {
 					
 				num_tarjeta = Long.parseLong(tfNumero_tarjeta.getText());
@@ -189,6 +213,9 @@ public class Registro extends JFrame {
 				}catch(Exception e) {}
 
 				cliente = new Cliente (DNI, nombre,apellido,correo,contrasena,num_tarjeta); 
+				
+			// NO funciona salta un error en el método de la BD 
+				
 				BD.clienteInsert(st, cliente);
 			
 				
@@ -212,6 +239,14 @@ public class Registro extends JFrame {
 //				catch(Exception e) {}
 
 	}
+	
+	
+	
+	/////////////////////////////////////////////////////////////////////
+	//                      Pattern                                    //
+	/////////////////////////////////////////////////////////////////////
+
+	
 	
 	/** Método que comprueba que la contraseña tiene al menos 8 carácteres
 	 * @param contraseña
@@ -254,6 +289,16 @@ public class Registro extends JFrame {
 		}
 	}
 
+	
+	
+	
+	/////////////////////////////////////////////////////////////////////
+	//                      MAIN                                       //
+	/////////////////////////////////////////////////////////////////////
+
+	
+	
+	
 	public static void main(String[] args) {
 		Registro ventRegistrar = new Registro(); 
 		ventRegistrar.setVisible(true);
@@ -263,34 +308,7 @@ public class Registro extends JFrame {
 
 
 	
-	
-	// REVISAR - FALTA HACER QUE SALTA MENSAJE CUANDO ES IGUAL 
-	// jpContrasena.getPassword().toString() !!! - pasar a string ?? 
-	// AREGLAR 
-	
-	private static void agregarUsuario() {
-		if (!tfCorreo.getText().isEmpty() && !jpContrasena.getPassword().toString().isEmpty()) {
-			// Añadir resto de campos que NO pueden estar vacios
-			
-			String com = "";
-			try {
-				com = "select * from Cliente where nick = '" + tfCorreo.getText() + "'";
-				rs = st.executeQuery( com );
-				if (!rs.next()) {
-			
-					com = "insert into Cliente ( correo, contrasena ) values ('"+ 
-							tfCorreo.getText() +"', '" + jpContrasena.getPassword().toString() + "')";
 
-				}	
-
-			}
-
-			catch(SQLException e) {
-				System.out.println( "Último comando: " + com );
-				e.printStackTrace();
-			}
-		}
-	}
 	
 	
 	

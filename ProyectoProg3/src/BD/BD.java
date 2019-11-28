@@ -35,34 +35,25 @@ public class BD {
 			Class.forName("org.sqlite.JDBC");
 			Connection con = DriverManager.getConnection("jdbc:sqlite:cine.db");
 			Statement st = con.createStatement();
-			st.setQueryTimeout(30);
-			
+			st.setQueryTimeout(30); 
 			
 			log(Level.INFO, "Conectada base de datos " + "cine.db", null);
 			return con;
 		} catch (ClassNotFoundException | SQLException e) {
-			log(Level.SEVERE, "Error en conexión de base de datos " + "cine.db", e);
+			log(Level.SEVERE, "Error en conexiï¿½n de base de datos " + "cine.db", e);
 			return null;
 		}
 	}
 
-	private static void cerrarBD(Connection conexion) {
 
-		try {
-			// if (stmt!=null) stmt.close();
-			if (conexion != null)
-				conexion.close();
-			System.out.println("Cierre de base de datos");
-		} catch (SQLException e) {
-			e.printStackTrace();
 
-		}
-	}
+	
 
+	
 	/**
 	 * Cierra la base de datos abierta
 	 * 
-	 * @param con Conexión abierta de la BD
+	 * @param con Conexiï¿½n abierta de la BD
 	 * @param st  Sentencia abierta de la BD
 	 */
 	public static void cerrarBD(Connection con, Statement st) {
@@ -76,6 +67,24 @@ public class BD {
 			log(Level.SEVERE, "Error en cierre de base de datos", e);
 		}
 	}
+	
+	
+//	/** Crea las tablas de la base de datos. Si ya existen, las deja tal cual. Devuelve un statement para trabajar con esa base de datos
+//	 * @param con	ConexiÃ³n ya creada y abierta a la base de datos
+//	 * @return	sentencia de trabajo si se crea correctamente, null si hay cualquier error
+//	 */
+//	public static Statement usarCrearTablasBD( Connection con ) {
+//		try {
+//			Statement st = con.createStatement();
+//			st.setQueryTimeout(30);  // poner timeout 30 msg
+//
+//			log( Level.INFO, "Creada base de datos", null );
+//			return st;
+//		} catch (SQLException e) {
+//			log( Level.SEVERE, "Error en creaciÃ³n de base de datos", e );
+//			return null;
+//		}
+//	}
 
 	public static boolean clienteInsert(Statement st, Cliente cliente) {
 		String sentSQL = "";
@@ -89,8 +98,8 @@ public class BD {
 					")";
 
 			int val = st.executeUpdate(sentSQL);
-			log(Level.INFO, "BD añadida " + val + " fila\t" + sentSQL, null);
-			if (val != 1) { // Se tiene que añadir 1 - error si no
+			log(Level.INFO, "BD aÃ±adida " + val + " fila\t" + sentSQL, null);
+			if (val != 1) { // Se tiene que aÃ±adir 1 - error si no
 				log(Level.SEVERE, "Error en insert de BD\t" + sentSQL, null);
 				return false;
 			}
@@ -101,7 +110,7 @@ public class BD {
 		}
 	}
 
-	
+
 	public static boolean adminInsert(Statement st, Admin admin) {
 		String sentSQL = "";
 		try {
@@ -113,8 +122,8 @@ public class BD {
 					")";
 
 			int val = st.executeUpdate(sentSQL);
-			log(Level.INFO, "BD añadida " + val + " fila\t" + sentSQL, null);
-			if (val != 1) { // Se tiene que añadir 1 - error si no
+			log(Level.INFO, "BD aÃ±adida " + val + " fila\t" + sentSQL, null);
+			if (val != 1) { // Se tiene que aÃ±adir 1 - error si no
 				log(Level.SEVERE, "Error en insert de BD\t" + sentSQL, null);
 				return false;
 			}
@@ -126,7 +135,7 @@ public class BD {
 	}
 
 	/////////////////////////////////////////////////////////////////////
-	// Métodos privados //
+	// Metodos privados //
 	/////////////////////////////////////////////////////////////////////
 
 	// Devuelve el string "securizado" para volcarlo en SQL
@@ -134,13 +143,13 @@ public class BD {
 		return string.replaceAll("'", "''");
 	}
 
-/////////////////////////////////////////////////////////////////////
-//                      Logging                                    //
-/////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////
+	//                      Logging                                    //
+	/////////////////////////////////////////////////////////////////////
 
 	private static Logger logger = null;
 
-// Método local para loggear
+	// Mï¿½todo local para loggear
 	private static void log(Level level, String msg, Throwable excepcion) {
 		if (!LOGGING)
 			return;
