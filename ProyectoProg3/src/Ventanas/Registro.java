@@ -31,7 +31,6 @@ import BD.BD;
 
 public class Registro extends JFrame {
 
-	
 	private static Connection con;
 	private static Statement st;
 	private static ResultSet rs;
@@ -51,6 +50,9 @@ public class Registro extends JFrame {
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 	// Patrón número de tarjeta
 	public static Pattern patNumTarjeta = Pattern.compile("[0-9]+");
+	
+	// Patrón DNI
+	public static Pattern patDNI = Pattern.compile("[0-9]{7,8}[A-Za-z]");
 	
 
 	public Registro() {
@@ -128,6 +130,7 @@ public class Registro extends JFrame {
 
 		// Action Events para los botones 
 
+
 		bAtras.addActionListener((ActionEvent e) -> {volverAtras();}); // Vuelve a la de LOGIN
 
 		bRegistrar.addActionListener((ActionEvent e) -> {Registrar();} ); // Procede a registrar el usuario 
@@ -163,6 +166,11 @@ public class Registro extends JFrame {
 		});
 		
 
+		
+		 bAtras.addActionListener((ActionEvent e) -> {volverAtras();}); // Vuelve a la de LOGIN
+		 bRegistrar.addActionListener((ActionEvent e) -> {Registrar();} ); // Procede a registrar el usuario 
+		 // si es correcto el registo JOptionPanel de Bienvenido y pantalla de fin de compra o login ??
+		 
 	}
 
 	public void volverAtras() {
@@ -192,8 +200,10 @@ public class Registro extends JFrame {
 				Cliente cliente;
 
 				String nombre = tfNombre.getText(); 
-				String apellido = tfApellido.getText(); 
+				String apellido = tfApellido.getText();
+				
 				String DNI = tfDNI.getText();
+				comprobarDNI(DNI);
 				
 				String correo = tfCorreo.getText(); 
 				comprobarCorreo(correo, true);
@@ -240,6 +250,7 @@ public class Registro extends JFrame {
 
 	}
 	
+
 	
 	
 	/////////////////////////////////////////////////////////////////////
@@ -247,6 +258,20 @@ public class Registro extends JFrame {
 	/////////////////////////////////////////////////////////////////////
 
 	
+
+	/** Método que comprueba que el DNI tiene 9 carácteres
+	 * @param DNI
+	 */
+	public static boolean comprobarDNI(String DNI) {
+		if(patDNI.matcher(DNI).matches()) {
+			System.out.println(DNI + " cumple el patrón");
+			return patDNI.matcher(DNI).matches();
+		} else {
+			System.out.println(DNI + " no cumple el patrón");
+			JOptionPane.showMessageDialog(null, "El DNI debe seguir el siguiente patrón: 12345678A");
+			return false;
+		}
+	}
 	
 	/** Método que comprueba que la contraseña tiene al menos 8 carácteres
 	 * @param contraseña
