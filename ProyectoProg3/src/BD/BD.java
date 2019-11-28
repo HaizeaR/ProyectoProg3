@@ -10,9 +10,9 @@ import java.util.logging.Logger;
 import Elementos.Admin;
 import Elementos.Cliente;
 
-// Clase que contiene los métodos básicos y de conexión de nuestra BD
+// Clase que contiene los metodos basicos y de conexion de nuestra BD
 // Metodo conectar y cerrar 
-// Añadir elementos a tablas
+// Anadir elementos a tablas
 // Tabla USUARIO - Admin y Cliente
 // Tabla Pelicula
 // Tabla Asiento
@@ -24,10 +24,10 @@ public class BD {
 	private static boolean LOGGING = true;
 
 	/**
-	 * Inicializa una BD SQLITE y devuelve una conexión con ella
+	 * Inicializa una BD SQLITE y devuelve una conexion con ella
 	 * 
 	 * @param nombreBD Nombre de fichero de la base de datos
-	 * @return Conexión con la base de datos indicada. Si hay algún error, se
+	 * @return Conexion con la base de datos indicada. Si hay algun error, se
 	 *         devuelve null
 	 */
 	public static Connection initBD() {

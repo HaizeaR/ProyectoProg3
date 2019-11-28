@@ -193,8 +193,13 @@ public class Registro extends JFrame {
 			
 				
 				// cliente = new Cliente (nombre,apellido,correo,contrasena,num_tarjeta); 
+<<<<<<< HEAD
 				clientes.add(cliente);
 				
+=======
+				//clientes.add(cliente);
+				//
+>>>>>>> branch 'master' of https://github.com/HaizeaR/ProyectoProg3.git
 //				try {
 //
 //					for(Cliente c: clientes) {
