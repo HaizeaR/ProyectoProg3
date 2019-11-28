@@ -107,7 +107,7 @@ public class SalaYAsientos extends JFrame {
 	}
 	
 	public void dibujaAsiento() {
-		Asiento a = new Asiento(1, 5, 5, 10);
+		Asiento a = new Asiento(1, 5, 5);
 		//a.dibujar();
 	}
 	

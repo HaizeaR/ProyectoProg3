@@ -18,7 +18,10 @@ public class Asiento {
 	private int fila;
 	private int columna;
 	// Bloques de 10*10
-	protected int tamanyo = 10; // Tamaño (ancho = alto) de la ficha
+	
+	// private boolean ocupado ; 
+	// idea para que si ocupado = true se pone a rojo en la ventana SalaYAsiento2
+	
 	
 	private int id_sala; // Foreing key en BD 
 	
@@ -36,11 +39,11 @@ public class Asiento {
 	 * @param fila
 	 * @param columna
 	 */
-	public Asiento(int codigo, int fila, int columna, int tamanyo) {
+	public Asiento(int codigo, int fila, int columna) {
 		this.codigo = codigo;
 		this.fila = fila;
 		this.columna = columna;
-		this.tamanyo = tamanyo;
+		
 
 	}
 
@@ -70,13 +73,7 @@ public class Asiento {
 		this.columna = columna;
 	}
 
-	public int getTamanyo() {
-		return tamanyo;
-	}
 
-	public void setTamanyo(int tamanyo) {
-		this.tamanyo = tamanyo;
-	}
 
 	public String getNombre() {
 		return nombre;
