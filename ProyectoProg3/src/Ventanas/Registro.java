@@ -220,9 +220,14 @@ public class Registro extends JFrame {
 	/** Método que comprueba que el DNI tiene 9 carácteres
 	 * @param DNI
 	 */
-	public void comprobarDNI(String DNI) {
-		if(DNI.length() != 9) {
-			JOptionPane.showMessageDialog(null, "El DNI debe tener 8 números y 1 letra");
+	public static boolean comprobarDNI(String DNI) {
+		if(patDNI.matcher(DNI).matches()) {
+			System.out.println(DNI + " cumple el patrón");
+			return patDNI.matcher(DNI).matches();
+		} else {
+			System.out.println(DNI + " no cumple el patrón");
+			JOptionPane.showMessageDialog(null, "DNI no válido");
+			return false;
 		}
 	}
 	
