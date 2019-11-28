@@ -1,17 +1,24 @@
 package Ventanas;
 
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-
-import javax.swing.*;
-
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 import Elementos.Cliente; 
-import BD.BD;
 
 /**Ventana que permite registrar a un usuario
  * 
@@ -28,14 +35,14 @@ public class Registro extends JFrame {
 
 	
 	private static Connection con;
-	private static Statement st;
+	private static Statement s;
 	private static ResultSet rs;
 	
 	
 	private static final long serialVersionUID = 1L;
 	static JButton  bRegistrar, bAtras;
-	static JLabel lCorreo, lContrasena, lNombre, lApellido, lDNI, lNumero_tarjeta, lRegistro; 
-	static JTextField tfCorreo,tfNombre, tfApellido, tfDNI, tfNumero_tarjeta; 
+	static JLabel lCorreo, lContrasena, lNombre, lApellido, lNumero_tarjeta, lRegistro; 
+	static JTextField tfCorreo,tfNombre, tfApellido, tfNumero_tarjeta; 
 	static JPasswordField jpContrasena; 
 	long num_tarjeta;
 
@@ -79,14 +86,13 @@ public class Registro extends JFrame {
 		lCorreo = new JLabel("Correo :"); 
 		lContrasena = new JLabel("Contraseña :");
 		lNombre = new JLabel("Nombre: "); 
-		lApellido = new JLabel("Apellido: ");
-		lDNI = new JLabel("DNI: ");
+		lApellido = new JLabel("Apellido: "); 
 		lNumero_tarjeta = new JLabel("Num tarjeta: "); 
+		
 
 
 		tfNombre = new JTextField(10);
-		tfApellido = new JTextField(10);
-		tfDNI = new JTextField(10);
+		tfApellido = new JTextField(10); 
 		tfCorreo = new JTextField(20); 
 		jpContrasena = new JPasswordField(10);
 		tfNumero_tarjeta = new JTextField(15);
@@ -96,9 +102,6 @@ public class Registro extends JFrame {
 
 		pCentral.add(lApellido); 
 		pCentral.add(tfApellido);
-		
-		pCentral.add(lDNI);
-		pCentral.add(tfDNI);
 
 
 		pCentral.add(lCorreo);
@@ -163,7 +166,6 @@ public class Registro extends JFrame {
 
 				String nombre = tfNombre.getText(); 
 				String apellido = tfApellido.getText(); 
-				String DNI = tfDNI.getText();
 				
 				String correo = tfCorreo.getText(); 
 				comprobarCorreo(correo, true);
@@ -186,12 +188,12 @@ public class Registro extends JFrame {
 				
 				}catch(Exception e) {}
 
-				cliente = new Cliente (DNI, nombre,apellido,correo,contrasena,num_tarjeta); 
-				BD.clienteInsert(st, cliente);
+				cliente = new Cliente ( nombre,apellido,correo,contrasena,num_tarjeta); 
+				
 			
 				
 				// cliente = new Cliente (nombre,apellido,correo,contrasena,num_tarjeta); 
-				//clientes.add(cliente);
+				clientes.add(cliente);
 				
 //				try {
 //
@@ -273,7 +275,7 @@ public class Registro extends JFrame {
 			String com = "";
 			try {
 				com = "select * from Cliente where nick = '" + tfCorreo.getText() + "'";
-				rs = st.executeQuery( com );
+				rs = s.executeQuery( com );
 				if (!rs.next()) {
 			
 					com = "insert into Cliente ( correo, contrasena ) values ('"+ 
