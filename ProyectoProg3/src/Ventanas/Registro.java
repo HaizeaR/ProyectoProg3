@@ -226,7 +226,7 @@ public class Registro extends JFrame {
 			return patDNI.matcher(DNI).matches();
 		} else {
 			System.out.println(DNI + " no cumple el patrón");
-			JOptionPane.showMessageDialog(null, "DNI no válido");
+			JOptionPane.showMessageDialog(null, "El DNI debe seguir el siguiente patrón: 12345678A");
 			return false;
 		}
 	}
