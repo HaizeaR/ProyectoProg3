@@ -185,7 +185,7 @@ public class Registro extends JFrame {
 				num_tarjeta = Long.parseLong(tfNumero_tarjeta.getText());
 				
 				}catch(Exception e) {}
-
+				 // Conex BD
 				cliente = new Cliente (DNI, nombre,apellido,correo,contrasena,num_tarjeta); 
 				BD.clienteInsert(st, cliente);
 			
