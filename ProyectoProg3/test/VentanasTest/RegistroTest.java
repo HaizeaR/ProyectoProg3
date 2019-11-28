@@ -8,7 +8,6 @@ import Ventanas.Registro;
 
 public class RegistroTest {
 	
-	
 	@Test
 	public void compruebaDNI() {
 		assertTrue(Registro.comprobarDNI("12345678A"));
