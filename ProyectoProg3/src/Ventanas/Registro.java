@@ -192,7 +192,7 @@ public class Registro extends JFrame {
 				
 				// cliente = new Cliente (nombre,apellido,correo,contrasena,num_tarjeta); 
 				//clientes.add(cliente);
-				
+				//
 //				try {
 //
 //					for(Cliente c: clientes) {
