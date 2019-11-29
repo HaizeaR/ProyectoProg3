@@ -49,7 +49,7 @@ public class Registro extends JFrame {
 	public static Pattern patCorreo = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 	// Patrón número de tarjeta
-	public static Pattern patNumTarjeta = Pattern.compile("[0-9]+");
+	public static Pattern patNumTarjeta = Pattern.compile("[0-9]+"); // [0-9]{16} para que la tarjeta sea de 16 digitos
 	
 	// Patrón DNI
 	public static Pattern patDNI = Pattern.compile("[0-9]{7,8}[A-Za-z]");
@@ -273,6 +273,7 @@ public class Registro extends JFrame {
 		}
 	}
 	
+	// Se podría hacer la contraseña con un patrón
 	/** Método que comprueba que la contraseña tiene al menos 8 carácteres
 	 * @param contraseña
 	 */
