@@ -2,15 +2,18 @@ package BD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.junit.rules.Timeout;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import Elementos.Admin;
-import Elementos.Asiento;
 import Elementos.Cliente;
 
 // Clase que contiene los metodos basicos y de conexion de nuestra BD
@@ -20,9 +23,9 @@ import Elementos.Cliente;
 // Tabla Pelicula
 // Tabla Asiento
 
-public class BD {
+public class BDprueba {
 
-		static Statement st;
+
 
 	private static boolean LOGGING = true;
 
@@ -89,29 +92,69 @@ public class BD {
 //		}
 //	}
 
-	public static boolean clienteInsert(Statement st, Cliente cliente) {
-		String sentSQL = "";
-		try {
-			sentSQL = "insert into cliente(dni, nombre, apellido, contrasena, n_tarjeta) values(" + "'"
-					+ secu(cliente.getDNI()) + "', " + 
-					cliente.getNombre() + "', " + 
-					cliente.getApellido() + "', "+ 
-					cliente.getContrasena().toString() + "', " + 
-					cliente.getNumero_tarjeta() + 
-					")";
+	
+	
+	// Intentarlo de esta forma en vez de la de clase BD 
+	
+	
+//	public static void clienteInsert( ResultSet rs, Statement st, Cliente cliente, // añadir JTextFields ) {
+//		if (!tfUsuario.getText().isEmpty() && !tfPassword.getText().isEmpty()) {
+//			String com = "";
+//			try {
+//				// Ver si existe usuario
+//				// Si queremos asegurar el string habría que hacer algo así...
+//				// String nick = tfUsuario.getText().replaceAll( "'", "''" );
+//				// ...si no, cuidado con lo que venga en el campo de entrada.
+//				// "select * from Usuario where nick = 'admin'";
+//				com = "select * from Cliente where correo = '" + tfUsuario.getText() + "'";
+//				logger.log( Level.INFO, "BD: " + com );
+//				rs = st.executeQuery( com );
+//				if (!rs.next()) {
+//					// "insert into Usuario ( nick, pass ) values ('admin', 'admin')";
+//					com = "insert into Cliente ( DNI, nombre, apellido, correo, contrasena, ntarjeta ) values ('"+ 
+//							tfNombre.getText() +"', '" + tfApellido.getText() +"', '"+ tfCorreo.getText() "')";
+//					logger.log( Level.INFO, "BD: " + com );
+//					int val = st.executeUpdate( com );
+//					if (val!=1) {
+//						//JOptionPane.showMessageDialog( ventana, "Error en inserción" );
+//					}
+//				} else {
+//				//	JOptionPane.showMessageDialog( ventana, "Usuario " + tfUsuario.getText() + " ya existe" );
+//				}
+//			} catch (SQLException e2) {
+//				System.out.println( "Último comando: " + com );
+//				e2.printStackTrace();
+//			}
+//		} else {
+//			//JOptionPane.showMessageDialog( ventana, "Debes rellenar los dos campos" );
+//		}
+//		
+//	};
+//
 
-			int val = st.executeUpdate(sentSQL);
-			log(Level.INFO, "BD añadida " + val + " fila\t" + sentSQL, null);
-			if (val != 1) { // Se tiene que añadir 1 - error si no
-				log(Level.SEVERE, "Error en insert de BD\t" + sentSQL, null);
-				return false;
-			}
-			return true;
-		} catch (SQLException e) {
-			log(Level.SEVERE, "Error en BD\t" + sentSQL, e);
-			return false;
+
+
+// Vuelve a pintarla no hace falta 
+private static void actualizaTabla( ResultSet rs, Statement st , DefaultTableModel mUsuarios ) {
+	String com = "";
+	try {
+		while (mUsuarios.getRowCount()>0) mUsuarios.removeRow(0); // Vacía el modelo para volverlo a cargar de la bd
+		com = "select * from Usuario";
+		logger.log( Level.INFO, "BD: " + com );
+		rs = st.executeQuery( com );
+		while (rs.next()) {
+			String nick = rs.getString( "nick" );
+			String pass = rs.getString( "pass" );
+			Vector<String> fila = new Vector<>();
+			fila.add( nick ); fila.add( pass );
+			mUsuarios.addRow( fila );
 		}
+		
+	} catch (SQLException e2) {
+		System.out.println( "Último comando: " + com );
+		e2.printStackTrace();
 	}
+}
 
 
 	public static boolean adminInsert(Statement st, Admin admin) {
@@ -138,30 +181,7 @@ public class BD {
 	}
 	
 	
-	public static boolean asientoInsert( Asiento asiento) {
-		String sentSQL = "";
-		try {
-			sentSQL = "insert into cliente(dni, nombre, apellido, contrasena) values(" + "'"
-					+ (asiento.getCodigo()) + "', " + 
-					asiento.getFila() + "', " + 
-					asiento.getColumna() + "', "+ 
-				
-					")";
-			// marca error en esta linea 
-			// nos pasa lo mismo en todos los métodos
-			int val = st.executeUpdate(sentSQL);
-			
-			log(Level.INFO, "BD añadida " + val + " fila\t" + sentSQL, null);
-			if (val != 1) { // Se tiene que añadir 1 - error si no
-				log(Level.SEVERE, "Error en insert de BD\t" + sentSQL, null);
-				return false;
-			}
-			return true;
-		} catch (SQLException e) {
-			log(Level.SEVERE, "Error en BD\t" + sentSQL, e);
-			return false;
-		}
-	}
+	
 	
 	
 
@@ -174,8 +194,6 @@ public class BD {
 		return string.replaceAll("'", "''");
 	}
 
-	
-	
 	/////////////////////////////////////////////////////////////////////
 	//                      Logging                                    //
 	/////////////////////////////////////////////////////////////////////

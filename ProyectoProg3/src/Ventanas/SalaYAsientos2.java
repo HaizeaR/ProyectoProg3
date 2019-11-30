@@ -40,6 +40,7 @@ public class SalaYAsientos2 extends JFrame {
 				JButton button = new JButton(iconoLibre);
 				cod_asiento ++; 
 				Asiento a = new Asiento(cod_asiento, x, y, false);
+				BD.BD.asientoInsert(a);
 				// metodo añadir a BD 
 				
 				
