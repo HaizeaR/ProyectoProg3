@@ -19,7 +19,7 @@ public class Asiento {
 	private int columna;
 	// Bloques de 10*10
 	
-	// private boolean ocupado ; 
+	private boolean ocupado = false ; 
 	// idea para que si ocupado = true se pone a rojo en la ventana SalaYAsiento2
 	
 	
@@ -39,10 +39,11 @@ public class Asiento {
 	 * @param fila
 	 * @param columna
 	 */
-	public Asiento(int codigo, int fila, int columna) {
+	public Asiento(int codigo, int fila, int columna, boolean ocupado) {
 		this.codigo = codigo;
 		this.fila = fila;
 		this.columna = columna;
+		this.ocupado = ocupado; 
 		
 
 	}
@@ -83,9 +84,29 @@ public class Asiento {
 		this.nombre = nombre;
 	}
 
+	
+	
+	
+	public boolean isOcupado() {
+		return ocupado;
+	}
+
+	public void setOcupado(boolean ocupado) {
+		this.ocupado = ocupado;
+	}
+
+	public int getId_sala() {
+		return id_sala;
+	}
+
+	public void setId_sala(int id_sala) {
+		this.id_sala = id_sala;
+	}
+
+	
 	@Override
 	public String toString() {
-		return "Asiento [Codigo=" + codigo + ", Coordenada= (" + fila + "-" + columna + ")]";
+		return "Asiento [Codigo=" + codigo + ", Coordenada= (" + fila + "-" + columna + "), Ocupado: "+ ocupado + "]";
 	}
 
 	public void dibujar(Graphics g) {

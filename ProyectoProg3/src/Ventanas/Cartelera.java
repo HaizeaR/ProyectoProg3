@@ -1,6 +1,10 @@
 package Ventanas;
 
 
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileInputStream;
@@ -10,12 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
-
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 
 
 // Queremos que se creen paneles de forma recursiva 
@@ -32,7 +38,7 @@ import javax.swing.JPanel;
 public class Cartelera extends JFrame {
 	
 
-	JPanel panel; 
+
 	private static JFrame v;
 	
 	
@@ -41,6 +47,74 @@ public class Cartelera extends JFrame {
 		
 		setSize(600, 600);
 		setTitle("Cartelera");
+		
+		ImageIcon img1 = new ImageIcon("src/img/Vengadores_Endgame.jpg");
+	
+		JLabel cartelera1 = new JLabel(img1); 
+		cartelera1.setSize(200, 290);
+		
+		cartelera1.setLocation(0, 0 );
+		
+		
+		ImageIcon img2 = new ImageIcon("src/img/frozen2.jpg"); 
+		JLabel cartelera2 = new JLabel(img2); 
+		cartelera2.setSize(200, 290);
+		
+		cartelera2.setLocation(0, 0);
+		
+		
+	
+
+		
+		add(cartelera1);
+		add(cartelera2);
+		
+	
+		// supuestamnete si haces click en la foto te manda a la individual
+		cartelera1.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Thread t1 = new Thread() {
+					public void run() {
+					
+						setVisible(false);
+						PeliculaIndividual.main(null); 
+
+						dispose();
+					}				
+				}; 
+				t1.start();
+				
+			}
+		});
+
+		
 		
 	
 		addWindowListener(new WindowListener() {		
