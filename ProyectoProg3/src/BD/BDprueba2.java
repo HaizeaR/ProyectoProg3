@@ -76,6 +76,7 @@ public class BDprueba2 {
 //				sent = "insert into producto (id, nombre, precio) values (3,'Asesor programación Java (hora)',25);";
 //				System.out.println( sent );
 //				statement.executeUpdate( sent );
+				
 			} catch(Exception e) {}  // Es normal que haya error en los inserts si ya existen las claves
 			// fin creación bd
 			
