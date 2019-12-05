@@ -226,7 +226,7 @@ public class Registro extends JFrame {
 				
 			// NO funciona salta un error en el método de la BD 
 				
-				BD.clienteInsert(st, cliente);
+				BD.clienteInsert( cliente);
 			
 				
 				// cliente = new Cliente (nombre,apellido,correo,contrasena,num_tarjeta); 

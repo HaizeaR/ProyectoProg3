@@ -22,7 +22,8 @@ import Elementos.Cliente;
 
 public class BD {
 
-		static Statement st;
+		//static Statement st;
+		static Connection con;
 
 	private static boolean LOGGING = true;
 
@@ -89,13 +90,16 @@ public class BD {
 //		}
 //	}
 
-	public static boolean clienteInsert(Statement st, Cliente cliente) {
+	public static boolean clienteInsert(Cliente cliente) {
+		
 		String sentSQL = "";
-		try {
-			sentSQL = "insert into cliente(dni, nombre, apellido, contrasena, n_tarjeta) values(" + "'"
+		
+		try(Statement st = con.createStatement()) {
+			sentSQL = "insert into cliente(DNI, NOMBRE, APELLIDO, CORREO, CONTRASENA, N_TARJETA) values(" + "'"
 					+ secu(cliente.getDNI()) + "', " + 
 					cliente.getNombre() + "', " + 
-					cliente.getApellido() + "', "+ 
+					cliente.getApellido() + "', "+
+					cliente.getCorreo() + "', "+
 					cliente.getContrasena().toString() + "', " + 
 					cliente.getNumero_tarjeta() + 
 					")";
@@ -114,54 +118,35 @@ public class BD {
 	}
 
 
-	public static boolean adminInsert(Statement st, Admin admin) {
-		String sentSQL = "";
-		try {
-			sentSQL = "insert into cliente(dni, nombre, apellido, contrasena) values(" + "'"
-					+ secu(admin.getDNI()) + "', " + 
-					admin.getNombre() + "', " + 
-					admin.getApellido() + "', "+ 
-					admin.getContrasena().toString() + 
-					")";
-
-			int val = st.executeUpdate(sentSQL);
-			log(Level.INFO, "BD añadida " + val + " fila\t" + sentSQL, null);
-			if (val != 1) { // Se tiene que añadir 1 - error si no
-				log(Level.SEVERE, "Error en insert de BD\t" + sentSQL, null);
-				return false;
-			}
-			return true;
-		} catch (SQLException e) {
-			log(Level.SEVERE, "Error en BD\t" + sentSQL, e);
-			return false;
-		}
-	}
-	
-	
-	public static boolean asientoInsert( Asiento asiento) {
-		String sentSQL = "";
-		try {
-			sentSQL = "insert into cliente(dni, nombre, apellido, contrasena) values(" + "'"
-					+ (asiento.getCodigo()) + "', " + 
-					asiento.getFila() + "', " + 
-					asiento.getColumna() + "', "+ 
-				
-					")";
-			// marca error en esta linea 
-			// nos pasa lo mismo en todos los métodos
-			int val = st.executeUpdate(sentSQL);
-			
-			log(Level.INFO, "BD añadida " + val + " fila\t" + sentSQL, null);
-			if (val != 1) { // Se tiene que añadir 1 - error si no
-				log(Level.SEVERE, "Error en insert de BD\t" + sentSQL, null);
-				return false;
-			}
-			return true;
-		} catch (SQLException e) {
-			log(Level.SEVERE, "Error en BD\t" + sentSQL, e);
-			return false;
-		}
-	}
+	/*
+	 * public static boolean adminInsert(Statement st, Admin admin) { String sentSQL
+	 * = ""; try { sentSQL =
+	 * "insert into cliente(dni, nombre, apellido, contrasena) values(" + "'" +
+	 * secu(admin.getDNI()) + "', " + admin.getNombre() + "', " +
+	 * admin.getApellido() + "', "+ admin.getContrasena().toString() + ")";
+	 * 
+	 * int val = st.executeUpdate(sentSQL); log(Level.INFO, "BD añadida " + val +
+	 * " fila\t" + sentSQL, null); if (val != 1) { // Se tiene que añadir 1 - error
+	 * si no log(Level.SEVERE, "Error en insert de BD\t" + sentSQL, null); return
+	 * false; } return true; } catch (SQLException e) { log(Level.SEVERE,
+	 * "Error en BD\t" + sentSQL, e); return false; } }
+	 * 
+	 * 
+	 * public static boolean asientoInsert( Asiento asiento) { String sentSQL = "";
+	 * try { sentSQL =
+	 * "insert into cliente(dni, nombre, apellido, contrasena) values(" + "'" +
+	 * (asiento.getCodigo()) + "', " + asiento.getFila() + "', " +
+	 * asiento.getColumna() + "', "+
+	 * 
+	 * ")"; // marca error en esta linea // nos pasa lo mismo en todos los métodos
+	 * int val = st.executeUpdate(sentSQL);
+	 * 
+	 * log(Level.INFO, "BD añadida " + val + " fila\t" + sentSQL, null); if (val !=
+	 * 1) { // Se tiene que añadir 1 - error si no log(Level.SEVERE,
+	 * "Error en insert de BD\t" + sentSQL, null); return false; } return true; }
+	 * catch (SQLException e) { log(Level.SEVERE, "Error en BD\t" + sentSQL, e);
+	 * return false; } }
+	 */
 	
 	
 
