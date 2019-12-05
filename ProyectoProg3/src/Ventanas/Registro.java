@@ -17,6 +17,7 @@ import javax.swing.*;
 
 import Elementos.Cliente; 
 import BD.BD;
+import BD.BDprueba2;
 
 /**Ventana que permite registrar a un usuario
  * 
@@ -141,7 +142,9 @@ public class Registro extends JFrame {
 			
 			@Override
 			public void windowOpened(WindowEvent e) {
-				BD.initBD(); 
+				//BD.initBD();
+				BDprueba2.abrirConexion("cine2.db");
+				
 			}
 			
 			@Override
@@ -158,7 +161,8 @@ public class Registro extends JFrame {
 	
 			@Override
 			public void windowClosed(WindowEvent e) {
-				BD.cerrarBD(con, st);
+				//BD.cerrarBD(con, st);
+				BDprueba2.cerrarConexion();
 			}
 			
 			@Override
@@ -226,7 +230,8 @@ public class Registro extends JFrame {
 				
 			// NO funciona salta un error en el método de la BD 
 				
-				BD.clienteInsert( cliente);
+				//BD.clienteInsert( cliente);
+				BDprueba2.insertarCliente(cliente);
 			
 				
 				// cliente = new Cliente (nombre,apellido,correo,contrasena,num_tarjeta); 
