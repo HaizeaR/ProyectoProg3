@@ -34,7 +34,7 @@ import javax.swing.*;
 public class LogIn extends JFrame {
 	
 	
-	static JButton bConfirmar, bRegistrar, bAtras;
+	static JButton bConfirmar, bRegistrar, bAtras, bAdmin;
 	static JLabel lCorreo, lContrasena,lLogin,lPelicula, lSala, lHora, lAsiento; 
 	static JTextField tfCorreo; 
 	static JPasswordField jpContrasena; 
@@ -108,10 +108,12 @@ public class LogIn extends JFrame {
 			//bConfirmar.setBackground(Color.cyan);
 		bRegistrar = new JButton("Registrar"); 
 		bAtras = new JButton("Atras");
+		bAdmin = new JButton("Admin");
 	
 		pBotonera.add(bAtras); 
 		pBotonera.add(bConfirmar); 
 		pBotonera.add(bRegistrar); 
+		pBotonera.add(bAdmin);
 		
 		
 		// Action Events para los botones 
@@ -119,7 +121,8 @@ public class LogIn extends JFrame {
 		bAtras.addActionListener((ActionEvent e) -> {volverAtras();});
 		bRegistrar.addActionListener((ActionEvent e) -> {accedeRegistro(); } );
 		bConfirmar.addActionListener((ActionEvent e) -> {confirmCompra();});
-		
+		bAdmin.addActionListener((ActionEvent e) -> {ventanaAdmin();});
+
 		
 	
 	}
@@ -166,6 +169,19 @@ public class LogIn extends JFrame {
 			}				
 		}; 
 		t3.start();
+		
+	}
+	private void ventanaAdmin() {
+		Thread t4 = new Thread() {
+			public void run() {
+				//LogIn.guardaConfig();
+				setVisible(false);
+				VAdmin.main(null); 
+
+				dispose();
+			}				
+		}; 
+		t4.start();
 		
 	}
 	
