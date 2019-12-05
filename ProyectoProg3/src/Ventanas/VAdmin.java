@@ -97,7 +97,7 @@ public class VAdmin extends JFrame{
 			public void run() {
 				//LogIn.guardaConfig();
 				setVisible(false);
-				SalaYAsientos.main(null); 
+				LogIn.main(null); 
 
 				dispose();
 			}				
@@ -115,7 +115,7 @@ public class VAdmin extends JFrame{
 			public void run() {
 				//LogIn.guardaConfig();
 				setVisible(false);
-				Registro.main(null); 
+				RegistrarAdmin.main(null); 
 
 				dispose();
 			}				

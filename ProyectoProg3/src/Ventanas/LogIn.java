@@ -174,7 +174,7 @@ public class LogIn extends JFrame {
 	private void ventanaAdmin() {
 		Thread t4 = new Thread() {
 			public void run() {
-				//LogIn.guardaConfig();
+				
 				setVisible(false);
 				VAdmin.main(null); 
 
