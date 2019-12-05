@@ -1,6 +1,4 @@
 package BD;
-	
-	
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -32,9 +30,30 @@ public class BDprueba2 {
 			
 			
 			Statement statement = conexion.createStatement();
-			String sent = "CREATE TABLE IF NOT EXISTS cliente (dni INTEGER PRIMARY KEY, nombre varchar(100), apellido varchar(100), correo varchar(100), contrasena varchar(20), n_tarjeta int(16));";
+			String sent = "CREATE TABLE IF NOT EXISTS cliente (dni varchar(9) PRIMARY KEY, nombre varchar(100), apellido varchar(100), correo varchar(100), contrasena varchar(20), n_tarjeta int(16));";
 			System.out.println( sent );
 			statement.executeUpdate( sent );
+			
+			// REVISAR
+
+			sent = "CREATE TABLE IF NOT EXISTS admin (dni varchar(9) PRIMARY KEY, nombre varchar(100), apellido varchar(100), correo varchar(100), contrasena varchar(20));";
+			System.out.println( sent );
+			statement.executeUpdate( sent );
+			
+			sent = "CREATE TABLE IF NOT EXISTS asiento (codigo INTEGER PRIMARY KEY, fila int(2), columna int(2), ocupado boolean);";
+			System.out.println( sent );
+			statement.executeUpdate( sent );
+			
+			sent = "CREATE TABLE IF NOT EXISTS pelicula (cod_peli INTEGER PRIMARY KEY, titulo_peli varchar(100), descrip_peli varchar(100), duracion_peli int (3));";
+			System.out.println( sent );
+			statement.executeUpdate( sent );
+			
+			sent = "CREATE TABLE IF NOT EXISTS sala (numero_sala INTEGER PRIMARY KEY, capacidad sala int(3), ID_cine int(3));";
+			System.out.println( sent );
+			statement.executeUpdate( sent );
+			
+			
+			
 			
 			
 			
@@ -42,15 +61,25 @@ public class BDprueba2 {
 //			System.out.println( sent );
 //			statement.executeUpdate( sent );
 			try {
-				sent = "insert into cliente (dni, nombre, apellido, correo, contrasena, n_tarjeta) values ('45993840G','h','r','h.h@gmail.com',12345678, 123456);";
+
+
+				sent = "insert into cliente values ('12345678A', 'm', 'q', 'm.q@gmail.com', 12345678, 456789);";
 				System.out.println( sent );
 				statement.executeUpdate( sent );
+				
+				sent = "insert into cliente values ('16088533X', 'u', 'm', 'u.m@gmail.com', 12345678, 654321);";
+				System.out.println( sent );
+				statement.executeUpdate( sent );
+				
 //				sent = "insert into producto (id, nombre, precio) values (2,'Crucifijo rezos pre-examen',42);";
 //				System.out.println( sent );
 //				statement.executeUpdate( sent );
+				
+				
 //				sent = "insert into producto (id, nombre, precio) values (3,'Asesor programación Java (hora)',25);";
 //				System.out.println( sent );
 //				statement.executeUpdate( sent );
+				
 			} catch(Exception e) {}  // Es normal que haya error en los inserts si ya existen las claves
 			// fin creación bd
 			
@@ -90,8 +119,7 @@ public class BDprueba2 {
 				//String contrasena = rs.getString("contrasena");
 				int n_tarjeta = rs.getInt("n_tajerta");
 				
-				
-				
+
 				
 				ret.add( new Cliente ( dni, nombre, apellido, correo, contrasena, n_tarjeta ) );
 			}
@@ -122,15 +150,42 @@ public class BDprueba2 {
 //				int id = rs.getInt( "id" );
 //				compra.setId( id );
 //			}
+			sent = "insert into cliente values(" +
+					"'" + secu(cliente.getDNI()) + "', " +
+					"'" + secu(cliente.getNombre()) + "', " +
+					"'" + secu(cliente.getApellido()) + "', " +
+					"'" + secu(cliente.getCorreo()) + "', " +
+					"'" + cliente.getContrasena().toString() + "', " +
+					"'" + cliente.getNumero_tarjeta() + "', " +
+					"')";
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
 	
 	
 
-	
+
+	/////////////////////////////////////////////////////////////////////
+	//                      Métodos privados                           //
+	/////////////////////////////////////////////////////////////////////
+
+	// Devuelve el string "securizado" para volcarlo en SQL
+	// (Implementación 1) Sustituye ' por '' y quita saltos de línea
+	// (Implementación 2) Mantiene solo los caracteres seguros en español
+	// TODO OJO - FALTA algo importante por hacer en la implementación actual... ¿no?
+	private static String secu( String string ) {
+		// Implementación (1)
+		// return string.replaceAll( "'",  "''" ).replaceAll( "\\n", "" );
+		// Implementación (2)
+		StringBuffer ret = new StringBuffer();
+		for (char c : string.toCharArray()) {
+			if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZñÑáéíóúüÁÉÍÓÚÚ.,:;-_(){}[]-+*=<>'\"¿?¡!&%$@#/\\0123456789 ".indexOf(c)>=0) ret.append(c);
+		}
+		return ret.toString();
+	}
 	
 	
 //

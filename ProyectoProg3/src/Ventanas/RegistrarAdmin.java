@@ -1,5 +1,10 @@
 
- 
+
+	
+	
+	
+
+	 
 package Ventanas;
 
 import java.awt.*;
@@ -14,7 +19,7 @@ import java.util.regex.Pattern;
 
 import javax.swing.*;
 
-
+import Elementos.Admin;
 import Elementos.Cliente; 
 
 import BD.BDprueba2;
@@ -30,7 +35,7 @@ import BD.BDprueba2;
 // - No guardar un usuario si tienen error de PATRON 
 // - 
 
-public class Registro extends JFrame {
+public class RegistrarAdmin extends JFrame {
 
 	private static Connection con;
 	private static Statement st;
@@ -39,24 +44,23 @@ public class Registro extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	static JButton  bRegistrar, bAtras;
-	static JLabel lCorreo, lContrasena, lNombre, lApellido, lDNI, lNumero_tarjeta, lRegistro; 
-	static JTextField tfCorreo,tfNombre, tfApellido, tfDNI, tfNumero_tarjeta; 
+	static JLabel lCorreo, lContrasena, lNombre, lApellido, lDNI,  lRegistro; 
+	static JTextField tfCorreo,tfNombre, tfApellido, tfDNI; 
 	static JPasswordField jpContrasena; 
-	long num_tarjeta;
+
 
 	public static ArrayList<Cliente> clientes = new ArrayList<>();
 	
 	// Patrón de correo electronico
 	public static Pattern patCorreo = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-	// Patrón número de tarjeta
-	public static Pattern patNumTarjeta = Pattern.compile("[0-9]+"); // [0-9]{16} para que la tarjeta sea de 16 digitos
+	
 	
 	// Patrón DNI
 	public static Pattern patDNI = Pattern.compile("[0-9]{7,8}[A-Za-z]");
 	
 
-	public Registro() {
+	public RegistrarAdmin() {
 
 		setSize(600,400);
 		setLocation(300, 200);
@@ -69,7 +73,7 @@ public class Registro extends JFrame {
 
 		JPanel pSuperior = new JPanel();
 		getContentPane().add(pSuperior, BorderLayout.NORTH);
-		lRegistro = new JLabel("Registro de nuevo usuario");
+		lRegistro = new JLabel("Registro de nuevo Administrador");
 		lRegistro.setFont(new java.awt.Font("Tahoma", 1, 18));
 		pSuperior.add(lRegistro);
 
@@ -87,7 +91,7 @@ public class Registro extends JFrame {
 		lNombre = new JLabel("Nombre: "); 
 		lApellido = new JLabel("Apellido: ");
 		lDNI = new JLabel("DNI: ");
-		lNumero_tarjeta = new JLabel("Num tarjeta: "); 
+		
 
 
 		tfNombre = new JTextField(10);
@@ -95,7 +99,7 @@ public class Registro extends JFrame {
 		tfDNI = new JTextField(10);
 		tfCorreo = new JTextField(20); 
 		jpContrasena = new JPasswordField(10);
-		tfNumero_tarjeta = new JTextField(15);
+	
 
 		pCentral.add(lNombre); 
 		pCentral.add(tfNombre);
@@ -113,8 +117,7 @@ public class Registro extends JFrame {
 		pCentral.add(lContrasena);
 		pCentral.add(jpContrasena); 
 
-		pCentral.add(lNumero_tarjeta); 
-		pCentral.add(tfNumero_tarjeta);
+	
 
 
 		JPanel pBotonera = new JPanel(); 
@@ -180,7 +183,7 @@ public class Registro extends JFrame {
 		Thread t1 = new Thread() {
 			public void run() {
 				setVisible(false);
-				LogIn.main(null); 
+				VAdmin.main(null); 
 
 				dispose();
 			}				
@@ -200,7 +203,7 @@ public class Registro extends JFrame {
 		
 				// Comprobar que ya no está en el array 
 
-				Cliente cliente;
+				Admin admin;
 
 				String nombre = tfNombre.getText(); 
 				String apellido = tfApellido.getText();
@@ -219,41 +222,23 @@ public class Registro extends JFrame {
 				// comprobar que en el numero de tarjeta NO tiene letras 
 				// si tiene letras que de error y no te deja registrar el cliente 
 
-				comprobarNumTarjeta(tfNumero_tarjeta.getText(), true);
+		
 			
 				try {
 					
-				num_tarjeta = Long.parseLong(tfNumero_tarjeta.getText());
+			
 				
 				}catch(Exception e) {}
 
-				cliente = new Cliente (DNI, nombre,apellido,correo,contrasena,num_tarjeta); 
+				 admin = new Admin (DNI, nombre,apellido,correo,contrasena); 
 				// System.out.println(cliente.toString());
 				
 			
 				
 			
-				BDprueba2.insertarCliente(cliente);
+				//BDprueba2.insertarCliente(cliente);
 			
 				
-				// cliente = new Cliente (nombre,apellido,correo,contrasena,num_tarjeta); 
-				//clientes.add(cliente);
-				
-//				try {
-//
-//					for(Cliente c: clientes) {
-//						
-//						if (cliente.equals(c)) {
-//							JOptionPane.showMessageDialog(null, "Usuario ya existente");
-//							System.out.println("Error");
-//							
-//						}else {
-//							clientes.add(cliente);
-//						}
-//					}
-//					System.out.println(clientes);
-//				}
-//				catch(Exception e) {}
 
 	}
 	
@@ -305,24 +290,7 @@ public class Registro extends JFrame {
 			return false;
 		}
 	}
-	
-	/** Método que comprueba que la tarjeta cumple el patrón de tener sólo números
-	 * @param numTarjeta
-	 * @return true si lo cumple, false si no lo cumple
-	 */
-	public static boolean comprobarNumTarjeta(String numTarjeta, boolean showErrorWindow) {
-		if(patNumTarjeta.matcher(numTarjeta).matches()) {
-			System.out.println(numTarjeta + " cumple el patrón");
-			return patNumTarjeta.matcher(numTarjeta).matches();
-		} else {
-			if(showErrorWindow)
-			System.out.println(numTarjeta + " no cumple el patrón");
-			JOptionPane.showMessageDialog(null, "Número de tarjeta no válido");
-			return false;
-		}
-	}
 
-	
 	
 	
 	/////////////////////////////////////////////////////////////////////
@@ -333,8 +301,8 @@ public class Registro extends JFrame {
 	
 	
 	public static void main(String[] args) {
-		Registro ventRegistrar = new Registro(); 
-		ventRegistrar.setVisible(true);
+		RegistrarAdmin ventRegistrarAdmin = new RegistrarAdmin(); 
+		ventRegistrarAdmin.setVisible(true);
 
 
 	}
@@ -346,5 +314,10 @@ public class Registro extends JFrame {
 	
 	
 }
+
+
+
+
+
 
 
