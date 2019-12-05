@@ -33,10 +33,6 @@ public class SalaYAsientos2 extends JFrame {
 		pantalla.setLocation(getHeight(), getWidth());
 		pantalla.setBackground(Color.blue);
 		
-		ImageIcon img = new ImageIcon("src/img/bander30.gif");
-		JLabel pantalla2 = new JLabel(img); 
-		pantalla2.setBounds(0, 0 , 450, 500);
-		add(pantalla2);
 		
 		// cambiar a layout NULL 
 		
