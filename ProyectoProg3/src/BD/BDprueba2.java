@@ -90,8 +90,7 @@ public class BDprueba2 {
 				//String contrasena = rs.getString("contrasena");
 				int n_tarjeta = rs.getInt("n_tajerta");
 				
-				
-				
+
 				
 				ret.add( new Cliente ( dni, nombre, apellido, correo, contrasena, n_tarjeta ) );
 			}
