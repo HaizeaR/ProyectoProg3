@@ -76,6 +76,7 @@ public class Cartelera extends JFrame {
 				}
 			});
 
+			
 		}
 		getContentPane().add(cartelera, BorderLayout.CENTER);
 
