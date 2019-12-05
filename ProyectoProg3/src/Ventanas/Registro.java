@@ -171,8 +171,7 @@ public class Registro extends JFrame {
 		
 
 		
-		 bAtras.addActionListener((ActionEvent e) -> {volverAtras();}); // Vuelve a la de LOGIN
-		 bRegistrar.addActionListener((ActionEvent e) -> {Registrar();} ); // Procede a registrar el usuario 
+		
 		 // si es correcto el registo JOptionPanel de Bienvenido y pantalla de fin de compra o login ??
 		 
 	}
@@ -214,6 +213,7 @@ public class Registro extends JFrame {
 				
 				char[] contrasena = jpContrasena.getPassword();
 				comprobarContrasena(contrasena);
+				contrasena.toString();
 				
 				// comprobar que en el numero de tarjeta NO tiene letras 
 				// si tiene letras que de error y no te deja registrar el cliente 
@@ -227,8 +227,9 @@ public class Registro extends JFrame {
 				}catch(Exception e) {}
 
 				cliente = new Cliente (DNI, nombre,apellido,correo,contrasena,num_tarjeta); 
+				// System.out.println(cliente.toString());
 				
-			// NO funciona salta un error en el método de la BD 
+			
 				
 			
 				BDprueba2.insertarCliente(cliente);

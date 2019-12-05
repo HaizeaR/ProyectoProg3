@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 import Elementos.Cliente;
 
@@ -41,9 +42,9 @@ public class BDprueba2 {
 //			System.out.println( sent );
 //			statement.executeUpdate( sent );
 			try {
-//				sent = "insert into producto (id, nombre, precio) values (1,'Jamón para profesor',345);";
-//				System.out.println( sent );
-//				statement.executeUpdate( sent );
+				sent = "insert into cliente (dni, nombre, apellido, correo, contrasena, n_tarjeta) values ('45993840G','h','r','h.h@gmail.com',12345678, 123456);";
+				System.out.println( sent );
+				statement.executeUpdate( sent );
 //				sent = "insert into producto (id, nombre, precio) values (2,'Crucifijo rezos pre-examen',42);";
 //				System.out.println( sent );
 //				statement.executeUpdate( sent );
@@ -91,7 +92,7 @@ public class BDprueba2 {
 				
 				
 				
-				int precio = rs.getInt("precio");
+				
 				ret.add( new Cliente ( dni, nombre, apellido, correo, contrasena, n_tarjeta ) );
 			}
 			return ret;
@@ -126,6 +127,11 @@ public class BDprueba2 {
 			return false;
 		}
 	}
+	
+	
+
+	
+	
 	
 //
 //	/** Borra una compra en la base de datos abierta
