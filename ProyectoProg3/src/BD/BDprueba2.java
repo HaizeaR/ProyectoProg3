@@ -150,6 +150,14 @@ public class BDprueba2 {
 //				int id = rs.getInt( "id" );
 //				compra.setId( id );
 //			}
+			sent = "insert into cliente values(" +
+					"'" + secu(cliente.getDNI()) + "', " +
+					"'" + secu(cliente.getNombre()) + "', " +
+					"'" + secu(cliente.getApellido()) + "', " +
+					"'" + secu(cliente.getCorreo()) + "', " +
+					"'" + cliente.getContrasena().toString() + "', " +
+					"'" + cliente.getNumero_tarjeta() + "', " +
+					"')";
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -159,7 +167,25 @@ public class BDprueba2 {
 	
 	
 
-	
+
+	/////////////////////////////////////////////////////////////////////
+	//                      Métodos privados                           //
+	/////////////////////////////////////////////////////////////////////
+
+	// Devuelve el string "securizado" para volcarlo en SQL
+	// (Implementación 1) Sustituye ' por '' y quita saltos de línea
+	// (Implementación 2) Mantiene solo los caracteres seguros en español
+	// TODO OJO - FALTA algo importante por hacer en la implementación actual... ¿no?
+	private static String secu( String string ) {
+		// Implementación (1)
+		// return string.replaceAll( "'",  "''" ).replaceAll( "\\n", "" );
+		// Implementación (2)
+		StringBuffer ret = new StringBuffer();
+		for (char c : string.toCharArray()) {
+			if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZñÑáéíóúüÁÉÍÓÚÚ.,:;-_(){}[]-+*=<>'\"¿?¡!&%$@#/\\0123456789 ".indexOf(c)>=0) ret.append(c);
+		}
+		return ret.toString();
+	}
 	
 	
 //
