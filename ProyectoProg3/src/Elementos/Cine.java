@@ -17,8 +17,10 @@ public class Cine {
 	// Array de trabjadores ? 
 	
 
-	public Cine() {
-		// TODO Auto-generated constructor stub
+	public Cine(int cod_cine, String nombre_cine, String direccion_cine) {
+		this.cod_cine = cod_cine;
+		this.nombre_cine = nombre_cine;
+		this.direccion_cine = direccion_cine;
 	}
 	
 

@@ -1,6 +1,4 @@
 package BD;
-	
-	
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -35,6 +33,27 @@ public class BDprueba2 {
 			String sent = "CREATE TABLE IF NOT EXISTS cliente (dni INTEGER PRIMARY KEY, nombre varchar(100), apellido varchar(100), correo varchar(100), contrasena varchar(20), n_tarjeta int(16));";
 			System.out.println( sent );
 			statement.executeUpdate( sent );
+			
+			// REVISAR
+
+			sent = "CREATE TABLE IF NOT EXISTS admin (dni INTEGER PRIMARY KEY, nombre varchar(100), apellido varchar(100), correo varchar(100), contrasena varchar(20);";
+			System.out.println( sent );
+			statement.executeUpdate( sent );
+			
+			sent = "CREATE TABLE IF NOT EXISTS asiento (codigo INTEGER PRIMARY KEY, fila int(2), columna int(2), ocupado boolean;";
+			System.out.println( sent );
+			statement.executeUpdate( sent );
+			
+			sent = "CREATE TABLE IF NOT EXISTS pelicula (cod_peli INTEGER PRIMARY KEY, titulo_peli varchar(100), descrip_peli varchar(100), duracion_peli int (3);";
+			System.out.println( sent );
+			statement.executeUpdate( sent );
+			
+			sent = "CREATE TABLE IF NOT EXISTS sala (numero_sala INTEGER PRIMARY KEY, capacidad sala int(3), ID_cine int(3);";
+			System.out.println( sent );
+			statement.executeUpdate( sent );
+			
+			
+			
 			
 			
 			
@@ -123,6 +142,7 @@ public class BDprueba2 {
 //			}
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
