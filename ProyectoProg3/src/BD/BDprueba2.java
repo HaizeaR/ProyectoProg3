@@ -207,4 +207,32 @@ public class BDprueba2 {
 //	
 //}
 
+	
+	public static String buscarCorreoCliente(Cliente cliente, Statement st) {
+		// Sin terminar
+		String sent = ""; 
+		try {
+			sent = "select correo from cliente;";
+			ResultSet rs = st.executeQuery(sent);
+			cliente.setCorreo(rs.getString("correo"));
+			rs.close();
+			
+					
+		}catch(SQLException e ) {
+			
+			
+		}
+		
+		
+		
+		return null;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 }
