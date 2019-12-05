@@ -35,7 +35,7 @@ public class BDprueba2 {
 			System.out.println( sent );
 			statement.executeUpdate( sent );
 			
-			//REVISAR
+			// REVISAR
 
 			sent = "CREATE TABLE IF NOT EXISTS admin (dni INTEGER PRIMARY KEY, nombre varchar(100), apellido varchar(100), correo varchar(100), contrasena varchar(20);";
 			System.out.println( sent );
