@@ -183,7 +183,7 @@ public class RegistrarAdmin extends JFrame {
 		Thread t1 = new Thread() {
 			public void run() {
 				setVisible(false);
-				VAdmin.main(null); 
+				LogInAdmin.main(null); 
 
 				dispose();
 			}				

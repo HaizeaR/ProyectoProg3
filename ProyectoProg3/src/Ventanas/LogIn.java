@@ -176,7 +176,7 @@ public class LogIn extends JFrame {
 			public void run() {
 				
 				setVisible(false);
-				VAdmin.main(null); 
+				LogInAdmin.main(null); 
 
 				dispose();
 			}				

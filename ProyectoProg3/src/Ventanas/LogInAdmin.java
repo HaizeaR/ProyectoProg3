@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class VAdmin extends JFrame{
+public class LogInAdmin extends JFrame{
 	
 	/**
 	 * 
@@ -26,7 +26,7 @@ public class VAdmin extends JFrame{
 
 	
 
-	public VAdmin() {
+	public LogInAdmin() {
 		
 		setSize(600,400);
 		setLocation(300, 200);
@@ -125,7 +125,7 @@ public class VAdmin extends JFrame{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		VAdmin ventLogin = new VAdmin(); 
+		LogInAdmin ventLogin = new LogInAdmin(); 
 		ventLogin.setVisible(true);
 		
 	}
