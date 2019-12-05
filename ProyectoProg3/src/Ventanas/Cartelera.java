@@ -53,7 +53,7 @@ public class Cartelera extends JFrame {
 		JLabel cartelera1 = new JLabel(img1); 
 		cartelera1.setSize(200, 290);
 		
-		cartelera1.setLocation(0, 0 );
+		cartelera1.setLocation(0, 0);
 		
 		
 		ImageIcon img2 = new ImageIcon("src/img/frozen2.jpg"); 
