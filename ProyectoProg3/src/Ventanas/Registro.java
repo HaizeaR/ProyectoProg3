@@ -206,6 +206,7 @@ public class Registro extends JFrame {
 				String apellido = tfApellido.getText();
 				
 				String DNI = tfDNI.getText();
+				DNI.toString();
 				comprobarDNI(DNI);
 				
 				String correo = tfCorreo.getText(); 
@@ -213,7 +214,7 @@ public class Registro extends JFrame {
 				
 				char[] contrasena = jpContrasena.getPassword();
 				comprobarContrasena(contrasena);
-				contrasena.toString();
+				
 				
 				// comprobar que en el numero de tarjeta NO tiene letras 
 				// si tiene letras que de error y no te deja registrar el cliente 

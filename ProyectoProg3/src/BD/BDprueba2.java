@@ -61,9 +61,7 @@ public class BDprueba2 {
 //			System.out.println( sent );
 //			statement.executeUpdate( sent );
 			try {
-				sent = "insert into cliente (dni, nombre, apellido, correo, contrasena, n_tarjeta) values ('45993840G','h','r','h.h@gmail.com',12345678, 123456);";
-				System.out.println( sent );
-				statement.executeUpdate( sent );
+
 //				sent = "insert into producto (id, nombre, precio) values (2,'Crucifijo rezos pre-examen',42);";
 //				System.out.println( sent );
 //				statement.executeUpdate( sent );
