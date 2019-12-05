@@ -22,7 +22,7 @@ import Elementos.Cliente;
 
 public class BD {
 
-		//static Statement st;
+		static Statement st;
 		static Connection con;
 
 	private static boolean LOGGING = true;
@@ -37,8 +37,8 @@ public class BD {
 	public static Connection initBD() {
 		try {
 			Class.forName("org.sqlite.JDBC");
-			Connection con = DriverManager.getConnection("jdbc:sqlite:cine.db");
-			Statement st = con.createStatement();
+			con = DriverManager.getConnection("jdbc:sqlite:cine.db");
+			st = con.createStatement();
 			st.setQueryTimeout(30); 
 			
 			log(Level.INFO, "Conectada base de datos " + "cine.db", null);
