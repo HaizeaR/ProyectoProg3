@@ -31,8 +31,8 @@ public class SalaYAsientos2 extends JFrame {
 		
 		
 		
-		panel.setLayout(new GridLayout(FILAS, COLUMNAS));
-		//panel.setLayout(null);
+		//panel.setLayout(new GridLayout(FILAS, COLUMNAS));
+		panel.setLayout(null);
 		panel.setBounds(20, 70, 200, 140);
 		
 		for(int y=0; y<COLUMNAS; y++) {
