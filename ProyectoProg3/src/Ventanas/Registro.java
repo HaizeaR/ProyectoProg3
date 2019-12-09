@@ -143,7 +143,7 @@ public class Registro extends JFrame {
 			@Override
 			public void windowOpened(WindowEvent e) {
 				//BD.initBD();
-				BDprueba2.abrirConexion("cine2.db");
+				BDprueba2.abrirConexion("cine.db");
 				
 			}
 			

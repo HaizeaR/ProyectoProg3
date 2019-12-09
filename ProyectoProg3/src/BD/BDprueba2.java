@@ -30,7 +30,7 @@ public class BDprueba2 {
 			
 			
 			Statement statement = conexion.createStatement();
-			String sent = "CREATE TABLE IF NOT EXISTS cliente (dni varchar(9) PRIMARY KEY, nombre varchar(100), apellido varchar(100), correo varchar(100), contrasena varchar(20), n_tarjeta int(16));";
+			String sent = "CREATE TABLE IF NOT EXISTS cliente (dni string PRIMARY KEY, nombre string, apellido string, correo string, contrasena varchar(20), n_tarjeta int(16));";
 			System.out.println( sent );
 			statement.executeUpdate( sent );
 			
