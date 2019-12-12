@@ -143,7 +143,7 @@ public class Registro extends JFrame {
 			@Override
 			public void windowOpened(WindowEvent e) {
 				//BD.initBD();
-				BDprueba2.abrirConexion("cine.db");
+				BDprueba2.abrirConexion("Cine2.db");
 				
 			}
 			
@@ -206,8 +206,9 @@ public class Registro extends JFrame {
 				String apellido = tfApellido.getText();
 				
 				String DNI = tfDNI.getText();
-				DNI.toString();
+				//DNI.toString();
 				comprobarDNI(DNI);
+				
 				
 				String correo = tfCorreo.getText(); 
 				comprobarCorreo(correo, true);

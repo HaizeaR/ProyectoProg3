@@ -30,7 +30,7 @@ public class BDprueba2 {
 			
 			
 			Statement statement = conexion.createStatement();
-			String sent = "CREATE TABLE IF NOT EXISTS cliente (dni string PRIMARY KEY, nombre string, apellido string, correo string, contrasena varchar(20), n_tarjeta int(16));";
+			String sent = "CREATE TABLE IF NOT EXISTS cliente (dni String PRIMARY KEY, nombre String, apellido string, correo String, contrasena varchar(20), n_tarjeta int(16));";
 			System.out.println( sent );
 			statement.executeUpdate( sent );
 			
@@ -137,10 +137,9 @@ public class BDprueba2 {
 	 */
 	public static boolean insertarCliente( Cliente cliente ) {
 		try (Statement statement = conexion.createStatement()) {
-			String sent = "insert into cliente (dni, nombre, apellido, correo, contrasena, n_tarjeta) values (" + cliente.getDNI() + "," + cliente.getNombre() + "," + cliente.getApellido() + "," + cliente.getCorreo()+ "," + cliente.getContrasena().toString()+ "," + cliente.getNumero_tarjeta() + " );";
-			System.out.println( sent );
-			int insertados = statement.executeUpdate( sent );
-			if (insertados!=1) return false;  // Error en inserción
+			String sent ; // = "insert into cliente (dni, nombre, apellido, correo, contrasena, n_tarjeta) values (" + cliente.getDNI() + "," + cliente.getNombre() + "," + cliente.getApellido() + "," + cliente.getCorreo()+ "," + cliente.getContrasena().toString()+ "," + cliente.getNumero_tarjeta() + " );";
+			
+			 // Error en inserción
 			
 //			// 11 - Búsqueda de la fila insertada
 //			sent = "select id from compra where idProducto=" + compra.getProducto().getId() + " and fecha=" + compra.getFecha() + ";";
@@ -150,15 +149,23 @@ public class BDprueba2 {
 //				int id = rs.getInt( "id" );
 //				compra.setId( id );
 //			}
+			
 			sent = "insert into cliente values(" +
 					"'" + secu(cliente.getDNI()) + "', " +
 					"'" + secu(cliente.getNombre()) + "', " +
 					"'" + secu(cliente.getApellido()) + "', " +
 					"'" + secu(cliente.getCorreo()) + "', " +
 					"'" + cliente.getContrasena().toString() + "', " +
-					"'" + cliente.getNumero_tarjeta() + "', " +
-					"')";
+					"'" + cliente.getNumero_tarjeta() + "' " +
+					")";
+			
+			System.out.println( sent );
+			int insertados = statement.executeUpdate( sent );
+		
+			
+			if (insertados!=1) return false; 
 			return true;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
