@@ -175,6 +175,10 @@ public class LogIn extends JFrame {
 		Thread t4 = new Thread() {
 			public void run() {
 				
+				
+			
+				
+				
 				setVisible(false);
 				LogInAdmin.main(null); 
 
@@ -184,6 +188,36 @@ public class LogIn extends JFrame {
 		t4.start();
 		
 	}
+//	
+//	private void ventanaAdmin2() {
+//		Thread t4 = new Thread() {
+//			public void run() {
+//				
+//				String cod = JOptionPane.showInputDialog("Código Admin: "); 
+//				if( cod == null) {
+//					System.out.println("Introduce código");
+//					
+//				}
+//				else if( cod = "123"  ) {
+//					setVisible(false);
+//					LogInAdmin.main(null); 
+//
+//					dispose();
+//				}
+//			
+//				
+//				
+//				
+//			}				
+//		}; 
+//		t4.start();
+//		
+//	}
+	
+	
+	
+	
+
 	
 	
 

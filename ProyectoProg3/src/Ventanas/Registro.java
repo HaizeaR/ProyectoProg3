@@ -303,6 +303,7 @@ public class Registro extends JFrame {
 			if(showErrorWindow)
 			System.out.println(correo + " no cumple el patrón");
 			JOptionPane.showMessageDialog(null, "Correo no válido");
+			// String respuesta = JOptionPane.showInputDialog(null, "Escriba nuevamente su correo", "Error!", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 	}

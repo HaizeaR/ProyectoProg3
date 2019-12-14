@@ -8,10 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+import Elementos.Asiento;
 import Elementos.Cliente;
 
 public class BDprueba2 {
 	private static Connection conexion;
+	private static Statement st;
 	
 	/** Abre conexión con la base de datos
 	 * @param nombreBD	Nombre del fichero de base de datos
@@ -40,7 +42,7 @@ public class BDprueba2 {
 			System.out.println( sent );
 			statement.executeUpdate( sent );
 			
-			sent = "CREATE TABLE IF NOT EXISTS asiento (codigo INTEGER PRIMARY KEY, fila int(2), columna int(2), ocupado boolean);";
+			sent = "CREATE TABLE IF NOT EXISTS asiento (codigo INTEGER PRIMARY KEY, fila int(5), columna int(5), ocupado boolean);";
 			System.out.println( sent );
 			statement.executeUpdate( sent );
 			
@@ -139,16 +141,6 @@ public class BDprueba2 {
 		try (Statement statement = conexion.createStatement()) {
 			String sent ; // = "insert into cliente (dni, nombre, apellido, correo, contrasena, n_tarjeta) values (" + cliente.getDNI() + "," + cliente.getNombre() + "," + cliente.getApellido() + "," + cliente.getCorreo()+ "," + cliente.getContrasena().toString()+ "," + cliente.getNumero_tarjeta() + " );";
 			
-			 // Error en inserción
-			
-//			// 11 - Búsqueda de la fila insertada
-//			sent = "select id from compra where idProducto=" + compra.getProducto().getId() + " and fecha=" + compra.getFecha() + ";";
-//			System.out.println( sent );
-//			ResultSet rs = statement.executeQuery( sent );
-//			if (rs.next()) { // Leer el resultset y poner el id
-//				int id = rs.getInt( "id" );
-//				compra.setId( id );
-//			}
 			
 			sent = "insert into cliente values(" +
 					"'" + secu(cliente.getDNI()) + "', " +
@@ -171,6 +163,34 @@ public class BDprueba2 {
 			return false;
 		}
 	}
+	
+	
+	public static boolean insertarAsiento ( Asiento a) {
+		
+		try (Statement statement = conexion.createStatement()) {
+			String sent ;
+			sent = "insert into asiento values(" +
+					"'" + (a.getCodigo()) + "', " +
+					"'" + (a.getFila()) + "', " +
+					"'" + (a.getColumna()) + "', " +
+					"'" + (a.isOcupado()) + "' " +
+					
+					")";
+			
+			System.out.println( sent );
+			int insertados = statement.executeUpdate( sent );
+		
+			
+			if (insertados!=1) return false; 
+			return true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+		
+	
 	
 	
 

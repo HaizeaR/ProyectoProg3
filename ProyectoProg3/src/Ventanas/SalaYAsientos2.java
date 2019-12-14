@@ -48,11 +48,13 @@ public class SalaYAsientos2 extends JFrame {
 				button.setBounds(x, y, 50, 50);
 				cod_asiento ++; 
 				Asiento a = new Asiento(cod_asiento, x, y, false);
-				//BD.BD.asientoInsert(a);
-				// metodo añadir a BD 
+				//BD.BDprueba2.insertarAsiento(a);
 				
-				
+	
+			
 				System.out.println(a);
+				
+			
 				button.addActionListener(new ActionListener() {
 					
 					// Añadir la opcion de que si esta "comprado" se quede en rojo 
@@ -72,10 +74,12 @@ public class SalaYAsientos2 extends JFrame {
 					}
 				});
 				//button.setLocation(x+100, y+100);
-				
+			
 				panel.add(button);
 				
+				
 			}
+		
 		}
 		
 	
@@ -88,6 +92,7 @@ public class SalaYAsientos2 extends JFrame {
 	public static void main(String[] args) {
 		SalaYAsientos2 ventSYA = new SalaYAsientos2(); 
 		ventSYA.setVisible(true);
+		
 	}
 	
 }
