@@ -21,29 +21,32 @@ import java.util.logging.Logger;
 
 
 public class mainCine {
-	
-	
-	static Logger log; 
 
-	public mainCine() throws SecurityException, IOException {
-		
+
+	public static Logger log ; 
+
+	public static void main(String[] args) throws SecurityException, IOException {
 		Cartelera vent = new Cartelera();
 		vent.setVisible(true);
-		
-		log =  Logger.getLogger("log-cine");
+
+		log = Logger.getLogger("log-cine");
 		log.log(Level.INFO, "Inicio de programa" + (new Date()));
 		Handler h = new FileHandler("log-cine.xml", true); 
 		h.setLevel(Level.INFO);
 		log.addHandler(h);
 		log.log(Level.FINE, "Fin del programa"); 
-		
-		
-	
+
+
+
+
 	}
-	
-	
-	
-	
-	
-	
+
+
 }
+
+	
+	
+	
+	
+	
+

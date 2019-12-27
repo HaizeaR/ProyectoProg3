@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.*;
 import java.util.*;
+import java.util.logging.Level;
 import java.util.regex.Pattern;
 
 
@@ -144,6 +145,7 @@ public class Registro extends JFrame {
 			public void windowOpened(WindowEvent e) {
 				//BD.initBD();
 				BDprueba2.abrirConexion("Cine2.db");
+			//	mainCine.log.log(Level.INFO, "Conexión BD abierta");
 				
 			}
 			
@@ -163,6 +165,7 @@ public class Registro extends JFrame {
 			public void windowClosed(WindowEvent e) {
 				
 				BDprueba2.cerrarConexion();
+				
 			}
 			
 			@Override
@@ -235,6 +238,7 @@ public class Registro extends JFrame {
 				
 			
 				BDprueba2.insertarCliente(cliente);
+				//	mainCine.log.log(Level.INFO, "Usuario registrado");
 			
 				
 				// cliente = new Cliente (nombre,apellido,correo,contrasena,num_tarjeta); 
