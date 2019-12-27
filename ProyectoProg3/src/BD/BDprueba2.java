@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import Elementos.Asiento;
 import Elementos.Cliente;
@@ -15,6 +16,8 @@ public class BDprueba2 {
 	private static Connection conexion;
 	private static Statement st;
 	
+	private static Logger log; 
+	
 	/** Abre conexión con la base de datos
 	 * @param nombreBD	Nombre del fichero de base de datos
 	 * @return	true si la conexión ha sido correcta, false en caso contrario
@@ -22,7 +25,12 @@ public class BDprueba2 {
 	 * 
 	 */
 	public static boolean abrirConexion( String nombreBD ) {
+		
+		
+		
+		
 		try {
+			
 			System.out.println( "Conexión abierta" );
 			Class.forName("org.sqlite.JDBC");  // Carga la clase de BD para sqlite
 			conexion = DriverManager.getConnection("jdbc:sqlite:" + nombreBD );
@@ -182,6 +190,7 @@ public class BDprueba2 {
 		
 			
 			if (insertados!=1) return false; 
+			
 			return true;
 			
 		} catch (Exception e) {
