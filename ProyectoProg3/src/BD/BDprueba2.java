@@ -77,14 +77,21 @@ public class BDprueba2 {
 			try {
 				// INSERTAR VALORES POR DEFECTO EN CLIENTE 
 				
-
-				sent = "insert into cliente values ('12345678A', 'm', 'q', 'm.q@gmail.com', 12345678, 456789);";
+				sent = "insert into pelicula values (111, 'Frozen2', 'Elsa quiere descubrir quién es en realidad y por qué posee un poder tan asombroso', '143' );";
 				System.out.println( sent );
 				statement.executeUpdate( sent );
 				
-				sent = "insert into cliente values ('16088533X', 'u', 'm', 'u.m@gmail.com', 12345678, 654321);";
-				System.out.println( sent );
-				statement.executeUpdate( sent );
+				String sent1 = "insert into pelicula values (222, 'Los Vengadores', 'Los Vengadores restantes deben encontrar una manera de recuperar a sus aliados para un enfrentamiento épico con Thanos', '203' );";
+				System.out.println( sent1 );
+				statement.executeUpdate( sent1 );
+
+				String sent2 = "insert into cliente values ('12345678A', 'm', 'q', 'm.q@gmail.com', 12345678, 456789);";
+				System.out.println( sent2 );
+				statement.executeUpdate( sent2 );
+				
+				String sent3 = "insert into cliente values ('16088533X', 'u', 'm', 'u.m@gmail.com', 12345678, 654321);";
+				System.out.println( sent3 );
+				statement.executeUpdate( sent3 );
 				
 //				sent = "insert into producto (id, nombre, precio) values (2,'Crucifijo rezos pre-examen',42);";
 //				System.out.println( sent );
@@ -94,6 +101,13 @@ public class BDprueba2 {
 //				sent = "insert into producto (id, nombre, precio) values (3,'Asesor programación Java (hora)',25);";
 //				System.out.println( sent );
 //				statement.executeUpdate( sent );
+				
+				
+				// INSERTAR POR DEFECTO EN PELICULA
+
+
+				
+				
 				
 			} catch(Exception e) {}  // Es normal que haya error en los inserts si ya existen las claves
 			// fin creación bd

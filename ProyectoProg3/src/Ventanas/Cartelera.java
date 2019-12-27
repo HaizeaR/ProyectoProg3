@@ -131,6 +131,7 @@ public class Cartelera extends JFrame {
 			public void windowOpened(WindowEvent e) {
 				// TODO Auto-generated method stub
 				//loadTextFile();
+				BD.BDprueba2.abrirConexion("Cine2.db");
 			}
 
 		});

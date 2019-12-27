@@ -116,6 +116,7 @@ public class SalaYAsientos2 extends JFrame {
 		addWindowListener(new WindowListener() {
 			
 			@Override
+	
 			public void windowOpened(WindowEvent e) {
 				//BD.initBD();
 				
