@@ -224,11 +224,7 @@ public class RegistrarAdmin extends JFrame {
 
 		
 			
-				try {
-					
-			
-				
-				}catch(Exception e) {}
+		
 
 				 admin = new Admin (DNI, nombre,apellido,correo,contrasena); 
 				// System.out.println(cliente.toString());
@@ -236,7 +232,7 @@ public class RegistrarAdmin extends JFrame {
 			
 				
 			
-				//BDprueba2.insertarCliente(cliente);
+				BDprueba2.insertarAdmin(admin);
 			
 				
 

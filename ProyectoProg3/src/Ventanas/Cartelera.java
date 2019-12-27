@@ -41,7 +41,7 @@ public class Cartelera extends JFrame {
 	 */
 	private static final long serialVersionUID = -3774209182538684535L;
 	private static JFrame v;
-	private static ArrayList<String> pelis;
+	public static ArrayList<String> pelis;
 
 	public Cartelera() {
 
@@ -67,6 +67,7 @@ public class Cartelera extends JFrame {
 						public void run() {
 
 							setVisible(false);
+							
 							PeliculaIndividual.main(null);
 
 							dispose();

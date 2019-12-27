@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import Elementos.Admin;
 import Elementos.Asiento;
 import Elementos.Cliente;
 
@@ -70,8 +71,12 @@ public class BDprueba2 {
 //			sent = "CREATE TABLE IF NOT EXISTS compra (id INTEGER PRIMARY KEY AUTOINCREMENT, idProducto int, fecha bigint, cantidad int);";
 //			System.out.println( sent );
 //			statement.executeUpdate( sent );
+			
+			
+			
 			try {
-
+				// INSERTAR VALORES POR DEFECTO EN CLIENTE 
+				
 
 				sent = "insert into cliente values ('12345678A', 'm', 'q', 'm.q@gmail.com', 12345678, 456789);";
 				System.out.println( sent );
@@ -140,10 +145,7 @@ public class BDprueba2 {
 		}
 	}
 
-	/** Inserta una compra en la base de datos abierta
-	 * Actualiza el id de la compra insertada
-	 * @param compra	Compra a insertar
-	 * @return	true si la inserción es correcta, false en caso contrario
+	/** Inserta un cliente en la base de datos abierta
 	 */
 	public static boolean insertarCliente( Cliente cliente ) {
 		try (Statement statement = conexion.createStatement()) {
@@ -199,7 +201,59 @@ public class BDprueba2 {
 		}
 	}
 		
+	/** Inserta una nuevo admin en la base de datos abierta
+	 */
+	public static boolean insertarAdmin( Admin admin ) {
+		try (Statement statement = conexion.createStatement()) {
+			String sent ;
+			
+			sent = "insert into admin values(" +
+					"'" + secu(admin.getDNI()) + "', " +
+					"'" + secu(admin.getNombre()) + "', " +
+					"'" + secu(admin.getApellido()) + "', " +
+					"'" + secu(admin.getCorreo()) + "', " +
+					"'" + admin.getContrasena().toString() + "' " +
+					")";
+			
+			System.out.println( sent );
+			int insertados = statement.executeUpdate( sent );
+		
+			
+			if (insertados!=1) return false; 
+			return true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	
+	/** Lee los administradores de la conexión de base de datos abierta
+	 * @return	Lista completa de admin, null si hay algún error
+	 */
+	public static ArrayList<Admin> getAdmins() {
+		try (Statement statement = conexion.createStatement()) {
+			ArrayList<Admin> ret = new ArrayList<>();
+			String sent = "select * from admin;";
+			System.out.println( sent );
+			ResultSet rs = statement.executeQuery( sent );
+			while( rs.next() ) { // Leer el resultset
+				String dni = rs.getString("dni");
+				String nombre = rs.getString("nombre");
+				String apellido = rs.getString("apellido"); 
+				String correo = rs.getString("correo"); 
+				char[] contrasena = (rs.getString("contrasena")).toCharArray();
+		
+				ret.add( new Admin ( dni, nombre, apellido, correo, contrasena ) );
+			}
+			
+			return ret;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	
 	
 

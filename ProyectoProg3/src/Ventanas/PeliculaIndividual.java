@@ -1,6 +1,5 @@
 package Ventanas;
 
-import javax.swing.JFrame;
 import javax.swing.table.TableColumn;
 
 import sun.util.calendar.JulianCalendar;
@@ -8,6 +7,7 @@ import sun.util.calendar.JulianCalendar;
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /** Ventana donde se muestra información de la perlicula individual
  * con sus horarios
@@ -16,11 +16,12 @@ import java.awt.event.ActionEvent;
  */
 public class PeliculaIndividual extends JFrame{
 
-	JPanel pPeli, pFoto; 
+	JPanel pPeli, pFoto, pBotonera; 
 	//JTextArea taDescrip; 
 	JTextPane tpDescrip;
 	JTable tabla; 
-	JButton bAtras; 
+	JButton bAtras, bNext; 
+	
 
 
 
@@ -33,6 +34,14 @@ public class PeliculaIndividual extends JFrame{
 		getContentPane().add(pPeli, BorderLayout.CENTER); 
 
 		pFoto = new JPanel(); 
+		
+		
+		
+		
+//		ImageIcon img = new ImageIcon("src/img/" + peli);
+//		JButton cartelera1 = new JButton(img);
+//		
+		
 		tpDescrip = new JTextPane(); 
 
 
@@ -44,11 +53,18 @@ public class PeliculaIndividual extends JFrame{
 		tabla = new JTable(); 
 		getContentPane().add(tabla, BorderLayout.SOUTH); 
 
-		bAtras = new JButton("Atras"); 
-		getContentPane().add(bAtras, BorderLayout.NORTH);
+		pBotonera = new JPanel(); 
+		
 
+		
+		bAtras = new JButton("Atras"); 
+		pBotonera.add(bAtras);
+		bNext = new JButton ("Siguiente" ); 
+		pBotonera.add(bNext);
+		getContentPane().add(pBotonera, BorderLayout.NORTH);
 
 		bAtras.addActionListener((ActionEvent e) -> {volverAtras();});
+		bNext.addActionListener((ActionEvent e) -> {SeleccionAsientos(); } );
 
 
 	}
@@ -71,7 +87,24 @@ public class PeliculaIndividual extends JFrame{
 
 	}
 
+	/** Método utilizado para ir a la ventana de selección de asientos 
+	 * Hilo que se activa cuando se pulsa el botón Siguente
+	 * 
+	 */
+	public void SeleccionAsientos() {
+		Thread t2 = new Thread() {
+			public void run() {
+				//LogIn.guardaConfig();
+				setVisible(false);
+				SalaYAsientos2.main(null); 
 
+				dispose();
+			}				
+		}; 
+		t2.start();
+		
+	}
+	
 
 
 	public static void main(String[] args) {

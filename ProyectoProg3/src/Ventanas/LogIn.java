@@ -132,7 +132,8 @@ public class LogIn extends JFrame {
 			public void run() {
 				//LogIn.guardaConfig();
 				setVisible(false);
-				SalaYAsientos.main(null); 
+				// te devuelve a la sala de asientos o vuelves a la cartelera ??? 
+				Cartelera.main(null); 
 
 				dispose();
 			}				
