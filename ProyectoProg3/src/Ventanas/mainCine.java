@@ -30,9 +30,10 @@ public class mainCine {
 		Handler h = new FileHandler("log-cine.xml", true); 
 		log.addHandler(h);
 		h.setLevel(Level.FINE);
+		Cartelera ventC = new Cartelera();
+		ventC.setVisible(true);
 		
-		
-		Cartelera.main(null);
+	
 	}
 	
 	
