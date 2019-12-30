@@ -159,7 +159,10 @@ public class SalaYAsientos2 extends JFrame {
 	
 	
 	
-	
+	public static void crearAsientosBD() {
+		Connection con = BDprueba2.init("asientos.bd");
+		Statement stmt = con.CreateStatement();
+	}
 	
 	/** Método utilizado para volver a la panatalla de la cartelera
 	 * Hilo que se activa cuando se pulsa el botón de Atras 

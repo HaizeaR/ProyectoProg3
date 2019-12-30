@@ -29,6 +29,8 @@ public class PeliculaIndividual extends JFrame{
 		setSize(600, 600);
 		setTitle("Peli individual");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		ImageIcon img = new ImageIcon("src/img/" + peli);
 
 		pPeli = new JPanel(); 
 		getContentPane().add(pPeli, BorderLayout.CENTER); 
