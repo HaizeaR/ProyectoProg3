@@ -19,9 +19,9 @@ public class BDprueba2 {
 	
 	private static Logger log; 
 	
-	/** Inicializa una BD SQLITE y devuelve una conexión con ella
+	/** Inicializa una BD SQLITE y devuelve una conexiÃ³n con ella
 	 * @param nombreBD	Nombre de fichero de la base de datos
-	 * @return	Conexión con la base de datos indicada. Si hay algún error, se devuelve null
+	 * @return	ConexiÃ³n con la base de datos indicada. Si hay algÃºn error, se devuelve null
 	 */
 	public static Connection initBD( String nombreBD ) {
 		try {
@@ -30,15 +30,15 @@ public class BDprueba2 {
 			//log( Level.INFO, "Conectada base de datos " + nombreBD, null );
 		    return con;
 		} catch (ClassNotFoundException | SQLException e) {
-			//log( Level.SEVERE, "Error en conexión de base de datos " + nombreBD, e );
+			//log( Level.SEVERE, "Error en conexiÃ³n de base de datos " + nombreBD, e );
 			return null;
 		}
 	}
 	
 	
-	/** Abre conexión con la base de datos
+	/** Abre conexiÃ³n con la base de datos
 	 * @param nombreBD	Nombre del fichero de base de datos
-	 * @return	true si la conexión ha sido correcta, false en caso contrario
+	 * @return	true si la conexiÃ³n ha sido correcta, false en caso contrario
 	 * CINE2 
 	 * 
 	 */
@@ -49,12 +49,12 @@ public class BDprueba2 {
 		
 		try {
 			
-			System.out.println( "Conexión abierta" );
+			System.out.println( "ConexiÃ³n abierta" );
 			Class.forName("org.sqlite.JDBC");  // Carga la clase de BD para sqlite
 			conexion = DriverManager.getConnection("jdbc:sqlite:" + nombreBD );
 			
-			// No lo pide el ejercicio, pero si se quiere crear la base de datos si no existe desde el propio programa habría que hacer esto:
-			// creación bd
+			// No lo pide el ejercicio, pero si se quiere crear la base de datos si no existe desde el propio programa habrÃ­a que hacer esto:
+			// creaciÃ³n bd
 			
 			
 			Statement statement = conexion.createStatement();
@@ -80,6 +80,10 @@ public class BDprueba2 {
 			System.out.println( sent );
 			statement.executeUpdate( sent );
 			
+			sent = "CREATE TABLE IF NOT EXISTS sesion (fecha DATE PRIMARY KEY, horaI String PRIMARY KEY, ID_sala int(5) PRIMARY KEY, ID_peli int(5));";
+			System.out.println( sent );
+			statement.executeUpdate( sent );
+			
 			
 			
 			
@@ -94,11 +98,11 @@ public class BDprueba2 {
 			try {
 				// INSERTAR VALORES POR DEFECTO EN CLIENTE 
 				
-				sent = "insert into pelicula values (111, 'Frozen2', 'Elsa quiere descubrir quién es en realidad y por qué posee un poder tan asombroso', '143' );";
+				sent = "insert into pelicula values (111, 'Frozen2', 'Elsa quiere descubrir quiÃ©n es en realidad y por quÃ© posee un poder tan asombroso', '143' );";
 				System.out.println( sent );
 				statement.executeUpdate( sent );
 				
-				String sent1 = "insert into pelicula values (222, 'VengadoresEndgame', 'Los Vengadores restantes deben encontrar una manera de recuperar a sus aliados para un enfrentamiento épico con Thanos', '203' );";
+				String sent1 = "insert into pelicula values (222, 'VengadoresEndgame', 'Los Vengadores restantes deben encontrar una manera de recuperar a sus aliados para un enfrentamiento Ã©pico con Thanos', '203' );";
 				System.out.println( sent1 );
 				statement.executeUpdate( sent1 );
 
@@ -115,7 +119,7 @@ public class BDprueba2 {
 //				statement.executeUpdate( sent );
 				
 				
-//				sent = "insert into producto (id, nombre, precio) values (3,'Asesor programación Java (hora)',25);";
+//				sent = "insert into producto (id, nombre, precio) values (3,'Asesor programaciÃ³n Java (hora)',25);";
 //				System.out.println( sent );
 //				statement.executeUpdate( sent );
 				
@@ -127,7 +131,7 @@ public class BDprueba2 {
 				
 				
 			} catch(Exception e) {}  // Es normal que haya error en los inserts si ya existen las claves
-			// fin creación bd
+			// fin creaciÃ³n bd
 			
 			return true;
 		} catch(Exception e) {
@@ -136,19 +140,19 @@ public class BDprueba2 {
 		}
 	}
 	
-	/** Cierra la conexión abierta de base de datos ({@link #abrirConexion(String)})
+	/** Cierra la conexiÃ³n abierta de base de datos ({@link #abrirConexion(String)})
 	 */
 	public static void cerrarConexion() {
 		try {
 			conexion.close();
-			System.out.println( "Conexión cerrada" );
+			System.out.println( "ConexiÃ³n cerrada" );
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	/** Lee los productos de la conexión de base de datos abierta
-	 * @return	Lista completa de productos, null si hay algún error
+	/** Lee los productos de la conexiÃ³n de base de datos abierta
+	 * @return	Lista completa de productos, null si hay algÃºn error
 	 */
 	public static ArrayList<Cliente> getClientes() {
 		try (Statement statement = conexion.createStatement()) {
@@ -259,8 +263,8 @@ public class BDprueba2 {
 		}
 	}
 	
-	/** Lee los administradores de la conexión de base de datos abierta
-	 * @return	Lista completa de admin, null si hay algún error
+	/** Lee los administradores de la conexiÃ³n de base de datos abierta
+	 * @return	Lista completa de admin, null si hay algÃºn error
 	 */
 	public static ArrayList<Admin> getAdmins() {
 		try (Statement statement = conexion.createStatement()) {
@@ -290,20 +294,20 @@ public class BDprueba2 {
 
 
 	/////////////////////////////////////////////////////////////////////
-	//                      Métodos privados                           //
+	//                      MÃ©todos privados                           //
 	/////////////////////////////////////////////////////////////////////
 
 	// Devuelve el string "securizado" para volcarlo en SQL
-	// (Implementación 1) Sustituye ' por '' y quita saltos de línea
-	// (Implementación 2) Mantiene solo los caracteres seguros en español
-	// TODO OJO - FALTA algo importante por hacer en la implementación actual... ¿no?
+	// (ImplementaciÃ³n 1) Sustituye ' por '' y quita saltos de lÃ­nea
+	// (ImplementaciÃ³n 2) Mantiene solo los caracteres seguros en espaÃ±ol
+	// TODO OJO - FALTA algo importante por hacer en la implementaciÃ³n actual... Â¿no?
 	private static String secu( String string ) {
-		// Implementación (1)
+		// ImplementaciÃ³n (1)
 		// return string.replaceAll( "'",  "''" ).replaceAll( "\\n", "" );
-		// Implementación (2)
+		// ImplementaciÃ³n (2)
 		StringBuffer ret = new StringBuffer();
 		for (char c : string.toCharArray()) {
-			if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZñÑáéíóúüÁÉÍÓÚÚ.,:;-_(){}[]-+*=<>'\"¿?¡!&%$@#/\\0123456789 ".indexOf(c)>=0) ret.append(c);
+			if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZÃ±Ã‘Ã¡Ã©Ã­Ã³ÃºÃ¼Ã�Ã‰Ã�Ã“ÃšÃš.,:;-_(){}[]-+*=<>'\"Â¿?Â¡!&%$@#/\\0123456789 ".indexOf(c)>=0) ret.append(c);
 		}
 		return ret.toString();
 	}

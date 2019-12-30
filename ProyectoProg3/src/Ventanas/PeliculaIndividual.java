@@ -1,6 +1,7 @@
 package Ventanas;
 
 import BD.BDprueba2;
+import Elementos.Asiento;
 
 import javax.swing.*;
 
@@ -25,7 +26,7 @@ public class PeliculaIndividual extends JFrame{
 
 	
 	
-	JPanel pPeli, pBotonera;
+	JPanel pPeli, pBotonera, pBotoneraHorario;
 
 	JLabel lFoto; 
 	
@@ -44,12 +45,7 @@ public class PeliculaIndividual extends JFrame{
 
 		pPeli = new JPanel(); 
 		getContentPane().add(pPeli,BorderLayout.CENTER); 
-
-		  
-		
-		 
-	
-		lFoto = new JLabel( new ImageIcon("src/img/"+pelicula + ".jpg"));
+		lFoto = new JLabel( new ImageIcon("src/img/"+ pelicula + ".jpg"));
 		
 		
 		//Image img2 = new 
@@ -57,7 +53,6 @@ public class PeliculaIndividual extends JFrame{
 //		ImageIcon img = new ImageIcon("src/img/" + peli);
 //		JButton cartelera1 = new JButton(img);
 //		
-		
 		tpDescrip = new JTextPane(); 
 
 
@@ -69,15 +64,35 @@ public class PeliculaIndividual extends JFrame{
 		getContentPane().add(tabla, BorderLayout.SOUTH); 
 
 		pBotonera = new JPanel(); 
-		
-
+		pBotoneraHorario = new JPanel();
 		
 		bAtras = new JButton("Atras"); 
 		pBotonera.add(bAtras);
 		bNext = new JButton ("Siguiente" ); 
 		pBotonera.add(bNext);
 		getContentPane().add(pBotonera, BorderLayout.NORTH);
+		
+		/////////
+		Connection con = BDprueba2.initBD("Cine2.db");
+		try {
+			Statement stmt = con.createStatement();
+			String sentSQL = "SELECT * FROM sesion";
+			ResultSet rs = stmt.executeQuery(sentSQL);
+			
+			while( rs.next()) {
+				String horario = rs.getString("horaI");
+				JButton button = new JButton(horario);
+				pBotoneraHorario.add(button);
+			}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		/////////
 
+		
+		pPeli.add(pBotoneraHorario, BorderLayout.EAST);
+		
 		bAtras.addActionListener((ActionEvent e) -> {volverAtras();});
 		bNext.addActionListener((ActionEvent e) -> {SeleccionAsientos(); } );
 		
