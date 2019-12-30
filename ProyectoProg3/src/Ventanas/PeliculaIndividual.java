@@ -47,9 +47,9 @@ public class PeliculaIndividual extends JFrame{
 
 		  
 		
-		ImageIcon img = new ImageIcon("Frozen2" + ".jpg"); 
+		 
 	
-		lFoto = new JLabel(img);
+		lFoto = new JLabel( new ImageIcon("src/img/"+pelicula + ".jpg"));
 		
 		
 		//Image img2 = new 
@@ -68,7 +68,7 @@ public class PeliculaIndividual extends JFrame{
 
 		pPeli.setLayout(new BorderLayout());
 		pPeli.add(lFoto, BorderLayout.WEST); 
-		pPeli.add(tpDescrip, BorderLayout.NORTH); 
+		pPeli.add(tpDescrip, BorderLayout.CENTER); 
 
 		tabla = new JTable(); 
 		getContentPane().add(tabla, BorderLayout.SOUTH); 
