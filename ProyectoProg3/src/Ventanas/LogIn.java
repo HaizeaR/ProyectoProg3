@@ -298,6 +298,7 @@ public class LogIn extends JFrame {
 					}else{
 						JOptionPane.showMessageDialog(null, "ERROR contraseña incorrecta ");
 					}
+					
 
 				}
 			}
