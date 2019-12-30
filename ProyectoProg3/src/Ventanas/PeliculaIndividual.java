@@ -18,6 +18,8 @@ import java.sql.Statement;
  */
 public class PeliculaIndividual extends JFrame{
 
+	
+	
 	JPanel pPeli, pFoto, pBotonera; 
 	//JTextArea taDescrip; 
 	JTextPane tpDescrip;
