@@ -281,6 +281,7 @@ public class LogIn extends JFrame {
 
 				char [] c = jpContrasena.getPassword(); 
 				String contrasenaVentana =	c.toString(); 
+				
 				System.out.println(contrasenaVentana);
 				System.out.println("//");
 				System.out.println(contrasena);
