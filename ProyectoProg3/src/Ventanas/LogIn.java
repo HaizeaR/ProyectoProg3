@@ -20,7 +20,6 @@ import java.util.Scanner;
 import javax.swing.*;
 
 import BD.BDprueba2;
-import ord201901.sesionesCentros.BD;
 
 
 
