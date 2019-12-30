@@ -164,6 +164,7 @@ public class LogIn extends JFrame {
 		t2.start();
 	}
 	
+	
 	private void confirmCompra() {
 		Thread t3 = new Thread() {
 			public void run() {
