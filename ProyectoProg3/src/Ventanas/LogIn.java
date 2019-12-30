@@ -22,10 +22,6 @@ import java.util.Scanner;
 import javax.swing.*;
 
 import BD.BDprueba2;
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/HaizeaR/ProyectoProg3.git
 
 
 
