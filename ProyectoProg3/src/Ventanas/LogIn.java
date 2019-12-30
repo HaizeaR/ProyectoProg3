@@ -19,6 +19,9 @@ import java.util.Scanner;
 
 import javax.swing.*;
 
+import BD.BDprueba2;
+import ord201901.sesionesCentros.BD;
+
 
 
 
@@ -255,6 +258,17 @@ public class LogIn extends JFrame {
 //			e.printStackTrace();
 //		}
 //	}
+	
+	
+	public void confirmarLogIn() {
+		Connection conn = BDprueba2.abrirConexion( "Cine2.db" );
+		Statement stat = conn.createStatement();
+		
+		
+		
+	}
+	
+	
 	
 	
 	
