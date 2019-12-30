@@ -86,6 +86,7 @@ public class PeliculaIndividual extends JFrame{
 			System.out.println(sentSQL);
 			ResultSet rs = st.executeQuery(sentSQL);
 		
+			
 			while(rs.next()) {
 				System.out.println("entra");
 				String titulo = rs.getString("titulo_peli");
