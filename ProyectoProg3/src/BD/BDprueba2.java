@@ -80,7 +80,7 @@ public class BDprueba2 {
 			System.out.println( sent );
 			statement.executeUpdate( sent );
 			
-			sent = "CREATE TABLE IF NOT EXISTS sesion (fecha DATE PRIMARY KEY, horaI String PRIMARY KEY, ID_sala int(5) PRIMARY KEY, ID_peli int(5));";
+			sent = "CREATE TABLE IF NOT EXISTS sesion (cod_sesion INTEGER PRIMARY KEY, fecha DATE, horaI String, ID_sala int(5), ID_peli int(5));";
 			System.out.println( sent );
 			statement.executeUpdate( sent );
 			

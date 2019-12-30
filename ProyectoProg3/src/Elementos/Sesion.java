@@ -14,6 +14,7 @@ public class Sesion {
 	private String HoraI;
 	private int ID_sala; 
 	private int ID_pelicula; 
+	private int cod_sesion;
 	// Array list asiento 
 	// Arraylist usuario 
 	
@@ -27,8 +28,9 @@ public class Sesion {
 	}
 
 	/////CONSTRUCTOR/////
-	public Sesion(Date fecha, String HoraI, int iD_sala, int iD_pelicula) {
+	public Sesion(int cod_sesion, Date fecha, String HoraI, int iD_sala, int iD_pelicula) {
 		super();
+		this.cod_sesion = cod_sesion;
 		this.fecha = fecha;
 		this.HoraI = HoraI;
 		this.ID_sala = iD_sala;
