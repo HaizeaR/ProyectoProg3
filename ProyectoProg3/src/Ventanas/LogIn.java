@@ -291,10 +291,13 @@ public class LogIn extends JFrame {
 
 					if (contrasenaVentana.compareTo(contrasena) == 0 ) {
 						System.out.println("entra");
+						
 						confirmCompra();
 
 
-					}JOptionPane.showMessageDialog(null, "ERROR");
+					}else{
+						JOptionPane.showMessageDialog(null, "ERROR contraseña incorrecta ");
+					}
 
 				}
 			}
