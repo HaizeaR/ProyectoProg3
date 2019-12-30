@@ -11,6 +11,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.PrintStream;
+import java.io.Reader;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +22,7 @@ import java.util.Scanner;
 import javax.swing.*;
 
 import BD.BDprueba2;
-import ord201901.sesionesCentros.BD;
+
 
 
 
@@ -123,7 +125,7 @@ public class LogIn extends JFrame {
 		
 		bAtras.addActionListener((ActionEvent e) -> {volverAtras();});
 		bRegistrar.addActionListener((ActionEvent e) -> {accedeRegistro(); } );
-		bConfirmar.addActionListener((ActionEvent e) -> {confirmCompra();});
+		bConfirmar.addActionListener((ActionEvent e) -> {confirmarLogIn();});
 		bAdmin.addActionListener((ActionEvent e) -> {ventanaAdmin();});
 
 		
@@ -259,16 +261,48 @@ public class LogIn extends JFrame {
 //		}
 //	}
 	
-	
+
 	public void confirmarLogIn() {
 		//Connection conn = BDprueba2.abrirConexion( "Cine2.db" );
-	//	Connection conn = BDprueba2.c
-		Statement stat = conn.createStatement();
-		
-		
-		
+		Connection conn = BDprueba2.initBD("Cine2.db");
+		String SQL = ""; 
+		try {
+			Statement stat = conn.createStatement();
+			SQL = "select correo, contrasena from cliente"; 
+
+			ResultSet rs = stat.executeQuery( SQL );
+			while(rs.next()) {
+				String correo = rs.getString("correo"); 
+				String contrasena = rs.getString("contrasena"); 
+				//char[] con = rs.get
+
+				char [] c = jpContrasena.getPassword(); 
+				String contrasenaVentana =	c.toString(); 
+				System.out.println(contrasenaVentana);
+				System.out.println("//");
+				System.out.println(contrasena);
+				//String contrasenaVentana = jpContrasena.getPassword().toString();
+
+				if ( correo.compareTo(tfCorreo.getText()) == 0) {
+					System.out.println("entra");
+
+					if (contrasenaVentana.compareTo(contrasena) == 0 ) {
+						System.out.println("entra");
+						confirmCompra();
+
+
+					}JOptionPane.showMessageDialog(null, "ERROR");
+
+				}
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
-	
+
 	
 	
 	

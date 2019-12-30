@@ -14,12 +14,14 @@ public class ConfCompra extends JFrame {
 	
 	
 	public ConfCompra(){
-		// TODO
+		setSize(600,400);
+		setLocation(300, 200);
 	}
 	
 
 	public static void main(String[] args) {
-		
+		ConfCompra vc = new ConfCompra(); 
+		vc.setVisible(true);
 	}
 
 }

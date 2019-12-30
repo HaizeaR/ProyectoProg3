@@ -1,15 +1,15 @@
 package Ventanas;
 
-import javax.swing.table.TableColumn;
-
 import BD.BDprueba2;
-import sun.util.calendar.JulianCalendar;
 
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /** Ventana donde se muestra información de la perlicula individual
  * con sus horarios
@@ -23,7 +23,7 @@ public class PeliculaIndividual extends JFrame{
 	JTextPane tpDescrip;
 	JTable tabla; 
 	JButton bAtras, bNext; 
-	
+	static String pelicula;
 
 
 
@@ -72,8 +72,34 @@ public class PeliculaIndividual extends JFrame{
 		
 	}
 	
+	public static void nombrePeli(String peli) {
+		
+		pelicula = peli.substring(0, peli.length()-4);
+		System.out.println(pelicula);
+	}
+	
 	public void sacarDatos() {
-		Connection con = BDprueba2.initBD("peliculas.bd");
+		Connection con = BDprueba2.initBD("Cine2.db");
+		String sentSQL = ""; 
+		try {
+			
+			Statement st = con.createStatement();
+			sentSQL = "select * from pelicula where titulo_peli = '" + pelicula + "'";
+			System.out.println(sentSQL);
+			ResultSet rs = st.executeQuery(sentSQL);
+		
+			while(rs.next()) {
+				System.out.println("entra");
+				String titulo = rs.getString("titulo_peli");
+				String descripcion = rs.getString("descrip_peli");
+				System.out.println(descripcion);
+				int duracion = rs.getInt("duracion_peli");
+				tpDescrip.setText(descripcion);
+			}
+			//rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -118,6 +144,7 @@ public class PeliculaIndividual extends JFrame{
 	public static void main(String[] args) {
 		PeliculaIndividual v = new PeliculaIndividual(); 
 		v.setVisible(true);
+		v.sacarDatos();
 	}
 
 }

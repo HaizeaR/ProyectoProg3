@@ -98,7 +98,7 @@ public class BDprueba2 {
 				System.out.println( sent );
 				statement.executeUpdate( sent );
 				
-				String sent1 = "insert into pelicula values (222, 'Los Vengadores', 'Los Vengadores restantes deben encontrar una manera de recuperar a sus aliados para un enfrentamiento épico con Thanos', '203' );";
+				String sent1 = "insert into pelicula values (222, 'VengadoresEndgame', 'Los Vengadores restantes deben encontrar una manera de recuperar a sus aliados para un enfrentamiento épico con Thanos', '203' );";
 				System.out.println( sent1 );
 				statement.executeUpdate( sent1 );
 

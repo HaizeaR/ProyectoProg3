@@ -42,6 +42,7 @@ public class Cartelera extends JFrame {
 	private static final long serialVersionUID = -3774209182538684535L;
 	private static JFrame v;
 	public static ArrayList<String> pelis;
+	public static String pelicula;
 
 	public Cartelera() {
 
@@ -50,8 +51,8 @@ public class Cartelera extends JFrame {
 		JPanel cartelera = new JPanel();
 		cartelera.setLayout(new GridLayout());
 		pelis = new ArrayList();
-		pelis.add("Frozen_2.jpg");
-		pelis.add( "Vengadores_Endgame.jpg");
+		pelis.add("Frozen2.jpg");
+		pelis.add( "VengadoresEndgame.jpg");
 		
 		for (String peli : pelis) {
 			ImageIcon img = new ImageIcon("src/img/" + peli);
@@ -62,12 +63,11 @@ public class Cartelera extends JFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
 					Thread t2 = new Thread() {
 						public void run() {
-
-							setVisible(false);
 							
+							setVisible(false);
+							PeliculaIndividual.nombrePeli(peli);
 							PeliculaIndividual.main(null);
 
 							dispose();
