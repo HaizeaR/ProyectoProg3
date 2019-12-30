@@ -3,7 +3,12 @@ package Ventanas;
 import BD.BDprueba2;
 
 import javax.swing.*;
+
+import com.sun.corba.se.impl.orbutil.graph.Graph;
+import com.sun.prism.Image;
+
 import java.awt.BorderLayout;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -20,7 +25,10 @@ public class PeliculaIndividual extends JFrame{
 
 	
 	
-	JPanel pPeli, pFoto, pBotonera; 
+	JPanel pPeli, pBotonera;
+
+	JLabel lFoto; 
+	
 	//JTextArea taDescrip; 
 	JTextPane tpDescrip;
 	JTable tabla; 
@@ -35,9 +43,19 @@ public class PeliculaIndividual extends JFrame{
 		
 
 		pPeli = new JPanel(); 
-		getContentPane().add(pPeli, BorderLayout.CENTER); 
+		getContentPane().add(pPeli,BorderLayout.CENTER); 
 
-		pFoto = new JPanel(); 
+		  
+		
+		ImageIcon img = new ImageIcon("Frozen2" + ".jpg"); 
+	
+		lFoto = new JLabel(img);
+		
+		
+		//Image img2 = new 
+		
+	
+		
 		
 		
 		
@@ -49,9 +67,8 @@ public class PeliculaIndividual extends JFrame{
 
 
 		pPeli.setLayout(new BorderLayout());
-		pPeli.add(pFoto, BorderLayout.WEST); 
-		pPeli.add(tpDescrip, BorderLayout.CENTER); 
-
+		pPeli.add(lFoto, BorderLayout.WEST); 
+		pPeli.add(tpDescrip, BorderLayout.NORTH); 
 
 		tabla = new JTable(); 
 		getContentPane().add(tabla, BorderLayout.SOUTH); 
