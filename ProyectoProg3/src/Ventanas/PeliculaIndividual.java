@@ -54,11 +54,6 @@ public class PeliculaIndividual extends JFrame{
 		
 		//Image img2 = new 
 		
-	
-		
-		
-		
-		
 //		ImageIcon img = new ImageIcon("src/img/" + peli);
 //		JButton cartelera1 = new JButton(img);
 //		
@@ -68,7 +63,7 @@ public class PeliculaIndividual extends JFrame{
 
 		pPeli.setLayout(new BorderLayout());
 		pPeli.add(lFoto, BorderLayout.WEST); 
-		pPeli.add(tpDescrip, BorderLayout.CENTER); 
+		pPeli.add(tpDescrip, BorderLayout.NORTH); 
 
 		tabla = new JTable(); 
 		getContentPane().add(tabla, BorderLayout.SOUTH); 
