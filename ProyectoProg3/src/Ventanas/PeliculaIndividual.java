@@ -26,7 +26,7 @@ public class PeliculaIndividual extends JFrame{
 	static String pelicula;
 
 
-
+ 
 	public PeliculaIndividual() {
 		setSize(600, 600);
 		setTitle("Peli individual");
