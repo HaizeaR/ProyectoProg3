@@ -32,6 +32,7 @@ public class PeliculaIndividual extends JFrame{
 		setSize(600, 600);
 		setTitle("Peli individual");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
 
 		pPeli = new JPanel(); 
 		getContentPane().add(pPeli, BorderLayout.CENTER); 
