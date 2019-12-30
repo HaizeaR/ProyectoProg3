@@ -261,7 +261,10 @@ public class LogIn extends JFrame {
 //		}
 //	}
 	
+	
+	
 
+	 
 	public void confirmarLogIn() {
 		//Connection conn = BDprueba2.abrirConexion( "Cine2.db" );
 		Connection conn = BDprueba2.initBD("Cine2.db");
