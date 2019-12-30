@@ -38,7 +38,6 @@ public class PeliculaIndividual extends JFrame{
 		
 		
 		
-		
 //		ImageIcon img = new ImageIcon("src/img/" + peli);
 //		JButton cartelera1 = new JButton(img);
 //		
