@@ -19,6 +19,23 @@ public class BDprueba2 {
 	
 	private static Logger log; 
 	
+	/** Inicializa una BD SQLITE y devuelve una conexión con ella
+	 * @param nombreBD	Nombre de fichero de la base de datos
+	 * @return	Conexión con la base de datos indicada. Si hay algún error, se devuelve null
+	 */
+	public static Connection initBD( String nombreBD ) {
+		try {
+		    Class.forName("org.sqlite.JDBC");
+		    Connection con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD );
+			//log( Level.INFO, "Conectada base de datos " + nombreBD, null );
+		    return con;
+		} catch (ClassNotFoundException | SQLException e) {
+			//log( Level.SEVERE, "Error en conexión de base de datos " + nombreBD, e );
+			return null;
+		}
+	}
+	
+	
 	/** Abre conexión con la base de datos
 	 * @param nombreBD	Nombre del fichero de base de datos
 	 * @return	true si la conexión ha sido correcta, false en caso contrario

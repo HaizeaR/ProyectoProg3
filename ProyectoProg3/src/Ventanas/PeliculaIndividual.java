@@ -2,12 +2,14 @@ package Ventanas;
 
 import javax.swing.table.TableColumn;
 
+import BD.BDprueba2;
 import sun.util.calendar.JulianCalendar;
 
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 
 /** Ventana donde se muestra información de la perlicula individual
  * con sus horarios
@@ -65,8 +67,12 @@ public class PeliculaIndividual extends JFrame{
 
 		bAtras.addActionListener((ActionEvent e) -> {volverAtras();});
 		bNext.addActionListener((ActionEvent e) -> {SeleccionAsientos(); } );
-
-
+		
+	}
+	
+	public void sacarDatos() {
+		Connection con = BDprueba2.initBD("peliculas.bd");
+		
 	}
 
 	/** Método utilizado para volver a la panatalla de la cartelera
