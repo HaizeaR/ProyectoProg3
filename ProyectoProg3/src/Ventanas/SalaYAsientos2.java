@@ -49,7 +49,7 @@ public class SalaYAsientos2 extends JFrame {
 		
 		// cambiar a layout NULL 
 		
-		 
+		
 		
 		//panel.setLayout(new GridLayout(FILAS, COLUMNAS));
 		panel.setLayout(null);
