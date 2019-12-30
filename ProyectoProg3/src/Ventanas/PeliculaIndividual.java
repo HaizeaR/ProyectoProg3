@@ -26,13 +26,11 @@ public class PeliculaIndividual extends JFrame{
 	static String pelicula;
 
 
- 
 	public PeliculaIndividual() {
 		setSize(600, 600);
 		setTitle("Peli individual");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
-		ImageIcon img = new ImageIcon("src/img/" + peli);
 
 		pPeli = new JPanel(); 
 		getContentPane().add(pPeli, BorderLayout.CENTER); 
@@ -88,6 +86,7 @@ public class PeliculaIndividual extends JFrame{
 			System.out.println(sentSQL);
 			ResultSet rs = st.executeQuery(sentSQL);
 		
+			
 			
 			while(rs.next()) {
 				System.out.println("entra");
