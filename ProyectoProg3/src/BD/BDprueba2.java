@@ -84,7 +84,7 @@ public class BDprueba2 {
 			System.out.println( sent );
 			statement.executeUpdate( sent );
 			
-			
+			 
 			
 			
 			
