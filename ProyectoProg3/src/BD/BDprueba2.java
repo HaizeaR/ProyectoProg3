@@ -84,6 +84,12 @@ public class BDprueba2 {
 			sent = "CREATE TABLE IF NOT EXISTS sesion (cod_sesion INTEGER PRIMARY KEY, fecha DATE, horaI String, ID_sala int(5), ID_peli int(5));";
 			System.out.println(sent);
 			statement.executeUpdate(sent);
+			
+//			sent = "CREATE TABLE IF NOT EXISTS cine ( "
+			
+			
+			
+			
 
 //			sent = "CREATE TABLE IF NOT EXISTS compra (id INTEGER PRIMARY KEY AUTOINCREMENT, idProducto int, fecha bigint, cantidad int);";
 //			System.out.println( sent );
@@ -107,10 +113,27 @@ public class BDprueba2 {
 				String sent3 = "insert into cliente values ('16088533X', 'u', 'm', 'u.m@gmail.com', 12345678, 654321);";
 				System.out.println(sent3);
 				statement.executeUpdate(sent3);
+				
+//				String sent4 = "insert into cine values (1, 80, 122);";
+//				System.out.println(sent4);
+//				statement.executeUpdate(sent4);
+//				
+//				
+				
 
-				String sent4 = "insert into sesion values ('1', '2019-05-01', '16:30', '1', '111');";
-				System.out.println(sent4);
-				statement.executeUpdate(sent4);
+				String sent5 = "insert into sala values (1, 80, 122);";
+				System.out.println(sent5);
+				statement.executeUpdate(sent5);
+				
+	
+				String sent6 = "insert into sesion values ('1', '2019-05-01', '16:30', '1', '111');";
+				System.out.println(sent6);
+				statement.executeUpdate(sent6);
+				
+				
+			
+				
+				
 
 //				sent = "insert into producto (id, nombre, precio) values (2,'Crucifijo rezos pre-examen',42);";
 //				System.out.println( sent );
