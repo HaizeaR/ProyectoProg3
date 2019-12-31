@@ -17,7 +17,7 @@ public class LogInAdmin extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	static JButton bRegistrar, bAtras;
+	static JButton bRegistrar, bAtras, bEntrar;
 	static JLabel lCorreo, lContrasena,lLogin, lTitulo; 
 	static JTextField tfCorreo; 
 	static JPasswordField jpContrasena; 
@@ -92,21 +92,40 @@ public class LogInAdmin extends JFrame{
 		
 		
 			//bConfirmar.setBackground(Color.cyan);
+		bEntrar = new JButton("Entrar");
 		bRegistrar = new JButton("Registrar"); 
 		bAtras = new JButton("Atras");
 	
 		pBotonera.add(bAtras); 
+		pBotonera.add(bEntrar);
 		pBotonera.add(bRegistrar); 
 		
 		
 		// Action Events para los botones 
-		
+		bEntrar.addActionListener((ActionEvent e) -> {irAMenu(); });
 		bAtras.addActionListener((ActionEvent e) -> {volverAtrasA();});
 		bRegistrar.addActionListener((ActionEvent e) -> {accedeRegistroA(); } );
 
 		
 	
 	}
+	
+	private void irAMenu() {
+		Thread t = new Thread() {
+			public void run() {
+				//LogIn.guardaConfig();
+				setVisible(false);
+				FuncionesAdmin.main(null); 
+
+				dispose();
+			}				
+		}; 
+		t.start();
+	}
+	
+	
+	
+	
 	private void volverAtrasA() {
 		Thread t1 = new Thread() {
 			public void run() {
@@ -138,6 +157,11 @@ public class LogInAdmin extends JFrame{
 		t2.start();
 	}
 
+	
+	
+	
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		LogInAdmin ventLogin = new LogInAdmin(); 
