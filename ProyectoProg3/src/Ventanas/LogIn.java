@@ -195,13 +195,21 @@ public class LogIn extends JFrame {
 			public void run() {
 				
 				
-			
-				
-				
-				setVisible(false);
-				LogInAdmin.main(null); 
+				  String c = JOptionPane.showInputDialog("Clave ADMIN");
+				  
+				  // solo se abre la ventana de ADMIN si se introduce código 
+				  // 123
+				  // mejorar seguridad de esto ?
+				  
+				  if (c.compareTo("123") == 0) {
+					  setVisible(false);
+						LogInAdmin.main(null); 
 
-				dispose();
+						dispose();
+				  }
+				
+				
+				
 			}				
 		}; 
 		t4.start();
