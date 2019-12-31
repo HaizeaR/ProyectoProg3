@@ -79,6 +79,13 @@ public class Cartelera extends JFrame {
 
 			
 		}
+		
+		JPanel norte = new JPanel(); 
+		getContentPane().add(norte, BorderLayout.NORTH); 
+		JLabel imagen = new JLabel(new ImageIcon("src/img/screen.png"));
+		norte.add(imagen);
+		
+		//getContentPane().add(imagen, BorderLayout.NORTH);
 		getContentPane().add(cartelera, BorderLayout.CENTER);
 
 		////////////////////////// EVENTOS///////////////////////////
