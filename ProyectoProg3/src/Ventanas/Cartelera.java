@@ -54,6 +54,9 @@ public class Cartelera extends JFrame {
 		pelis = new ArrayList();
 		pelis.add("Frozen2.jpg");
 		pelis.add( "VengadoresEndgame.jpg");
+		pelis.add("Jumanji.jpg");
+		
+		// AÑADIR un scroll bar 
 		
 		for (String peli : pelis) {
 			ImageIcon img = new ImageIcon("src/img/" + peli);
