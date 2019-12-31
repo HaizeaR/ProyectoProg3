@@ -23,6 +23,14 @@ public class Sesion {
 	// array de sala 
 	
 
+	public int getCod_sesion() {
+		return cod_sesion;
+	}
+
+	public void setCod_sesion(int cod_sesion) {
+		this.cod_sesion = cod_sesion;
+	}
+
 	public Sesion() {
 		// TODO Auto-generated constructor stub
 	}
