@@ -279,18 +279,22 @@ public class LogIn extends JFrame {
 				String contrasena = rs.getString("contrasena"); 
 				//char[] con = rs.get
 
-				char [] c = jpContrasena.getPassword(); 
-				String contrasenaVentana =	c.toString(); 
+//				char [] c = jpContrasena.getPassword(); 
+//				String contrasenaVentana =	c.toString(); 
 				
-				System.out.println(contrasenaVentana);
-				System.out.println("//");
-				System.out.println(contrasena);
+//				System.out.println(contrasenaVentana);
+//				System.out.println("//");
+//				System.out.println(contrasena);
 				//String contrasenaVentana = jpContrasena.getPassword().toString();
+				
+				// Asi funiona si en la BD tenemos 12345678
+				// si lo tenemos "codificado" no funciona
+				String valorEnTexto = new String( jpContrasena.getPassword() );
 
 				if ( correo.compareTo(tfCorreo.getText()) == 0) {
 					System.out.println("entra");
 
-					if (contrasenaVentana.compareTo(contrasena) == 0 ) {
+					if (valorEnTexto.compareTo(contrasena) == 0 ) {
 						System.out.println("entra");
 						
 						confirmCompra();
