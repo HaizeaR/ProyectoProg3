@@ -3,6 +3,7 @@ package Ventanas;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,9 +40,10 @@ public class LogIn extends JFrame {
 	
 	
 	static JButton bConfirmar, bRegistrar, bAtras, bAdmin;
-	static JLabel lCorreo, lContrasena,lLogin,lPelicula, lSala, lHora, lAsiento; 
+	static JLabel lCorreo, lContrasena,lLogin,lPelicula, lSala, lHora, lAsiento, lbimagen; 
 	static JTextField tfCorreo; 
 	static JPasswordField jpContrasena; 
+	
 	//private static JDialog v;
 	
 
@@ -102,7 +104,18 @@ public class LogIn extends JFrame {
 		pCentral.add(lContrasena);
 		pCentral.add(jpContrasena); 
 		
+		// podemos hacer que sea un botón y la confirmación de compra sea
+		// pulsando la foto
+		
+		lbimagen = new JLabel(new ImageIcon("src/img/icon.png"));
+		lbimagen.setSize(10, 10);
+		
+		pCentral.add(lbimagen);
 
+
+	
+		
+		
 	
 		JPanel pBotonera = new JPanel(); 
 		getContentPane().add(pBotonera, BorderLayout.SOUTH);
@@ -315,7 +328,7 @@ public class LogIn extends JFrame {
 
 	}
 
-	
+
 	
 	
 	
