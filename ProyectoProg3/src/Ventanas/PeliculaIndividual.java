@@ -35,6 +35,7 @@ public class PeliculaIndividual extends JFrame{
 	JTable tabla; 
 	JButton bAtras, bNext; 
 	static String pelicula;
+	int cod_peli;
 
 
 	public PeliculaIndividual() {
@@ -76,9 +77,9 @@ public class PeliculaIndividual extends JFrame{
 		Connection con = BDprueba2.initBD("Cine2.db");
 		try {
 			Statement stmt = con.createStatement();
-			String sentSQL = "SELECT * FROM sesion";
+			String sentSQL = "SELECT * FROM sesion where ID_peli = '" + cod_peli + "'";
 			ResultSet rs = stmt.executeQuery(sentSQL);
-			
+			System.out.println(sentSQL);
 			while( rs.next()) {
 				String horario = rs.getString("horaI");
 				JButton button = new JButton(horario);
@@ -120,6 +121,7 @@ public class PeliculaIndividual extends JFrame{
 				System.out.println("entra");
 				String titulo = rs.getString("titulo_peli");
 				String descripcion = rs.getString("descrip_peli");
+				cod_peli = rs.getInt("cod_peli");
 				System.out.println(descripcion);
 				int duracion = rs.getInt("duracion_peli");
 				tpDescrip.setText(descripcion);
