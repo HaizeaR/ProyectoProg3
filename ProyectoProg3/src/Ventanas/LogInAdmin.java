@@ -18,7 +18,7 @@ public class LogInAdmin extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	static JButton bRegistrar, bAtras;
-	static JLabel lCorreo, lContrasena,lLogin; 
+	static JLabel lCorreo, lContrasena,lLogin, lTitulo; 
 	static JTextField tfCorreo; 
 	static JPasswordField jpContrasena; 
 	//private static JDialog v;
@@ -31,16 +31,13 @@ public class LogInAdmin extends JFrame{
 		setSize(600,400);
 		setLocation(300, 200);
 		setTitle("LOG IN ADMIN");
+		
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 		
 		
 		// EDITAR PARA QUE SE VEA 
 		
-		JPanel pSuperior = new JPanel();
-		getContentPane().add(pSuperior, BorderLayout.NORTH);
-		lLogin = new JLabel("LOG IN ADMIN");
-		lLogin.setFont(new java.awt.Font("Tahoma", 1, 18));
-		pSuperior.add(lLogin);
+	
 		
 		
 		JPanel pInfoCompra = new JPanel(); 
@@ -52,7 +49,22 @@ public class LogInAdmin extends JFrame{
 		pInfoCompra.setBackground(Color.white);
 		getContentPane().add(pInfoCompra, BorderLayout.NORTH);
 		
+		JPanel pTitulo = new JPanel(); 
+		getContentPane().add(pTitulo, BorderLayout.NORTH); 
+		pTitulo.setBackground(Color.GRAY);
+		lTitulo = new JLabel("ADMINISTRADOR");
+		lTitulo.setFont(new java.awt.Font("Tahoma", 1, 30));
+		
+		pTitulo.add(lTitulo);
+		
+		
+		
+		
+		
 		JPanel pCentral = new JPanel(); 
+		pCentral.setBackground(Color.GRAY);
+		
+		
 		
 		getContentPane().add(pCentral, BorderLayout.CENTER);
 	
@@ -62,6 +74,9 @@ public class LogInAdmin extends JFrame{
 		
 		tfCorreo = new JTextField(10); 
 		jpContrasena = new JPasswordField(10);
+		
+		
+		
 	
 		
 		pCentral.add(lCorreo);

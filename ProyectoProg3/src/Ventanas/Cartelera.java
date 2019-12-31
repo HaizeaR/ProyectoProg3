@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
@@ -87,6 +88,14 @@ public class Cartelera extends JFrame {
 		
 		//getContentPane().add(imagen, BorderLayout.NORTH);
 		getContentPane().add(cartelera, BorderLayout.CENTER);
+		
+		JButton bAdmin = new JButton("Administrador"); 
+		
+		
+		
+		
+		getContentPane().add(bAdmin, BorderLayout.SOUTH); 
+		
 
 		////////////////////////// EVENTOS///////////////////////////
 
@@ -142,6 +151,9 @@ public class Cartelera extends JFrame {
 			}
 
 		});
+		
+		
+		bAdmin.addActionListener((ActionEvent e) -> {irAdmin();});
 
 	}
 
@@ -174,6 +186,34 @@ public class Cartelera extends JFrame {
 //		}
 //
 //	}
+	
+	
+	private void irAdmin() {
+		Thread t4 = new Thread() {
+			public void run() {
+				
+				
+				  String c = JOptionPane.showInputDialog("Clave ADMIN");
+				  
+				  // solo se abre la ventana de ADMIN si se introduce código 
+				  // 123
+				  // mejorar seguridad de esto ?
+				  
+				  if (c.compareTo("123") == 0) {
+					  setVisible(false);
+						LogInAdmin.main(null); 
+
+						dispose();
+				  }
+				
+				
+				
+			}				
+		}; 
+		t4.start();
+		
+	}
+	
 
 	public static void main(String[] args) {
 		Cartelera ventC = new Cartelera();
