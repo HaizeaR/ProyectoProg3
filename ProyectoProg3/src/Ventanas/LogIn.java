@@ -297,6 +297,7 @@ public class LogIn extends JFrame {
 			ResultSet rs = stat.executeQuery( SQL );
 			while(rs.next()) {
 				String correo = rs.getString("correo"); 
+				
 				String contrasena = rs.getString("contrasena"); 
 				//char[] con = rs.get
 
