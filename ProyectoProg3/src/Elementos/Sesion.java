@@ -13,7 +13,7 @@ public class Sesion {
 	private Date fecha; 
 	private String HoraI;
 	private int ID_sala; 
-	private int ID_pelicula; 
+	private int cod_peli; 
 	private int cod_sesion;
 	// Array list asiento 
 	// Arraylist usuario 
@@ -36,13 +36,13 @@ public class Sesion {
 	}
 
 	/////CONSTRUCTOR/////
-	public Sesion(int cod_sesion, Date fecha, String HoraI, int iD_sala, int iD_pelicula) {
+	public Sesion(int cod_sesion, Date fecha, String HoraI, int iD_sala, int Cod_peli) {
 		super();
 		this.cod_sesion = cod_sesion;
 		this.fecha = fecha;
 		this.HoraI = HoraI;
 		this.ID_sala = iD_sala;
-		this.ID_pelicula = iD_pelicula;
+		this.cod_peli = Cod_peli;
 	}
 
 	
@@ -72,16 +72,16 @@ public class Sesion {
 	}
 
 	public int getID_pelicula() {
-		return ID_pelicula;
+		return cod_peli;
 	}
 
-	public void setID_pelicula(int iD_pelicula) {
-		ID_pelicula = iD_pelicula;
+	public void setID_pelicula(int Cod_peli) {
+		cod_peli = Cod_peli;
 	}
 
 	@Override
 	public String toString() {
-		return "Sesion [fecha=" + fecha + ", HoraI=" + HoraI + ", ID_sala=" + ID_sala + ", ID_pelicula=" + ID_pelicula
+		return "Sesion [fecha=" + fecha + ", HoraI=" + HoraI + ", ID_sala=" + ID_sala + ", cod_pelicula=" + cod_peli
 				+ "]";
 	}
 	

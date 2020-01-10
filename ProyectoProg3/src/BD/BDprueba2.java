@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
 
 import Elementos.Admin;
 import Elementos.Asiento;
@@ -85,6 +86,14 @@ public class BDprueba2 {
 			System.out.println(sent);
 			statement.executeUpdate(sent);
 			
+			
+			sent = "CREATE TABLE IF NOT EXISTS cine (ID_cine INTEGER PRIMARY KEY, nombre_cine varchar(50), direccion_cine varchar(150));";
+			System.out.println(sent);
+			statement.executeUpdate(sent);
+			
+			
+			
+			
 //			sent = "CREATE TABLE IF NOT EXISTS cine ( "
 			
 			
@@ -114,27 +123,33 @@ public class BDprueba2 {
 				System.out.println(sent3);
 				statement.executeUpdate(sent3);
 				
-//				String sent4 = "insert into cine values (1, 80, 122);";
-//				System.out.println(sent4);
-//				statement.executeUpdate(sent4);
-//				
-//				
+				String sent4 = "insert into cine values (122, 'IMAX', 'Arriquíbar Plaza, 4, 48001 Bilbo');";
+				System.out.println(sent4);
+				statement.executeUpdate(sent4);
 				
-
+				
 				String sent5 = "insert into sala values (1, 80, 122);";
 				System.out.println(sent5);
 				statement.executeUpdate(sent5);
 				
-	
-				String sent6 = "insert into sesion values ('1', '2019-05-01', '16:30', '1', '111');";
+				String sent6 = "insert into sala values (2, 100, 122);";
 				System.out.println(sent6);
 				statement.executeUpdate(sent6);
+	
+				String sent7 = "insert into sesion values (1, '2019-05-01', '16:30', 1, 111);";
+				System.out.println(sent7);
+				statement.executeUpdate(sent7);
 				
 				
-			
+				String sent8 = "insert into sesion values (2, '2019-05-01', '16:30', 2, 222);";
+				System.out.println(sent8);
+				statement.executeUpdate(sent8);
+				
+				String sent9 = "insert into sesion values (3, '2019-05-02', '16:30', 1, 111);";
+				System.out.println(sent9);
+				statement.executeUpdate(sent9);
 				
 				
-
 //				sent = "insert into producto (id, nombre, precio) values (2,'Crucifijo rezos pre-examen',42);";
 //				System.out.println( sent );
 //				statement.executeUpdate( sent );
@@ -197,6 +212,45 @@ public class BDprueba2 {
 		}
 	}
 
+	
+	/** Reinicia en blanco las tablas de la base de datos. 
+	 * UTILIZAR ESTE MËTODO CON PRECAUCIÓN. Borra todos los datos que hubiera ya en las tablas
+	 * @param con	Conexión ya creada y abierta a la base de datos
+	 * @return	sentencia de trabajo si se borra correctamente, null si hay cualquier error
+	 */
+	// NO FUNCIONA
+	public static boolean reiniciarBD( Connection con ) {
+		
+		int respuesta = JOptionPane.showConfirmDialog(null, "¿Estas seguro?, pulsar este boton supone reiniciar la BD y perder sus datos", "¿Desea guardar los cambios?", JOptionPane.YES_NO_OPTION);
+		if(respuesta == 0) {
+		
+		
+		try {
+			Statement statement = con.createStatement();
+			statement.setQueryTimeout(30);  // poner timeout 30 msg
+			
+			//st.setQueryTimeout(30);  // poner timeout 30 msg
+			st.executeUpdate("drop table if exists cine");
+			st.executeUpdate("drop table if exists admin");
+			st.executeUpdate("drop table if exists sala");
+			st.executeUpdate("drop table if exists sesion");
+			st.executeUpdate("drop table if exists pelicula");
+			st.executeUpdate("drop table if exists cliente");
+			st.executeUpdate("drop table if exists asiento");
+			//log( Level.INFO, "Reiniciada base de datos", null );
+			return abrirConexion("Cine2.db");
+		} catch (SQLException e) {
+			//log( Level.SEVERE, "Error en reinicio de base de datos", e );
+			return false;
+		}
+	}
+		return false;
+	}
+
+	
+	
+
+	
 	/**
 	 * Inserta un cliente en la base de datos abierta
 	 */
@@ -346,6 +400,15 @@ public class BDprueba2 {
 		return ret.toString();
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //
 //	/** Borra una compra en la base de datos abierta
 //	 * @param compra	Compra a borrar
