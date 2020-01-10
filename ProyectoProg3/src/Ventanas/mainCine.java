@@ -7,6 +7,8 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import BD.BDprueba2;
+
 
 
 // clase principal que ejecuta el programa 
@@ -28,6 +30,10 @@ public class mainCine {
 	public static void main(String[] args) throws SecurityException, IOException {
 		Cartelera vent = new Cartelera();
 		vent.setVisible(true);
+		BDprueba2.abrirConexion("Cine2.db"); 
+		if(vent.isActive()==false) {
+			BDprueba2.cerrarConexion();
+		}
 
 		log = Logger.getLogger("log-cine");
 		log.log(Level.INFO, "Inicio de programa" + (new Date()));

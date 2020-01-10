@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
@@ -15,11 +16,12 @@ import Elementos.Asiento;
 import Elementos.Cliente;
 import Elementos.Sesion;
 
+
 public class BDprueba2 {
 	private static Connection conexion;
 	private static Statement st;
 
-	private static Logger log;
+	private static boolean LOGGING = true;
 
 	/**
 	 * Inicializa una BD SQLITE y devuelve una conexiÃ³n con ella
@@ -32,13 +34,15 @@ public class BDprueba2 {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			Connection con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
-			// log( Level.INFO, "Conectada base de datos " + nombreBD, null );
+			 log( Level.INFO, "Conectada base de datos " + nombreBD, null );
 			return con;
 		} catch (ClassNotFoundException | SQLException e) {
-			// log( Level.SEVERE, "Error en conexiÃ³n de base de datos " + nombreBD, e );
+			 log( Level.SEVERE, "Error en conexiÃ³n de base de datos " + nombreBD, e );
 			return null;
 		}
 	}
+
+	
 
 	/**
 	 * Abre conexiÃ³n con la base de datos
@@ -61,35 +65,43 @@ public class BDprueba2 {
 
 			Statement statement = conexion.createStatement();
 			String sent = "CREATE TABLE IF NOT EXISTS cliente (dni String PRIMARY KEY, nombre String, apellido string, correo String, contrasena varchar(20), n_tarjeta int(16));";
-			System.out.println(sent);
+			//System.out.println(sent);
 			statement.executeUpdate(sent);
+			log( Level.INFO, "BD creación de tabla\t" + sent, null );
+
 
 			// REVISAR
 
 			sent = "CREATE TABLE IF NOT EXISTS admin (dni varchar(9) PRIMARY KEY, nombre varchar(100), apellido varchar(100), correo varchar(100), contrasena varchar(20));";
-			System.out.println(sent);
+			//System.out.println(sent);
 			statement.executeUpdate(sent);
+			log( Level.INFO, "BD creación de tabla\t" + sent, null );
 
 			sent = "CREATE TABLE IF NOT EXISTS asiento (codigo INTEGER PRIMARY KEY, fila int(5), columna int(5), ocupado boolean);";
-			System.out.println(sent);
+			//System.out.println(sent);
 			statement.executeUpdate(sent);
+			log( Level.INFO, "BD creación de tabla\t" + sent, null );
 
 			sent = "CREATE TABLE IF NOT EXISTS pelicula (cod_peli INTEGER PRIMARY KEY, titulo_peli varchar(100), descrip_peli varchar(100), duracion_peli int (3));";
-			System.out.println(sent);
+			//System.out.println(sent);
 			statement.executeUpdate(sent);
+			log( Level.INFO, "BD creación de tabla\t" + sent, null );
 
 			sent = "CREATE TABLE IF NOT EXISTS sala (numero_sala INTEGER PRIMARY KEY, capacidad sala int(3), ID_cine int(3));";
-			System.out.println(sent);
+			//System.out.println(sent);
 			statement.executeUpdate(sent);
+			log( Level.INFO, "BD creación de tabla\t" + sent, null );
 
 			sent = "CREATE TABLE IF NOT EXISTS sesion (cod_sesion INTEGER PRIMARY KEY, fecha DATE, horaI String, ID_sala int(5), ID_peli int(5));";
-			System.out.println(sent);
+			//System.out.println(sent);
 			statement.executeUpdate(sent);
+			log( Level.INFO, "BD creación de tabla\t" + sent, null );
 			
 			
 			sent = "CREATE TABLE IF NOT EXISTS cine (ID_cine INTEGER PRIMARY KEY, nombre_cine varchar(50), direccion_cine varchar(150));";
-			System.out.println(sent);
+			//System.out.println(sent);
 			statement.executeUpdate(sent);
+			log( Level.INFO, "BD creación de tabla\t" + sent, null );
 			
 			
 			
@@ -108,46 +120,64 @@ public class BDprueba2 {
 				// INSERTAR VALORES POR DEFECTO EN CLIENTE
 
 				sent = "insert into pelicula values (111, 'Frozen2', 'Elsa quiere descubrir quiÃ©n es en realidad y por quÃ© posee un poder tan asombroso', '143' );";
-				System.out.println(sent);
+				//System.out.println(sent);
 				statement.executeUpdate(sent);
+				log( Level.INFO, "BD insert en tabla\t" + sent, null );
 
 				String sent1 = "insert into pelicula values (222, 'VengadoresEndgame', 'Los Vengadores restantes deben encontrar una manera de recuperar a sus aliados para un enfrentamiento Ã©pico con Thanos', '203' );";
-				System.out.println(sent1);
+				//System.out.println(sent1);
 				statement.executeUpdate(sent1);
+				log( Level.INFO, "BD insert en tabla\t" + sent1, null );
+
 
 				String sent2 = "insert into cliente values ('12345678A', 'm', 'q', 'm.q@gmail.com', 12345678, 456789);";
-				System.out.println(sent2);
+				//System.out.println(sent2);
 				statement.executeUpdate(sent2);
+				log( Level.INFO, "BD insert en tabla\t" + sent2, null );
+
 
 				String sent3 = "insert into cliente values ('16088533X', 'u', 'm', 'u.m@gmail.com', 12345678, 654321);";
-				System.out.println(sent3);
+				//System.out.println(sent3);
 				statement.executeUpdate(sent3);
+				log( Level.INFO, "BD insert en tabla\t" + sent3, null );
 				
 				String sent4 = "insert into cine values (122, 'IMAX', 'Arriquíbar Plaza, 4, 48001 Bilbo');";
-				System.out.println(sent4);
+				//System.out.println(sent4);
 				statement.executeUpdate(sent4);
+				log( Level.INFO, "BD insert en tabla\t" + sent4, null );
+
 				
 				
 				String sent5 = "insert into sala values (1, 80, 122);";
-				System.out.println(sent5);
+				//System.out.println(sent5);
 				statement.executeUpdate(sent5);
+				log( Level.INFO, "BD insert en tabla\t" + sent5, null );
+
 				
 				String sent6 = "insert into sala values (2, 100, 122);";
-				System.out.println(sent6);
+				//System.out.println(sent6);
 				statement.executeUpdate(sent6);
+				log( Level.INFO, "BD insert en tabla\t" + sent6, null );
+
 	
 				String sent7 = "insert into sesion values (1, '2019-05-01', '16:30', 1, 111);";
-				System.out.println(sent7);
+				//System.out.println(sent7);
 				statement.executeUpdate(sent7);
+				log( Level.INFO, "BD insert en tabla\t" + sent7, null );
+
 				
 				
 				String sent8 = "insert into sesion values (2, '2019-05-01', '16:30', 2, 222);";
-				System.out.println(sent8);
+				//System.out.println(sent8);
 				statement.executeUpdate(sent8);
+				log( Level.INFO, "BD insert en tabla\t" + sent8, null );
+
 				
 				String sent9 = "insert into sesion values (3, '2019-05-02', '16:30', 1, 111);";
-				System.out.println(sent9);
+				//System.out.println(sent9);
 				statement.executeUpdate(sent9);
+				log( Level.INFO, "BD insert en tabla\t" + sent9, null );
+
 				
 				
 //				sent = "insert into producto (id, nombre, precio) values (2,'Crucifijo rezos pre-examen',42);";
@@ -166,6 +196,8 @@ public class BDprueba2 {
 
 			return true;
 		} catch (Exception e) {
+			log( Level.SEVERE, "Error " , null );
+
 			e.printStackTrace();
 			return false;
 		}
@@ -179,6 +211,8 @@ public class BDprueba2 {
 			conexion.close();
 			System.out.println("ConexiÃ³n cerrada");
 		} catch (SQLException e) {
+			log( Level.SEVERE, "Error en cerrar conexión de BD\t" , null );
+
 			e.printStackTrace();
 		}
 	}
@@ -444,5 +478,29 @@ public class BDprueba2 {
 		return null;
 
 	}
+	
+	
+	
+	
+
+	/////////////////////////////////////////////////////////////////////
+	//                      Logging                                    //
+	/////////////////////////////////////////////////////////////////////
+	
+	private static Logger logger = null;
+	
+	// Método local para loggear
+	private static void log( Level level, String msg, Throwable excepcion ) {
+		if (!LOGGING) return;
+		if (logger==null) {  // Logger por defecto local:
+			logger = Logger.getLogger( BDprueba2.class.getName() );  // Nombre del logger - el de la clase
+			logger.setLevel( Level.ALL );  // Loguea todos los niveles
+		}
+		if (excepcion==null)
+			logger.log( level, msg );
+		else
+			logger.log( level, msg, excepcion );
+	}
+	
 
 }

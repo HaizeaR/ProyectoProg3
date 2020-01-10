@@ -42,7 +42,7 @@ public class FuncionesAdmin extends JFrame{
 		
 		bNuevaPeli.addActionListener((ActionEvent e) -> {guardarPeli();});
 		
-		bReiniciarBD.addActionListener((ActionEvent e) -> {BDprueba2.reiniciarBD(con);}); 
+		//bReiniciarBD.addActionListener((ActionEvent e) -> {BDprueba2.reiniciarBD(con);}); 
 		// NO FUNCIONA
 		
 		
