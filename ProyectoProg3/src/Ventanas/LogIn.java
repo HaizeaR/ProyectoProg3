@@ -297,8 +297,10 @@ public class LogIn extends JFrame {
 			ResultSet rs = stat.executeQuery( SQL );
 			while(rs.next()) {
 				String correo = rs.getString("correo"); 
+		
 				
 				String contrasena = rs.getString("contrasena"); 
+				
 				//char[] con = rs.get
 
 //				char [] c = jpContrasena.getPassword(); 
@@ -312,7 +314,15 @@ public class LogIn extends JFrame {
 				// Asi funiona si en la BD tenemos 12345678
 				// si lo tenemos "codificado" no funciona
 				String valorEnTexto = new String( jpContrasena.getPassword() );
-
+				
+				//System.out.println(valorEnTexto);
+				//System.out.println(contrasena);
+				//Cipher cipher = Cipher.getInstance(algorithm);
+				
+				
+				// en lugar de desencriptar el valor de la BD tenemos que encriptar el que 
+				// sacamos del JTEXTFIELD de la misma forma
+				
 				if ( correo.compareTo(tfCorreo.getText()) == 0) {
 					System.out.println("entra");
 
