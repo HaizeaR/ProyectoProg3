@@ -15,8 +15,8 @@ import Elementos.Cliente;
 import Elementos.Sesion;
 
 public class BDprueba2 {
-	private static Connection conexion;
-	private static Statement st;
+	public static Connection conexion;
+	public static Statement st;
 
 	private static boolean LOGGING = true;
 

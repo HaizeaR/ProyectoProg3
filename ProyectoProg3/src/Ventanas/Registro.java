@@ -34,7 +34,7 @@ import BD.BDprueba2;
 public class Registro extends JFrame {
 
 	private static Connection con;
-	private static Statement st;
+	private static Statement st ;
 	private static ResultSet rs;
 	
 	
@@ -164,7 +164,7 @@ public class Registro extends JFrame {
 			@Override
 			public void windowClosed(WindowEvent e) {
 				
-				BDprueba2.cerrarConexion();
+			//	BDprueba2.cerrarConexion();
 				
 			}
 			
@@ -226,18 +226,20 @@ public class Registro extends JFrame {
 				try {
 					
 				num_tarjeta = Long.parseLong(tfNumero_tarjeta.getText());
-				
-				}catch(Exception e) {}
-				
-				
+				cliente = new Cliente (DNI, nombre,apellido,correo,contrasena,num_tarjeta); 
+
 				if(comprobarDNI(DNI) == true || comprobarContrasena(contrasena) == true || comprobarCorreo(correo, true) == true || comprobarNumTarjeta(tfNumero_tarjeta.getText(), true) == true ) {
 					System.out.println("error");
-					cliente = new Cliente (DNI, nombre,apellido,correo,contrasena,num_tarjeta); 
-					BDprueba2.insertCliente(cliente,st);
+					
+					BDprueba2.insertCliente(cliente,BDprueba2.st);
 
 				} else {
 					JOptionPane.showMessageDialog(null, "No se ha podido registrar ");
-
+				}
+				
+				}catch(Exception e) {}
+				
+			
 				}
 				
 
@@ -247,7 +249,7 @@ public class Registro extends JFrame {
 			
 				
 
-	}
+	
 	
 
 	
