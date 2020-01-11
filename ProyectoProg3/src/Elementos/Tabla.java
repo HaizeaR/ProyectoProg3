@@ -695,6 +695,7 @@ public class Tabla {
 	// Métodos relacionados con el modelo de tabla (cuando se quiere utilizar esta tabla en una JTable)
 	
 	protected TablaTableModel miModelo = null;
+	
 	/** Devuelve un modelo de tabla de este objeto tabla para poderse utilizar como modelo de datos en una JTable
 	 * @return	modelo de datos de la tabla
 	 */
