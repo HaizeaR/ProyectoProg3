@@ -1,6 +1,8 @@
 package Ventanas;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.*;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
@@ -26,11 +28,17 @@ public class mainCine {
 
 
 	public static Logger log ; 
+	static Connection con; 
+	static Statement st; 
+	
 
 	public static void main(String[] args) throws SecurityException, IOException {
 		Cartelera vent = new Cartelera();
 		vent.setVisible(true);
-		BDprueba2.abrirConexion("Cine2.db"); 
+		
+		BDprueba2.initBD("Cine2.db"); 
+		BDprueba2.usarCrearTablasBD(con); 
+		BDprueba2.insertTablas(st);
 		if(vent.isActive()==false) {
 			BDprueba2.cerrarConexion();
 		}
