@@ -239,6 +239,7 @@ public class Registro extends JFrame {
 				
 				}catch(Exception e) {}
 				
+				
 			
 				}
 				
