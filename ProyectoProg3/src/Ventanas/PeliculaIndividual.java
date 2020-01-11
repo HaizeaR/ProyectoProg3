@@ -4,6 +4,7 @@ import BD.BDprueba2;
 import Elementos.Asiento;
 
 import javax.swing.*;
+import javax.swing.table.TableModel;
 
 import com.sun.corba.se.impl.orbutil.graph.Graph;
 import com.sun.prism.Image;
@@ -36,6 +37,8 @@ public class PeliculaIndividual extends JFrame{
 	JButton bAtras, bNext; 
 	static String pelicula;
 	int cod_peli;
+	JTable tablaHorario; 
+	TableModel mTabla; 
 
 
 	public PeliculaIndividual() {
@@ -55,14 +58,21 @@ public class PeliculaIndividual extends JFrame{
 //		JButton cartelera1 = new JButton(img);
 //		
 		tpDescrip = new JTextPane(); 
+		
+		
+	
+		
 
 
 		pPeli.setLayout(new BorderLayout());
 		pPeli.add(lFoto, BorderLayout.WEST); 
 		pPeli.add(tpDescrip, BorderLayout.NORTH); 
 
-		tabla = new JTable(); 
-		getContentPane().add(tabla, BorderLayout.SOUTH); 
+		
+
+		tablaHorario = new JTable(); 
+		getContentPane().add(tablaHorario,BorderLayout.SOUTH);
+		
 
 		pBotonera = new JPanel(); 
 		pBotoneraHorario = new JPanel();
@@ -170,7 +180,30 @@ public class PeliculaIndividual extends JFrame{
 	}
 	
 
-
+// Vamos a implementar un JTABLE que contanga la información de las seisiones 
+	// Creo que podemos crear una estructura 
+	// Un HashMap que tenga como clave un String ( nombre de peli) y un SET que tenga 
+	// las fechas y los horarios 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static void main(String[] args) {
 		PeliculaIndividual v = new PeliculaIndividual(); 
 		v.setVisible(true);
