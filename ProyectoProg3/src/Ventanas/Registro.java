@@ -144,7 +144,7 @@ public class Registro extends JFrame {
 			@Override
 			public void windowOpened(WindowEvent e) {
 				//BD.initBD();
-				BDprueba2.abrirConexion("Cine2.db");
+				//BDprueba2.abrirConexion("Cine2.db");
 			//	mainCine.log.log(Level.INFO, "Conexión BD abierta");
 				
 			}
@@ -209,8 +209,9 @@ public class Registro extends JFrame {
 				String apellido = tfApellido.getText();
 				
 				String DNI = tfDNI.getText();
-				//DNI.toString();
 				comprobarDNI(DNI);
+				
+				
 				
 				
 				String correo = tfCorreo.getText(); 
@@ -218,13 +219,8 @@ public class Registro extends JFrame {
 				
 			
 				String contrasena = new String( jpContrasena.getPassword() );
-
 				comprobarContrasena(contrasena);
-				
-				
-				// comprobar que en el numero de tarjeta NO tiene letras 
-				// si tiene letras que de error y no te deja registrar el cliente 
-
+		
 				comprobarNumTarjeta(tfNumero_tarjeta.getText(), true);
 			
 				try {
@@ -232,35 +228,24 @@ public class Registro extends JFrame {
 				num_tarjeta = Long.parseLong(tfNumero_tarjeta.getText());
 				
 				}catch(Exception e) {}
+				
+				
+				if(comprobarDNI(DNI) == true || comprobarContrasena(contrasena) == true || comprobarCorreo(correo, true) == true || comprobarNumTarjeta(tfNumero_tarjeta.getText(), true) == true ) {
+					System.out.println("error");
+					cliente = new Cliente (DNI, nombre,apellido,correo,contrasena,num_tarjeta); 
+					BDprueba2.insertCliente(cliente,st);
 
-				cliente = new Cliente (DNI, nombre,apellido,correo,contrasena,num_tarjeta); 
-				// System.out.println(cliente.toString());
+				} else {
+					JOptionPane.showMessageDialog(null, "No se ha podido registrar ");
+
+				}
+				
+
+			
+				
 				
 			
 				
-			
-				BDprueba2.insertarCliente(cliente);
-				//	mainCine.log.log(Level.INFO, "Usuario registrado");
-			
-				
-				// cliente = new Cliente (nombre,apellido,correo,contrasena,num_tarjeta); 
-				//clientes.add(cliente);
-				
-//				try {
-//
-//					for(Cliente c: clientes) {
-//						
-//						if (cliente.equals(c)) {
-//							JOptionPane.showMessageDialog(null, "Usuario ya existente");
-//							System.out.println("Error");
-//							
-//						}else {
-//							clientes.add(cliente);
-//						}
-//					}
-//					System.out.println(clientes);
-//				}
-//				catch(Exception e) {}
 
 	}
 	
@@ -291,10 +276,12 @@ public class Registro extends JFrame {
 	/** Método que comprueba que la contraseña tiene al menos 8 carácteres
 	 * @param contraseña
 	 */
-	public void comprobarContrasena(String contrasena) {
+	public static boolean comprobarContrasena(String contrasena) {
 		if(contrasena.length() < 8) {
 			JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos 8 carácteres");
+		return false; 
 		}
+		return true; 
 	}
 
 	/** Método que comprueba que el correo cumple el patrón

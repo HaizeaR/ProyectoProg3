@@ -230,7 +230,7 @@ public class RegistrarAdmin extends JFrame {
 			
 				
 			
-				BDprueba2.insertarAdmin(admin);
+				BDprueba2.insertarAdmin(admin, st);
 			
 				
 
