@@ -13,11 +13,11 @@ public class Usuario {
 	private String nombre; 
 	private String apellido; 
 	private String correo;
-	private char[] contrasena;
+	private String contrasena;
 
 	// CONSTRUCTOR
 
-	public Usuario(String DNI, String nombre, String apellido, String correo, char[] contrasena) {
+	public Usuario(String DNI, String nombre, String apellido, String correo, String contrasena) {
 	
 		this.DNI = DNI;
 		this.nombre = nombre;
@@ -93,14 +93,14 @@ public class Usuario {
 	/** Deveulve la contraseña en un formato (....)
 	 * @return constraseña
 	 */
-	public char[] getContrasena() {
+	public String getContrasena() {
 		return contrasena;
 	}
 	
 	/** Permite definir la contraseña
 	 * @param contraseña
 	 */
-	public void setContrasena(char[] contrasena) {
+	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
 	

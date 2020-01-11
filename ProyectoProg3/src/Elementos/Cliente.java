@@ -20,7 +20,7 @@ public class Cliente extends Usuario{
 //		super(nombre, apellido, correo, contrasena);
 
 
-	public Cliente(String DNI, String nombre, String apellido, String correo, char[] contrasena, long numero_tarjeta) {
+	public Cliente(String DNI, String nombre, String apellido, String correo, String contrasena, long numero_tarjeta) {
 		super(DNI, nombre, apellido, correo, contrasena);
 
 		this.numero_tarjeta = numero_tarjeta;

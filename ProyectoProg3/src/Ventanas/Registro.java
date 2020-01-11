@@ -216,7 +216,9 @@ public class Registro extends JFrame {
 				String correo = tfCorreo.getText(); 
 				comprobarCorreo(correo, true);
 				
-				char[] contrasena = jpContrasena.getPassword();
+			
+				String contrasena = new String( jpContrasena.getPassword() );
+
 				comprobarContrasena(contrasena);
 				
 				
@@ -289,8 +291,8 @@ public class Registro extends JFrame {
 	/** Método que comprueba que la contraseña tiene al menos 8 carácteres
 	 * @param contraseña
 	 */
-	public void comprobarContrasena(char[] contrasena) {
-		if(contrasena.length < 8) {
+	public void comprobarContrasena(String contrasena) {
+		if(contrasena.length() < 8) {
 			JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos 8 carácteres");
 		}
 	}

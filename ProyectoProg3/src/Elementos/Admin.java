@@ -17,7 +17,7 @@ public class Admin extends Usuario {
 	
 	
 
-	public Admin(String DNI, String nombre, String apellido, String correo, char[] contrasena) {
+	public Admin(String DNI, String nombre, String apellido, String correo, String contrasena) {
 		super(DNI, nombre, apellido, correo, contrasena);
 		
 	}

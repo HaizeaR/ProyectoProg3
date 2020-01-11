@@ -146,7 +146,8 @@ public class RegistrarAdmin extends JFrame {
 			@Override
 			public void windowOpened(WindowEvent e) {
 				//BD.initBD();
-				BDprueba2.abrirConexion("cine2.db");
+				// creo que tampoco hace falta aqui
+				//BDprueba2.abrirConexion("cine2.db");
 				
 			}
 			
@@ -215,16 +216,13 @@ public class RegistrarAdmin extends JFrame {
 				String correo = tfCorreo.getText(); 
 				comprobarCorreo(correo, true);
 				
-				char[] contrasena = jpContrasena.getPassword();
+				String contrasena = new String( jpContrasena.getPassword() );
+
 				comprobarContrasena(contrasena);
 				
 				
 				// comprobar que en el numero de tarjeta NO tiene letras 
 				// si tiene letras que de error y no te deja registrar el cliente 
-
-		
-			
-		
 
 				 admin = new Admin (DNI, nombre,apellido,correo,contrasena); 
 				// System.out.println(cliente.toString());
@@ -265,8 +263,8 @@ public class RegistrarAdmin extends JFrame {
 	/** Método que comprueba que la contraseña tiene al menos 8 carácteres
 	 * @param contraseña
 	 */
-	public void comprobarContrasena(char[] contrasena) {
-		if(contrasena.length < 8) {
+	public void comprobarContrasena(String contrasena) {
+		if(contrasena.length() < 8) {
 			JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos 8 carácteres");
 		}
 	}
