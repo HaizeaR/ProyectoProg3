@@ -4,6 +4,9 @@ import BD.BDprueba2;
 import Elementos.Asiento;
 
 import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
 import com.sun.corba.se.impl.orbutil.graph.Graph;
@@ -13,10 +16,12 @@ import java.awt.BorderLayout;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /** Ventana donde se muestra información de la perlicula individual
  * con sus horarios
@@ -57,21 +62,27 @@ public class PeliculaIndividual extends JFrame{
 //		ImageIcon img = new ImageIcon("src/img/" + peli);
 //		JButton cartelera1 = new JButton(img);
 //		
+		
+		
 		tpDescrip = new JTextPane(); 
 		
 		
-	
-		
-
-
 		pPeli.setLayout(new BorderLayout());
 		pPeli.add(lFoto, BorderLayout.WEST); 
 		pPeli.add(tpDescrip, BorderLayout.NORTH); 
 
 		
 
-		tablaHorario = new JTable(); 
-		getContentPane().add(tablaHorario,BorderLayout.SOUTH);
+		//tablaHorario = new JTable(); 
+		
+		
+		
+		tablaHorario = new JTable(mTabla); 
+		JScrollPane scrollpane = new JScrollPane(tablaHorario);
+		
+
+		getContentPane().add(tablaHorario, BorderLayout.SOUTH); 
+		
 		
 
 		pBotonera = new JPanel(); 
@@ -185,29 +196,25 @@ public class PeliculaIndividual extends JFrame{
 	// Un HashMap que tenga como clave un String ( nombre de peli) y un SET que tenga 
 	// las fechas y los horarios 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	public static void main(String[] args) {
 		PeliculaIndividual v = new PeliculaIndividual(); 
 		v.setVisible(true);
 		v.sacarDatos();
 	}
+	
+	
+	
+		
+		
+	}
 
-}
+	
+	
+	
+	
+	
+	
+	
+
