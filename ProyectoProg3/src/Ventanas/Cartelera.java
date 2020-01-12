@@ -1,7 +1,9 @@
 package Ventanas;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Scrollbar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -20,8 +22,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
+
+import javafx.scene.control.ScrollBar;
 
 // Queremos que se creen paneles de forma recursiva 
 // para cada Pelicula que se proyecta esa semana 
@@ -49,14 +55,42 @@ public class Cartelera extends JFrame {
 
 		setSize(600, 600);
 		setTitle("Cartelera");
-		JPanel cartelera = new JPanel();
-		cartelera.setLayout(new GridLayout());
-		pelis = new ArrayList();
+		
+		pelis = new ArrayList<String>();
 		pelis.add("Frozen2.jpg");
 		pelis.add( "VengadoresEndgame.jpg");
 		pelis.add("Jumanji.jpg");
+		pelis.add("Interestelar.jpg");
 		
-		// AÑADIR un scroll bar 
+		JPanel panelContenidos = new JPanel();
+		panelContenidos.setBackground(Color.WHITE);
+		panelContenidos.setLayout(new BorderLayout());
+		setContentPane(panelContenidos);
+		
+		JPanel norte = new JPanel();  
+		norte.setBackground(Color.WHITE);
+		norte.setLayout(new GridLayout(1,1));
+		
+		panelContenidos.add(norte, BorderLayout.NORTH);
+		
+		JLabel imagen = new JLabel(new ImageIcon("src/img/screen.png"));
+		norte.add(imagen);
+		
+		
+		JPanel cartelera = new JPanel();
+		cartelera.setBackground(Color.WHITE);
+		cartelera.setLayout(new GridLayout(2 ,2));
+	//	panelContenidos.add(cartelera, BorderLayout.CENTER);
+		//cartelera.setLayout(new GridLayout());
+		 
+
+		 
+		 
+		//OPCION 2
+		JScrollPane sp = new JScrollPane(cartelera);
+		panelContenidos.add(sp, BorderLayout.CENTER);
+		
+		 // Scroll
 		
 		for (String peli : pelis) {
 			ImageIcon img = new ImageIcon("src/img/" + peli);
@@ -84,11 +118,7 @@ public class Cartelera extends JFrame {
 			
 		}
 		
-		JPanel norte = new JPanel(); 
-		getContentPane().add(norte, BorderLayout.NORTH); 
-		JLabel imagen = new JLabel(new ImageIcon("src/img/screen.png"));
-		norte.add(imagen);
-		
+	
 		//getContentPane().add(imagen, BorderLayout.NORTH);
 		getContentPane().add(cartelera, BorderLayout.CENTER);
 		
@@ -98,7 +128,9 @@ public class Cartelera extends JFrame {
 		
 		
 		getContentPane().add(bAdmin, BorderLayout.SOUTH); 
-		
+		// Scroll
+		getContentPane().add(sp, BorderLayout.WEST);
+		// Scroll
 
 		////////////////////////// EVENTOS///////////////////////////
 
