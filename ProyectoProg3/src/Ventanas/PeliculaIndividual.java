@@ -2,6 +2,8 @@ package Ventanas;
 
 import BD.BDprueba2;
 import Elementos.Asiento;
+import Elementos.Tabla;
+import Elementos.TablaHorario;
 
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
@@ -44,6 +46,9 @@ public class PeliculaIndividual extends JFrame{
 	int cod_peli;
 	JTable tablaHorario; 
 	TableModel mTabla; 
+	JInternalFrame ventanaTabla;  // Frame interno que contiene la tabla horiario 
+	
+	
 
 
 	public PeliculaIndividual() {
@@ -119,6 +124,20 @@ public class PeliculaIndividual extends JFrame{
 		bNext.addActionListener((ActionEvent e) -> {SeleccionAsientos(); } );
 		
 	}
+	
+	
+	/** Añade una ventana interna
+	 * @param f	Ventana interna a añadir
+	 * @param codVentana	Código de esa ventana
+	 */
+	public void addVentanaInterna( JInternalFrame f, String codVentana ) {
+		pPeli.add( f , BorderLayout.SOUTH);
+		//JMenuItem menuItem = new JMenuItem( codVentana ); 
+		//menuItem.setActionCommand( codVentana );
+		f.setName( codVentana );
+	}
+	
+	
 	
 	public static void nombrePeli(String peli) {
 		
@@ -200,6 +219,14 @@ public class PeliculaIndividual extends JFrame{
 	
 	public static void main(String[] args) {
 		PeliculaIndividual v = new PeliculaIndividual(); 
+		//TablaHorario th = new TablaHorario(Tabla.leerBD(111)) ; 
+		
+		
+		VentanaTabla vT = new VentanaTabla(v, "TABLA", true);
+		//vT.setTabla(th);
+		vT.setSize(50, 50);
+		v.addVentanaInterna( vT, "TABLA" );
+		vT.setVisible(true);
 		v.setVisible(true);
 		v.sacarDatos();
 	}

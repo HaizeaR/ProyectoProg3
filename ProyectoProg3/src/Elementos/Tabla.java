@@ -2,11 +2,17 @@ package Elementos;
 
 import java.io.*;
 import java.net.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.*;
 import java.util.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
+
+import BD.BDprueba2;
 
 /** Tabla de datos bidimensional de cualquier tipo para análisis posterior<br/>
  * Composición: una serie de cabeceras (columnas) con un tipo por columna, con una serie de datos en filas que responden a la estructura de las columnas<br/>
@@ -523,6 +529,7 @@ public class Tabla {
 	// Métodos estáticos
 	
 		protected static boolean LOG_CONSOLE_CSV = false;  // Log en consola de la lectura del csv
+	private static Tabla tabla;
 		
 	// Método de carga de tabla desde CSV
 	/** Procesa un fichero csv (codificado UTF-8) y lo carga devolviéndolo en una nueva tabla
@@ -607,6 +614,50 @@ public class Tabla {
 		}
 	    return tabla;
 	}
+	
+	
+	
+	public static Tabla leerBD(int codigo) {
+		
+		// hacer un Select de BD que lea la tabla HORARIO para el código introducido
+		Connection con = BDprueba2.initBD("Cine2.db");
+		String sentSQL = ""; 
+		try {
+			
+			Statement st = con.createStatement();
+			sentSQL = "select * from sesion where ID_peli = '" + codigo + "'";
+			System.out.println(sentSQL);
+			ResultSet rs = st.executeQuery(sentSQL);
+		
+			ArrayList<Class<?>> tipos = new ArrayList<>();
+    		ArrayList<String> cabs = new ArrayList<>();
+    		Tabla tabla = new Tabla();
+    		
+			while(rs.next()) {
+				//System.out.println("entra");
+				String fecha = rs.getString("fecha");
+				String horario = rs.getString("horaI"); 
+				
+				cabs.add( (String) fecha );
+	    		tipos.add( String.class ); // Por defecto se ponen los tipos a Strings
+			}
+			
+    		tabla.setCabecerasYTipos( cabs, tipos );
+	
+			
+			//rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+			
+		return tabla;
+		
+		
+	}
+	
+	
+	
+	
 	
 		/** Procesa una línea de entrada de csv	
 		 * @param input	Stream de entrada ya abierto
