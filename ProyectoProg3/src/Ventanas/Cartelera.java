@@ -2,12 +2,18 @@ package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Insets;
 import java.awt.Scrollbar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -28,6 +34,7 @@ import javax.swing.JScrollPane;
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 
 import javafx.scene.control.ScrollBar;
+import javafx.scene.layout.BackgroundImage;
 
 // Queremos que se creen paneles de forma recursiva 
 // para cada Pelicula que se proyecta esa semana 
@@ -57,7 +64,7 @@ public class Cartelera extends JFrame {
 		setTitle("Cartelera");
 		
 		pelis = new ArrayList<String>();
-		pelis.add("Frozen2.jpg");
+		pelis.add("Frozen2.jpg");	
 		pelis.add( "VengadoresEndgame.jpg");
 		pelis.add("Jumanji.jpg");
 		pelis.add("Interestelar.jpg");
@@ -94,7 +101,16 @@ public class Cartelera extends JFrame {
 		
 		for (String peli : pelis) {
 			ImageIcon img = new ImageIcon("src/img/" + peli);
+	
+			
 			JButton cartelera1 = new JButton(img);
+			//REVISAR
+			cartelera1.setMargin(new Insets(50, 0, 0, 0));
+
+			
+			
+			
+			
 			cartelera.add(cartelera1);
 			
 			cartelera1.addActionListener(new ActionListener() {
