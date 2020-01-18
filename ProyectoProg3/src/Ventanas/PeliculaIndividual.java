@@ -221,8 +221,23 @@ public class PeliculaIndividual extends JFrame{
 		PeliculaIndividual v = new PeliculaIndividual(); 
 		//TablaHorario th = new TablaHorario(Tabla.leerBD(111)) ; 
 		
+		//NUEVO
+		TablaHorario tabla = new TablaHorario();
+		tabla.addColumna("Lunes", new String());
+		tabla.addColumna("Martes", new String());
+		tabla.addColumna("Miercoles", new String());
+		tabla.addColumna("Jueves", new String());
+		tabla.addColumna("Viernes", new String());
+		tabla.addColumna("Sabado", new String());
+		tabla.addColumna("Domingo", new String());
+		
 		
 		VentanaTabla vT = new VentanaTabla(v, "TABLA", true);
+		
+		//NUEVO
+		vT.setTabla(tabla);
+		
+		
 		//vT.setTabla(th);
 		vT.setSize(50, 50);
 		v.addVentanaInterna( vT, "TABLA" );
