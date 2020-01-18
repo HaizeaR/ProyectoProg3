@@ -2,10 +2,6 @@ package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -14,15 +10,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.sun.swing.internal.plaf.basic.resources.basic_pt_BR;
 
 import BD.BDprueba2;
-import Elementos.Admin;
+
 import Elementos.Pelicula;
 
 public class anadirPeliAdmin extends JFrame {
 	
 	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	JPanel pBotonera, pTitulo, pAnadir; 
 	JLabel jlTitulo, jlDescripcion, jlDuracion, jlCodigo; 
@@ -84,8 +84,9 @@ public class anadirPeliAdmin extends JFrame {
 		bMenuAdmin = new JButton("Menú Admin");
 		pBotonera.add(bMenuAdmin); 
 		
-		bAnadir = new JButton("Volver"); 
+		bAnadir = new JButton("Anadir"); 
 		pBotonera.add(bAnadir);
+		
 		
 
 		getContentPane().add(pBotonera, BorderLayout.SOUTH); 
@@ -94,35 +95,30 @@ public class anadirPeliAdmin extends JFrame {
 		
 		bAdmin.addActionListener((ActionEvent e) -> {volverAdmin(); } );
 		bMenuAdmin.addActionListener((ActionEvent e ) -> {irMenuAdmin();} );
-		bAnadir.addActionListener((ActionEvent e) -> {});
+		bAnadir.addActionListener((ActionEvent e) -> {anadiPeli();});
+		
 		
 
 	}
 	
 	public void volverAdmin() {
-		Thread t = new Thread() {
-			public void run() {
+		
 				setVisible(false);
 				LogInAdmin.main(null); 
 
 				dispose();
-			}				
-		}; 
-		t.start();
+		
 
 	}
 	
 
 	public void irMenuAdmin() {
-		Thread t1 = new Thread() {
-			public void run() {
+	
 				setVisible(false);
 				FuncionesAdmin.main(null); 
 
 				dispose();
-			}				
-		}; 
-		t1.start();
+		
 
 	}
 	
@@ -156,7 +152,7 @@ public class anadirPeliAdmin extends JFrame {
 				 peli = new Pelicula(cod, titulo, descrip, dur);
 				// System.out.println(cliente.toString());
 				
-				 // BDprueba2.insertarPeli(); 
+				  BDprueba2.insertPelicula(peli);
 			
 				
 			

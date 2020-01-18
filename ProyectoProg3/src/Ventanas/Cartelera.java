@@ -105,7 +105,7 @@ public class Cartelera extends JFrame {
 			
 			JButton cartelera1 = new JButton(img);
 			//REVISAR
-			cartelera1.setMargin(new Insets(50, 0, 0, 0));
+			cartelera1.setMargin(new Insets(0, 0, 0, 0));
 
 			
 			

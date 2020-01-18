@@ -37,9 +37,7 @@ import BD.BDprueba2;
 
 public class RegistrarAdmin extends JFrame {
 
-	private static Connection con;
-	private static Statement st;
-	private static ResultSet rs;
+
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -166,7 +164,7 @@ public class RegistrarAdmin extends JFrame {
 			@Override
 			public void windowClosed(WindowEvent e) {
 				
-				BDprueba2.cerrarConexion();
+			//	BDprueba2.cerrarConexion();
 			}
 			
 			@Override
