@@ -191,7 +191,7 @@ public class PeliculaIndividual extends JFrame{
 	}
 	
 
-// Vamos a implementar un JTABLE que contanga la información de las seisiones 
+	// Vamos a implementar un JTABLE que contanga la información de las seisiones 
 	// Creo que podemos crear una estructura 
 	// Un HashMap que tenga como clave un String ( nombre de peli) y un SET que tenga 
 	// las fechas y los horarios 
