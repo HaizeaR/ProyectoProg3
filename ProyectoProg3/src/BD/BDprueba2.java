@@ -13,7 +13,10 @@ import java.util.logging.Logger;
 
 import Elementos.Admin;
 import Elementos.Asiento;
+import Elementos.Cine;
 import Elementos.Cliente;
+import Elementos.Pelicula;
+import Elementos.Sala;
 import Elementos.Sesion;
 
 public class BDprueba2 {
@@ -642,6 +645,66 @@ public class BDprueba2 {
 			return true;
 
 		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean insertPelicula(Pelicula peli) {
+		String sentSQL = "";
+		try {
+			sentSQL = "insert into pelicula values(" + "'" + (peli.getCod_peli()) + "', " + "'" + (peli.getTitulo_peli()) + "', " + "'"
+					+ (peli.getDescrip_peli()) + "', " + "'" + (peli.getDescrip_peli()) + "' " +
+					")";
+			
+			System.out.println(sentSQL);
+			int insertados = st.executeUpdate(sentSQL);
+
+			if (insertados != 1)
+				return false;
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean insertSala(Sala sala) {
+		String sentSQL = "";
+		try {
+			sentSQL = "insert into sala values(" + "'" + (sala.getID_cine()) + "', " + "'" + (sala.getCapacidad_sala()) + "', " + "'"
+					+ (sala.getID_cine()) + "' " +
+					")";
+			
+			System.out.println(sentSQL);
+			int insertados = st.executeUpdate(sentSQL);
+
+			if (insertados != 1)
+				return false;
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean insertCine(Cine cine) {
+		String sentSQL = "";
+		try {
+			sentSQL = "insert into cine values(" + "'" + (cine.getCod_cine()) + "', " + "'" + (cine.getNombre_cine()) + "', " + "'"
+					+ (cine.getDireccion_cine()) + "' " +
+					")";
+			
+			System.out.println(sentSQL);
+			int insertados = st.executeUpdate(sentSQL);
+
+			if (insertados != 1)
+				return false;
+
+			return true;
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
