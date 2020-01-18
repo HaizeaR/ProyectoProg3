@@ -1,24 +1,15 @@
 package Ventanas;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.io.File;
-import java.io.PrintStream;
-import java.io.Reader;
-import java.sql.Array;
+
+import java.awt.event.*;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
+
 
 import javax.swing.*;
 
@@ -39,6 +30,10 @@ import BD.BDprueba2;
 public class LogIn extends JFrame {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	static JButton bConfirmar, bRegistrar, bAtras, bAdmin;
 	static JLabel lCorreo, lContrasena,lLogin,lPelicula, lSala, lHora, lAsiento, lbimagen; 
 	static JTextField tfCorreo; 

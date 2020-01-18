@@ -179,15 +179,13 @@ public class SalaYAsientos2 extends JFrame {
 			@Override
 	
 			public void windowOpened(WindowEvent e) {
-				//BD.initBD();
-				
-				//BDprueba2.i("Cine2.db");
+			
 				
 				
 			for(Asiento a : asientos) {
 				// revisar que si está dentro de la BD no lo inserte ?? 
 				// creo qye es el error que da 
-				BD.BDprueba2.insertarAsiento(a, st);
+				BDprueba2.insertarAsiento(a);
 			}
 				
 				
@@ -208,7 +206,7 @@ public class SalaYAsientos2 extends JFrame {
 			@Override
 			public void windowClosed(WindowEvent e) {
 				
-				BDprueba2.cerrarConexion();
+				//BDprueba2.cerrarConexion();
 			}
 			
 			@Override

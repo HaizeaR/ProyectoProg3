@@ -4,12 +4,12 @@ package Ventanas;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
+
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.sql.*;
+
 import java.util.*;
-import java.util.logging.Level;
+
 import java.util.regex.Pattern;
 
 
@@ -33,9 +33,9 @@ import BD.BDprueba2;
 
 public class Registro extends JFrame {
 
-	private static Connection con;
-	private static Statement st ;
-	private static ResultSet rs;
+	//private static Connection con;
+	//private static Statement st ;
+	//private static ResultSet rs;
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -228,16 +228,18 @@ public class Registro extends JFrame {
 				num_tarjeta = Long.parseLong(tfNumero_tarjeta.getText());
 				cliente = new Cliente (DNI, nombre,apellido,correo,contrasena,num_tarjeta); 
 
-				if(comprobarDNI(DNI) == true || comprobarContrasena(contrasena) == true || comprobarCorreo(correo, true) == true || comprobarNumTarjeta(tfNumero_tarjeta.getText(), true) == true ) {
-					System.out.println("error");
+				//if(comprobarDNI(DNI) == true || comprobarContrasena(contrasena) == true || comprobarCorreo(correo, true) == true || comprobarNumTarjeta(tfNumero_tarjeta.getText(), true) == true ) {
+				//	System.out.println("error");
 					
-					BDprueba2.insertCliente(cliente,BDprueba2.st);
+				BDprueba2.insertarCliente(cliente);
 
-				} else {
-					JOptionPane.showMessageDialog(null, "No se ha podido registrar ");
-				}
+			//	} else {
+			//		JOptionPane.showMessageDialog(null, "No se ha podido registrar ");
+			//	}
 				
-				}catch(Exception e) {}
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
 				
 				
 			

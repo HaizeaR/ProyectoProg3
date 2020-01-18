@@ -37,8 +37,9 @@ public class mainCine {
 		vent.setVisible(true);
 		
 		BDprueba2.initBD("Cine2.db"); 
-		BDprueba2.usarCrearTablasBD(con); 
-		BDprueba2.insertTablas(st);
+		//BDprueba2.usarCrearTablasBD("Cine2.db"); 
+		//BDprueba2.insertTablas("Cine2.db");
+		BDprueba2.abrirConexion("Cine2.db");
 		if(vent.isActive()==false) {
 			BDprueba2.cerrarConexion();
 		}
@@ -49,9 +50,6 @@ public class mainCine {
 		h.setLevel(Level.INFO);
 		log.addHandler(h);
 		log.log(Level.FINE, "Fin del programa"); 
-
-
-
 
 	}
 
