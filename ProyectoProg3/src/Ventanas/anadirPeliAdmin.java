@@ -14,6 +14,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.sun.swing.internal.plaf.basic.resources.basic_pt_BR;
+
+import BD.BDprueba2;
+import Elementos.Admin;
+import Elementos.Pelicula;
+
 public class anadirPeliAdmin extends JFrame {
 	
 	
@@ -21,7 +27,7 @@ public class anadirPeliAdmin extends JFrame {
 	JPanel pBotonera, pTitulo, pAnadir; 
 	JLabel jlTitulo, jlDescripcion, jlDuracion, jlCodigo; 
 	JTextField tfTitulo, tfDescripcion, tfDuracion, tfCodigo; 
-	JButton bAdmin, bMenuAdmin; 
+	JButton bAdmin, bMenuAdmin, bAnadir; 
 	
 	
 	
@@ -76,8 +82,10 @@ public class anadirPeliAdmin extends JFrame {
 		pBotonera.add(bAdmin);
 		
 		bMenuAdmin = new JButton("Menú Admin");
-		
 		pBotonera.add(bMenuAdmin); 
+		
+		bAnadir = new JButton("Volver"); 
+		pBotonera.add(bAnadir);
 		
 
 		getContentPane().add(pBotonera, BorderLayout.SOUTH); 
@@ -86,9 +94,9 @@ public class anadirPeliAdmin extends JFrame {
 		
 		bAdmin.addActionListener((ActionEvent e) -> {volverAdmin(); } );
 		bMenuAdmin.addActionListener((ActionEvent e ) -> {irMenuAdmin();} );
+		bAnadir.addActionListener((ActionEvent e) -> {});
+		
 
-		
-		
 	}
 	
 	public void volverAdmin() {
@@ -115,6 +123,45 @@ public class anadirPeliAdmin extends JFrame {
 			}				
 		}; 
 		t1.start();
+
+	}
+	
+	
+	public void anadiPeli() {
+		// metodo que tiene que guardar datos recibidos en los distintos 
+		//tf y guardarlos como datos de nuevo Cliente 
+		
+				// Comprobar que ya no está en el array 
+
+				Pelicula peli;
+
+				String codigo = tfCodigo.getText(); 
+				int cod = Integer.valueOf(codigo);
+				
+			 
+				String titulo = tfTitulo.getText();
+				
+				String descrip = tfDescripcion.getText();
+				
+				String duracion = tfDuracion.getText(); 
+				int dur = Integer.valueOf(duracion);
+				
+			
+		
+				
+				
+				// comprobar que en el numero de tarjeta NO tiene letras 
+				// si tiene letras que de error y no te deja registrar el cliente 
+
+				 peli = new Pelicula(cod, titulo, descrip, dur);
+				// System.out.println(cliente.toString());
+				
+				 // BDprueba2.insertarPeli(); 
+			
+				
+			
+			
+				
 
 	}
 	

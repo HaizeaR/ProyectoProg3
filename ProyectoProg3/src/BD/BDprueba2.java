@@ -32,10 +32,10 @@ public class BDprueba2 {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			Connection con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
-// log( Level.INFO, "Conectada base de datos " + nombreBD, null );
+			// log( Level.INFO, "Conectada base de datos " + nombreBD, null );
 			return con;
 		} catch (ClassNotFoundException | SQLException e) {
-// log( Level.SEVERE, "Error en conexiÃ³n de base de datos " + nombreBD, e );
+			// log( Level.SEVERE, "Error en conexiÃ³n de base de datos " + nombreBD, e );
 			return null;
 		}
 	}
@@ -107,31 +107,31 @@ public class BDprueba2 {
 			} catch (SQLException e) {
 			}
 			log(Level.INFO, "Creada base de datos", null);
-			
+
 		} catch (SQLException e) {
 			log(Level.SEVERE, "Error en creacion de base de datos", e);
-			
+
 		}
-		
-		
-		
+
+
+
 		try {
 
-//System.out.println("ConexiÃ³n abierta");
-//Class.forName("org.sqlite.JDBC"); // Carga la clase de BD para sqlite
-//conexion = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
+			//System.out.println("ConexiÃ³n abierta");
+			//Class.forName("org.sqlite.JDBC"); // Carga la clase de BD para sqlite
+			//conexion = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
 
-// No lo pide el ejercicio, pero si se quiere crear la base de datos si no
-// existe desde el propio programa habrÃ­a que hacer esto:
-// creaciÃ³n bd
+			// No lo pide el ejercicio, pero si se quiere crear la base de datos si no
+			// existe desde el propio programa habrÃ­a que hacer esto:
+			// creaciÃ³n bd
 
 			try {
-// INSERTAR VALORES POR DEFECTO EN CLIENTE
+				// INSERTAR VALORES POR DEFECTO EN CLIENTE
 
 				Connection con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
 				Statement statement = con.createStatement();
-				
-				
+
+
 				String sent = "insert into pelicula values (111, 'Frozen2', 'Elsa quiere descubrir quiÃ©n es en realidad y por quÃ© posee un poder tan asombroso', '143' );";
 				System.out.println(sent);
 				st.executeUpdate(sent);
@@ -183,180 +183,180 @@ public class BDprueba2 {
 				log(Level.INFO, "BD insert en tabla\t" + sent9, null);
 			} catch (Exception e) {
 			} // Es normal que haya error en los inserts si ya existen las claves
-// fin creaciÃ³n bd
+			// fin creaciÃ³n bd
 
-		
+
 		} catch (Exception e) {
 			log(Level.SEVERE, "Error ", null);
 
 			e.printStackTrace();
-	
+
 		}
 		return st;
 
 	}
 
-	
-	
+
+
 	public static boolean abrirConexion(String nombreBD) {
 
- 		try {
+		try {
 
- 			System.out.println("ConexiÃ³n abierta");
- 			Class.forName("org.sqlite.JDBC"); // Carga la clase de BD para sqlite
- 			conexion = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
+			System.out.println("ConexiÃ³n abierta");
+			Class.forName("org.sqlite.JDBC"); // Carga la clase de BD para sqlite
+			conexion = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
 
- 			// No lo pide el ejercicio, pero si se quiere crear la base de datos si no
- 			// existe desde el propio programa habrÃ­a que hacer esto:
- 			// creaciÃ³n bd
+			// No lo pide el ejercicio, pero si se quiere crear la base de datos si no
+			// existe desde el propio programa habrÃ­a que hacer esto:
+			// creaciÃ³n bd
 
- 			Statement statement = conexion.createStatement();
- 			String sent = "CREATE TABLE IF NOT EXISTS cliente (dni String PRIMARY KEY, nombre String, apellido string, correo String, contrasena varchar(20), n_tarjeta int(16));";
- 			//System.out.println(sent);
- 			statement.executeUpdate(sent);
- 			log( Level.INFO, "BD creación de tabla\t" + sent, null );
-
-
- 			// REVISAR
-
- 			sent = "CREATE TABLE IF NOT EXISTS admin (dni varchar(9) PRIMARY KEY, nombre varchar(100), apellido varchar(100), correo varchar(100), contrasena varchar(20));";
- 			//System.out.println(sent);
- 			statement.executeUpdate(sent);
- 			log( Level.INFO, "BD creación de tabla\t" + sent, null );
-
- 			sent = "CREATE TABLE IF NOT EXISTS asiento (codigo INTEGER PRIMARY KEY, fila int(5), columna int(5), ocupado boolean);";
- 			//System.out.println(sent);
- 			statement.executeUpdate(sent);
- 			log( Level.INFO, "BD creación de tabla\t" + sent, null );
-
- 			sent = "CREATE TABLE IF NOT EXISTS pelicula (cod_peli INTEGER PRIMARY KEY, titulo_peli varchar(100), descrip_peli varchar(100), duracion_peli int (3));";
- 			//System.out.println(sent);
- 			statement.executeUpdate(sent);
- 			log( Level.INFO, "BD creación de tabla\t" + sent, null );
-
- 			sent = "CREATE TABLE IF NOT EXISTS sala (numero_sala INTEGER PRIMARY KEY, capacidad sala int(3), ID_cine int(3));";
- 			//System.out.println(sent);
- 			statement.executeUpdate(sent);
- 			log( Level.INFO, "BD creación de tabla\t" + sent, null );
-
- 			sent = "CREATE TABLE IF NOT EXISTS sesion (cod_sesion INTEGER PRIMARY KEY, fecha DATE, horaI String, ID_sala int(5), ID_peli int(5));";
- 			//System.out.println(sent);
- 			statement.executeUpdate(sent);
- 			log( Level.INFO, "BD creación de tabla\t" + sent, null );
- 			
- 			
- 			sent = "CREATE TABLE IF NOT EXISTS cine (ID_cine INTEGER PRIMARY KEY, nombre_cine varchar(50), direccion_cine varchar(150));";
- 			//System.out.println(sent);
- 			statement.executeUpdate(sent);
- 			log( Level.INFO, "BD creación de tabla\t" + sent, null );
- 			
- 			
- 			
- 			
- //			sent = "CREATE TABLE IF NOT EXISTS cine ( "
- 			
- 			
- 			
- 			
-
- //			sent = "CREATE TABLE IF NOT EXISTS compra (id INTEGER PRIMARY KEY AUTOINCREMENT, idProducto int, fecha bigint, cantidad int);";
- //			System.out.println( sent );
- //			statement.executeUpdate( sent );
-
- 			try {
- 				// INSERTAR VALORES POR DEFECTO EN CLIENTE
-
- 				sent = "insert into pelicula values (111, 'Frozen2', 'Elsa quiere descubrir quiÃ©n es en realidad y por quÃ© posee un poder tan asombroso', '143' );";
- 				//System.out.println(sent);
- 				statement.executeUpdate(sent);
- 				log( Level.INFO, "BD insert en tabla\t" + sent, null );
-
- 				String sent1 = "insert into pelicula values (222, 'VengadoresEndgame', 'Los Vengadores restantes deben encontrar una manera de recuperar a sus aliados para un enfrentamiento Ã©pico con Thanos', '203' );";
- 				//System.out.println(sent1);
- 				statement.executeUpdate(sent1);
- 				log( Level.INFO, "BD insert en tabla\t" + sent1, null );
+			Statement statement = conexion.createStatement();
+			String sent = "CREATE TABLE IF NOT EXISTS cliente (dni String PRIMARY KEY, nombre String, apellido string, correo String, contrasena varchar(20), n_tarjeta int(16));";
+			//System.out.println(sent);
+			statement.executeUpdate(sent);
+			log( Level.INFO, "BD creación de tabla\t" + sent, null );
 
 
- 				String sent2 = "insert into cliente values ('12345678A', 'm', 'q', 'm.q@gmail.com', 12345678, 456789);";
- 				//System.out.println(sent2);
- 				statement.executeUpdate(sent2);
- 				log( Level.INFO, "BD insert en tabla\t" + sent2, null );
+			// REVISAR
+
+			sent = "CREATE TABLE IF NOT EXISTS admin (dni varchar(9) PRIMARY KEY, nombre varchar(100), apellido varchar(100), correo varchar(100), contrasena varchar(20));";
+			//System.out.println(sent);
+			statement.executeUpdate(sent);
+			log( Level.INFO, "BD creación de tabla\t" + sent, null );
+
+			sent = "CREATE TABLE IF NOT EXISTS asiento (codigo INTEGER PRIMARY KEY, fila int(5), columna int(5), ocupado boolean);";
+			//System.out.println(sent);
+			statement.executeUpdate(sent);
+			log( Level.INFO, "BD creación de tabla\t" + sent, null );
+
+			sent = "CREATE TABLE IF NOT EXISTS pelicula (cod_peli INTEGER PRIMARY KEY, titulo_peli varchar(100), descrip_peli varchar(100), duracion_peli int (3));";
+			//System.out.println(sent);
+			statement.executeUpdate(sent);
+			log( Level.INFO, "BD creación de tabla\t" + sent, null );
+
+			sent = "CREATE TABLE IF NOT EXISTS sala (numero_sala INTEGER PRIMARY KEY, capacidad sala int(3), ID_cine int(3));";
+			//System.out.println(sent);
+			statement.executeUpdate(sent);
+			log( Level.INFO, "BD creación de tabla\t" + sent, null );
+
+			sent = "CREATE TABLE IF NOT EXISTS sesion (cod_sesion INTEGER PRIMARY KEY, fecha DATE, horaI String, ID_sala int(5), ID_peli int(5));";
+			//System.out.println(sent);
+			statement.executeUpdate(sent);
+			log( Level.INFO, "BD creación de tabla\t" + sent, null );
 
 
- 				String sent3 = "insert into cliente values ('16088533X', 'u', 'm', 'u.m@gmail.com', 12345678, 654321);";
- 				//System.out.println(sent3);
- 				statement.executeUpdate(sent3);
- 				log( Level.INFO, "BD insert en tabla\t" + sent3, null );
- 				
- 				String sent4 = "insert into cine values (122, 'IMAX', 'Arriquíbar Plaza, 4, 48001 Bilbo');";
- 				//System.out.println(sent4);
- 				statement.executeUpdate(sent4);
- 				log( Level.INFO, "BD insert en tabla\t" + sent4, null );
+			sent = "CREATE TABLE IF NOT EXISTS cine (ID_cine INTEGER PRIMARY KEY, nombre_cine varchar(50), direccion_cine varchar(150));";
+			//System.out.println(sent);
+			statement.executeUpdate(sent);
+			log( Level.INFO, "BD creación de tabla\t" + sent, null );
 
- 				
- 				
- 				String sent5 = "insert into sala values (1, 80, 122);";
- 				//System.out.println(sent5);
- 				statement.executeUpdate(sent5);
- 				log( Level.INFO, "BD insert en tabla\t" + sent5, null );
 
- 				
- 				String sent6 = "insert into sala values (2, 100, 122);";
- 				//System.out.println(sent6);
- 				statement.executeUpdate(sent6);
- 				log( Level.INFO, "BD insert en tabla\t" + sent6, null );
 
- 	
- 				String sent7 = "insert into sesion values (1, '2019-05-01', '16:30', 1, 111);";
- 				//System.out.println(sent7);
- 				statement.executeUpdate(sent7);
- 				log( Level.INFO, "BD insert en tabla\t" + sent7, null );
 
- 				
- 				
- 				String sent8 = "insert into sesion values (2, '2019-05-01', '16:30', 2, 222);";
- 				//System.out.println(sent8);
- 				statement.executeUpdate(sent8);
- 				log( Level.INFO, "BD insert en tabla\t" + sent8, null );
+			//			sent = "CREATE TABLE IF NOT EXISTS cine ( "
 
- 				
- 				String sent9 = "insert into sesion values (3, '2019-05-02', '16:30', 1, 111);";
- 				//System.out.println(sent9);
- 				statement.executeUpdate(sent9);
- 				log( Level.INFO, "BD insert en tabla\t" + sent9, null );
 
- 				
- 				
- //				sent = "insert into producto (id, nombre, precio) values (2,'Crucifijo rezos pre-examen',42);";
- //				System.out.println( sent );
- //				statement.executeUpdate( sent );
 
- //				sent = "insert into producto (id, nombre, precio) values (3,'Asesor programaciÃ³n Java (hora)',25);";
- //				System.out.println( sent );
- //				statement.executeUpdate( sent );
 
- 				// INSERTAR POR DEFECTO EN PELICULA
 
- 			} catch (Exception e) {
- 			} // Es normal que haya error en los inserts si ya existen las claves
- 			// fin creaciÃ³n bd
+			//			sent = "CREATE TABLE IF NOT EXISTS compra (id INTEGER PRIMARY KEY AUTOINCREMENT, idProducto int, fecha bigint, cantidad int);";
+			//			System.out.println( sent );
+			//			statement.executeUpdate( sent );
 
- 			return true;
- 		} catch (Exception e) {
- 			log( Level.SEVERE, "Error " , null );
+			try {
+				// INSERTAR VALORES POR DEFECTO EN CLIENTE
 
- 			e.printStackTrace();
- 			return false;
- 		}
- 	}
-	
-	
-	
-	
-	
-	
-	
-	
+				sent = "insert into pelicula values (111, 'Frozen2', 'Elsa quiere descubrir quiÃ©n es en realidad y por quÃ© posee un poder tan asombroso', '143' );";
+				//System.out.println(sent);
+				statement.executeUpdate(sent);
+				log( Level.INFO, "BD insert en tabla\t" + sent, null );
+
+				String sent1 = "insert into pelicula values (222, 'VengadoresEndgame', 'Los Vengadores restantes deben encontrar una manera de recuperar a sus aliados para un enfrentamiento Ã©pico con Thanos', '203' );";
+				//System.out.println(sent1);
+				statement.executeUpdate(sent1);
+				log( Level.INFO, "BD insert en tabla\t" + sent1, null );
+
+
+				String sent2 = "insert into cliente values ('12345678A', 'm', 'q', 'm.q@gmail.com', 12345678, 456789);";
+				//System.out.println(sent2);
+				statement.executeUpdate(sent2);
+				log( Level.INFO, "BD insert en tabla\t" + sent2, null );
+
+
+				String sent3 = "insert into cliente values ('16088533X', 'u', 'm', 'u.m@gmail.com', 12345678, 654321);";
+				//System.out.println(sent3);
+				statement.executeUpdate(sent3);
+				log( Level.INFO, "BD insert en tabla\t" + sent3, null );
+
+				String sent4 = "insert into cine values (122, 'IMAX', 'Arriquíbar Plaza, 4, 48001 Bilbo');";
+				//System.out.println(sent4);
+				statement.executeUpdate(sent4);
+				log( Level.INFO, "BD insert en tabla\t" + sent4, null );
+
+
+
+				String sent5 = "insert into sala values (1, 80, 122);";
+				//System.out.println(sent5);
+				statement.executeUpdate(sent5);
+				log( Level.INFO, "BD insert en tabla\t" + sent5, null );
+
+
+				String sent6 = "insert into sala values (2, 100, 122);";
+				//System.out.println(sent6);
+				statement.executeUpdate(sent6);
+				log( Level.INFO, "BD insert en tabla\t" + sent6, null );
+
+
+				String sent7 = "insert into sesion values (1, '2019-05-01', '16:30', 1, 111);";
+				//System.out.println(sent7);
+				statement.executeUpdate(sent7);
+				log( Level.INFO, "BD insert en tabla\t" + sent7, null );
+
+
+
+				String sent8 = "insert into sesion values (2, '2019-05-01', '16:30', 2, 222);";
+				//System.out.println(sent8);
+				statement.executeUpdate(sent8);
+				log( Level.INFO, "BD insert en tabla\t" + sent8, null );
+
+
+				String sent9 = "insert into sesion values (3, '2019-05-02', '16:30', 1, 111);";
+				//System.out.println(sent9);
+				statement.executeUpdate(sent9);
+				log( Level.INFO, "BD insert en tabla\t" + sent9, null );
+
+
+
+				//				sent = "insert into producto (id, nombre, precio) values (2,'Crucifijo rezos pre-examen',42);";
+				//				System.out.println( sent );
+				//				statement.executeUpdate( sent );
+
+				//				sent = "insert into producto (id, nombre, precio) values (3,'Asesor programaciÃ³n Java (hora)',25);";
+				//				System.out.println( sent );
+				//				statement.executeUpdate( sent );
+
+				// INSERTAR POR DEFECTO EN PELICULA
+
+			} catch (Exception e) {
+			} // Es normal que haya error en los inserts si ya existen las claves
+			// fin creaciÃ³n bd
+
+			return true;
+		} catch (Exception e) {
+			log( Level.SEVERE, "Error " , null );
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+
+
+
+
+
+
+
 	/**
 	 * Abre conexiÃ³n con la base de datos
 	 * 
@@ -367,21 +367,21 @@ public class BDprueba2 {
 	public static boolean insertTablas(String nombreBD ) {
 		try {
 
-//System.out.println("ConexiÃ³n abierta");
-//Class.forName("org.sqlite.JDBC"); // Carga la clase de BD para sqlite
-//conexion = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
+			//System.out.println("ConexiÃ³n abierta");
+			//Class.forName("org.sqlite.JDBC"); // Carga la clase de BD para sqlite
+			//conexion = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
 
-// No lo pide el ejercicio, pero si se quiere crear la base de datos si no
-// existe desde el propio programa habrÃ­a que hacer esto:
-// creaciÃ³n bd
+			// No lo pide el ejercicio, pero si se quiere crear la base de datos si no
+			// existe desde el propio programa habrÃ­a que hacer esto:
+			// creaciÃ³n bd
 
 			try {
-// INSERTAR VALORES POR DEFECTO EN CLIENTE
+				// INSERTAR VALORES POR DEFECTO EN CLIENTE
 
 				Connection con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
 				Statement statement = con.createStatement();
-				
-				
+
+
 				String sent = "insert into pelicula values (111, 'Frozen2', 'Elsa quiere descubrir quiÃ©n es en realidad y por quÃ© posee un poder tan asombroso', '143' );";
 				System.out.println(sent);
 				st.executeUpdate(sent);
@@ -433,7 +433,8 @@ public class BDprueba2 {
 				log(Level.INFO, "BD insert en tabla\t" + sent9, null);
 			} catch (Exception e) {
 			} // Es normal que haya error en los inserts si ya existen las claves
-// fin creaciÃ³n bd
+
+			// fin creaciÃ³n bd
 
 			return true;
 		} catch (Exception e) {
@@ -473,7 +474,7 @@ public class BDprueba2 {
 				String apellido = rs.getString("apellido");
 				String correo = rs.getString("correo");
 				String contrasena = (rs.getString("contrasena"));
-// String contrasena = rs.getString("contrasena");
+				// String contrasena = rs.getString("contrasena");
 				int n_tarjeta = rs.getInt("n_tajerta");
 
 				ret.add(new Cliente(dni, nombre, apellido, correo, contrasena, n_tarjeta));
@@ -486,46 +487,33 @@ public class BDprueba2 {
 	}
 
 	public static boolean insertarCliente(Cliente cliente) {
- 		try (Statement statement = conexion.createStatement()) {
- 			String sent; // = "insert into cliente (dni, nombre, apellido, correo, contrasena, n_tarjeta)
- 							// values (" + cliente.getDNI() + "," + cliente.getNombre() + "," +
- 							// cliente.getApellido() + "," + cliente.getCorreo()+ "," +
- 							// cliente.getContrasena().toString()+ "," + cliente.getNumero_tarjeta() + "
- 							// );";
+		try (Statement statement = conexion.createStatement()) {
+			String sent; 
 
- 			sent = "insert into cliente values(" + "'" + secu(cliente.getDNI()) + "', " + "'"
- 					+ secu(cliente.getNombre()) + "', " + "'" + secu(cliente.getApellido()) + "', " + "'"
- 					+ secu(cliente.getCorreo()) + "', " + "'" + cliente.getContrasena().toString() + "', " + "'"
- 					+ cliente.getNumero_tarjeta() + "' " + ")";
+			sent = "insert into cliente values(" + "'" + secu(cliente.getDNI()) + "', " + "'"
+					+ secu(cliente.getNombre()) + "', " + "'" + secu(cliente.getApellido()) + "', " + "'"
+					+ secu(cliente.getCorreo()) + "', " + "'" + cliente.getContrasena().toString() + "', " + "'"
+					+ cliente.getNumero_tarjeta() + "' " + ")";
 
- 			System.out.println(sent);
- 			
- 			int insertados = statement.executeUpdate(sent);
+			System.out.println(sent);
+
+			int insertados = statement.executeUpdate(sent);
 			log(Level.INFO, "BD insert en cliente\t" + sent, null);
 
 
- 			if (insertados != 1)
- 				return false;
- 			return true;
+			if (insertados != 1)
+				return false;
+			return true;
 
- 		} catch (Exception e) {
- 			e.printStackTrace();
- 			return false;
- 		}
- 	}
-			
-			
-//			int insertados = st.executeUpdate(sent);
-//
-//			if (insertados != 1)
-//				return false;
-//			return true;
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return false;
-//		}
-	
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+
+
+
 
 	public static boolean insertarAsiento(Asiento a) {
 
@@ -550,19 +538,51 @@ public class BDprueba2 {
 		}
 	}
 
-	/**
-	 * Inserta una nuevo admin en la base de datos abierta
-	 */
-	public static boolean insertarAdmin(Admin admin, Statement st) {
-		try {
+
+
+
+
+
+
+	//	/**
+	//	 * Inserta una nuevo admin en la base de datos abierta
+	//	 */
+	//	public static boolean insertarAdmin(Admin admin, Statement st) {
+	//		try {
+	//			String sent;
+	//
+	//			sent = "insert into admin values(" + "'" + secu(admin.getDNI()) + "', " + "'" + secu(admin.getNombre())
+	//					+ "', " + "'" + secu(admin.getApellido()) + "', " + "'" + secu(admin.getCorreo()) + "', " + "'"
+	//					+ admin.getContrasena().toString() + "' " + ")";
+	//
+	//			System.out.println(sent);
+	//			int insertados = st.executeUpdate(sent);
+	//
+	//			if (insertados != 1)
+	//				return false;
+	//			return true;
+	//
+	//		} catch (Exception e) {
+	//			e.printStackTrace();
+	//			return false;
+	//		}
+	//	}
+	//	
+
+
+	public static boolean insertarAdmin(Admin admin) {
+		try (Statement statement = conexion.createStatement()) {
 			String sent;
 
-			sent = "insert into admin values(" + "'" + secu(admin.getDNI()) + "', " + "'" + secu(admin.getNombre())
-					+ "', " + "'" + secu(admin.getApellido()) + "', " + "'" + secu(admin.getCorreo()) + "', " + "'"
-					+ admin.getContrasena().toString() + "' " + ")";
+			sent = "insert into admin values(" + "'" + secu(admin.getDNI()) + "', " + "'"
+					+ secu(admin.getNombre()) + "', " + "'" + secu(admin.getApellido()) + "', " + "'"
+					+ secu(admin.getCorreo()) + "', " + "'" + admin.getContrasena().toString() + "' " + ")";
 
 			System.out.println(sent);
-			int insertados = st.executeUpdate(sent);
+
+			int insertados = statement.executeUpdate(sent);
+			log(Level.INFO, "BD insert en cliente\t" + sent, null);
+
 
 			if (insertados != 1)
 				return false;
@@ -573,6 +593,7 @@ public class BDprueba2 {
 			return false;
 		}
 	}
+
 
 	/**
 	 * Lee los administradores de la conexiÃ³n de base de datos abierta
@@ -625,19 +646,19 @@ public class BDprueba2 {
 		}
 	}
 
-/////////////////////////////////////////////////////////////////////
-// MÃ©todos privados //
-/////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////
+	// MÃ©todos privados //
+	/////////////////////////////////////////////////////////////////////
 
-// Devuelve el string "securizado" para volcarlo en SQL
-// (ImplementaciÃ³n 1) Sustituye ' por '' y quita saltos de lÃ­nea
-// (ImplementaciÃ³n 2) Mantiene solo los caracteres seguros en espaÃ±ol
-// TODO OJO - FALTA algo importante por hacer en la implementaciÃ³n actual...
-// Â¿no?
+	// Devuelve el string "securizado" para volcarlo en SQL
+	// (ImplementaciÃ³n 1) Sustituye ' por '' y quita saltos de lÃ­nea
+	// (ImplementaciÃ³n 2) Mantiene solo los caracteres seguros en espaÃ±ol
+	// TODO OJO - FALTA algo importante por hacer en la implementaciÃ³n actual...
+	// Â¿no?
 	private static String secu(String string) {
-// ImplementaciÃ³n (1)
-// return string.replaceAll( "'", "''" ).replaceAll( "\\n", "" );
-// ImplementaciÃ³n (2)
+		// ImplementaciÃ³n (1)
+		// return string.replaceAll( "'", "''" ).replaceAll( "\\n", "" );
+		// ImplementaciÃ³n (2)
 		StringBuffer ret = new StringBuffer();
 		for (char c : string.toCharArray()) {
 			if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZÃ±Ã‘Ã¡Ã©Ã­Ã³ÃºÃ¼Ã�Ã‰Ã�Ã“ÃšÃš.,:;-_(){}[]-+*=<>'\"Â¿?Â¡!&%$@#/\\0123456789 "
@@ -647,27 +668,27 @@ public class BDprueba2 {
 		return ret.toString();
 	}
 
-//
-//	/** Borra una compra en la base de datos abierta
-//	* @param compra	Compra a borrar
-//	* @return	true si el borrado es correcto, false en caso contrario
-//	*/
-//	public static boolean borrarCompra( Compra compra ) {
-//	try (Statement statement = conexion.createStatement()) {
-//	String sent = "delete from compra where id=" + compra.getId() + ";";
-//	System.out.println( sent );
-//	int borrados = statement.executeUpdate( sent );
-//	return (borrados==1);
-//	} catch (Exception e) {
-//	return false;
-//	}
-//	}
-//	
-//	
-//}
+	//
+	//	/** Borra una compra en la base de datos abierta
+	//	* @param compra	Compra a borrar
+	//	* @return	true si el borrado es correcto, false en caso contrario
+	//	*/
+	//	public static boolean borrarCompra( Compra compra ) {
+	//	try (Statement statement = conexion.createStatement()) {
+	//	String sent = "delete from compra where id=" + compra.getId() + ";";
+	//	System.out.println( sent );
+	//	int borrados = statement.executeUpdate( sent );
+	//	return (borrados==1);
+	//	} catch (Exception e) {
+	//	return false;
+	//	}
+	//	}
+	//	
+	//	
+	//}
 
 	public static String buscarCorreoCliente(Cliente cliente, Statement st) {
-// Sin terminar
+		// Sin terminar
 		String sent = "";
 		try {
 			sent = "select correo from cliente;";
@@ -681,15 +702,15 @@ public class BDprueba2 {
 
 		return null;
 
-		
+
 	}
-/////////////////////////////////////////////////////////////////////
-//                      Logging                                    //
-/////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////
+	//                      Logging                                    //
+	/////////////////////////////////////////////////////////////////////
 
 	private static Logger logger = null;
 
-// Método local para loggear
+	// Método local para loggear
 	private static void log(Level level, String msg, Throwable excepcion) {
 		if (!LOGGING)
 			return;

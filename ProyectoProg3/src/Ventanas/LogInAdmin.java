@@ -3,13 +3,20 @@ package Ventanas;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import BD.BDprueba2;
 
 public class LogInAdmin extends JFrame{
 	
@@ -102,13 +109,66 @@ public class LogInAdmin extends JFrame{
 		
 		
 		// Action Events para los botones 
-		bEntrar.addActionListener((ActionEvent e) -> {irAMenu(); });
+		bEntrar.addActionListener((ActionEvent e) -> {confirmarLogIn(); });
 		bAtras.addActionListener((ActionEvent e) -> {volverAtrasA();});
 		bRegistrar.addActionListener((ActionEvent e) -> {accedeRegistroA(); } );
 
 		
 	
 	}
+	
+	
+	
+	
+	public void confirmarLogIn() {
+		//Connection conn = BDprueba2.abrirConexion( "Cine2.db" );
+		Connection conn = BDprueba2.initBD("Cine2.db");
+		String SQL = ""; 
+		try {
+			Statement stat = conn.createStatement();
+			SQL = "select correo, contrasena from admin"; 
+
+			ResultSet rs = stat.executeQuery( SQL );
+			while(rs.next()) {
+				String correo = rs.getString("correo"); 
+		
+				
+				String contrasena = rs.getString("contrasena"); 
+				
+				String valorEnTexto = new String( jpContrasena.getPassword() );
+				
+		
+				
+				
+
+				if ( correo.compareTo(tfCorreo.getText()) == 0) {
+					System.out.println("entra");
+
+					if (valorEnTexto.compareTo(contrasena) == 0 ) {
+						System.out.println("entra");
+						
+						irAMenu();
+
+
+					}else{
+						JOptionPane.showMessageDialog(null, "ERROR contraseña incorrecta ");
+					}
+					
+
+				}
+			}
+
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+
+	
 	
 	private void irAMenu() {
 		Thread t = new Thread() {

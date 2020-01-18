@@ -19,7 +19,7 @@ public class FuncionesAdmin extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	JPanel pPrincipal; 
-	JButton bNuevaPeli, bRegistrarAdmin, bReiniciarBD; 
+	JButton bNuevaPeli, bRegistrarAdmin, bReiniciarBD, bVolver; 
 	Connection con; 
 	Statement st; 
 	
@@ -36,11 +36,14 @@ public class FuncionesAdmin extends JFrame{
 		
 		bNuevaPeli = new JButton("Guardar nuevas peliculas"); 
 		bReiniciarBD = new JButton("ReiniciarBD");
+		bVolver = new JButton("Volver"); 
 		
 		pPrincipal.add(bNuevaPeli); 
 		pPrincipal.add(bReiniciarBD); 
-		
+		pPrincipal.add(bVolver);
+
 		bNuevaPeli.addActionListener((ActionEvent e) -> {guardarPeli();});
+		bVolver.addActionListener((ActionEvent e) -> {volver();});
 		
 		//bReiniciarBD.addActionListener((ActionEvent e) -> {BDprueba2.reiniciarBD(con);}); 
 		// NO FUNCIONA
@@ -50,24 +53,29 @@ public class FuncionesAdmin extends JFrame{
 		
 		getContentPane().add(pPrincipal,BorderLayout.CENTER); 
 		
-		
-		
-		
+
 	}
 	
 	
 	public void guardarPeli() {
-		Thread t = new Thread() {
-			public void run() {
+		
 				setVisible(false);
 				anadirPeliAdmin.main(null); 
-
 				dispose();
 			}				
-		}; 
-		t.start();
+	
+
+	public void volver() {
+	
+				setVisible(false);
+				LogInAdmin.main(null); 
+				dispose();
+		}				
+		 
+	
 		
-	}
+	
+	
 	
 	public static void main(String[] args) {
 		FuncionesAdmin vFA = new FuncionesAdmin(); 
