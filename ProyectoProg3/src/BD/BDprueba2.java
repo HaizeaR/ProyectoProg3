@@ -521,7 +521,7 @@ public class BDprueba2 {
 
 	public static boolean insertarAsiento(Asiento a) {
 
-		try {
+		try (Statement statement = conexion.createStatement()){
 			String sent;
 			sent = "insert into asiento values(" + "'" + (a.getCodigo()) + "', " + "'" + (a.getFila()) + "', " + "'"
 					+ (a.getColumna()) + "', " + "'" + (a.isOcupado()) + "' " +
@@ -529,7 +529,9 @@ public class BDprueba2 {
 					")";
 
 			System.out.println(sent);
-			int insertados = st.executeUpdate(sent);
+			
+			int insertados = statement.executeUpdate(sent);
+			log(Level.INFO, "BD insert en cliente\t" + sent, null);
 
 			if (insertados != 1)
 				return false;
@@ -629,7 +631,7 @@ public class BDprueba2 {
 
 	public static boolean insertSesion(Sesion s, Statement st) {
 
-		try {
+		try (Statement statement = conexion.createStatement()) {
 			String sent;
 			sent = "insert into sesion values(" + "'" + (s.getCod_sesion()) + "', " + "'" + (s.getFecha()) + "', " + "'"
 					+ (s.getHoraI()) + "', " + "'" + (s.getID_sala()) + "', " + "'" + (s.getID_pelicula()) + "' " +
@@ -637,7 +639,9 @@ public class BDprueba2 {
 					")";
 
 			System.out.println(sent);
-			int insertados = st.executeUpdate(sent);
+			
+			int insertados = statement.executeUpdate(sent);
+			log(Level.INFO, "BD insert en cliente\t" + sent, null);
 
 			if (insertados != 1)
 				return false;
@@ -651,14 +655,16 @@ public class BDprueba2 {
 	}
 	
 	public static boolean insertPelicula(Pelicula peli) {
-		String sentSQL = "";
-		try {
-			sentSQL = "insert into pelicula values(" + "'" + (peli.getCod_peli()) + "', " + "'" + (peli.getTitulo_peli()) + "', " + "'"
+		try (Statement statement = conexion.createStatement()) {
+			String sent;
+			sent = "insert into pelicula values(" + "'" + (peli.getCod_peli()) + "', " + "'" + (peli.getTitulo_peli()) + "', " + "'"
 					+ (peli.getDescrip_peli()) + "', " + "'" + (peli.getDescrip_peli()) + "' " +
 					")";
 			
-			System.out.println(sentSQL);
-			int insertados = st.executeUpdate(sentSQL);
+			System.out.println(sent);
+			
+			int insertados = statement.executeUpdate(sent);
+			log(Level.INFO, "BD insert en cliente\t" + sent, null);
 
 			if (insertados != 1)
 				return false;
@@ -671,14 +677,16 @@ public class BDprueba2 {
 	}
 	
 	public static boolean insertSala(Sala sala) {
-		String sentSQL = "";
-		try {
-			sentSQL = "insert into sala values(" + "'" + (sala.getID_cine()) + "', " + "'" + (sala.getCapacidad_sala()) + "', " + "'"
+		try (Statement statement = conexion.createStatement()) {
+			String sent;
+			sent = "insert into sala values(" + "'" + (sala.getID_cine()) + "', " + "'" + (sala.getCapacidad_sala()) + "', " + "'"
 					+ (sala.getID_cine()) + "' " +
 					")";
 			
-			System.out.println(sentSQL);
-			int insertados = st.executeUpdate(sentSQL);
+			System.out.println(sent);
+			
+			int insertados = statement.executeUpdate(sent);
+			log(Level.INFO, "BD insert en cliente\t" + sent, null);
 
 			if (insertados != 1)
 				return false;
@@ -691,14 +699,14 @@ public class BDprueba2 {
 	}
 	
 	public static boolean insertCine(Cine cine) {
-		String sentSQL = "";
-		try {
-			sentSQL = "insert into cine values(" + "'" + (cine.getCod_cine()) + "', " + "'" + (cine.getNombre_cine()) + "', " + "'"
+		try (Statement statement = conexion.createStatement()) {
+			String sent;
+			sent = "insert into cine values(" + "'" + (cine.getCod_cine()) + "', " + "'" + (cine.getNombre_cine()) + "', " + "'"
 					+ (cine.getDireccion_cine()) + "' " +
 					")";
 			
-			System.out.println(sentSQL);
-			int insertados = st.executeUpdate(sentSQL);
+			System.out.println(sent);
+			int insertados = statement.executeUpdate(sent);
 
 			if (insertados != 1)
 				return false;
