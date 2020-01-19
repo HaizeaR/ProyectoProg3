@@ -332,7 +332,10 @@ public class SalaYAsientos2 extends JFrame {
 // LogIn.guardaConfig();
 				setVisible(false);
 				getAsientosSeleccionados();
-
+				System.out.println("Asientos selccionados: ");
+				for (Asiento i : codigoS) {
+					System.out.println(i.toString());
+				}
 				LogIn.main(null);
 
 				dispose();
@@ -347,17 +350,16 @@ public class SalaYAsientos2 extends JFrame {
 			if (b instanceof JButton) {
 				if (((JButton) b).getIcon().equals(iconoSelec)) {
 					for (Asiento a : asientos) {
-						if(b.getX() == a.getColumna() && b.getY() == a.getFila()) {
+						if (b.getX() == a.getColumna() && b.getY() == a.getFila()) {
 							codigoS.add(a);
 						}
-							
-						}
+
+					}
 				}
 
-				}
 			}
 		}
-	
+	}
 
 	// public void guardarAsientos() {
 // for(Asiento a: asientos) {
