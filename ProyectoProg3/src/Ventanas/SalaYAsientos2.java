@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+import com.sun.xml.internal.ws.api.Component;
+
 import BD.BDprueba2;
 import Elementos.Asiento;
 
@@ -30,7 +33,9 @@ public class SalaYAsientos2 extends JFrame {
 	final static ImageIcon iconoOcupado = new ImageIcon("src/img/asiento_r.png");
 	final static ImageIcon iconoLibre = new ImageIcon("src/img/asiento_g.png");
 	final static ImageIcon iconoSelec = new ImageIcon("src/img/asiento_v.png");
+	final static ArrayList<Asiento> codigoS = new ArrayList<Asiento>();
 
+	final static JPanel panel = new JPanel();
 	JButton bAtras, bNext;
 	JPanel pBotonera;
 	static ArrayList<Asiento> asientos = new ArrayList<>();
@@ -42,7 +47,6 @@ public class SalaYAsientos2 extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 // int cod_asiento = 0;
 
-		JPanel panel = new JPanel();
 		JPanel pantalla = new JPanel();
 		pantalla.setSize(450, 500);
 		pantalla.setLocation(getHeight(), getWidth());
@@ -66,7 +70,6 @@ public class SalaYAsientos2 extends JFrame {
 					Asiento a = new Asiento(codigo_asiento, x, y, false);
 					System.out.println(a.toString());
 					asientos.add(a);
-					
 
 					button.addActionListener(new ActionListener() {
 
@@ -206,11 +209,11 @@ public class SalaYAsientos2 extends JFrame {
 			@Override
 
 			public void windowOpened(WindowEvent e) {
-				//if (compruebaEsixte() == true) {
+				// if (compruebaEsixte() == true) {
 
 // revisar que si está dentro de la BD no lo inserte ??
 // creo qye es el error que da
-					//cargaAsientos();
+				// cargaAsientos();
 				// }
 
 			}
@@ -328,6 +331,11 @@ public class SalaYAsientos2 extends JFrame {
 			public void run() {
 // LogIn.guardaConfig();
 				setVisible(false);
+				getAsientosSeleccionados();
+				System.out.println("Asientos selccionados: ");
+				for (Asiento i : codigoS) {
+					System.out.println(i.toString());
+				}
 				LogIn.main(null);
 
 				dispose();
@@ -337,7 +345,23 @@ public class SalaYAsientos2 extends JFrame {
 
 	}
 
-// public void guardarAsientos() {
+	public static void getAsientosSeleccionados() {
+		for (java.awt.Component b : panel.getComponents()) {
+			if (b instanceof JButton) {
+				if (((JButton) b).getIcon().equals(iconoSelec)) {
+					for (Asiento a : asientos) {
+						if (b.getX() == a.getColumna() && b.getY() == a.getFila()) {
+							codigoS.add(a);
+						}
+
+					}
+				}
+
+			}
+		}
+	}
+
+	// public void guardarAsientos() {
 // for(Asiento a: asientos) {
 // BD.BDprueba2.insertarAsiento(a);
 // }

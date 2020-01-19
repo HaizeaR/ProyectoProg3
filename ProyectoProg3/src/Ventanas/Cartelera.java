@@ -86,8 +86,9 @@ public class Cartelera extends JFrame {
 		
 		JPanel cartelera = new JPanel();
 		cartelera.setBackground(Color.WHITE);
-		cartelera.setLayout(new GridLayout(2 ,2));
-	//	panelContenidos.add(cartelera, BorderLayout.CENTER);
+		//cartelera.setLayout(new GridLayout(2 ,2));
+		
+		//panelContenidos.add(cartelera, BorderLayout.CENTER);
 		//cartelera.setLayout(new GridLayout());
 		 
 
@@ -101,13 +102,13 @@ public class Cartelera extends JFrame {
 		
 		for (String peli : pelis) {
 			ImageIcon img = new ImageIcon("src/img/" + peli);
-	
+			
 			
 			JButton cartelera1 = new JButton(img);
 			//REVISAR
-			cartelera1.setMargin(new Insets(0, 0, 0, 0));
+			//cartelera1.setMargin(new Insets(0, 0, 0, 0));
 
-			
+			cartelera1.setSize(img.getIconWidth(), img.getIconHeight());
 			
 			
 			
