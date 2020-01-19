@@ -255,9 +255,11 @@ public class BDprueba2 {
 			log( Level.INFO, "BD creación de tabla\t" + sent, null );
 
 
+			sent = "CREATE TABLE IF NOT EXISTS compra (id_compra INTEGER PRIMARY KEY, codigo int, cod_sesion int, dni String);";
+			//System.out.println( sent );
+			statement.executeUpdate( sent );
+			log( Level.INFO, "BD creación de tabla\t" + sent, null );
 
-
-			//			sent = "CREATE TABLE IF NOT EXISTS cine ( "
 
 
 
@@ -521,7 +523,7 @@ public class BDprueba2 {
 
 	public static boolean insertarAsiento(Asiento a) {
 
-		try (Statement statement = conexion.createStatement()){
+		try (Statement statement = conexion.createStatement()) {
 			String sent;
 			sent = "insert into asiento values(" + "'" + (a.getCodigo()) + "', " + "'" + (a.getFila()) + "', " + "'"
 					+ (a.getColumna()) + "', " + "'" + (a.isOcupado()) + "' " +
@@ -544,8 +546,33 @@ public class BDprueba2 {
 		}
 	}
 
-
-
+	
+	public static boolean updateAsiento(Asiento a) {
+		
+		try (Statement statement = conexion.createStatement()) {
+			String sent;
+			
+			sent = "update asiento set" +
+					" ocupado=" + a.isOcupado() +
+					" where codigo='" + a.getCodigo() + "'";
+			
+			System.out.println(sent);
+			
+			int insertados = statement.executeUpdate( sent );
+			log( Level.INFO, "BD modificada " + insertados + " fila\t" + sent, null );
+			
+			if (insertados!=1) {  
+				log( Level.SEVERE, "Error en update de BD\t" + sent, null );
+				return false;  
+			}
+			return true;
+			
+		} catch (Exception e) {
+			log( Level.SEVERE, "Error en BD\t", e );
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 
 

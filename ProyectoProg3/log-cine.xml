@@ -348,11 +348,19 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 </log>
+<<<<<<< HEAD
 <?xml version="1.0" encoding="windows-1252" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 </log>
 <?xml version="1.0" encoding="windows-1252" standalone="no"?>
+=======
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+>>>>>>> branch 'master' of https://github.com/HaizeaR/ProyectoProg3.git
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 </log>
