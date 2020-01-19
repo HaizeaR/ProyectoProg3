@@ -56,6 +56,7 @@ public class SalaYAsientos2 extends JFrame {
 
 		compruebaEsixte();
 		if (compruebaEsixte() == false) {
+			System.out.println("Creando asientos: ");
 			int codigo_asiento = 0;
 			for (int y = 50; y < COLUMNAS[COLUMNAS.length - 1]; y = y + 50) {
 				for (int x = 50; x < FILAS[FILAS.length - 1]; x = x + 50) {
@@ -63,7 +64,9 @@ public class SalaYAsientos2 extends JFrame {
 					button.setBounds(x, y, 50, 50);
 					codigo_asiento++;
 					Asiento a = new Asiento(codigo_asiento, x, y, false);
+					System.out.println(a.toString());
 					asientos.add(a);
+					
 
 					button.addActionListener(new ActionListener() {
 
@@ -86,6 +89,7 @@ public class SalaYAsientos2 extends JFrame {
 					panel.add(button);
 
 				}
+				cargaAsientos();
 			}
 		} else {
 			Connection con = BDprueba2.initBD("Cine2.db");
@@ -202,14 +206,12 @@ public class SalaYAsientos2 extends JFrame {
 			@Override
 
 			public void windowOpened(WindowEvent e) {
-				compruebaEsixte();
-				if (compruebaEsixte() == true) {
-					for (Asiento a : asientos) {
+				//if (compruebaEsixte() == true) {
+
 // revisar que si está dentro de la BD no lo inserte ??
 // creo qye es el error que da
-						BDprueba2.insertarAsiento(a);
-					}
-				}
+					//cargaAsientos();
+				//}
 
 			}
 
@@ -241,6 +243,12 @@ public class SalaYAsientos2 extends JFrame {
 
 		});
 
+	}
+
+	public static void cargaAsientos() {
+		for (Asiento a : asientos) {
+			BDprueba2.insertarAsiento(a);
+		}
 	}
 
 	public static void crearAsientosBD() {
@@ -283,7 +291,7 @@ public class SalaYAsientos2 extends JFrame {
 					return true;
 				}
 			}
-			
+
 		} catch (SQLException e) {
 // TODO Auto-generated catch block
 			e.printStackTrace();
