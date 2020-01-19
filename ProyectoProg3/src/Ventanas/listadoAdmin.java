@@ -20,6 +20,10 @@ import Elementos.Admin;
 import Elementos.Cliente;
 
 
+/**
+ * @author Unai Mendiondo, Mireya Quintana,  Haizea Rodriguez
+ *
+ */
 public class listadoAdmin extends JFrame{
 
 	/**

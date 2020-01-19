@@ -44,6 +44,9 @@ public class BDprueba2 {
 		}
 	}
 
+	
+	
+	
 	/**
 	 * Crea las tablas de la base de datos. Si ya existen, las deja tal cual.
 	 * Devuelve un statement para trabajar con esa base de datos
@@ -201,6 +204,9 @@ public class BDprueba2 {
 	}
 
 
+	
+	
+	// NO SE CUAL USAMOS SI ESTE O EL OTRO PERO UNO TENEMOS QUE BORRAR PORQUE CREO QUE SON LO MISMO
 
 	public static boolean abrirConexion(String nombreBD) {
 
@@ -360,7 +366,7 @@ public class BDprueba2 {
 
 
 
-
+// BORRAR , NO SE USA CREO
 
 
 	/**
@@ -450,6 +456,9 @@ public class BDprueba2 {
 			return false;
 		}
 	}
+	
+	
+	// DÓNDE SE USA ??
 
 	/**
 	 * Cierra la conexiÃ³n abierta de base de datos ({@link #abrirConexion(String)})
@@ -463,6 +472,9 @@ public class BDprueba2 {
 		}
 	}
 
+	
+	// NO SE USA
+	
 	/**
 	 * Lee los productos de la conexiÃ³n de base de datos abierta
 	 * 
@@ -491,6 +503,19 @@ public class BDprueba2 {
 			return null;
 		}
 	}
+	
+	
+	
+	////////////////////////////////////
+	// 								  //	
+	//			  INSERTS			  //
+	//								  //
+	////////////////////////////////////
+	
+	
+	
+	
+	// CLIENTE
 
 	public static boolean insertarCliente(Cliente cliente) {
 		try (Statement statement = conexion.createStatement()) {
@@ -517,9 +542,7 @@ public class BDprueba2 {
 		}
 	}
 
-
-
-
+	// ASIENTO
 
 	public static boolean insertarAsiento(Asiento a) {
 
@@ -546,6 +569,141 @@ public class BDprueba2 {
 		}
 	}
 
+	
+	// ADMIN 
+	
+	
+	public static boolean insertarAdmin(Admin admin) {
+		try (Statement statement = conexion.createStatement()) {
+			String sent;
+
+			sent = "insert into admin values(" + "'" + secu(admin.getDNI()) + "', " + "'"
+					+ secu(admin.getNombre()) + "', " + "'" + secu(admin.getApellido()) + "', " + "'"
+					+ secu(admin.getCorreo()) + "', " + "'" + admin.getContrasena().toString() + "' " + ")";
+
+			System.out.println(sent);
+
+			int insertados = statement.executeUpdate(sent);
+			log(Level.INFO, "BD insert en cliente\t" + sent, null);
+
+
+			if (insertados != 1)
+				return false;
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
+	// SESION 
+	
+	public static boolean insertSesion(Sesion s, Statement st) {
+
+		try (Statement statement = conexion.createStatement()) {
+			String sent;
+			sent = "insert into sesion values(" + "'" + (s.getCod_sesion()) + "', " + "'" + (s.getFecha()) + "', " + "'"
+					+ (s.getHoraI()) + "', " + "'" + (s.getID_sala()) + "', " + "'" + (s.getID_pelicula()) + "' " +
+
+					")";
+
+			System.out.println(sent);
+			
+			int insertados = statement.executeUpdate(sent);
+			log(Level.INFO, "BD insert en cliente\t" + sent, null);
+
+			if (insertados != 1)
+				return false;
+
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
+	// PELICULA
+	
+	public static boolean insertPelicula(Pelicula peli) {
+		try (Statement statement = conexion.createStatement()) {
+			String sent;
+			sent = "insert into pelicula values(" + "'" + (peli.getCod_peli()) + "', " + "'" + (peli.getTitulo_peli()) + "', " + "'"
+					+ (peli.getDescrip_peli()) + "', " + "'" + (peli.getDescrip_peli()) + "' " +
+					")";
+			
+			System.out.println(sent);
+			
+			int insertados = statement.executeUpdate(sent);
+			log(Level.INFO, "BD insert en cliente\t" + sent, null);
+
+			if (insertados != 1)
+				return false;
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	// SALA
+	
+	public static boolean insertSala(Sala sala) {
+		try (Statement statement = conexion.createStatement()) {
+			String sent;
+			sent = "insert into sala values(" + "'" + (sala.getID_cine()) + "', " + "'" + (sala.getCapacidad_sala()) + "', " + "'"
+					+ (sala.getID_cine()) + "' " +
+					")";
+			
+			System.out.println(sent);
+			
+			int insertados = statement.executeUpdate(sent);
+			log(Level.INFO, "BD insert en cliente\t" + sent, null);
+
+			if (insertados != 1)
+				return false;
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
+	// CINE
+	
+	public static boolean insertCine(Cine cine) {
+		try (Statement statement = conexion.createStatement()) {
+			String sent;
+			sent = "insert into cine values(" + "'" + (cine.getCod_cine()) + "', " + "'" + (cine.getNombre_cine()) + "', " + "'"
+					+ (cine.getDireccion_cine()) + "' " +
+					")";
+			
+			System.out.println(sent);
+			int insertados = statement.executeUpdate(sent);
+
+			if (insertados != 1)
+				return false;
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	
+	////////////////////////////////////
+	// 								  //	
+	//			  UPDATE			  //
+	//								  //
+	////////////////////////////////////
+	
 	
 	public static boolean updateAsiento(Asiento a) {
 		
@@ -577,56 +735,10 @@ public class BDprueba2 {
 
 
 
-	//	/**
-	//	 * Inserta una nuevo admin en la base de datos abierta
-	//	 */
-	//	public static boolean insertarAdmin(Admin admin, Statement st) {
-	//		try {
-	//			String sent;
-	//
-	//			sent = "insert into admin values(" + "'" + secu(admin.getDNI()) + "', " + "'" + secu(admin.getNombre())
-	//					+ "', " + "'" + secu(admin.getApellido()) + "', " + "'" + secu(admin.getCorreo()) + "', " + "'"
-	//					+ admin.getContrasena().toString() + "' " + ")";
-	//
-	//			System.out.println(sent);
-	//			int insertados = st.executeUpdate(sent);
-	//
-	//			if (insertados != 1)
-	//				return false;
-	//			return true;
-	//
-	//		} catch (Exception e) {
-	//			e.printStackTrace();
-	//			return false;
-	//		}
-	//	}
-	//	
 
 
-	public static boolean insertarAdmin(Admin admin) {
-		try (Statement statement = conexion.createStatement()) {
-			String sent;
 
-			sent = "insert into admin values(" + "'" + secu(admin.getDNI()) + "', " + "'"
-					+ secu(admin.getNombre()) + "', " + "'" + secu(admin.getApellido()) + "', " + "'"
-					+ secu(admin.getCorreo()) + "', " + "'" + admin.getContrasena().toString() + "' " + ")";
-
-			System.out.println(sent);
-
-			int insertados = statement.executeUpdate(sent);
-			log(Level.INFO, "BD insert en cliente\t" + sent, null);
-
-
-			if (insertados != 1)
-				return false;
-			return true;
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-
+// NO SE USA
 
 	/**
 	 * Lee los administradores de la conexiÃ³n de base de datos abierta
@@ -656,94 +768,6 @@ public class BDprueba2 {
 		}
 	}
 
-	public static boolean insertSesion(Sesion s, Statement st) {
-
-		try (Statement statement = conexion.createStatement()) {
-			String sent;
-			sent = "insert into sesion values(" + "'" + (s.getCod_sesion()) + "', " + "'" + (s.getFecha()) + "', " + "'"
-					+ (s.getHoraI()) + "', " + "'" + (s.getID_sala()) + "', " + "'" + (s.getID_pelicula()) + "' " +
-
-					")";
-
-			System.out.println(sent);
-			
-			int insertados = statement.executeUpdate(sent);
-			log(Level.INFO, "BD insert en cliente\t" + sent, null);
-
-			if (insertados != 1)
-				return false;
-
-			return true;
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-	
-	public static boolean insertPelicula(Pelicula peli) {
-		try (Statement statement = conexion.createStatement()) {
-			String sent;
-			sent = "insert into pelicula values(" + "'" + (peli.getCod_peli()) + "', " + "'" + (peli.getTitulo_peli()) + "', " + "'"
-					+ (peli.getDescrip_peli()) + "', " + "'" + (peli.getDescrip_peli()) + "' " +
-					")";
-			
-			System.out.println(sent);
-			
-			int insertados = statement.executeUpdate(sent);
-			log(Level.INFO, "BD insert en cliente\t" + sent, null);
-
-			if (insertados != 1)
-				return false;
-
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-	
-	public static boolean insertSala(Sala sala) {
-		try (Statement statement = conexion.createStatement()) {
-			String sent;
-			sent = "insert into sala values(" + "'" + (sala.getID_cine()) + "', " + "'" + (sala.getCapacidad_sala()) + "', " + "'"
-					+ (sala.getID_cine()) + "' " +
-					")";
-			
-			System.out.println(sent);
-			
-			int insertados = statement.executeUpdate(sent);
-			log(Level.INFO, "BD insert en cliente\t" + sent, null);
-
-			if (insertados != 1)
-				return false;
-
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-	
-	public static boolean insertCine(Cine cine) {
-		try (Statement statement = conexion.createStatement()) {
-			String sent;
-			sent = "insert into cine values(" + "'" + (cine.getCod_cine()) + "', " + "'" + (cine.getNombre_cine()) + "', " + "'"
-					+ (cine.getDireccion_cine()) + "' " +
-					")";
-			
-			System.out.println(sent);
-			int insertados = statement.executeUpdate(sent);
-
-			if (insertados != 1)
-				return false;
-
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
 
 	/////////////////////////////////////////////////////////////////////
 	// MÃ©todos privados //
@@ -803,6 +827,15 @@ public class BDprueba2 {
 
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/////////////////////////////////////////////////////////////////////
 	//                      Logging                                    //
 	/////////////////////////////////////////////////////////////////////
