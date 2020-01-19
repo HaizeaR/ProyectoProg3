@@ -8,6 +8,7 @@ import Elementos.TablaHorario;
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
@@ -20,10 +21,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 /** Ventana donde se muestra información de la perlicula individual
  * con sus horarios
@@ -45,7 +53,7 @@ public class PeliculaIndividual extends JFrame{
 	static String pelicula;
 	int cod_peli;
 	JTable tablaHorario; 
-	TableModel mTabla; 
+	//TableModel mTabla; 
 	JInternalFrame ventanaTabla;  // Frame interno que contiene la tabla horiario 
 	
 	
@@ -82,8 +90,8 @@ public class PeliculaIndividual extends JFrame{
 		
 		
 		
-		tablaHorario = new JTable(mTabla); 
-		JScrollPane scrollpane = new JScrollPane(tablaHorario);
+		tablaHorario = new JTable(); 
+		//JScrollPane scrollpane = new JScrollPane(tablaHorario);
 		
 
 		getContentPane().add(tablaHorario, BorderLayout.SOUTH); 
@@ -173,6 +181,36 @@ public class PeliculaIndividual extends JFrame{
 		
 	}
 
+	public int sacarCodigo() {
+		Connection con = BDprueba2.initBD("Cine2.db");
+		String sentSQL = ""; 
+		try {
+			
+			Statement st = con.createStatement();
+			sentSQL = "select * from pelicula where titulo_peli = '" + pelicula + "'";
+			System.out.println(sentSQL);
+			ResultSet rs = st.executeQuery(sentSQL);
+		
+			
+			
+			while(rs.next()) {
+			
+				cod_peli = rs.getInt("cod_peli");
+				
+			}
+			//rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cod_peli; 
+		
+	}
+	
+	
+	
+	
+	
+	
 	/** Método utilizado para volver a la panatalla de la cartelera
 	 * Hilo que se activa cuando se pulsa el botón de Atras 
 	 * 
@@ -210,6 +248,112 @@ public class PeliculaIndividual extends JFrame{
 	}
 	
 
+	private void mostrar() {
+		
+		DefaultTableModel modelo = new DefaultTableModel();
+		modelo.setColumnIdentifiers(new Object[] {"L", "M", "X","J", "V", "S", "D"});
+	
+		
+
+		Connection conn = BDprueba2.initBD("Cine2.db");
+		String SQL = ""; 
+		try {
+			Statement stat = conn.createStatement();
+			SQL = "select horaI from sesion where ID_peli =" + sacarCodigo() + ""; 
+			
+			
+
+			ResultSet rs = stat.executeQuery( SQL );
+			while(rs.next()) {
+						
+				modelo.addRow(new Object[] {rs.getString("horaI")});
+				
+			}
+			tablaHorario.setModel(modelo);
+		}catch(Exception e){
+			System.out.println(e);
+			
+		}
+				
+	}
+	
+	
+//	public String sacarFechaDeBD() {
+//		
+//		Connection con = BDprueba2.initBD("Cine2.db");
+//		String sentSQL = ""; 
+//	
+//		try {
+//			
+//			Statement st = con.createStatement();
+//			sentSQL = "select fecha from sesion where ID_peli = '" + cod_peli + "'";
+//			System.out.println(sentSQL);
+//			ResultSet rs = st.executeQuery(sentSQL);
+//		
+//			
+//			
+//			while(rs.next()) {
+//				String f = rs.getString("fecha"); 
+//				return f; 
+//				
+//				
+//			}
+//			//return f;
+//			//rs.close();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return null;
+//		
+//	}
+//	
+//	public void diaDeLaSemana() {
+//		String fecha = sacarFechaDeBD(); 
+//		getDiaSemana(fecha); 
+//		System.out.println(getDiaSemana(fecha) );
+//
+//	}
+//
+//	
+//	public String getDiaSemana(String fecha) {
+//		String Valor_dia = null;
+//		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+//		Date fechaActual = null;
+//		try {
+//			fechaActual = df.parse(fecha);
+//		} catch (ParseException e) {
+//			System.err.println("No se ha podido parsear la fecha.");
+//			e.printStackTrace();
+//		}
+//		GregorianCalendar fechaCalendario = new GregorianCalendar();
+//		fechaCalendario.setTime(fechaActual);
+//		int diaSemana = fechaCalendario.get(Calendar.DAY_OF_WEEK);
+//		if (diaSemana == 1) {
+//			Valor_dia = "Domingo";
+//		} else if (diaSemana == 2) {
+//			Valor_dia = "Lunes";
+//		} else if (diaSemana == 3) {
+//			Valor_dia = "Martes";
+//		} else if (diaSemana == 4) {
+//			Valor_dia = "Miercoles";
+//		} else if (diaSemana == 5) {
+//			Valor_dia = "Jueves";
+//		} else if (diaSemana == 6) {
+//			Valor_dia = "Viernes";
+//		} else if (diaSemana == 7) {
+//			Valor_dia = "Sabado";
+//		}
+//		return Valor_dia;
+//	}
+
+
+
+
+
+	
+	
+	
+
 	// Vamos a implementar un JTABLE que contanga la información de las seisiones 
 	// Creo que podemos crear una estructura 
 	// Un HashMap que tenga como clave un String ( nombre de peli) y un SET que tenga 
@@ -222,12 +366,17 @@ public class PeliculaIndividual extends JFrame{
 		//TablaHorario th = new TablaHorario(Tabla.leerBD(111)) ; 
 		
 		
-		VentanaTabla vT = new VentanaTabla(v, "TABLA", true);
+		//VentanaTabla vT = new VentanaTabla(v, "TABLA", true);
 		//vT.setTabla(th);
-		vT.setSize(50, 50);
-		v.addVentanaInterna( vT, "TABLA" );
-		vT.setVisible(true);
+		//vT.setSize(50, 50);
+		//v.addVentanaInterna( vT, "TABLA" );
+		//vT.setVisible(true);
+		
+		v.mostrar();
+		
+	//	v.diaDeLaSemana();
 		v.setVisible(true);
+		
 		v.sacarDatos();
 	}
 	
