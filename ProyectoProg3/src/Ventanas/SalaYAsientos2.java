@@ -30,7 +30,6 @@ public class SalaYAsientos2 extends JFrame {
 	final static ImageIcon iconoOcupado = new ImageIcon("src/img/asiento_r.png");
 	final static ImageIcon iconoLibre = new ImageIcon("src/img/asiento_g.png");
 	final static ImageIcon iconoSelec = new ImageIcon("src/img/asiento_v.png");
-	static boolean esixte = false;
 
 	JButton bAtras, bNext;
 	JPanel pBotonera;
@@ -56,7 +55,7 @@ public class SalaYAsientos2 extends JFrame {
 		panel.setBounds(20, 70, 200, 140);
 
 		compruebaEsixte();
-		if (esixte == false) {
+		if (compruebaEsixte() == false) {
 			int codigo_asiento = 0;
 			for (int y = 50; y < COLUMNAS[COLUMNAS.length - 1]; y = y + 50) {
 				for (int x = 50; x < FILAS[FILAS.length - 1]; x = x + 50) {
@@ -204,7 +203,7 @@ public class SalaYAsientos2 extends JFrame {
 
 			public void windowOpened(WindowEvent e) {
 				compruebaEsixte();
-				if (esixte == true) {
+				if (compruebaEsixte() == true) {
 					for (Asiento a : asientos) {
 // revisar que si está dentro de la BD no lo inserte ??
 // creo qye es el error que da
@@ -269,7 +268,7 @@ public class SalaYAsientos2 extends JFrame {
 		}
 	}
 
-	public static void compruebaEsixte() {
+	public static boolean compruebaEsixte() {
 		Connection con = BDprueba2.initBD("Cine2.db");
 		try {
 			Statement stmt = con.createStatement();
@@ -279,15 +278,17 @@ public class SalaYAsientos2 extends JFrame {
 			while (rs.next()) {
 				int cod_asiento = rs.getInt("codigo");
 				if (cod_asiento == -1) {
-					esixte = false;
+					return false;
 				} else {
-					esixte = true;
+					return true;
 				}
 			}
+			
 		} catch (SQLException e) {
 // TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return false;
 	}
 
 	/**
