@@ -211,7 +211,7 @@ public class SalaYAsientos2 extends JFrame {
 // revisar que si está dentro de la BD no lo inserte ??
 // creo qye es el error que da
 					//cargaAsientos();
-				//}
+				// }
 
 			}
 
