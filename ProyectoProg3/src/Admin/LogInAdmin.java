@@ -1,4 +1,4 @@
-package Ventanas;
+package Admin;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -17,6 +17,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import BD.BDprueba2;
+import Ventanas.LogIn;
 
 public class LogInAdmin extends JFrame{
 	

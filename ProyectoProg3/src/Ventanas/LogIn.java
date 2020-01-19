@@ -13,6 +13,7 @@ import java.sql.Statement;
 
 import javax.swing.*;
 
+import Admin.LogInAdmin;
 import BD.BDprueba2;
 import Elementos.Compra;
 

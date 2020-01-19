@@ -5,7 +5,7 @@
 	
 
 	 
-package Ventanas;
+package Admin;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
