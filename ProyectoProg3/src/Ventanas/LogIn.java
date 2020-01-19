@@ -14,6 +14,7 @@ import java.sql.Statement;
 import javax.swing.*;
 
 import BD.BDprueba2;
+import Elementos.Compra;
 
 
 
@@ -38,6 +39,7 @@ public class LogIn extends JFrame {
 	static JLabel lCorreo, lContrasena,lLogin,lPelicula, lSala, lHora, lAsiento, lbimagen; 
 	static JTextField tfCorreo; 
 	static JPasswordField jpContrasena; 
+	int contador = 0; 
 	
 	//private static JDialog v;
 	
@@ -325,7 +327,10 @@ public class LogIn extends JFrame {
 						System.out.println("entra");
 						
 						confirmCompra();
-
+						
+						//Compra c = new Compra(contador, cod_asiento, cod_sesion, dNI)
+						//BDprueba2.insertCompra(c); 
+						contador ++; 
 
 					}else{
 						JOptionPane.showMessageDialog(null, "ERROR contraseña incorrecta ");

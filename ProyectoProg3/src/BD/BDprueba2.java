@@ -15,6 +15,7 @@ import Elementos.Admin;
 import Elementos.Asiento;
 import Elementos.Cine;
 import Elementos.Cliente;
+import Elementos.Compra;
 import Elementos.Pelicula;
 import Elementos.Sala;
 import Elementos.Sesion;
@@ -114,6 +115,12 @@ public class BDprueba2 {
 			} catch (SQLException e) {
 			}
 			log(Level.INFO, "Creada base de datos", null);
+			
+			
+			
+			
+			
+			
 
 		} catch (SQLException e) {
 			log(Level.SEVERE, "Error en creacion de base de datos", e);
@@ -188,6 +195,15 @@ public class BDprueba2 {
 				// System.out.println(sent9);
 				st.executeUpdate(sent9);
 				log(Level.INFO, "BD insert en tabla\t" + sent9, null);
+				
+				
+				String sent10 = "insert into compra values (1, 1 ,1 , '45993840G');";
+				//System.out.println(sent10);
+				statement.executeUpdate(sent10);
+				log( Level.INFO, "BD insert en tabla\t" + sent9, null );
+
+				
+				
 			} catch (Exception e) {
 			} // Es normal que haya error en los inserts si ya existen las claves
 			// fin creaciÃ³n bd
@@ -337,17 +353,12 @@ public class BDprueba2 {
 				statement.executeUpdate(sent9);
 				log( Level.INFO, "BD insert en tabla\t" + sent9, null );
 
+				String sent10 = "insert into compra values (1, 1 ,1 , '45993840G');";
+				//System.out.println(sent10);
+				statement.executeUpdate(sent10);
+				log( Level.INFO, "BD insert en tabla\t" + sent9, null );
 
-
-				//				sent = "insert into producto (id, nombre, precio) values (2,'Crucifijo rezos pre-examen',42);";
-				//				System.out.println( sent );
-				//				statement.executeUpdate( sent );
-
-				//				sent = "insert into producto (id, nombre, precio) values (3,'Asesor programaciÃ³n Java (hora)',25);";
-				//				System.out.println( sent );
-				//				statement.executeUpdate( sent );
-
-				// INSERTAR POR DEFECTO EN PELICULA
+				
 
 			} catch (Exception e) {
 			} // Es normal que haya error en los inserts si ya existen las claves
@@ -443,6 +454,14 @@ public class BDprueba2 {
 				// System.out.println(sent9);
 				st.executeUpdate(sent9);
 				log(Level.INFO, "BD insert en tabla\t" + sent9, null);
+				
+				
+				String sent10 = "insert into compra values (1, 1 ,1 , '45993840G');";
+				//System.out.println(sent10);
+				statement.executeUpdate(sent10);
+				log( Level.INFO, "BD insert en tabla\t" + sent9, null );
+
+				
 			} catch (Exception e) {
 			} // Es normal que haya error en los inserts si ya existen las claves
 
@@ -697,6 +716,33 @@ public class BDprueba2 {
 		}
 	}
 
+	
+	
+	
+	public static boolean insertCompra(Compra compra) {
+		try (Statement statement = conexion.createStatement()) {
+			String sent;
+			sent = "insert into compra values(" + "'" + (compra.getID_compra()) + "', "
+			+ "'" + (compra.getCod_asiento()) + "', " 
+			+ "'" + (compra.getCod_sesion()) + "' , " 
+			+ "'" + (compra.getDNI()) + "'  " +
+					")";
+			
+			System.out.println(sent);
+			int insertados = statement.executeUpdate(sent);
+
+			if (insertados != 1)
+				return false;
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
+	
 	
 	////////////////////////////////////
 	// 								  //	
