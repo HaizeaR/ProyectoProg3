@@ -203,7 +203,8 @@ public class SalaYAsientos2 extends JFrame {
 			@Override
 
 			public void windowOpened(WindowEvent e) {
-				if (asientos.size() != 0) {
+				compruebaEsixte();
+				if (esixte == true) {
 					for (Asiento a : asientos) {
 // revisar que si está dentro de la BD no lo inserte ??
 // creo qye es el error que da
