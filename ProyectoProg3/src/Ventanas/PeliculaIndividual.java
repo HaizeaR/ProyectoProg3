@@ -376,16 +376,14 @@ public class PeliculaIndividual extends JFrame{
 		tabla.addColumna("Domingo", new String());
 		
 		
-<<<<<<< HEAD
 		VentanaTabla vT = new VentanaTabla(v, "TABLA", true);
 		
 		//NUEVO
 		vT.setTabla(tabla);
 		
 		
-=======
+
 		//VentanaTabla vT = new VentanaTabla(v, "TABLA", true);
->>>>>>> branch 'master' of https://github.com/HaizeaR/ProyectoProg3.git
 		//vT.setTabla(th);
 		//vT.setSize(50, 50);
 		//v.addVentanaInterna( vT, "TABLA" );
