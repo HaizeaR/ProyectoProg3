@@ -47,7 +47,7 @@ public class listadoAdmin extends JFrame{
 	JTableHeader header; 
 	DefaultTableModel modelo;
 	Object valor; 
-	
+
 
 
 
@@ -69,14 +69,14 @@ public class listadoAdmin extends JFrame{
 		pBotonera.add(bBorrar); 
 
 		pPrincipal = new JPanel(); 
-		
-	
+
+
 		tablaAdmin = new JTable(modelo);
 
 		pPrincipal.add(new JScrollPane(tablaAdmin));
 
-		
-		
+
+
 
 
 
@@ -87,20 +87,25 @@ public class listadoAdmin extends JFrame{
 		tablaAdmin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				if (e.getClickCount()>=2) {
+
+				if (e.getClickCount()>=1) {
 					int fila = tablaAdmin.rowAtPoint( e.getPoint() );
 					int col = tablaAdmin.rowAtPoint(e.getPoint());
 					valor = tablaAdmin.getValueAt( fila, col );
+					String v = String.valueOf(valor);
+					Admin a = selectAdmin(v);
+				
+					BDprueba2.borrarAdmin(a); 
 					
 
-				
+
+
 				}
-			
+
 			}
 		});
-		
-		
+
+
 		bVolver.addActionListener((ActionEvent e ) -> {volver(); });
 
 
@@ -115,18 +120,53 @@ public class listadoAdmin extends JFrame{
 	}				
 
 	
-	
-	
-	
+	private Admin selectAdmin(String dni) {
+		
+		Connection conn = BDprueba2.initBD("Cine2.db");
+		String SQL = ""; 
+		Admin a;
+		try {
+			Statement stat = conn.createStatement();
+			SQL = "select * from admin where dni = '" + dni + "'"; 
 
-	
-	
+
+
+			ResultSet rs = stat.executeQuery( SQL );
+			while(rs.next()) {
+				String DNI = rs.getString("dni"); 
+				String nombre  = rs.getString("nombre"); 
+				String apellido =rs.getString("apellido"); 
+				String correo =rs.getString("correo"); 
+				String contrasena = rs.getString("contrasena"); 
+				a = new Admin(DNI, nombre, apellido, correo, contrasena);
+				return a; 
+				}
+			
+
+			
+
+		}catch(Exception e){
+			System.out.println(e);
+
+		}
+
+		
+		return null; 
+	}
+
+
+
+
+
+
+
+
 
 	private void mostrar() {
 
-		
+
 		String column_names[]= {"DNI", "Nombre", "Apellido","Correo"};
-		
+
 		modelo = new DefaultTableModel(column_names,0);
 
 
@@ -140,13 +180,13 @@ public class listadoAdmin extends JFrame{
 
 			ResultSet rs = stat.executeQuery( SQL );
 			while(rs.next()) {
-				
+
 				modelo.addRow(new Object[] {rs.getString("DNI"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo")});
 
 			}
-			
+
 			tablaAdmin.setModel(modelo);
-			
+
 		}catch(Exception e){
 			System.out.println(e);
 

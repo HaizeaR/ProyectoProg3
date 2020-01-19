@@ -733,6 +733,38 @@ public class BDprueba2 {
 	}
 
 
+	
+	
+
+	////////////////////////////////////
+	// 								  //	
+	//			  DELETE			  //
+	//								  //
+	////////////////////////////////////
+	
+	
+	
+	
+	/** Borra una compra en la base de datos abierta
+	 * @param compra	Compra a borrar
+	 * @return	true si el borrado es correcto, false en caso contrario
+	 */
+	public static boolean borrarAdmin( Admin admin ) {
+		try (Statement statement = conexion.createStatement()) {
+			String sent = "delete from admin where DNI=" + admin.getDNI() + ";";
+			System.out.println( sent );
+			int borrados = statement.executeUpdate( sent );
+			return (borrados==1);
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+
+
+	
+	
+	
 
 
 
@@ -791,24 +823,7 @@ public class BDprueba2 {
 		return ret.toString();
 	}
 
-	//
-	//	/** Borra una compra en la base de datos abierta
-	//	* @param compra	Compra a borrar
-	//	* @return	true si el borrado es correcto, false en caso contrario
-	//	*/
-	//	public static boolean borrarCompra( Compra compra ) {
-	//	try (Statement statement = conexion.createStatement()) {
-	//	String sent = "delete from compra where id=" + compra.getId() + ";";
-	//	System.out.println( sent );
-	//	int borrados = statement.executeUpdate( sent );
-	//	return (borrados==1);
-	//	} catch (Exception e) {
-	//	return false;
-	//	}
-	//	}
-	//	
-	//	
-	//}
+
 
 	public static String buscarCorreoCliente(Cliente cliente, Statement st) {
 		// Sin terminar
