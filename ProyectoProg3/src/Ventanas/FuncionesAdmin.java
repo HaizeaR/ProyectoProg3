@@ -26,7 +26,7 @@ public class FuncionesAdmin extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	JPanel pPrincipal, pDrch , pNorte; 
-	JButton bNuevaPeli, bRegistrarAdmin, bReiniciarBD, bVolver, bNuevoCine, bNuevaSesion; 
+	JButton bNuevaPeli, bRegistrarAdmin, bReiniciarBD, bVolver, bNuevoCine, bNuevaSesion, bListadoAdmin; 
 	JLabel lbimagen;
 	JLabel lInicio; 
 	Connection con; 
@@ -59,6 +59,7 @@ public class FuncionesAdmin extends JFrame{
 		bNuevaPeli = new JButton("Guardad nueva PELICULA"); 
 		bNuevoCine = new JButton("Crear un nuevo CINE"); 
 		bNuevaSesion = new JButton("Crear una nueva SESIÓN"); 
+		bListadoAdmin = new JButton("Saca listado de ADMIN"); 
 		bReiniciarBD = new JButton("Reiniciar BD");
 		bVolver = new JButton("Volver"); 
 		
@@ -66,6 +67,7 @@ public class FuncionesAdmin extends JFrame{
 		pPrincipal.add(bNuevaPeli); 
 		pPrincipal.add(bNuevoCine);
 		pPrincipal.add(bNuevaSesion);
+		pPrincipal.add(bListadoAdmin); 
 		pPrincipal.add(bReiniciarBD); 
 		pPrincipal.add(bVolver);
 		
@@ -91,49 +93,50 @@ public class FuncionesAdmin extends JFrame{
 		bNuevaPeli.addActionListener((ActionEvent e) -> {guardarPeli();});
 		bNuevoCine.addActionListener((ActionEvent e) -> {crearCine();});
 		bNuevaSesion.addActionListener((ActionEvent e) -> {crearSesion();});
+		bListadoAdmin.addActionListener((ActionEvent e) -> {listadoAdmin();});
 		bVolver.addActionListener((ActionEvent e) -> {volver();});
 		
 		//bReiniciarBD.addActionListener((ActionEvent e) -> {BDprueba2.reiniciarBD(con);}); 
 		// NO FUNCIONA
 		
-		
-		
-		
-		
-		
 
 	}
 	
-	
+
 	public void guardarPeli() {
-		
-				setVisible(false);
-				anadirPeliAdmin.main(null); 
-				dispose();
-			}				
-	
+
+		setVisible(false);
+		anadirPeliAdmin.main(null); 
+		dispose();
+	}				
+
 
 	public void volver() {
-	
-				setVisible(false);
-				LogInAdmin.main(null); 
-				dispose();
-		}				
-		 
+
+		setVisible(false);
+		LogInAdmin.main(null); 
+		dispose();
+	}				
+
 	public void crearCine() {
-		
+
 		setVisible(false);
 		anadirCine.main(null); 
 		dispose();
 	}	
-public void crearSesion() {
-		
+
+	public void crearSesion() {
+
 		setVisible(false);
 		anadirSesion.main(null); 
 		dispose();
 	}	
-	
-	
+
+	public void listadoAdmin() {
+		setVisible(false);
+		listadoAdmin.main(null); 
+		dispose();
+	}
 	
 	
 	public static void main(String[] args) {
