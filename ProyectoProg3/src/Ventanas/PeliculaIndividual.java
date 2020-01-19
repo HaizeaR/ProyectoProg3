@@ -382,6 +382,7 @@ public class PeliculaIndividual extends JFrame{
 		vT.setTabla(tabla);
 		
 		
+
 		//VentanaTabla vT = new VentanaTabla(v, "TABLA", true);
 		//vT.setTabla(th);
 		//vT.setSize(50, 50);
