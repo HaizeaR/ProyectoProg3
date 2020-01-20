@@ -1,7 +1,15 @@
 package Ventanas;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -9,6 +17,14 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import com.itextpdf.text.Chapter;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import BD.BDprueba2;
 import Elementos.Asiento;
@@ -24,6 +40,7 @@ public class ConfCompra extends JFrame {
 
 	final static ArrayList<Asiento> codigoAS = new ArrayList<Asiento>();
 	static String DNI;
+	private JButton btnCompra;
 
 	public ConfCompra() {
 		setSize(600, 400);
@@ -31,7 +48,50 @@ public class ConfCompra extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		SalaYAsientos2.getAsientosSeleccionados();
 		getDNICliente();
-
+		
+		JPanel panelPrincipal = new JPanel();
+		panelPrincipal.setBackground(Color.WHITE);
+		panelPrincipal.setLayout(new GridLayout(1,1));
+		add(panelPrincipal, BorderLayout.CENTER);
+		btnCompra = new JButton("Comprar");
+		btnCompra.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Document document = new Document();
+					try {
+						String pdf = "ticket.pdf";
+						PdfWriter.getInstance(document, new FileOutputStream(new File(pdf)));
+					}catch(FileNotFoundException e2) {
+						e2.printStackTrace();
+					}
+					document.open();
+					document.addTitle("Ticket");
+					document.addKeywords("Java, PDF,iText");
+					
+					Chunk chunk = new Chunk("Ticket");
+					Chapter chapter = new Chapter(new Paragraph(chunk), 1);
+					chapter.setNumberDepth(0);
+					chapter.add(new Paragraph(""));
+					chapter.add(new Paragraph("Titulo: " + SalaYAsientos2.pelicula));
+					chapter.add(new Paragraph("Sala: " + SalaYAsientos2.id_sala));
+					chapter.add(new Paragraph("Asiento: " + SalaYAsientos2.codigoAS));
+					chapter.add(new Paragraph("Fecha: " + SalaYAsientos2.fecha));
+					chapter.add(new Paragraph("Hora: " + SalaYAsientos2.horaI));
+					
+					document.add(chapter);
+					document.close();
+					
+					
+					
+				}catch(DocumentException e3) {
+					e3.printStackTrace();
+				}
+				
+			}
+		});
+		panelPrincipal.add(btnCompra);
 		compra();
 		cambiaBD();
 
