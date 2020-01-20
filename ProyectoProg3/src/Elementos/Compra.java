@@ -3,26 +3,20 @@ package Elementos;
 public class Compra {
 	
 	
-	int ID_compra; 
+	//int ID_compra; 
 	int cod_asiento; 
 	int cod_sesion;
 	String DNI; 
 	
-	public Compra(int iD_compra, int cod_asiento, int cod_sesion, String dNI) {
+	public Compra( int cod_asiento, int cod_sesion, String dNI) {
 	
-		ID_compra = iD_compra;
+		//ID_compra = iD_compra;
 		this.cod_asiento = cod_asiento;
 		this.cod_sesion = cod_sesion;
 		DNI = dNI;
 	}
 
-	public int getID_compra() {
-		return ID_compra;
-	}
 
-	public void setID_compra(int iD_compra) {
-		ID_compra = iD_compra;
-	}
 
 	public int getCod_asiento() {
 		return cod_asiento;
@@ -51,7 +45,7 @@ public class Compra {
 	
 	@Override
 	public String toString() {
-		return "Compra [ID_compra=" + ID_compra + ", cod_asiento=" + cod_asiento + ", cod_sesion=" + cod_sesion
+		return "Compra [cod_asiento=" + cod_asiento + ", cod_sesion=" + cod_sesion
 				+ ", DNI=" + DNI + "]";
 	}
 

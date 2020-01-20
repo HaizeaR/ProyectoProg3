@@ -145,17 +145,14 @@ public class LogIn extends JFrame {
 	}
 	
 	private void volverAtras() {
-		Thread t1 = new Thread() {
-			public void run() {
+		
 				//LogIn.guardaConfig();
 				setVisible(false);
 				// te devuelve a la sala de asientos o vuelves a la cartelera ??? 
 				Cartelera.main(null); 
 
 				dispose();
-			}				
-		}; 
-		t1.start();
+	
 	}
 	
 	
@@ -164,16 +161,12 @@ public class LogIn extends JFrame {
 	 * cambiar de ventana de Login a ventana registro 
 	 */
 	private void accedeRegistro() {
-		Thread t2 = new Thread() {
-			public void run() {
-				//LogIn.guardaConfig();
+	
 				setVisible(false);
 				Registro.main(null); 
 
 				dispose();
-			}				
-		}; 
-		t2.start();
+	
 	}
 	
 	

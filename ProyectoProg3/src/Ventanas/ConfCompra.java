@@ -53,7 +53,7 @@ public class ConfCompra extends JFrame {
 		panelPrincipal.setBackground(Color.WHITE);
 		panelPrincipal.setLayout(new GridLayout(1,1));
 		add(panelPrincipal, BorderLayout.CENTER);
-		btnCompra = new JButton("Comprar");
+		btnCompra = new JButton("Ticket");
 		btnCompra.addActionListener(new ActionListener() {
 			
 			@Override
@@ -117,15 +117,15 @@ public class ConfCompra extends JFrame {
 	
 
 	public static void compra() {
-		int iD_compra = 2;
+		//int iD_compra = 2;
 		System.out.println("Entramos a compra");
 		System.out.println("Compras realizadas: ");
 
 		for (Asiento asiento : SalaYAsientos2.codigoAS) {
-			Compra c = new Compra(iD_compra, asiento.getCodigo(), Integer.parseInt(SalaYAsientos2.codS), DNI);
+			Compra c = new Compra( asiento.getCodigo(), Integer.parseInt(SalaYAsientos2.codS), DNI);
 			System.out.println(c.toString());
 			BDprueba2.insertCompra(c);
-			iD_compra++;
+			//iD_compra++;
 			
 
 		}
