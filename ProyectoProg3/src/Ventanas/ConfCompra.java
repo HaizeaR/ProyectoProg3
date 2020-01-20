@@ -49,6 +49,7 @@ public class ConfCompra extends JFrame {
 				DNI = Dni;
 				
 			}
+			rs.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -56,7 +57,7 @@ public class ConfCompra extends JFrame {
 	
 
 	public static void compra() {
-		int iD_compra = 1;
+		int iD_compra = 2;
 		System.out.println("Entramos a compra");
 		System.out.println("Compras realizadas: ");
 

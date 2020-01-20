@@ -141,6 +141,7 @@ public class SalaYAsientos2 extends JFrame {
 					panel.add(button);
 
 				}
+				rs.close();
 
 			} catch (SQLException e) {
 // TODO Auto-generated catch block

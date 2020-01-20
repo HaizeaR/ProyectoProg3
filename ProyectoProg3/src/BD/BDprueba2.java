@@ -564,6 +564,7 @@ public class BDprueba2 {
 				return false;
 
 			return true;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
@@ -674,8 +675,9 @@ public class BDprueba2 {
 
 				ret.add(new Admin(dni, nombre, apellido, correo, contrasena));
 			}
-
+			rs.close();
 			return ret;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
