@@ -41,6 +41,7 @@ public class LogIn extends JFrame {
 	static JTextField tfCorreo; 
 	static JPasswordField jpContrasena; 
 	int contador = 0; 
+	static String correoCliente;
 	
 	//private static JDialog v;
 	
@@ -296,7 +297,6 @@ public class LogIn extends JFrame {
 			while(rs.next()) {
 				String correo = rs.getString("correo"); 
 		
-				
 				String contrasena = rs.getString("contrasena"); 
 				
 				//char[] con = rs.get
@@ -323,6 +323,8 @@ public class LogIn extends JFrame {
 				
 				if ( correo.compareTo(tfCorreo.getText()) == 0) {
 					System.out.println("entra");
+					correoCliente = tfCorreo.getText();
+					
 
 					if (valorEnTexto.compareTo(contrasena) == 0 ) {
 						System.out.println("entra");

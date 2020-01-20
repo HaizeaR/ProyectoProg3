@@ -23,6 +23,7 @@ import Elementos.Compra;
 public class ConfCompra extends JFrame {
 
 	final static ArrayList<Asiento> codigoAS = new ArrayList<Asiento>();
+	static String DNI;
 
 	public ConfCompra() {
 		setSize(600, 400);
@@ -40,14 +41,12 @@ public class ConfCompra extends JFrame {
 		Connection con = BDprueba2.initBD("Cine2.db");
 		try {
 			Statement stmt = con.createStatement();
-			String sentSQL = "SELECT * FROM cliente where correo = " + LogIn.tfCorreo.getText() ;
+			String sentSQL = "SELECT * FROM cliente where correo = '" + LogIn.correoCliente + "'";
 			ResultSet rs = stmt.executeQuery(sentSQL);
 
 			while (rs.next()) {
-				int cod_asiento = rs.getInt("codigo");
-				int fila = rs.getInt("fila");
-				int columna = rs.getInt("columna");
-				boolean ocupado = rs.getBoolean("ocupado");
+				String Dni = rs.getString("dni");
+				DNI = Dni;
 				
 			}
 		} catch (Exception e) {
@@ -58,8 +57,15 @@ public class ConfCompra extends JFrame {
 
 	public static void compra() {
 		int iD_compra = 1;
-		for (Asiento asiento : codigoAS) {
-			Compra c = new Compra(iD_compra, asiento.getCodigo(), SalaYAsientos2.getCodSesion(), "");
+		System.out.println("Entramos a compra");
+		System.out.println("Compras realizadas: ");
+
+		for (Asiento asiento : SalaYAsientos2.codigoAS) {
+			Compra c = new Compra(iD_compra, asiento.getCodigo(), Integer.parseInt(SalaYAsientos2.codS), DNI);
+			System.out.println(c.toString());
+			BDprueba2.insertCompra(c);
+			iD_compra++;
+			
 
 		}
 	}
