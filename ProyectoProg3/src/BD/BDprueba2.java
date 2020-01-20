@@ -797,11 +797,14 @@ public class BDprueba2 {
 	 */
 	public static boolean borrarAdmin( Admin admin ) {
 		try (Statement statement = conexion.createStatement()) {
-			String sent = "delete from admin where DNI=" + admin.getDNI() + ";";
+			String sent = "delete from admin where dni='" + admin.getDNI() + "'";
 			System.out.println( sent );
 			int borrados = statement.executeUpdate( sent );
+			log( Level.INFO, "BD borrada " + borrados + " fila\t" + sent, null );
 			return (borrados==1);
 		} catch (Exception e) {
+			log( Level.SEVERE, "Error en BD\t", e );
+			e.printStackTrace();
 			return false;
 		}
 	}
