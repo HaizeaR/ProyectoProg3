@@ -90,12 +90,19 @@ public class listadoAdmin extends JFrame{
 
 				if (e.getClickCount()>=1) {
 					int fila = tablaAdmin.rowAtPoint( e.getPoint() );
-					int col = tablaAdmin.rowAtPoint(e.getPoint());
-					valor = tablaAdmin.getValueAt( fila, col );
+					System.out.println("fila:" + fila);
+					
+					int col = tablaAdmin.columnAtPoint( e.getPoint() );
+					System.out.println("columna: " + col);
+					
+					Object valor = tablaAdmin.getValueAt( fila, col );
+					
 					String v = String.valueOf(valor);
+					System.out.println("valor:" + v);
+					
 					Admin a = selectAdmin(v);
 				
-					BDprueba2.borrarAdmin(a); 
+					//BDprueba2.borrarAdmin(a); 
 					
 
 

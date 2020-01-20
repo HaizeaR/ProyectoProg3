@@ -3,6 +3,8 @@ package Ventanas;
 import BD.BDprueba2;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.TabableView;
+
 import java.awt.BorderLayout;
 
 import java.awt.event.ActionEvent;
@@ -120,10 +122,15 @@ public class PeliculaIndividual extends JFrame{
 			public void  mouseClicked(MouseEvent e) {
 				if (e.getClickCount()>=2) {
 					int fila = tablaHorario.rowAtPoint( e.getPoint() );
-					int col = tablaHorario.rowAtPoint(e.getPoint());
+					System.out.println("fila:" + fila);
+					
+					int col = tablaHorario.columnAtPoint( e.getPoint() );
+					System.out.println("columna: " + col);
+					
 					Object valor = tablaHorario.getValueAt( fila, col );
+					
 					String v = String.valueOf(valor);
-					System.out.println(v);
+					System.out.println("valor:" + v);
 
 					setVisible(false);
 
