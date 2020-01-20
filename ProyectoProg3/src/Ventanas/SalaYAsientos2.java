@@ -58,7 +58,6 @@ public class SalaYAsientos2 extends JFrame {
 		panel.setLayout(null);
 		panel.setBounds(20, 70, 200, 140);
 
-		compruebaEsixte();
 		if (compruebaEsixte() == false) {
 			System.out.println("Creando asientos: ");
 			int codigo_asiento = 0;
@@ -95,10 +94,11 @@ public class SalaYAsientos2 extends JFrame {
 				cargaAsientos();
 			}
 		} else {
+			System.out.println("Sacando asientos de base de datos");
 			Connection con = BDprueba2.initBD("Cine2.db");
 			try {
 				Statement stmt = con.createStatement();
-				String sentSQL = "SELECT * FROM asiento where numero_sala = " + PeliculaIndividual.codSala ;
+				String sentSQL = "SELECT * FROM asiento where ID_sala = " + PeliculaIndividual.codSala ;
 				ResultSet rs = stmt.executeQuery(sentSQL);
 
 				while (rs.next()) {
@@ -283,7 +283,7 @@ public class SalaYAsientos2 extends JFrame {
 		Connection con = BDprueba2.initBD("Cine2.db");
 		try {
 			Statement stmt = con.createStatement();
-			String sentSQL = "SELECT * FROM ASIENTO where numero_sala = " + PeliculaIndividual.codSala;
+			String sentSQL = "SELECT * FROM ASIENTO where ID_sala = " + PeliculaIndividual.codSala;
 			ResultSet rs = stmt.executeQuery(sentSQL);
 
 			while (rs.next()) {
