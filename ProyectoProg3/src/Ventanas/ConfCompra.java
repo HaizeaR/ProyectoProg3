@@ -41,21 +41,23 @@ public class ConfCompra extends JFrame {
 	final static ArrayList<Asiento> codigoAS = new ArrayList<Asiento>();
 	static String DNI;
 	private JButton btnCompra;
+	static Connection con;
 
 	public ConfCompra() {
 		setSize(600, 400);
 		setLocation(300, 200);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		con = BDprueba2.conexion;
 		SalaYAsientos2.getAsientosSeleccionados();
 		getDNICliente();
-		
+
 		JPanel panelPrincipal = new JPanel();
 		panelPrincipal.setBackground(Color.WHITE);
-		panelPrincipal.setLayout(new GridLayout(1,1));
+		panelPrincipal.setLayout(new GridLayout(1, 1));
 		add(panelPrincipal, BorderLayout.CENTER);
 		btnCompra = new JButton("Comprar");
 		btnCompra.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -63,13 +65,13 @@ public class ConfCompra extends JFrame {
 					try {
 						String pdf = "ticket.pdf";
 						PdfWriter.getInstance(document, new FileOutputStream(new File(pdf)));
-					}catch(FileNotFoundException e2) {
+					} catch (FileNotFoundException e2) {
 						e2.printStackTrace();
 					}
 					document.open();
 					document.addTitle("Ticket");
 					document.addKeywords("Java, PDF,iText");
-					
+
 					Chunk chunk = new Chunk("Ticket");
 					Chapter chapter = new Chapter(new Paragraph(chunk), 1);
 					chapter.setNumberDepth(0);
@@ -79,16 +81,14 @@ public class ConfCompra extends JFrame {
 					chapter.add(new Paragraph("Asiento: " + SalaYAsientos2.codigoAS));
 					chapter.add(new Paragraph("Fecha: " + SalaYAsientos2.fecha));
 					chapter.add(new Paragraph("Hora: " + SalaYAsientos2.horaI));
-					
+
 					document.add(chapter);
 					document.close();
-					
-					
-					
-				}catch(DocumentException e3) {
+
+				} catch (DocumentException e3) {
 					e3.printStackTrace();
 				}
-				
+
 			}
 		});
 		panelPrincipal.add(btnCompra);
@@ -98,7 +98,7 @@ public class ConfCompra extends JFrame {
 	}
 
 	public static void getDNICliente() {
-		Connection con = BDprueba2.initBD("Cine2.db");
+		// Connection con = BDprueba2.initBD("Cine2.db");
 		try {
 			Statement stmt = con.createStatement();
 			String sentSQL = "SELECT * FROM cliente where correo = '" + LogIn.correoCliente + "'";
@@ -107,17 +107,16 @@ public class ConfCompra extends JFrame {
 			while (rs.next()) {
 				String Dni = rs.getString("dni");
 				DNI = Dni;
-				
+
 			}
 			rs.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
 
 	public static void compra() {
-		int iD_compra = 2;
+		int iD_compra = getUltimaCompra() + 1;
 		System.out.println("Entramos a compra");
 		System.out.println("Compras realizadas: ");
 
@@ -125,10 +124,30 @@ public class ConfCompra extends JFrame {
 			Compra c = new Compra(iD_compra, asiento.getCodigo(), Integer.parseInt(SalaYAsientos2.codS), DNI);
 			System.out.println(c.toString());
 			BDprueba2.insertCompra(c);
-			iD_compra++;
 			
+			iD_compra++;
 
 		}
+	}
+
+	public static int getUltimaCompra() {
+		int ultimaCompra = 0; 
+		try {
+			Statement stmt = con.createStatement();
+			String sentSQL = "SELECT MAX(id_compra) FROM compra";
+			ResultSet rs = stmt.executeQuery(sentSQL);
+			
+			 ultimaCompra = rs.getInt("id_compra");
+			
+			rs.close();
+			return ultimaCompra;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(ultimaCompra);
+		return ultimaCompra;
+
 	}
 
 	public static void cambiaBD() {
