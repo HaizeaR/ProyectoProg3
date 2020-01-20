@@ -25,7 +25,7 @@ import Elementos.Compra;
  *
  */
 
-// FALTA 
+// FALTA  
 // - validar que el usuario está en la BD, si no está mandar a registrar 
 // - Mejorar ventana
 
