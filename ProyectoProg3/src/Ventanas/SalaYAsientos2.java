@@ -37,6 +37,8 @@ public class SalaYAsientos2 extends JFrame {
 	static String codS;
 	static String id_sala;
 	static String pelicula;
+	static String horaI;
+	static String fecha;
 
 	final static JPanel panel = new JPanel();
 	JButton bAtras, bNext;
@@ -338,6 +340,7 @@ public class SalaYAsientos2 extends JFrame {
 				getCodSesion();
 				getId_sala();
 				getPelicula();
+				getHoraFechaPeli();
 				System.out.println("Asientos selccionados: ");
 				for (Asiento i : codigoAS) {
 					System.out.println(i.toString());
@@ -350,6 +353,26 @@ public class SalaYAsientos2 extends JFrame {
 		t2.start();
 
 	}
+	
+	public static void getHoraFechaPeli() {
+		Connection con = BDprueba2.initBD("Cine2.db");
+		try {
+			Statement stmt = con.createStatement();
+			String sentSQL = "SELECT * FROM SESION where cod_sesion = " + codS;
+			ResultSet rs = stmt.executeQuery(sentSQL);
+
+			while (rs.next()) {
+				horaI = rs.getString("horaI");
+				fecha = rs.getString("fecha");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 	public static void getCodSesion() {
 		codS = PeliculaIndividual.codS;
 		
