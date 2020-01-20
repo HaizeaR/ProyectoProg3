@@ -1,18 +1,7 @@
-
-
-	
-	
-	
-
-	 
 package Admin;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.sql.*;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -30,17 +19,14 @@ import BD.BDprueba2;
  *
  */
 
-// FALTA: 
-// - Meter en base de datos usuario registrado 
-// - No guardar un usuario si tienen error de PATRON 
-// - 
-
 public class RegistrarAdmin extends JFrame {
 
 
 	
 	
 	private static final long serialVersionUID = 1L;
+	
+	
 	static JButton  bRegistrar, bAtras;
 	static JLabel lCorreo, lContrasena, lNombre, lApellido, lDNI,  lRegistro; 
 	static JTextField tfCorreo,tfNombre, tfApellido, tfDNI; 
@@ -49,10 +35,11 @@ public class RegistrarAdmin extends JFrame {
 
 	public static ArrayList<Cliente> clientes = new ArrayList<>();
 	
+	
+	
 	// Patrón de correo electronico
 	public static Pattern patCorreo = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-	
 	
 	// Patrón DNI
 	public static Pattern patDNI = Pattern.compile("[0-9]{7,8}[A-Za-z]");
@@ -67,7 +54,6 @@ public class RegistrarAdmin extends JFrame {
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
 
-		// EDITAR PARA QUE SE VEA 
 
 		JPanel pSuperior = new JPanel();
 		getContentPane().add(pSuperior, BorderLayout.NORTH);
@@ -78,7 +64,6 @@ public class RegistrarAdmin extends JFrame {
 
 		JPanel pCentral = new JPanel(); 
 
-		// COnseguir que se pongan en fila 
 
 		getContentPane().add(pCentral, BorderLayout.CENTER);
 		pCentral.setLayout(new BoxLayout(pCentral, WIDTH));
@@ -90,7 +75,6 @@ public class RegistrarAdmin extends JFrame {
 		lApellido = new JLabel("Apellido: ");
 		lDNI = new JLabel("DNI: ");
 		
-
 
 		tfNombre = new JTextField(10);
 		tfApellido = new JTextField(10);
@@ -117,7 +101,6 @@ public class RegistrarAdmin extends JFrame {
 
 	
 
-
 		JPanel pBotonera = new JPanel(); 
 		getContentPane().add(pBotonera, BorderLayout.SOUTH);
 
@@ -137,63 +120,22 @@ public class RegistrarAdmin extends JFrame {
 
 		bRegistrar.addActionListener((ActionEvent e) -> {Registrar();} ); // Procede a registrar el usuario 
 		
-		// si es correcto el registo JOptionPanel de Bienvenido y pantalla de fin de compra o login ??
-		
-		addWindowListener(new WindowListener() {
-			
-			@Override
-			public void windowOpened(WindowEvent e) {
-				//BD.initBD();
-				// creo que tampoco hace falta aqui
-				//BDprueba2.abrirConexion("cine2.db");
-				
-			}
-			
-			@Override
-			public void windowIconified(WindowEvent e) {}
-			
-			@Override
-			public void windowDeiconified(WindowEvent e) {}
-			
-			@Override
-			public void windowDeactivated(WindowEvent e) {}
-			
-			@Override
-			public void windowClosing(WindowEvent e) {}
-	
-			@Override
-			public void windowClosed(WindowEvent e) {
-				
-			//	BDprueba2.cerrarConexion();
-			}
-			
-			@Override
-			public void windowActivated(WindowEvent e) {}
-		});
 		
 
-		
-		
-		 // si es correcto el registo JOptionPanel de Bienvenido y pantalla de fin de compra o login ??
-		 
 	}
 
 	public void volverAtras() {
-		Thread t1 = new Thread() {
-			public void run() {
+		
 				setVisible(false);
 				LogInAdmin.main(null); 
 
 				dispose();
-			}				
-		}; 
-		t1.start();
+	
 
 	}
 	
 	
-	// Sacar error si falta algun dato o tiene algún dato incorrecto(de un tipo no deseado) 
-	// No permitir que se registre un correo ya registrado 
+
 
 
 	public void Registrar() {
@@ -225,12 +167,8 @@ public class RegistrarAdmin extends JFrame {
 				 admin = new Admin (DNI, nombre,apellido,correo,contrasena); 
 				// System.out.println(cliente.toString());
 				
-			
-				
-			
+		
 				BDprueba2.insertarAdmin(admin);
-			
-				
 
 	}
 	
@@ -289,8 +227,7 @@ public class RegistrarAdmin extends JFrame {
 	//                      MAIN                                       //
 	/////////////////////////////////////////////////////////////////////
 
-	
-	
+
 	
 	public static void main(String[] args) {
 		RegistrarAdmin ventRegistrarAdmin = new RegistrarAdmin(); 
@@ -306,10 +243,4 @@ public class RegistrarAdmin extends JFrame {
 	
 	
 }
-
-
-
-
-
-
 

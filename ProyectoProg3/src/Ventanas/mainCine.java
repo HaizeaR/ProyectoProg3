@@ -44,6 +44,7 @@ public class mainCine {
 //			BDprueba2.cerrarConexion();
 //		}
 
+		
 		log = Logger.getLogger("log-cine");
 		log.log(Level.INFO, "Inicio de programa" + (new Date()));
 		Handler h = new FileHandler("log-cine.xml", true); 
