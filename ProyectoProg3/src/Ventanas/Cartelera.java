@@ -89,11 +89,8 @@ public class Cartelera extends JFrame {
 		cartelera.setBackground(Color.WHITE);
 		cartelera.setLayout(new GridLayout(2, 2));
 		
-		//panelContenidos.add(cartelera, BorderLayout.CENTER);
-		//cartelera.setLayout(new GridLayout());
-		 
-
-		 
+		panelContenidos.add(cartelera, BorderLayout.CENTER);
+		
 		 
 		//OPCION 2
 		JScrollPane sp = new JScrollPane(cartelera);
