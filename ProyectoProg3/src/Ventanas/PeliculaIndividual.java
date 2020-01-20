@@ -28,7 +28,7 @@ import java.sql.Statement;
  */
 public class PeliculaIndividual extends JFrame{
 
-	
+
 	
 	/**
 	 * 
