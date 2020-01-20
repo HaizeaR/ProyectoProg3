@@ -587,7 +587,8 @@ public class BDprueba2 {
 			
 			sent = "update asiento set" +
 					" ocupado=" + a.isOcupado() +
-					" where codigo='" + a.getCodigo() + "'";
+					" where codigo='" + a.getCodigo() +
+					" ID_sala=" + a.getId_sala() + "'";
 			
 			System.out.println(sent);
 			
