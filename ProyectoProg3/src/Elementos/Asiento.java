@@ -17,13 +17,15 @@ public class Asiento {
 	private int codigo;
 	private int fila;
 	private int columna;
+	private int id_sala; // Foreing key en BD 
+	
 	// Bloques de 10*10
 	
 	private boolean ocupado = false ; 
 	// idea para que si ocupado = true se pone a rojo en la ventana SalaYAsiento2
 	
 	
-	private int id_sala; // Foreing key en BD 
+
 	
 	
 	private String nombre; // cambia en función de si está seleccionado o no
@@ -39,12 +41,12 @@ public class Asiento {
 	 * @param fila
 	 * @param columna
 	 */
-	public Asiento(int codigo, int fila, int columna, boolean ocupado) {
+	public Asiento(int codigo, int fila, int columna, boolean ocupado, int id_sala) {
 		this.codigo = codigo;
 		this.fila = fila;
 		this.columna = columna;
 		this.ocupado = ocupado; 
-		
+		this.id_sala = id_sala; 
 
 	}
 

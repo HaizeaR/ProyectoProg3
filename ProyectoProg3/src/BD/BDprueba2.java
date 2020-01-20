@@ -250,7 +250,7 @@ public class BDprueba2 {
 			statement.executeUpdate(sent);
 			log( Level.INFO, "BD creación de tabla\t" + sent, null );
 
-			sent = "CREATE TABLE IF NOT EXISTS asiento (codigo INTEGER PRIMARY KEY, fila int(5), columna int(5), ocupado boolean);";
+			sent = "CREATE TABLE IF NOT EXISTS asiento (codigo INTEGER PRIMARY KEY, fila int(5), columna int(5), ocupado boolean, ID_sala int(5));";
 			//System.out.println(sent);
 			statement.executeUpdate(sent);
 			log( Level.INFO, "BD creación de tabla\t" + sent, null );
@@ -568,7 +568,7 @@ public class BDprueba2 {
 		try (Statement statement = conexion.createStatement()) {
 			String sent;
 			sent = "insert into asiento values(" + "'" + (a.getCodigo()) + "', " + "'" + (a.getFila()) + "', " + "'"
-					+ (a.getColumna()) + "', " + "'" + (a.isOcupado()) + "' " +
+					+ (a.getColumna()) + "', " + "'" + (a.isOcupado()) + "', " + "'" + (a.getId_sala()) + "' " + 
 
 					")";
 
