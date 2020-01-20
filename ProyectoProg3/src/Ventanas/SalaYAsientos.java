@@ -107,7 +107,7 @@ public class SalaYAsientos extends JFrame {
 	}
 	
 	public void dibujaAsiento() {
-		Asiento a = new Asiento(1, 5, 5, false);
+		Asiento a = new Asiento(1, 5, 5, false, Integer.parseInt(PeliculaIndividual.codSala));
 		//a.dibujar();
 	}
 	

@@ -287,7 +287,6 @@ public class BDprueba2 {
 
 
 
-
 			//			sent = "CREATE TABLE IF NOT EXISTS compra (id INTEGER PRIMARY KEY AUTOINCREMENT, idProducto int, fecha bigint, cantidad int);";
 			//			System.out.println( sent );
 			//			statement.executeUpdate( sent );
