@@ -250,7 +250,8 @@ public class BDprueba2 {
 			statement.executeUpdate(sent);
 			log( Level.INFO, "BD creación de tabla\t" + sent, null );
 
-			sent = "CREATE TABLE IF NOT EXISTS asiento (codigo INTEGER PRIMARY KEY, fila int(5), columna int(5), ocupado boolean, ID_sala int(5));";
+			//sent = "CREATE TABLE IF NOT EXISTS asiento (codigo INTEGER PRIMARY KEY, fila int(5), columna int(5), ocupado boolean, ID_sala int(5));";
+			sent = "CREATE TABLE IF NOT EXISTS asiento (codigo INTEGER PRIMARY KEY, fila int(5), columna int(5), ocupado boolean, ID_sala INTEGER PRIMARY KEY);";
 			//System.out.println(sent);
 			statement.executeUpdate(sent);
 			log( Level.INFO, "BD creación de tabla\t" + sent, null );
@@ -801,7 +802,10 @@ public class BDprueba2 {
 			System.out.println( sent );
 			int borrados = statement.executeUpdate( sent );
 			log( Level.INFO, "BD borrada " + borrados + " fila\t" + sent, null );
-			return (borrados==1);
+			if(borrados == 1) {
+				return true;
+			}
+			return false;
 		} catch (Exception e) {
 			log( Level.SEVERE, "Error en BD\t", e );
 			e.printStackTrace();

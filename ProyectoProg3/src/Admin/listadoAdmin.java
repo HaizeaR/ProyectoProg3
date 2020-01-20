@@ -102,7 +102,7 @@ public class listadoAdmin extends JFrame{
 					
 					Admin a = selectAdmin(v);
 				
-					//BDprueba2.borrarAdmin(a); 
+					BDprueba2.borrarAdmin(a); 
 					
 
 
@@ -136,7 +136,7 @@ public class listadoAdmin extends JFrame{
 			Statement stat = conn.createStatement();
 			SQL = "select * from admin where dni = '" + dni + "'"; 
 
-
+			System.out.println(SQL);
 
 			ResultSet rs = stat.executeQuery( SQL );
 			while(rs.next()) {
@@ -144,20 +144,19 @@ public class listadoAdmin extends JFrame{
 				String nombre  = rs.getString("nombre"); 
 				String apellido =rs.getString("apellido"); 
 				String correo =rs.getString("correo"); 
-				String contrasena = rs.getString("contrasena"); 
+				String contrasena = rs.getString("contrasena");
+				
 				a = new Admin(DNI, nombre, apellido, correo, contrasena);
+				System.out.println(a);
+				
 				return a; 
 				}
-			
-
-			
 
 		}catch(Exception e){
 			System.out.println(e);
 
 		}
 
-		
 		return null; 
 	}
 
