@@ -40,9 +40,9 @@ public class mainCine {
 		//BDprueba2.usarCrearTablasBD("Cine2.db"); 
 		//BDprueba2.insertTablas("Cine2.db");
 		BDprueba2.abrirConexion("Cine2.db");
-		if(vent.isActive()==false) {
-			BDprueba2.cerrarConexion();
-		}
+//		if(vent.isActive()==false) {
+//			BDprueba2.cerrarConexion();
+//		}
 
 		log = Logger.getLogger("log-cine");
 		log.log(Level.INFO, "Inicio de programa" + (new Date()));
