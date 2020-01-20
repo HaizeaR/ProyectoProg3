@@ -11,8 +11,7 @@ public class Cliente extends Usuario{
 	
 
 	private long numero_tarjeta; 
-	private int ID_compra; 
-	// Incluir los pases que compra un cliente
+	//private int ID_compra; 
 
 
 
@@ -44,6 +43,10 @@ public class Cliente extends Usuario{
 		this.numero_tarjeta = numero_tarjeta;
 	}
 	
+	
+	
+	
+	
 	@Override
 	public String toString() {
 		return "Cliente [Nombre=" + getNombre() + ", Apellido=" + getApellido()
@@ -55,6 +58,7 @@ public class Cliente extends Usuario{
 	
 	
 	// Dos usuarios son iguales si sus correos son iguales
+	
 	public boolean equals( Object o ) {
 		Usuario u2 = null;
 		if (o instanceof Usuario) u2 = (Usuario) o;

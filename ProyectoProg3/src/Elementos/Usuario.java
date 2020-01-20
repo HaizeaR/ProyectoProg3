@@ -18,7 +18,7 @@ public class Usuario {
 	// CONSTRUCTOR
 
 	public Usuario(String DNI, String nombre, String apellido, String correo, String contrasena) {
-	
+
 		this.DNI = DNI;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -96,15 +96,15 @@ public class Usuario {
 	public String getContrasena() {
 		return contrasena;
 	}
-	
+
 	/** Permite definir la contraseña
 	 * @param contraseña
 	 */
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
-	
-	
+
+
 
 
 }

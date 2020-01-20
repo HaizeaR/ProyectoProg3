@@ -12,8 +12,12 @@ import javax.swing.JTextField;
 
 import BD.BDprueba2;
 import Elementos.Cine;
-import Elementos.Pelicula;
 
+/**
+ * Clase que permite a un ADMINISTRADOR registrar // añadir un nuevo CINE 
+ * @author Unai Mendiondo, Mireya Quintana, Haizea Rodriguez
+ *
+ */
 public class anadirCine extends JFrame {
 
 
@@ -59,7 +63,7 @@ public class anadirCine extends JFrame {
 		pAnadir.add(jlDir); 
 		pAnadir.add(tfDir);
 
-	
+
 
 		getContentPane().add(pAnadir,BorderLayout.CENTER); 
 
@@ -91,21 +95,18 @@ public class anadirCine extends JFrame {
 		bMenuAdmin.addActionListener((ActionEvent e ) -> {irMenuAdmin();} );
 		bAnadir.addActionListener((ActionEvent e) -> {crearCine();});
 
-
-
 	}
 
+	// BOTON AÑADIR
 	public void volverAdmin() {
 
 		setVisible(false);
 		LogInAdmin.main(null); 
-
 		dispose();
-
 
 	}
 
-
+	// BOTOTN IR A MENÚ
 	public void irMenuAdmin() {
 
 		setVisible(false);
@@ -113,11 +114,11 @@ public class anadirCine extends JFrame {
 
 		dispose();
 
-
 	}
 
-
+	// BOTON CREAR CINE 
 	public void crearCine() {
+		
 		// metodo que tiene que guardar datos recibidos en los distintos 
 		//tf y guardarlos como datos de nuevo Cliente 
 
@@ -133,16 +134,10 @@ public class anadirCine extends JFrame {
 
 		String dir = tfDir.getText();
 
-	
-
-
-
-
-
 		// comprobar que en el numero de tarjeta NO tiene letras 
 		// si tiene letras que de error y no te deja registrar el cliente 
 
-		 cine = new Cine(ID, nombre, dir);
+		cine = new Cine(ID, nombre, dir);
 		// System.out.println(cliente.toString());
 
 		BDprueba2.insertCine(cine);
@@ -154,7 +149,7 @@ public class anadirCine extends JFrame {
 
 	}
 
-
+	// MAIN 
 	public static void main(String[] args) {
 		anadirCine venAnadirCine = new anadirCine(); 
 		venAnadirCine.setVisible(true);

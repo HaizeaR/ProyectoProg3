@@ -1,5 +1,12 @@
 package Elementos;
 
+
+
+// REALMENTE NO USAMOS ESTA CLASE , HEMOS ENCONTRADO OTRA FORMA DE HACERLO 
+
+
+
+
 import java.io.*;
 import java.net.*;
 import java.sql.Connection;

@@ -21,7 +21,11 @@ import BD.BDprueba2;
 
 import Elementos.Sesion;
 
-
+/**
+ * Clase que permite a un ADMINISTRADOR registrar // añadir un nueva SESION  
+ * @author Unai Mendiondo, Mireya Quintana, Haizea Rodriguez
+ *
+ */
 public class anadirSesion extends JFrame {
 // luego borrar
 	Statement st; 
@@ -117,6 +121,7 @@ public class anadirSesion extends JFrame {
 
 	}
 
+	// BOTON VOLVER ADMIN
 	public void volverAdmin() {
 
 		setVisible(false);
@@ -127,18 +132,17 @@ public class anadirSesion extends JFrame {
 
 	}
 
-
+	// BOTON IR A MENÚ
 	public void irMenuAdmin() {
 
 		setVisible(false);
-		FuncionesAdmin.main(null); 
-
+		FuncionesAdmin.main(null);
 		dispose();
 
 
 	}
 
-
+	// BOTON CREAR SESION	
 	public void crearSesion() {
 		// metodo que tiene que guardar datos recibidos en los distintos 
 		//tf y guardarlos como datos de nuevo Cliente 
@@ -149,8 +153,6 @@ public class anadirSesion extends JFrame {
 
 		String cod_sesion = tfcod_sesion.getText(); 
 		int codigo = Integer.valueOf(cod_sesion);
-
-
 
 		String f = tffecha.getText();
 		Date fecha = Date.valueOf(f);
@@ -165,10 +167,6 @@ public class anadirSesion extends JFrame {
 		int ID_peli = Integer.valueOf(id_p); 
 
 
-
-
-
-
 		// comprobar que en el numero de tarjeta NO tiene letras 
 		// si tiene letras que de error y no te deja registrar el cliente 
 
@@ -177,10 +175,6 @@ public class anadirSesion extends JFrame {
 		// System.out.println(cliente.toString());
 
 		BDprueba2.insertSesion(sesion,st);
-
-
-
-
 
 
 	}

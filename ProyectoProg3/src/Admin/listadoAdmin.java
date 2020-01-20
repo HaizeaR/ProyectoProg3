@@ -20,7 +20,7 @@ import Elementos.Admin;
 import Elementos.Cliente;
 
 
-/**
+/**Saca un listado de ADMINISTRADORES en formato TABLA 
  * @author Unai Mendiondo, Mireya Quintana,  Haizea Rodriguez
  *
  */
@@ -33,7 +33,7 @@ public class listadoAdmin extends JFrame{
 
 
 
-
+	// MAIN 
 
 	public static void main(String[] args) {
 		listadoAdmin vLA = new listadoAdmin(); 
@@ -41,6 +41,9 @@ public class listadoAdmin extends JFrame{
 		vLA.setVisible(true);
 	}
 
+
+
+	// ELEMENTOS 
 	JButton bVolver, bBorrar; 
 	JTable tablaAdmin; 
 	JPanel pBotonera, pPrincipal; 
@@ -52,8 +55,9 @@ public class listadoAdmin extends JFrame{
 
 
 
-
+	// CONSTRUCTOR 
 	public listadoAdmin() {
+
 		setSize(600,400);
 		setLocation(300, 200);
 
@@ -76,10 +80,6 @@ public class listadoAdmin extends JFrame{
 		pPrincipal.add(new JScrollPane(tablaAdmin));
 
 
-
-
-
-
 		getContentPane().add(pPrincipal, BorderLayout.CENTER);
 		getContentPane().add(pBotonera, BorderLayout.SOUTH); 
 
@@ -91,21 +91,18 @@ public class listadoAdmin extends JFrame{
 				if (e.getClickCount()>=1) {
 					int fila = tablaAdmin.rowAtPoint( e.getPoint() );
 					System.out.println("fila:" + fila);
-					
+
 					int col = tablaAdmin.columnAtPoint( e.getPoint() );
 					System.out.println("columna: " + col);
-					
+
 					Object valor = tablaAdmin.getValueAt( fila, col );
-					
+
 					String v = String.valueOf(valor);
 					System.out.println("valor:" + v);
-					
+
 					Admin a = selectAdmin(v);
-				
+
 					BDprueba2.borrarAdmin(a); 
-					
-
-
 
 				}
 
@@ -114,7 +111,6 @@ public class listadoAdmin extends JFrame{
 
 
 		bVolver.addActionListener((ActionEvent e ) -> {volver(); });
-
 
 	}
 
@@ -126,9 +122,9 @@ public class listadoAdmin extends JFrame{
 		dispose();
 	}				
 
-	
+
 	private Admin selectAdmin(String dni) {
-		
+
 		Connection conn = BDprueba2.initBD("Cine2.db");
 		String SQL = ""; 
 		Admin a;
@@ -145,12 +141,12 @@ public class listadoAdmin extends JFrame{
 				String apellido =rs.getString("apellido"); 
 				String correo =rs.getString("correo"); 
 				String contrasena = rs.getString("contrasena");
-				
+
 				a = new Admin(DNI, nombre, apellido, correo, contrasena);
 				System.out.println(a);
-				
+
 				return a; 
-				}
+			}
 			rs.close();
 
 		}catch(Exception e){
@@ -163,14 +159,8 @@ public class listadoAdmin extends JFrame{
 
 
 
-
-
-
-
-
-
+	// MÉTODO QUE HACE SELECT DE BD PARA PODER MOSTRAR EN LA TABLA 
 	private void mostrar() {
-
 
 		String column_names[]= {"DNI", "Nombre", "Apellido","Correo"};
 
@@ -200,4 +190,7 @@ public class listadoAdmin extends JFrame{
 		}
 
 	}
+	
+	
+	
 }

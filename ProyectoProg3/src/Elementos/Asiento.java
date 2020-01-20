@@ -1,13 +1,5 @@
 package Elementos;
 
-import javax.swing.ImageIcon;
-
-import com.sun.corba.se.impl.orbutil.graph.Graph;
-import com.sun.prism.Graphics;
-import javax.swing.*;
-import java.awt.*;
-import sun.java2d.loops.DrawRect;
-import sun.java2d.pipe.DrawImage;
 
 public class Asiento {
 
@@ -86,9 +78,7 @@ public class Asiento {
 		this.nombre = nombre;
 	}
 
-	
-	
-	
+
 	public boolean isOcupado() {
 		return ocupado;
 	}
@@ -111,14 +101,6 @@ public class Asiento {
 		return "Asiento [Codigo=" + codigo + ", Coordenada= (" + fila + "-" + columna + "), Ocupado: "+ ocupado + " ID_sala= " + id_sala + "]";
 	}
 
-	public void dibujar(Graphics g) {
 
-		//ImageIcon icon = new ImageIcon(nombre + ".png");
-		//super.paintComponent(g);
-		//g.setColo
-		//g.drawRect(0, 0, tamanyo, tamanyo);
-		// icon.paintIcon(this, g, fila, columna);
-
-	}
 
 }

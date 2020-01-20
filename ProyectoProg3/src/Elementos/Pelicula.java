@@ -1,19 +1,15 @@
 package Elementos;
 
-import java.util.ArrayList;
-
-import javax.swing.Icon;
-
-//trailer ??? 
-
-
-
 
 /** Clase que tiene todas las caracteristicas de una pelicula concreta 
  * @author Unai, Mireya y Haizea
  *
  */
 public class Pelicula {
+	
+	
+	// ELEMENTOS 
+	// mismos que atributos dentro de BD 
 	private int cod_peli;
 	private String titulo_peli; 
 	private String descrip_peli; 
@@ -21,7 +17,6 @@ public class Pelicula {
 
 	
 
-	//...
 
 	
 	/** Constructor
@@ -67,8 +62,6 @@ public class Pelicula {
 	}
 
 
-
-
 	public int getCod_peli() {
 		return cod_peli;
 	}
@@ -86,9 +79,6 @@ public class Pelicula {
 		return "Pelicula [Titulo=" + titulo_peli + ", Descripción=" + descrip_peli + ", Duración="
 				+ duracion_peli + "]";
 	}
-
-	
-
 
 
 	

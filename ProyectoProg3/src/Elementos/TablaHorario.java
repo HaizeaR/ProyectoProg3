@@ -2,6 +2,11 @@ package Elementos;
 
 import java.util.ArrayList;
 
+
+// REALMENTE NO USAMOS ESTA CLASE, HACEMOS LAS TABLAS DE OTRA FORMA 
+
+
+
 public class TablaHorario extends Tabla {
 	
 	/** Crea una tabla de horario de datos vacía (sin cabeceras ni datos)

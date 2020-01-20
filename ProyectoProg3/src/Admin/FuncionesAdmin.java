@@ -2,35 +2,35 @@ package Admin;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
+
 import java.awt.event.ActionEvent;
-import java.sql.Connection;
-import java.sql.Statement;
+import java.sql.*;
 
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
+import javax.swing.*;
 
-import BD.BDprueba2;
+
+
 
 public class FuncionesAdmin extends JFrame{
 	
 	
 	/**
-	 * 
+	 * Clase que permite a un ADMINISTRADOR realizar distintas funciones
+	 * @author Unai Mendiondo, Mireya Quintana, Haizea Rodriguez
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	// ELEMENTOS 
+	
 	JPanel pPrincipal, pDrch , pNorte; 
 	JButton bNuevaPeli, bRegistrarAdmin, bReiniciarBD, bVolver, bNuevoCine, bNuevaSesion, bListadoAdmin; 
 	JLabel lbimagen;
 	JLabel lInicio; 
 	Connection con; 
 	Statement st; 
+	
+	// CONSTRUCTOR DE VENTANA
 	
 	public FuncionesAdmin() {
 		
@@ -46,7 +46,6 @@ public class FuncionesAdmin extends JFrame{
 		lInicio.setFont(new java.awt.Font("Tahoma", 1, 18));
 		lInicio.setBackground( Color.magenta);
 		pNorte.add(lInicio); 
-		
 		
 		
 		
@@ -72,8 +71,7 @@ public class FuncionesAdmin extends JFrame{
 		pPrincipal.add(bVolver);
 		
 		
-		
-		
+
 		//// PANEL DERECHO
 		pDrch  = new JPanel();
 		lbimagen = new JLabel(new ImageIcon("src/img/icon2.png"));
@@ -81,9 +79,7 @@ public class FuncionesAdmin extends JFrame{
 		
 		pDrch.add(lbimagen);
 		
-		
-		
-		
+
 		
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pPrincipal,BorderLayout.CENTER); 
@@ -138,6 +134,9 @@ public class FuncionesAdmin extends JFrame{
 		dispose();
 	}
 	
+	
+	
+	// MAIN 
 	
 	public static void main(String[] args) {
 		FuncionesAdmin vFA = new FuncionesAdmin(); 

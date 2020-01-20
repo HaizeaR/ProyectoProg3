@@ -14,6 +14,11 @@ import BD.BDprueba2;
 
 import Elementos.Pelicula;
 
+/**
+ * Clase que permite a un ADMINISTRADOR registrar // añadir una nueva PELI 
+ * @author Unai Mendiondo, Mireya Quintana, Haizea Rodriguez
+ *
+ */
 public class anadirPeliAdmin extends JFrame {
 	
 	
@@ -70,7 +75,7 @@ public class anadirPeliAdmin extends JFrame {
 		
 		pAnadir.setLayout(new BoxLayout(pAnadir, WIDTH));
 		
-	///////////
+		
 		
 		//// BOTONERA 
 		
@@ -99,29 +104,26 @@ public class anadirPeliAdmin extends JFrame {
 		
 
 	}
-	
+	// BOTON VOLVER
 	public void volverAdmin() {
 		
 				setVisible(false);
 				LogInAdmin.main(null); 
-
 				dispose();
 		
-
 	}
 	
-
+	// BOTON IR A MENÚ
 	public void irMenuAdmin() {
 	
 				setVisible(false);
 				FuncionesAdmin.main(null); 
-
 				dispose();
 		
 
 	}
 	
-	
+	// BOTON AÑADIR PELI
 	public void anadiPeli() {
 		// metodo que tiene que guardar datos recibidos en los distintos 
 		//tf y guardarlos como datos de nuevo Cliente 
@@ -140,11 +142,7 @@ public class anadirPeliAdmin extends JFrame {
 				
 				String duracion = tfDuracion.getText(); 
 				int dur = Integer.valueOf(duracion);
-				
-			
-		
-				
-				
+
 				// comprobar que en el numero de tarjeta NO tiene letras 
 				// si tiene letras que de error y no te deja registrar el cliente 
 
@@ -160,7 +158,7 @@ public class anadirPeliAdmin extends JFrame {
 
 	}
 	
-	
+	// MAIN 
 	public static void main(String[] args) {
 		anadirPeliAdmin venAnadirPeli = new anadirPeliAdmin(); 
 		venAnadirPeli.setVisible(true);
