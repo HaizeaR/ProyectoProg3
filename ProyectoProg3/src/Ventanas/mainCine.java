@@ -1,4 +1,4 @@
-package main;
+package Ventanas;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import BD.BDprueba2;
-import Ventanas.Cartelera;
 
 
 
