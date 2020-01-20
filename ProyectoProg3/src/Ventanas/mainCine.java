@@ -45,6 +45,7 @@ public class mainCine {
 //		}
 
 		
+		
 		log = Logger.getLogger("log-cine");
 		log.log(Level.INFO, "Inicio de programa" + (new Date()));
 		Handler h = new FileHandler("log-cine.xml", true); 
