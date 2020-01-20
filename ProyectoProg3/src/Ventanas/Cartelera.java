@@ -48,7 +48,7 @@ import javafx.scene.layout.BackgroundImage;
  * Ventana que muestra todas las películas de la semana
  * 
  * @author Unai, Mireya y Haizea
- *
+ * 
  */
 
 public class Cartelera extends JFrame {
