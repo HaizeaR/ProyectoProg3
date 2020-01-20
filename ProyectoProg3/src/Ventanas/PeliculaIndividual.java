@@ -1,37 +1,25 @@
 package Ventanas;
 
 import BD.BDprueba2;
-import Elementos.Asiento;
-import Elementos.Tabla;
+
 import Elementos.TablaHorario;
 
 import javax.swing.*;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableModel;
 
-import com.sun.corba.se.impl.orbutil.graph.Graph;
-import com.sun.prism.Image;
+import javax.swing.table.DefaultTableModel;
+
+import com.itextpdf.text.log.SysoLogger;
 
 import java.awt.BorderLayout;
-import java.awt.Panel;
+
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+
 
 /** Ventana donde se muestra información de la perlicula individual
  * con sus horarios
@@ -42,7 +30,12 @@ public class PeliculaIndividual extends JFrame{
 
 	
 	
-	JPanel pPeli, pBotonera, pBotoneraHorario;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	JPanel pPeli, pBotonera, pHorario;
 
 	JLabel lFoto; 
 	
@@ -69,13 +62,7 @@ public class PeliculaIndividual extends JFrame{
 		getContentPane().add(pPeli,BorderLayout.CENTER); 
 		lFoto = new JLabel( new ImageIcon("src/img/"+ pelicula + ".jpg"));
 		
-		
-		//Image img2 = new 
-		
-//		ImageIcon img = new ImageIcon("src/img/" + peli);
-//		JButton cartelera1 = new JButton(img);
-//		
-		
+
 		
 		tpDescrip = new JTextPane(); 
 		
@@ -84,22 +71,24 @@ public class PeliculaIndividual extends JFrame{
 		pPeli.add(lFoto, BorderLayout.WEST); 
 		pPeli.add(tpDescrip, BorderLayout.NORTH); 
 
-		
 
-		//tablaHorario = new JTable(); 
-		
+		pHorario = new JPanel(); 
+		getContentPane().add(pHorario, BorderLayout.SOUTH); 
 		
 		
 		tablaHorario = new JTable(); 
-		//JScrollPane scrollpane = new JScrollPane(tablaHorario);
+		tablaHorario.setAutoscrolls(true);
 		
-
-		getContentPane().add(tablaHorario, BorderLayout.SOUTH); 
+	
+		pHorario.add(new JScrollPane(tablaHorario), BorderLayout.SOUTH); 
+		
+		tablaHorario.setEnabled(false);
+		
 		
 		
 
 		pBotonera = new JPanel(); 
-		pBotoneraHorario = new JPanel();
+		//pBotoneraHorario = new JPanel();
 		
 		bAtras = new JButton("Atras"); 
 		pBotonera.add(bAtras);
@@ -108,31 +97,57 @@ public class PeliculaIndividual extends JFrame{
 		getContentPane().add(pBotonera, BorderLayout.NORTH);
 		
 		/////////
-		Connection con = BDprueba2.initBD("Cine2.db");
-		try {
-			Statement stmt = con.createStatement();
-			String sentSQL = "SELECT * FROM sesion where ID_peli = '" + cod_peli + "'";
-			ResultSet rs = stmt.executeQuery(sentSQL);
-			System.out.println(sentSQL);
-			while( rs.next()) {
-				String horario = rs.getString("horaI");
-				JButton button = new JButton(horario);
-				pBotoneraHorario.add(button);
-			}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//		Connection con = BDprueba2.initBD("Cine2.db");
+//		try {
+//			Statement stmt = con.createStatement();
+//			String sentSQL = "SELECT * FROM sesion where ID_peli = '" + cod_peli + "'";
+//			ResultSet rs = stmt.executeQuery(sentSQL);
+//			System.out.println(sentSQL);
+//			while( rs.next()) {
+//				String horario = rs.getString("horaI");
+//				JButton button = new JButton(horario);
+//				pBotoneraHorario.add(button);
+//			}
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 		/////////
 
 		
-		pPeli.add(pBotoneraHorario, BorderLayout.EAST);
+		//pPeli.add(pBotoneraHorario, BorderLayout.EAST);
 		
 		bAtras.addActionListener((ActionEvent e) -> {volverAtras();});
 		bNext.addActionListener((ActionEvent e) -> {SeleccionAsientos(); } );
+		tablaHorario.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void  mouseClicked(MouseEvent e) {
+				if (e.getClickCount()>=2) {
+					int fila = tablaHorario.rowAtPoint( e.getPoint() );
+					int col = tablaHorario.rowAtPoint(e.getPoint());
+					Object valor = tablaHorario.getValueAt( fila, col );
+					String v = String.valueOf(valor);
+					System.out.println(v);
+					
+					setVisible(false);
+
+					SalaYAsientos2.main(null);
+
+					dispose();
+					
+			
+			}
+
+			}
+		});
+	
 		
 	}
+
 	
+	
+	// NO 
 	
 	/** Añade una ventana interna
 	 * @param f	Ventana interna a añadir
@@ -251,7 +266,7 @@ public class PeliculaIndividual extends JFrame{
 	private void mostrar() {
 		
 		DefaultTableModel modelo = new DefaultTableModel();
-		modelo.setColumnIdentifiers(new Object[] {"L", "M", "X","J", "V", "S", "D"});
+		modelo.setColumnIdentifiers(new Object[] {"Fecha", "Hora"});
 	
 		
 
@@ -259,14 +274,14 @@ public class PeliculaIndividual extends JFrame{
 		String SQL = ""; 
 		try {
 			Statement stat = conn.createStatement();
-			SQL = "select horaI from sesion where ID_peli =" + sacarCodigo() + ""; 
+			SQL = "select fecha,horaI from sesion where ID_peli =" + sacarCodigo() + ""; 
 			
 			
 
 			ResultSet rs = stat.executeQuery( SQL );
 			while(rs.next()) {
 						
-				modelo.addRow(new Object[] {rs.getString("horaI")});
+				modelo.addRow(new Object[] {rs.getString("fecha"),rs.getString("horaI")});
 				
 			}
 			tablaHorario.setModel(modelo);
@@ -366,20 +381,20 @@ public class PeliculaIndividual extends JFrame{
 		//TablaHorario th = new TablaHorario(Tabla.leerBD(111)) ; 
 		
 		//NUEVO
-		TablaHorario tabla = new TablaHorario();
-		tabla.addColumna("Lunes", new String());
-		tabla.addColumna("Martes", new String());
-		tabla.addColumna("Miercoles", new String());
-		tabla.addColumna("Jueves", new String());
-		tabla.addColumna("Viernes", new String());
-		tabla.addColumna("Sabado", new String());
-		tabla.addColumna("Domingo", new String());
+//		TablaHorario tabla = new TablaHorario();
+//		tabla.addColumna("Lunes", new String());
+//		tabla.addColumna("Martes", new String());
+//		tabla.addColumna("Miercoles", new String());
+//		tabla.addColumna("Jueves", new String());
+//		tabla.addColumna("Viernes", new String());
+//		tabla.addColumna("Sabado", new String());
+//		tabla.addColumna("Domingo", new String());
 		
 		
-		VentanaTabla vT = new VentanaTabla(v, "TABLA", true);
+		//	VentanaTabla vT = new VentanaTabla(v, "TABLA", true);
 		
 		//NUEVO
-		vT.setTabla(tabla);
+	//	vT.setTabla(tabla);
 		
 		
 
