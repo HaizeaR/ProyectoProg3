@@ -67,7 +67,7 @@ public class SalaYAsientos2 extends JFrame {
 					JButton button = new JButton(iconoLibre);
 					button.setBounds(x, y, 50, 50);
 					codigo_asiento++;
-					Asiento a = new Asiento(codigo_asiento, x, y, false);
+					Asiento a = new Asiento(codigo_asiento, x, y, false, Integer.parseInt(PeliculaIndividual.codSala));
 					System.out.println(a.toString());
 					asientos.add(a);
 
@@ -98,7 +98,7 @@ public class SalaYAsientos2 extends JFrame {
 			Connection con = BDprueba2.initBD("Cine2.db");
 			try {
 				Statement stmt = con.createStatement();
-				String sentSQL = "SELECT * FROM asiento";
+				String sentSQL = "SELECT * FROM asiento where numero_sala = " + PeliculaIndividual.codSala ;
 				ResultSet rs = stmt.executeQuery(sentSQL);
 
 				while (rs.next()) {
@@ -108,7 +108,7 @@ public class SalaYAsientos2 extends JFrame {
 					boolean ocupado = rs.getBoolean("ocupado");
 					JButton button = new JButton(iconoLibre);
 					button.setBounds(fila, columna, 50, 50);
-					Asiento a = new Asiento(cod_asiento, fila, columna, ocupado);
+					Asiento a = new Asiento(cod_asiento, fila, columna, ocupado, Integer.parseInt(PeliculaIndividual.codSala));
 					asientos.add(a);
 
 					getContentPane().add(panel, BorderLayout.CENTER);
@@ -258,7 +258,7 @@ public class SalaYAsientos2 extends JFrame {
 		Connection con = BDprueba2.initBD("Cine2.db");
 		try {
 			Statement stmt = con.createStatement();
-			String sentSQL = "SELECT * FROM ASIENTO";
+			String sentSQL = "SELECT * FROM ASIENTO where numero_sala = " + PeliculaIndividual.codSala;
 			ResultSet rs = stmt.executeQuery(sentSQL);
 
 			while (rs.next()) {
@@ -268,7 +268,7 @@ public class SalaYAsientos2 extends JFrame {
 				boolean ocupado = rs.getBoolean("ocupado");
 				JButton button = new JButton(iconoLibre);
 				button.setBounds(x, y, 50, 50);
-				Asiento a = new Asiento(cod_asiento, x, y, false);
+				Asiento a = new Asiento(cod_asiento, x, y, false, Integer.parseInt(PeliculaIndividual.codSala));
 				asientos.add(a);
 
 			}
@@ -283,7 +283,7 @@ public class SalaYAsientos2 extends JFrame {
 		Connection con = BDprueba2.initBD("Cine2.db");
 		try {
 			Statement stmt = con.createStatement();
-			String sentSQL = "SELECT * FROM ASIENTO";
+			String sentSQL = "SELECT * FROM ASIENTO where numero_sala = " + PeliculaIndividual.codSala;
 			ResultSet rs = stmt.executeQuery(sentSQL);
 
 			while (rs.next()) {
