@@ -43,6 +43,7 @@ public class PeliculaIndividual extends JFrame {
 	// TableModel mTabla;
 	JInternalFrame ventanaTabla; // Frame interno que contiene la tabla horiario
 	static String codSala;
+	static String codS;
 
 	public PeliculaIndividual() {
 		setSize(600, 600);
@@ -117,7 +118,7 @@ public class PeliculaIndividual extends JFrame {
 
 					Object valor = tablaHorario.getValueAt(fila, col);
 
-					String codS = String.valueOf(valor);
+					codS = String.valueOf(valor);
 					System.out.println("valor:" + codS);
 					conseguirIdSala(codS);
 

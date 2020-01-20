@@ -33,7 +33,10 @@ public class SalaYAsientos2 extends JFrame {
 	final static ImageIcon iconoOcupado = new ImageIcon("src/img/asiento_r.png");
 	final static ImageIcon iconoLibre = new ImageIcon("src/img/asiento_g.png");
 	final static ImageIcon iconoSelec = new ImageIcon("src/img/asiento_v.png");
-	final static ArrayList<Asiento> codigoS = new ArrayList<Asiento>();
+	final static ArrayList<Asiento> codigoAS = new ArrayList<Asiento>();
+	static String codS;
+	static String id_sala;
+	static String pelicula;
 
 	final static JPanel panel = new JPanel();
 	JButton bAtras, bNext;
@@ -332,8 +335,11 @@ public class SalaYAsientos2 extends JFrame {
 // LogIn.guardaConfig();
 				setVisible(false);
 				getAsientosSeleccionados();
+				getCodSesion();
+				getId_sala();
+				getPelicula();
 				System.out.println("Asientos selccionados: ");
-				for (Asiento i : codigoS) {
+				for (Asiento i : codigoAS) {
 					System.out.println(i.toString());
 				}
 				LogIn.main(null);
@@ -344,14 +350,29 @@ public class SalaYAsientos2 extends JFrame {
 		t2.start();
 
 	}
+	public static void getCodSesion() {
+		codS = PeliculaIndividual.codS;
+		
+		
+	}
+	public static void getId_sala() {
+		id_sala = PeliculaIndividual.codSala;
+		
+		
+	}
+	public static void getPelicula() {
+		pelicula = PeliculaIndividual.pelicula;
+		
+		
+	}
 
 	public static void getAsientosSeleccionados() {
 		for (java.awt.Component b : panel.getComponents()) {
 			if (b instanceof JButton) {
 				if (((JButton) b).getIcon().equals(iconoSelec)) {
 					for (Asiento a : asientos) {
-						if (b.getX() == a.getColumna() && b.getY() == a.getFila()) {
-							codigoS.add(a);
+						if (b.getX() == a.getColumna() && b.getY() == a.getFila() && a.getId_sala() == Integer.parseInt(PeliculaIndividual.codSala)) {
+							codigoAS.add(a);
 						}
 
 					}

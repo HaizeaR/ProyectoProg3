@@ -108,7 +108,7 @@ public class Asiento {
 	
 	@Override
 	public String toString() {
-		return "Asiento [Codigo=" + codigo + ", Coordenada= (" + fila + "-" + columna + "), Ocupado: "+ ocupado + "]";
+		return "Asiento [Codigo=" + codigo + ", Coordenada= (" + fila + "-" + columna + "), Ocupado: "+ ocupado + " ID_sala= " + id_sala + "]";
 	}
 
 	public void dibujar(Graphics g) {

@@ -18,6 +18,9 @@ public class ConfCompra extends JFrame {
 		setLocation(300, 200);
 	}
 	
+	public static void cambiaBD() {
+		
+	}
 
 	public static void main(String[] args) {
 		ConfCompra vc = new ConfCompra(); 
