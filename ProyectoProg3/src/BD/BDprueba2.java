@@ -251,7 +251,7 @@ public class BDprueba2 {
 			log( Level.INFO, "BD creación de tabla\t" + sent, null );
 
 			//sent = "CREATE TABLE IF NOT EXISTS asiento (codigo INTEGER PRIMARY KEY, fila int(5), columna int(5), ocupado boolean, ID_sala int(5));";
-			sent = "CREATE TABLE IF NOT EXISTS asiento (codigo INTEGER PRIMARY KEY, fila int(5), columna int(5), ocupado boolean, ID_sala INTEGER PRIMARY KEY);";
+			sent = "CREATE TABLE IF NOT EXISTS asiento (codigo INTEGER PRIMARY KEY, fila int(5), columna int(5), ocupado boolean, ID_sala INTEGER);";
 			//System.out.println(sent);
 			statement.executeUpdate(sent);
 			log( Level.INFO, "BD creación de tabla\t" + sent, null );

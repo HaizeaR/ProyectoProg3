@@ -151,6 +151,7 @@ public class listadoAdmin extends JFrame{
 				
 				return a; 
 				}
+			rs.close();
 
 		}catch(Exception e){
 			System.out.println(e);
