@@ -115,6 +115,7 @@ public class PeliculaIndividual extends JFrame{
 		bNext.addActionListener((ActionEvent e) -> {SeleccionAsientos(); } );
 		tablaHorario.addMouseListener(new MouseAdapter() {
 
+			
 			@Override
 			public void  mouseClicked(MouseEvent e) {
 				if (e.getClickCount()>=2) {
