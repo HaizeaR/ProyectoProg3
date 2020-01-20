@@ -267,7 +267,7 @@ public class PeliculaIndividual extends JFrame{
 	private void mostrar() {
 
 		DefaultTableModel modelo = new DefaultTableModel();
-		modelo.setColumnIdentifiers(new Object[] {"Fecha", "Hora"});
+		modelo.setColumnIdentifiers(new Object[] {"Código", "Fecha", "Hora"});
 
 
 
@@ -275,14 +275,14 @@ public class PeliculaIndividual extends JFrame{
 		String SQL = ""; 
 		try {
 			Statement stat = conn.createStatement();
-			SQL = "select fecha,horaI from sesion where ID_peli =" + sacarCodigo() + ""; 
+			SQL = "select cod_sesion, fecha,horaI from sesion where ID_peli =" + sacarCodigo() + ""; 
 
 
 
 			ResultSet rs = stat.executeQuery( SQL );
 			while(rs.next()) {
 
-				modelo.addRow(new Object[] {rs.getString("fecha"),rs.getString("horaI")});
+				modelo.addRow(new Object[] {rs.getString("cod_sesion"), rs.getString("fecha"),rs.getString("horaI")});
 
 			}
 			tablaHorario.setModel(modelo);
