@@ -45,7 +45,7 @@ public class LogIn extends JFrame {
 	
 	//private static JDialog v;
 	
-
+	static Connection con;
 	
 
 	public LogIn() {
@@ -54,6 +54,7 @@ public class LogIn extends JFrame {
 		setLocation(300, 200);
 		setTitle("LOG IN");
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+		con = BDprueba2.conexion;
 		
 		
 		// EDITAR PARA QUE SE VEA 
@@ -287,10 +288,10 @@ public class LogIn extends JFrame {
 	 
 	public void confirmarLogIn() {
 		//Connection conn = BDprueba2.abrirConexion( "Cine2.db" );
-		Connection conn = BDprueba2.initBD("Cine2.db");
+		//Connection conn = BDprueba2.initBD("Cine2.db");
 		String SQL = ""; 
 		try {
-			Statement stat = conn.createStatement();
+			Statement stat = con.createStatement();
 			SQL = "select correo, contrasena from cliente"; 
 
 			ResultSet rs = stat.executeQuery( SQL );

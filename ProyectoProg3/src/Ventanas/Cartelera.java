@@ -17,6 +17,7 @@ import java.awt.image.ImageObserver;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -34,6 +35,7 @@ import javax.swing.JScrollPane;
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 
 import Admin.LogInAdmin;
+import BD.BDprueba2;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.layout.BackgroundImage;
 
@@ -58,12 +60,13 @@ public class Cartelera extends JFrame {
 	private static JFrame v;
 	public static ArrayList<String> pelis;
 	public static String pelicula;
+	static Connection con;
 
 	public Cartelera() {
 
 		setSize(600, 600);
 		setTitle("Cartelera");
-		
+		con = BDprueba2.conexion;
 		pelis = new ArrayList<String>();
 		pelis.add("Frozen2.jpg");	
 		pelis.add( "VengadoresEndgame.jpg");

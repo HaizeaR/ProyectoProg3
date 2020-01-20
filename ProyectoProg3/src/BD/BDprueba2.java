@@ -21,7 +21,7 @@ import Elementos.Sala;
 import Elementos.Sesion;
 
 public class BDprueba2 {
-	private static Connection conexion;
+	public static Connection conexion;
 	private static Statement st;
 
 	private static boolean LOGGING = true;

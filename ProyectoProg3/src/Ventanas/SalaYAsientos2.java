@@ -44,14 +44,14 @@ public class SalaYAsientos2 extends JFrame {
 	JButton bAtras, bNext;
 	JPanel pBotonera;
 	static ArrayList<Asiento> asientos = new ArrayList<>();
-	Connection con;
+	static Connection con;
 	Statement st;
 
 	public SalaYAsientos2() {
 		setSize(575, 600);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 // int cod_asiento = 0;
-
+		con = BDprueba2.conexion;
 		JPanel pantalla = new JPanel();
 		pantalla.setSize(450, 500);
 		pantalla.setLocation(getHeight(), getWidth());
@@ -100,7 +100,8 @@ public class SalaYAsientos2 extends JFrame {
 			}
 		} else {
 			System.out.println("Sacando asientos de base de datos");
-			Connection con = BDprueba2.initBD("Cine2.db");
+			//Connection con = BDprueba2.initBD("Cine2.db");
+			
 			try {
 				Statement stmt = con.createStatement();
 				String sentSQL = "SELECT * FROM asiento where ID_sala = " + PeliculaIndividual.codSala ;
@@ -261,7 +262,7 @@ public class SalaYAsientos2 extends JFrame {
 	}
 
 	public static void crearAsientosBD() {
-		Connection con = BDprueba2.initBD("Cine2.db");
+		//Connection con = BDprueba2.initBD("Cine2.db");
 		try {
 			Statement stmt = con.createStatement();
 			String sentSQL = "SELECT * FROM ASIENTO where numero_sala = " + PeliculaIndividual.codSala;
@@ -286,7 +287,7 @@ public class SalaYAsientos2 extends JFrame {
 	}
 
 	public static boolean compruebaEsixte() {
-		Connection con = BDprueba2.initBD("Cine2.db");
+	//	Connection con = BDprueba2.initBD("Cine2.db");
 		try {
 			Statement stmt = con.createStatement();
 			String sentSQL = "SELECT * FROM ASIENTO where ID_sala = " + PeliculaIndividual.codSala;
@@ -356,7 +357,7 @@ public class SalaYAsientos2 extends JFrame {
 	}
 	
 	public static void getHoraFechaPeli() {
-		Connection con = BDprueba2.initBD("Cine2.db");
+		//Connection con = BDprueba2.initBD("Cine2.db");
 		try {
 			Statement stmt = con.createStatement();
 			String sentSQL = "SELECT * FROM SESION where cod_sesion = " + codS;

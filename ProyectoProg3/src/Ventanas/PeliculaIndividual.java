@@ -44,12 +44,13 @@ public class PeliculaIndividual extends JFrame {
 	JInternalFrame ventanaTabla; // Frame interno que contiene la tabla horiario
 	static String codSala;
 	static String codS;
+	static Connection con;
 
 	public PeliculaIndividual() {
 		setSize(600, 600);
 		setTitle("Peli individual");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+		con = BDprueba2.conexion;
 		pPeli = new JPanel();
 		getContentPane().add(pPeli, BorderLayout.CENTER);
 		lFoto = new JLabel(new ImageIcon("src/img/" + pelicula + ".jpg"));
@@ -136,7 +137,7 @@ public class PeliculaIndividual extends JFrame {
 	}
 
 	public static void conseguirIdSala(String codS) {
-		Connection con = BDprueba2.initBD("Cine2.db");
+		//Connection con = BDprueba2.initBD("Cine2.db");
 		String sentSQL = "";
 		try {
 
@@ -177,7 +178,7 @@ public class PeliculaIndividual extends JFrame {
 	}
 
 	public void sacarDatos() {
-		Connection con = BDprueba2.initBD("Cine2.db");
+		//Connection con = BDprueba2.initBD("Cine2.db");
 		String sentSQL = "";
 		try {
 
@@ -203,7 +204,7 @@ public class PeliculaIndividual extends JFrame {
 	}
 
 	public int sacarCodigo() {
-		Connection con = BDprueba2.initBD("Cine2.db");
+		//Connection con = BDprueba2.initBD("Cine2.db");
 		String sentSQL = "";
 		try {
 
@@ -268,10 +269,10 @@ public class PeliculaIndividual extends JFrame {
 		DefaultTableModel modelo = new DefaultTableModel();
 		modelo.setColumnIdentifiers(new Object[] { "Código", "Fecha", "Hora" });
 
-		Connection conn = BDprueba2.initBD("Cine2.db");
+		//Connection conn = BDprueba2.initBD("Cine2.db");
 		String SQL = "";
 		try {
-			Statement stat = conn.createStatement();
+			Statement stat = con.createStatement();
 			SQL = "select cod_sesion, fecha,horaI from sesion where ID_peli =" + sacarCodigo() + "";
 
 			ResultSet rs = stat.executeQuery(SQL);

@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-
+import java.sql.Connection;
 import java.util.*;
 
 import java.util.regex.Pattern;
@@ -44,6 +44,7 @@ public class Registro extends JFrame {
 	static JTextField tfCorreo,tfNombre, tfApellido, tfDNI, tfNumero_tarjeta; 
 	static JPasswordField jpContrasena; 
 	long num_tarjeta;
+	static Connection con;
 
 	public static ArrayList<Cliente> clientes = new ArrayList<>();
 	
@@ -61,7 +62,7 @@ public class Registro extends JFrame {
 
 		setSize(600,400);
 		setLocation(300, 200);
-
+		con = BDprueba2.conexion;
 		setTitle("Registro");
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
 
