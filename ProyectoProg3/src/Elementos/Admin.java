@@ -6,7 +6,7 @@ package Elementos;
 // nombre
 // apellidos 
 // Fecha de creación - (fecha de contratación ) 
-
+ 
 
 /**
  * Clase con información de un trabajador 
