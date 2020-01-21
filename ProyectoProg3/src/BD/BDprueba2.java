@@ -107,7 +107,7 @@ public class BDprueba2 {
 			log( Level.INFO, "BD creación de tabla\t" + sent, null );
 
 
-			sent = "CREATE TABLE IF NOT EXISTS compra (id_compra INTEGER PRIMARY KEY, codigo int, cod_sesion int, dni String);";
+			sent = "CREATE TABLE IF NOT EXISTS compra (id_compra INTEGER PRIMARY KEY AUTOINCREMENT, codigo int, cod_sesion int, dni String);";
 			//System.out.println( sent );
 			statement.executeUpdate( sent );
 			log( Level.INFO, "BD creación de tabla\t" + sent, null );
@@ -182,10 +182,10 @@ public class BDprueba2 {
 				statement.executeUpdate(sent9);
 				log( Level.INFO, "BD insert en tabla\t" + sent9, null );
 
-				String sent10 = "insert into compra values (1, 1 ,1 , '45993840G');";
-				//System.out.println(sent10);
-				statement.executeUpdate(sent10);
-				log( Level.INFO, "BD insert en tabla\t" + sent9, null );
+//				String sent10 = "insert into compra values ( 1 ,1 , '45993840G');";
+//				//System.out.println(sent10);
+//				statement.executeUpdate(sent10);
+//				log( Level.INFO, "BD insert en tabla\t" + sent9, null );
 
 				
 
@@ -551,7 +551,8 @@ public class BDprueba2 {
 	public static boolean insertCompra(Compra compra) {
 		try (Statement statement = conexion.createStatement()) {
 			String sent;
-			sent = "insert into compra values(" + "'" + (compra.getID_compra()) + "', "
+	
+			sent = "insert into compra (codigo, cod_sesion, DNI) values(" 
 			+ "'" + (compra.getCod_asiento()) + "', " 
 			+ "'" + (compra.getCod_sesion()) + "' , " 
 			+ "'" + (compra.getDNI()) + "'  " +
