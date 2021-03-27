@@ -22,7 +22,7 @@ ENTIDAD RELACIÓN
 Mediante las relaciones logramos guardar datos sobre las películas que se proyectas, en qué lugar y con qué horario. 
 
 
-## Libreria Externa 
+## Librería Externa 
 
 http://www.java2s.com/Code/JarDownload/itextpdf/itextpdf-5.4.0.jar.zip (Enlace de descarga) 
 
